@@ -28,13 +28,13 @@ spec:
         - /etc/krakend/config/krakend.json
         env:
         - name: KRAKEND_LICENSE_PATH
-          value: /etc/krakend/LICENSE
+          value: /etc/krakend/config/LICENSE
         volumeMounts:
         - name: krakend-config
           mountPath: /etc/krakend/config/krakend.json
           subPath: krakend.json
         - name: krakend-license
-          mountPath: /etc/krakend/LICENSE
+          mountPath: /etc/krakend/config/LICENSE
           subPath: LICENSE
       volumes:
       - name: krakend-config
