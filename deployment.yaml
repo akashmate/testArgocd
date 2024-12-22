@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: krakendDemo
+  name: krakenddemo
   namespace: krakenddemo-namespace
   labels:
-    app: krakendDemo
+    app: krakenddemo
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: krakendDemo
+      app: krakenddemo
   template:
     metadata:
       annotations:
         configmap.reloader.stakater.com/reload: "krakend-demo-config"
       labels:
-        app: krakendDemo
+        app: krakenddemo
     spec:
       containers:
       - name: krakend-container
