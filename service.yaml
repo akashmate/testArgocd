@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: krakendDemo-service
+  name: krakenddemo-service
   namespace: krakenddemo-namespace
 spec:
   selector:
