@@ -39,7 +39,7 @@ spec:
       volumes:
       - name: krakend-config
         configMap:
-          name: krakend-config
+          name: krakend-demo-config
       - name: krakend-license
         secret:
           secretName: krakend-license
