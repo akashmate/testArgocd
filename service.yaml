@@ -5,7 +5,7 @@ metadata:
   namespace: krakenddemo-namespace
 spec:
   selector:
-    app: krakendDemo
+    app: krakenddemo
   ports:
   - protocol: TCP
     port: 8082
