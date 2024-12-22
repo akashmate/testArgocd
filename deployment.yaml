@@ -1,23 +1,45 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx
-  namespace: argo-demo
+  name: krakendDemo
+  namespace: krakendDemo-namespace
   labels:
-    app.kubernetes.io/name: nginx
+    app: krakendDemo
 spec:
-  replicas: 4
+  replicas: 2
   selector:
     matchLabels:
-      app.kubernetes.io/name: nginx
+      app: krakendDemo
   template:
     metadata:
+      annotations:
+        configmap.reloader.stakater.com/reload: "krakend-config"
       labels:
-        app.kubernetes.io/name: nginx
+        app: krakendDemo
     spec:
       containers:
-      - name: nginx
-        image: nginx:latest
+      - name: krakend-container
+        image: krakend/krakend-ee:2
         ports:
-          - name: http
-            containerPort: 80
+        - containerPort: 8082
+        args:
+        - run
+        - -c
+        - /etc/krakend/config/krakend.json
+        env:
+        - name: KRAKEND_LICENSE_PATH
+          value: /etc/krakend/LICENSE
+        volumeMounts:
+        - name: krakend-config
+          mountPath: /etc/krakend/config
+          subPath: krakend.json
+        - name: krakend-license
+          mountPath: /etc/krakend/LICENSE
+          subPath: LICENSE
+      volumes:
+      - name: krakend-config
+        configMap:
+          name: krakend-config
+      - name: krakend-license
+        secret:
+          secretName: krakend-license
