@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: krakend-demo-config
-  namespace: krakendDemo-namespace
+  namespace: krakenddemo-namespace
 data:
   krakend.json: |
     {
