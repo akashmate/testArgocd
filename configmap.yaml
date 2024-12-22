@@ -6,22 +6,45 @@ metadata:
 data:
   krakend.json: |
     {
-      "$schema" : "https://www.krakend.io/schema/krakend.json",
-      "version" : 3,
-      "name" : "gitgateway",
-      "port" : 8082,
-      "timeout" : "3000ms",
-      "cache_ttl" : "300s",
-      "debug_endpoint" : false,
-      "echo_endpoint" : false,
-      "endpoints" : [ {
-        "endpoint" : "/keycloak-protected1",
-        "backend" : [ {
-          "host" : [ "http://localhost:8082" ],
-          "url_pattern" : "/__health"
-        } ],
-        "extra_config" : { }
-      } ],
-      "extra_config" : { }
+        "$schema": "https://www.krakend.io/schema/krakend.json",
+        "version": 3,
+        "name": "APIGateway",
+        "timeout": "3000ms",
+        "cache_ttl": "300s",
+        "port": 8082,
+        "endpoints": [
+            {
+                "endpoint": "/api/posts",
+                "method": "GET",
+                "output_encoding": "json",
+                "backend": [
+                    {
+                        "url_pattern": "/posts/1",
+                        "host": [
+                            "https://jsonplaceholder.typicode.com/"
+                        ]
+                    }
+                ]
+            },
+            {
+                "endpoint": "/SK",
+                "method": "GET",
+                "backend": [
+                    {
+                        "host": [
+                            "https://api.restful-api.dev"
+                        ],
+                        "url_pattern": "/objects/7",
+                        "mapping": {},
+                        "is_collection": false,
+                        "encoding": "json",
+                        "extra_config": {
+                            "proxy": {}
+                        },
+                        "disable_host_sanitize": true
+                    }
+                ],
+                "extra_config": {}
+            }
+        ]
     }
-
