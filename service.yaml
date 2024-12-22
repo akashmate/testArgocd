@@ -1,13 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx
-  namespace: argo-demo
+  name: krakendDemo-service
+  namespace: krakendDemo-namespace
 spec:
-  type: LoadBalancer
   selector:
-    app.kubernetes.io/name: nginx
+    app: krakendDemo
   ports:
-    - protocol: TCP
-      port: 80
-      targetPort: http
+  - protocol: TCP
+    port: 8082
+    targetPort: 8082
+    nodePort: 31321
+  type: NodePort
