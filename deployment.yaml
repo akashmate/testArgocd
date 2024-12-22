@@ -13,13 +13,13 @@ spec:
   template:
     metadata:
       annotations:
-        configmap.reloader.stakater.com/reload: "krakend-config"
+        configmap.reloader.stakater.com/reload: "krakend-demo-config"
       labels:
         app: krakendDemo
     spec:
       containers:
       - name: krakend-container
-        image: krakend/krakend-ee:2
+        image: krakend/krakend-ee:watch
         ports:
         - containerPort: 8082
         args:
