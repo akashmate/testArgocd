@@ -9,7 +9,7 @@ data:
       "$schema" : "https://www.krakend.io/schema/krakend.json",
       "version" : 3,
       "name" : "gitgateway",
-      "port" : 8080,
+      "port" : 8082,
       "timeout" : "3000ms",
       "cache_ttl" : "300s",
       "debug_endpoint" : false,
@@ -17,7 +17,7 @@ data:
       "endpoints" : [ {
         "endpoint" : "/keycloak-protected1",
         "backend" : [ {
-          "host" : [ "http://localhost:8080" ],
+          "host" : [ "http://localhost:8082" ],
           "url_pattern" : "/__health"
         } ],
         "extra_config" : { }
