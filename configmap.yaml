@@ -27,7 +27,7 @@ data:
                 ]
             },
             {
-                "endpoint": "/SK",
+                "endpoint": "/SKS",
                 "method": "GET",
                 "backend": [
                     {
