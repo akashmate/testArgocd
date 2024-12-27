@@ -22,6 +22,12 @@ data:
                  "url_pattern" : "/posts/1",
                  "is_collection" : false,
                  "method" : "GET"
+               }, {
+                 "host" : [ "https://api.nationalize.io" ],
+                 "url_pattern" : "/",
+                 "extra_config" : { },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
                } ],
                "extra_config" : {
                  "auth/validator" : {
