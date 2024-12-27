@@ -16,21 +16,6 @@ data:
              "debug_endpoint" : false,
              "echo_endpoint" : false,
              "endpoints" : [ {
-               "endpoint" : "/renameobject",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev/" ],
-                 "url_pattern" : "/objects",
-                 "mapping" : {
-                   "collection.*.data" : "Renamedata"
-                 },
-                 "is_collection" : true,
-                 "extra_config" : { },
-                 "method" : "GET",
-                 "disable_host_sanitize" : true
-               } ],
-               "extra_config" : { },
-               "method" : "GET"
-             }, {
                "endpoint" : "/test",
                "backend" : [ {
                  "host" : [ "https://jsonplaceholder.typicode.com/" ],
@@ -92,6 +77,20 @@ data:
                } ],
                "extra_config" : { },
                "output_encoding" : "no-op",
+               "method" : "GET"
+             }, {
+               "endpoint" : "/renameobject",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev/" ],
+                 "url_pattern" : "/objects/7",
+                 "mapping" : {
+                   "data" : "Renamedata"
+                 },
+                 "extra_config" : { },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : { },
                "method" : "GET"
              } ],
              "extra_config" : { }
