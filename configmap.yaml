@@ -145,7 +145,8 @@ data:
                    "expr" : "country[?probability > `0.03` ].country_id"
                  }
                },
-               "method" : "GET"
+               "method" : "GET",
+               "input_query_strings" : [ "name" ]
              } ],
              "extra_config" : { }
            }
