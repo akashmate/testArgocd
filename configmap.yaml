@@ -86,6 +86,7 @@ data:
                  "mapping" : {
                    "collection.*.data" : "Renamedata"
                  },
+                 "is_collection" : true,
                  "extra_config" : { },
                  "method" : "GET",
                  "disable_host_sanitize" : true
