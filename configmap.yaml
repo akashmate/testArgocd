@@ -47,18 +47,19 @@ data:
                "endpoint" : "/flatmap",
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects",
+                 "url_pattern" : "/",
                  "is_collection" : true,
                  "extra_config" : {
                    "modifier/jmespath" : {
-                     "expr" : "[?id > `5`]"
+                     "expr" : "country[?probability > `0.03` ].country_id"
                    }
                  },
                  "method" : "GET",
                  "disable_host_sanitize" : true
                } ],
                "extra_config" : { },
-               "method" : "GET"
+               "method" : "GET",
+               "input_query_strings" : [ "name" ]
              } ],
              "extra_config" : { }
            }
