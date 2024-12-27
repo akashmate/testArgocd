@@ -60,20 +60,15 @@ data:
                "method" : "GET",
                "input_query_strings" : [ "name" ]
              }, {
-               "endpoint" : "/respManipulation",
+               "endpoint" : "/rspmanpulation",
                "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
+                 "host" : [ "https://api.restful-api.dev/" ],
                  "url_pattern" : "/objects/7",
-                 "extra_config" : {
-                   "modifier/response-body-generator" : {
-                     "template" : "ewogICJkYXRhIjoge3sgdG9Kc29uIC5yZXNwX2JvZHkgfX0sCiAgInN0YXR1c19jb2RlIjoge3sgdG9Kc29uIC5yZXNwX3N0YXR1cyB9fSwKICAiaGVhZGVycyI6IHt7IHRvSnNvbiAucmVzcF9oZWFkZXJzIH19Cn0=",
-                     "content_type" : "application/json"
-                   }
-                 },
-                 "method" : "GET",
-                 "disable_host_sanitize" : true
+                 "is_collection" : false,
+                 "method" : "GET"
                } ],
                "extra_config" : { },
+               "output_encoding" : "no-op",
                "method" : "GET"
              } ],
              "extra_config" : { }
