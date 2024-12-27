@@ -109,7 +109,13 @@ data:
                  "method" : "GET",
                  "disable_host_sanitize" : true
                } ],
-               "extra_config" : { },
+               "extra_config" : {
+                 "auth/basic" : {
+                   "users" : {
+                     "test5" : "$2a$10$k6fn24V8BvyT6w4FBbbzZ.HaolopduHjDSCFYZRyKpEg4KlXST/gq"
+                   }
+                 }
+               },
                "method" : "GET"
              } ],
              "extra_config" : { }
