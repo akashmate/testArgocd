@@ -83,15 +83,11 @@ data:
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev/" ],
                  "url_pattern" : "/objects",
-                 "mapping" : {
-                   "collection.*.data" : "Renamedata"
-                 },
-                 "is_collection" : true,
-                 "extra_config" : { },
-                 "method" : "GET",
-                 "disable_host_sanitize" : true
+                 "is_collection" : false,
+                 "method" : "GET"
                } ],
                "extra_config" : { },
+               "output_encoding" : "json-collection",
                "method" : "GET"
              } ],
              "extra_config" : { }
