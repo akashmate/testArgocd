@@ -17,7 +17,7 @@ data:
              "endpoints" : [ {
                "endpoint" : "/keycloak-protected1",
                "backend" : [ {
-                 "host" : [ "http://localhost:8080" ],
+                 "host" : [ "http://localhost:8082" ],
                  "url_pattern" : "/__health"
                } ],
                "extra_config" : { }
