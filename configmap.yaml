@@ -5,28 +5,52 @@ metadata:
   namespace: krakenddemo-namespace
 data:
   krakend.json: |
-           {
-             "$schema" : "https://www.krakend.io/schema/krakend.json",
-             "version" : 3,
-             "name" : "gitgateway1",
-             "port" : 8080,
-             "timeout" : "3000ms",
-             "cache_ttl" : "300s",
-             "debug_endpoint" : false,
-             "echo_endpoint" : false,
-             "endpoints" : [ {
-               "endpoint" : "/keycloak-protected1",
-               "backend" : [ {
-                 "host" : [ "http://localhost:8080" ],
-                 "url_pattern" : "/__health"
-               } ],
-               "extra_config" : {
-                 "auth/basic" : {
-                   "users" : {
-                     "consumer_massil1" : "$2a$10$GtXAWkeHsTxvweA7eXCcXucwCcVFOlRzG5VG4/bKsvAKP4IhFh0mW"
-                   }
-                 }
-               }
-             } ],
-             "extra_config" : { }
+           {
+
+             "$schema" : "https://www.krakend.io/schema/krakend.json",
+
+             "version" : 3,
+
+             "name" : "gitgateway1",
+
+             "port" : 8082,
+
+             "timeout" : "3000ms",
+
+             "cache_ttl" : "300s",
+
+             "debug_endpoint" : false,
+
+             "echo_endpoint" : false,
+
+             "endpoints" : [ {
+
+               "endpoint" : "/keycloak-protected1",
+
+               "backend" : [ {
+
+                 "host" : [ "http://localhost:8080" ],
+
+                 "url_pattern" : "/__health"
+
+               } ],
+
+               "extra_config" : {
+
+                 "auth/basic" : {
+
+                   "users" : {
+
+                     "consumer_massil1" : "$2a$10$GtXAWkeHsTxvweA7eXCcXucwCcVFOlRzG5VG4/bKsvAKP4IhFh0mW"
+
+                   }
+
+                 }
+
+               }
+
+             } ],
+
+             "extra_config" : { }
+
            }
