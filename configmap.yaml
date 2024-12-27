@@ -95,9 +95,17 @@ data:
              }, {
                "endpoint" : "/flatmap",
                "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev/" ],
+                 "host" : [ "https://api.restful-api.dev" ],
                  "url_pattern" : "/objects",
-                 "extra_config" : { },
+                 "is_collection" : true,
+                 "extra_config" : {
+                   "proxy" : {
+                     "flatmap_filter" : [ {
+                       "type" : "move",
+                       "args" : [ "collection.*.data", "collection.*.newdata" ]
+                     } ]
+                   }
+                 },
                  "method" : "GET",
                  "disable_host_sanitize" : true
                } ],
