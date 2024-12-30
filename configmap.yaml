@@ -16,18 +16,18 @@ data:
              "debug_endpoint" : false,
              "echo_endpoint" : false,
              "endpoints" : [ {
-               "endpoint" : "/test2",
+               "endpoint" : "/legal/document/{docId}",
                "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects",
-                 "is_collection" : true,
-                 "encoding" : "json",
+                 "host" : [ "https://catfact.ninja/" ],
+                 "url_pattern" : "/{docId}",
                  "extra_config" : {
                    "security/policies" : {
                      "req" : {
-                       "policies" : [ "hasHeader(\"Authorizatio\")" ],
+                       "policies" : [ "req_params.DocId.startsWith('fa')", "hasQuerystring('q')" ],
                        "error" : {
-                         "status" : 401
+                         "body" : "{     \"message\": \"wrong request, try again\" }",
+                         "status" : 400,
+                         "content_type" : "application/json"
                        }
                      }
                    }
