@@ -147,6 +147,22 @@ data:
                },
                "method" : "GET",
                "input_query_strings" : [ "name" ]
+             }, {
+               "endpoint" : "/ratelimit",
+               "backend" : [ {
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "url_pattern" : "/posts/1",
+                 "is_collection" : false,
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "qos/ratelimit/router" : {
+                   "max_rate" : 4,
+                   "every" : "1m",
+                   "strategy" : "ip"
+                 }
+               },
+               "method" : "GET"
              } ],
              "extra_config" : { }
            }
