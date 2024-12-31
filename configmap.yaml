@@ -8,29 +8,202 @@ data:
            {
              "$schema" : "https://www.krakend.io/schema/krakend.json",
              "version" : 3,
-             "name" : "gitgateway",
+             "name" : "MassilGW",
              "port" : 8082,
+             "host" : [ "localhost" ],
              "timeout" : "3000ms",
              "cache_ttl" : "300s",
              "debug_endpoint" : false,
              "echo_endpoint" : false,
              "endpoints" : [ {
-               "endpoint" : "/keycloak-protected3",
+               "endpoint" : "/test",
                "backend" : [ {
-                 "host" : [ "http://localhost:8082" ],
-                 "url_pattern" : "/__health"
+                 "host" : [ "https://jsonplaceholder.typicode.com/" ],
+                 "url_pattern" : "/posts/1",
+                 "is_collection" : false,
+                 "method" : "GET"
+               }, {
+                 "host" : [ "https://api.nationalize.io" ],
+                 "url_pattern" : "/",
+                 "extra_config" : { },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
                } ],
                "extra_config" : {
+                 "modifier/jmespath" : {
+                   "expr" : "country[?probability > `0.03` ].country_id"
+                 },
                  "auth/validator" : {
                    "alg" : "RS256",
                    "jwk_url" : "http://10.175.1.61:8080/realms/master/protocol/openid-connect/certs",
                    "issuer" : "http://10.175.1.61:8080/realms/master",
                    "disable_jwk_security" : true,
                    "scopes_matcher" : "any",
-                   "scopes" : [ "democlient1" ],
+                   "scopes" : [ "Testapp1" ],
                    "scopes_key" : "scope"
                  }
-               }
+               },
+               "output_encoding" : "json",
+               "method" : "GET",
+               "input_query_strings" : [ "name" ]
+             }, {
+               "endpoint" : "/jmespath",
+               "backend" : [ {
+                 "host" : [ "https://api.nationalize.io" ],
+                 "url_pattern" : "/",
+                 "extra_config" : {
+                   "modifier/jmespath" : {
+                     "expr" : "country[?probability > `0.03` ].country_id"
+                   }
+                 },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : { },
+               "method" : "GET",
+               "input_query_strings" : [ "name" ]
+             }, {
+               "endpoint" : "/rspmanpulation",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev/" ],
+                 "url_pattern" : "/objects/7",
+                 "group" : "rspdata",
+                 "encoding" : "json",
+                 "extra_config" : {
+                   "modifier/response-body-generator" : {
+                     "template" : "ewogICJkYXRhIjoge3sgdG9Kc29uIC5yZXNwX2JvZHkgfX0sCiAgInN0YXR1c19jb2RlIjoge3sgdG9Kc29uIC5yZXNwX3N0YXR1cyB9fSwKICAiaGVhZGVycyI6IHt7IHRvSnNvbiAucmVzcF9oZWFkZXJzIH19Cn0=",
+                     "content_type" : "application/json"
+                   }
+                 },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : { },
+               "output_encoding" : "no-op",
+               "method" : "GET"
+             }, {
+               "endpoint" : "/renameobject",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev/" ],
+                 "url_pattern" : "/objects/7",
+                 "mapping" : {
+                   "data" : "Renamedata"
+                 },
+                 "extra_config" : { },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : { },
+               "method" : "GET"
+             }, {
+               "endpoint" : "/flatmap",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects",
+                 "is_collection" : true,
+                 "extra_config" : {
+                   "proxy" : {
+                     "flatmap_filter" : [ {
+                       "type" : "move",
+                       "args" : [ "collection.*.data", "collection.*.newdata" ]
+                     } ]
+                   }
+                 },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : {
+                 "auth/basic" : {
+                   "users" : {
+                     "test5" : "$2a$10$k6fn24V8BvyT6w4FBbbzZ.HaolopduHjDSCFYZRyKpEg4KlXST/gq"
+                   }
+                 }
+               },
+               "method" : "GET"
+             }, {
+               "endpoint" : "/deny",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev/" ],
+                 "url_pattern" : "/objects/7",
+                 "extra_config" : { },
+                 "method" : "GET",
+                 "deny" : [ "data" ],
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : { },
+               "method" : "GET"
+             }, {
+               "endpoint" : "/sample",
+               "backend" : [ {
+                 "host" : [ "https://api.nationalize.io/" ],
+                 "url_pattern" : "/",
+                 "is_collection" : false,
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "modifier/jmespath" : {
+                   "expr" : "country[?probability > `0.03` ].country_id"
+                 }
+               },
+               "method" : "GET",
+               "input_query_strings" : [ "name" ]
+             }, {
+               "endpoint" : "/ratelimit",
+               "backend" : [ {
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "url_pattern" : "/posts/1",
+                 "is_collection" : false,
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "qos/ratelimit/router" : {
+                   "max_rate" : 4,
+                   "every" : "1m",
+                   "strategy" : "ip"
+                 }
+               },
+               "method" : "GET"
+             }, {
+               "endpoint" : "/legal/document/{docId}",
+               "backend" : [ {
+                 "host" : [ "https://catfact.ninja/" ],
+                 "url_pattern" : "/{docId}",
+                 "encoding" : "json",
+                 "extra_config" : {
+                   "security/policies" : {
+                     "req" : {
+                       "policies" : [ "req_params.DocId.startsWith('fa')", "hasQuerystring('q')" ],
+                       "error" : {
+                         "body" : "{     \"message\": \"wrong request, try again\" }",
+                         "status" : 400,
+                         "content_type" : "application/json"
+                       }
+                     }
+                   }
+                 },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : { },
+               "method" : "GET",
+               "input_query_strings" : [ "" ]
+             }, {
+               "endpoint" : "/rspbodygeneratetmpl",
+               "backend" : [ {
+                 "host" : [ "https://api.nationalize.io/" ],
+                 "url_pattern" : "/",
+                 "extra_config" : {
+                   "modifier/response-body-generator" : {
+                     "template" : "e3stICBpZiBlcSAyMDAgLnJlc3Bfc3RhdHVzIC19fQogICAge3stICB0b0pzb24gLnJlc3BfYm9keSAtfX0Ke3stIGVsc2UgLX19CnsKICAgICJlcnJvciI6ICJjYW4ndCBnZXQgdXNlciB7eyAucmVxX3BhcmFtcy5Vc2VyfX0iCn0Ke3stIGVuZCAtfX0=",
+                     "content_type" : "application/json"
+                   }
+                 },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : { },
+               "method" : "GET",
+               "input_query_strings" : [ "name" ]
              } ],
              "extra_config" : { }
            }
