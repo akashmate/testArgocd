@@ -16,6 +16,26 @@ data:
              "debug_endpoint" : false,
              "echo_endpoint" : false,
              "endpoints" : [ {
+               "endpoint" : "/testcb",
+               "backend" : [ {
+                 "host" : [ "http://localhost:3000" ],
+                 "url_pattern" : "/cbtest",
+                 "encoding" : "json",
+                 "extra_config" : {
+                   "qos/circuit-breaker" : {
+                     "interval" : 60,
+                     "timeout" : 10,
+                     "max_errors" : 1,
+                     "log_status_change" : true,
+                     "name" : "circuit-breaker-2"
+                   }
+                 },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : { },
+               "method" : "GET"
+             }, {
                "endpoint" : "/jmespath",
                "backend" : [ {
                  "host" : [ "https://api.nationalize.io" ],
