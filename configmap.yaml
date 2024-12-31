@@ -16,23 +16,6 @@ data:
              "debug_endpoint" : false,
              "echo_endpoint" : false,
              "endpoints" : [ {
-               "endpoint" : "/rspbodygeneratetmplpath",
-               "backend" : [ {
-                 "host" : [ "https://jsonplaceholder.typicode.com" ],
-                 "url_pattern" : "/posts/{id}",
-                 "extra_config" : {
-                   "modifier/response-body-generator" : {
-                     "template" : "e3stICBpZiBlcSAyMDAgLnJlc3Bfc3RhdHVzIC19fQogICAge3stICB0b0pzb24gLnJlc3BfYm9keSAtfX0Ke3stIGVsc2UgLX19CnsKICAgICJlcnJvciI6ICJjYW4ndCBnZXQgdXNlciB7eyAucmVxX3BhcmFtcy5pZH19Igp9Cnt7LSBlbmQgLX19",
-                     "content_type" : "application/json",
-                     "debug" : true
-                   }
-                 },
-                 "method" : "GET",
-                 "disable_host_sanitize" : true
-               } ],
-               "extra_config" : { },
-               "method" : "GET"
-             }, {
                "endpoint" : "/test",
                "backend" : [ {
                  "host" : [ "https://jsonplaceholder.typicode.com/" ],
@@ -204,6 +187,23 @@ data:
                "extra_config" : { },
                "method" : "GET",
                "input_query_strings" : [ "" ]
+             }, {
+               "endpoint" : "/rspbodygeneratetmplpath/{id}",
+               "backend" : [ {
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "url_pattern" : "/posts/{id}",
+                 "extra_config" : {
+                   "modifier/response-body-generator" : {
+                     "template" : "e3stICBpZiBlcSAyMDAgLnJlc3Bfc3RhdHVzIC19fQogICAge3stICB0b0pzb24gLnJlc3BfYm9keSAtfX0Ke3stIGVsc2UgLX19CnsKICAgICJlcnJvciI6ICJjYW4ndCBnZXQgdXNlciB7eyAucmVxX3BhcmFtcy5pZH19Igp9Cnt7LSBlbmQgLX19",
+                     "content_type" : "application/json",
+                     "debug" : true
+                   }
+                 },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : { },
+               "method" : "GET"
              } ],
              "extra_config" : { }
            }
