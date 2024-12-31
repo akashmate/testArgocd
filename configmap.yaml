@@ -15,7 +15,7 @@ data:
              "debug_endpoint" : false,
              "echo_endpoint" : false,
              "endpoints" : [ {
-               "endpoint" : "/keycloak-protected1",
+               "endpoint" : "/keycloak-protected2",
                "backend" : [ {
                  "host" : [ "http://localhost:8082" ],
                  "url_pattern" : "/__health"
