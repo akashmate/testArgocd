@@ -188,22 +188,6 @@ data:
                "method" : "GET",
                "input_query_strings" : [ "" ]
              }, {
-               "endpoint" : "/rspbodygeneratetmplpath/{id}",
-               "backend" : [ {
-                 "host" : [ "https://jsonplaceholder.typicode.com" ],
-                 "url_pattern" : "/posts/{id}",
-                 "extra_config" : {
-                   "modifier/response-body-generator" : {
-                     "template" : "e3stICBpZiBlcSAyMDAgLnJlc3Bfc3RhdHVzIC19fQogICAge3stICB0b0pzb24gLnJlc3BfYm9keSAtfX0Ke3stIGVsc2UgLX19CnsKICAgICJlcnJvciI6ICJjYW4ndCBnZXQgdXNlciB7eyAucmVxX3BhcmFtcy5pZH19Igp9Cnt7LSBlbmQgLX19"
-                   }
-                 },
-                 "method" : "GET",
-                 "disable_host_sanitize" : true
-               } ],
-               "extra_config" : { },
-               "output_encoding" : "no-op",
-               "method" : "GET"
-             }, {
                "endpoint" : "/TestCircuitBreaker",
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev" ],
@@ -223,6 +207,22 @@ data:
                } ],
                "extra_config" : { },
                "method" : "POST"
+             }, {
+               "endpoint" : "/rspbodygeneratetmplpath/{id}",
+               "backend" : [ {
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "url_pattern" : "/posts/{id}",
+                 "extra_config" : {
+                   "modifier/response-body-generator" : {
+                     "template" : "e3stICBpZiBlcSAyMDAgLnJlc3Bfc3RhdHVzIC19fQogICAge3stICB0b0pzb24gLnJlc3BfYm9keSAtfX0Ke3stIGVsc2UgLX19CnsKICAgICJlcnJvciI6ICJjYW4ndCBnZXQgdXNlciB7eyAucmVxX3BhcmFtcy5pZH19Igp9Cnt7LSBlbmQgLX19"
+                   }
+                 },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : { },
+               "output_encoding" : "no-op",
+               "method" : "GET"
              } ],
              "extra_config" : { }
            }
