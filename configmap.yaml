@@ -137,6 +137,24 @@ data:
                "method" : "GET",
                "input_query_strings" : [ "name" ]
              }, {
+               "endpoint" : "/proxyratelimit",
+               "backend" : [ {
+                 "host" : [ "http://localhost:3000" ],
+                 "url_pattern" : "/cbtest",
+                 "encoding" : "json",
+                 "extra_config" : {
+                   "qos/ratelimit/proxy" : {
+                     "max_rate" : 5,
+                     "capacity" : 2,
+                     "every" : "1m"
+                   }
+                 },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : { },
+               "method" : "GET"
+             }, {
                "endpoint" : "/ratelimit",
                "backend" : [ {
                  "host" : [ "https://jsonplaceholder.typicode.com" ],
