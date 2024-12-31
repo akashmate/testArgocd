@@ -203,6 +203,26 @@ data:
                "extra_config" : { },
                "output_encoding" : "no-op",
                "method" : "GET"
+             }, {
+               "endpoint" : "/TestCircuitBreaker",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects",
+                 "encoding" : "json",
+                 "extra_config" : {
+                   "qos/circuit-breaker" : {
+                     "interval" : 60,
+                     "timeout" : 10,
+                     "max_errors" : 1,
+                     "log_status_change" : true,
+                     "name" : "circuit-breaker-1"
+                   }
+                 },
+                 "method" : "POST",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : { },
+               "method" : "POST"
              } ],
              "extra_config" : { }
            }
