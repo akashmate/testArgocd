@@ -15,7 +15,7 @@ data:
              "debug_endpoint" : false,
              "echo_endpoint" : false,
              "endpoints" : [ {
-               "endpoint" : "/demoapi/keyclockProtected2",
+               "endpoint" : "/keyclockProtected2",
                "backend" : [ {
                  "host" : [ "http://localhost:8082" ],
                  "url_pattern" : "/__health"
