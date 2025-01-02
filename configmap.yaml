@@ -238,7 +238,7 @@ data:
                      "debug" : true
                    }
                  },
-                 "method" : "POST",
+                 "method" : "GET",
                  "disable_host_sanitize" : true
                } ],
                "extra_config" : { },
