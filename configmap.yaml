@@ -122,6 +122,16 @@ data:
                "extra_config" : { },
                "method" : "GET"
              }, {
+               "endpoint" : "/proxyratelimit",
+               "backend" : [ {
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "url_pattern" : "/objects/ff808181932badb6019425cc04e9551c",
+                 "is_collection" : false,
+                 "method" : "PUT"
+               } ],
+               "extra_config" : { },
+               "method" : "PUT"
+             }, {
                "endpoint" : "/sample",
                "backend" : [ {
                  "host" : [ "https://api.nationalize.io/" ],
@@ -136,25 +146,6 @@ data:
                },
                "method" : "GET",
                "input_query_strings" : [ "name" ]
-             }, {
-               "endpoint" : "/proxyratelimit",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects/ff808181932badb6019425cc04e9551c",
-                 "encoding" : "json",
-                 "extra_config" : {
-                   "qos/ratelimit/proxy" : {
-                     "max_rate" : 5,
-                     "capacity" : 2,
-                     "every" : "1m"
-                   }
-                 },
-                 "method" : "PUT",
-                 "disable_host_sanitize" : true
-               } ],
-               "extra_config" : { },
-               "input_headers" : [ "Content-Type" ],
-               "method" : "PUT"
              }, {
                "endpoint" : "/ratelimit",
                "backend" : [ {
