@@ -126,6 +126,7 @@ data:
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev" ],
                  "url_pattern" : "/objects/ff808181932badb6019425cc04e9551c",
+                 "encoding" : "json",
                  "extra_config" : { },
                  "method" : "PUT",
                  "disable_host_sanitize" : true
