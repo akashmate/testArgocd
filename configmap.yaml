@@ -153,6 +153,7 @@ data:
                  "disable_host_sanitize" : true
                } ],
                "extra_config" : { },
+               "input_headers" : [ "Content-Type" ],
                "method" : "PUT"
              }, {
                "endpoint" : "/ratelimit",
