@@ -127,7 +127,13 @@ data:
                  "host" : [ "https://api.restful-api.dev" ],
                  "url_pattern" : "/objects/ff808181932badb6019425cc04e9551c",
                  "encoding" : "json",
-                 "extra_config" : { },
+                 "extra_config" : {
+                   "qos/ratelimit/proxy" : {
+                     "max_rate" : 5,
+                     "capacity" : 2,
+                     "every" : "1m"
+                   }
+                 },
                  "method" : "PUT",
                  "disable_host_sanitize" : true
                } ],
