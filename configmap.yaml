@@ -124,10 +124,11 @@ data:
              }, {
                "endpoint" : "/proxyratelimit",
                "backend" : [ {
-                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "host" : [ "https://api.restful-api.dev" ],
                  "url_pattern" : "/objects/ff808181932badb6019425cc04e9551c",
-                 "is_collection" : false,
-                 "method" : "PUT"
+                 "extra_config" : { },
+                 "method" : "PUT",
+                 "disable_host_sanitize" : true
                } ],
                "extra_config" : { },
                "method" : "PUT"
