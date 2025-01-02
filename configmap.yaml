@@ -134,6 +134,18 @@ data:
                "extra_config" : { },
                "method" : "PUT"
              }, {
+               "endpoint" : "/securityPolicies",
+               "backend" : [ {
+                 "host" : [ "https://api.nationalize.io" ],
+                 "url_pattern" : "/",
+                 "is_collection" : false,
+                 "encoding" : "json",
+                 "method" : "GET"
+               } ],
+               "extra_config" : { },
+               "method" : "GET",
+               "input_query_strings" : [ "name" ]
+             }, {
                "endpoint" : "/sample",
                "backend" : [ {
                  "host" : [ "https://api.nationalize.io/" ],
