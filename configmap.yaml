@@ -215,7 +215,13 @@ data:
                  "host" : [ "https://jsonplaceholder.typicode.com" ],
                  "url_pattern" : "/posts/1",
                  "encoding" : "json",
-                 "extra_config" : { },
+                 "extra_config" : {
+                   "security/policies" : {
+                     "jwt" : {
+                       "policies" : [ "has(JWT.sub)", "JWT.sub.matches(\\\"^[a-z0-9-]+$\\\")" ]
+                     }
+                   }
+                 },
                  "method" : "GET",
                  "disable_host_sanitize" : true
                } ],
