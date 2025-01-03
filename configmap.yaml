@@ -41,9 +41,9 @@ data:
 
                    "alg" : "RS256",
 
-                   "jwk_url" : "http://192.168.29.217:8080/realms/master/protocol/openid-connect/certs",
+                   "jwk_url" : "http://192.168.29.217:8082/realms/master/protocol/openid-connect/certs",
 
-                   "issuer" : "http://192.168.29.217:8080/realms/master",
+                   "issuer" : "http://192.168.29.217:8082/realms/master",
 
                    "disable_jwk_security" : true,
 
