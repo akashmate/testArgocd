@@ -8,57 +8,23 @@ data:
            {
              "$schema" : "https://www.krakend.io/schema/krakend.json",
              "version" : 3,
-             "name" : "gitgateway",
+             "name" : "MassilGW",
              "port" : 8082,
+             "host" : [ "localhost" ],
              "timeout" : "3000ms",
              "cache_ttl" : "300s",
              "debug_endpoint" : false,
              "echo_endpoint" : false,
              "endpoints" : [ {
-               "endpoint" : "/demo/keycloak-protected",
+               "endpoint" : "/sample3/test",
                "backend" : [ {
-                 "host" : [ "http://localhost:8082" ],
-                 "url_pattern" : "/__health"
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "url_pattern" : "/posts/1",
+                 "is_collection" : false,
+                 "method" : "GET"
                } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.54:8080/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.54:8080/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "democlient1" ],
-                   "scopes_key" : "scope"
-                 }
-               },
+               "extra_config" : { },
                "method" : "GET"
-             }, {
-               "endpoint" : "/demo/keycloak-protected",
-               "backend" : [ {
-                 "host" : [ "http://localhost:8082" ],
-                 "url_pattern" : "/__health"
-               } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.54:8080/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.54:8080/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "democlient1" ],
-                   "scopes_key" : "scope"
-                 }
-               },
-               "method" : "POST"
              } ],
-             "extra_config" : {
-               "security/cors" : {
-                 "allow_origins" : [ "*" ],
-                 "allow_methods" : [ "GET", "HEAD", "POST", "PUT", "DELETE" ],
-                 "allow_headers" : [ "*" ],
-                 "expose_headers" : [ "Content-Length", "Content-Type" ],
-                 "max_age" : "12h",
-                 "allow_credentials" : true
-               }
-             }
+             "extra_config" : { }
            }
