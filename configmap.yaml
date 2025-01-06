@@ -23,6 +23,17 @@ data:
                  "is_collection" : false,
                  "method" : "GET"
                } ],
+               "extra_config" : { },
+               "method" : "GET"
+             }, {
+               "endpoint" : "/sample3/t2",
+               "backend" : [ {
+                 "host" : [ "https://jsonplaceholder.typicode.com/" ],
+                 "url_pattern" : "/posts/11",
+                 "extra_config" : { },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
+               } ],
                "extra_config" : {
                  "auth/basic" : {
                    "users" : {
