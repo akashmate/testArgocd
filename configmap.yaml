@@ -8,40 +8,53 @@ data:
            {
              "$schema" : "https://www.krakend.io/schema/krakend.json",
              "version" : 3,
-             "name" : "MassilGW",
+             "name" : "gitgateway",
              "port" : 8082,
-             "host" : [ "localhost" ],
              "timeout" : "3000ms",
              "cache_ttl" : "300s",
              "debug_endpoint" : false,
              "echo_endpoint" : false,
              "endpoints" : [ {
-               "endpoint" : "/sample4/test",
+               "endpoint" : "/api2/keycloak-protected",
                "backend" : [ {
-                 "host" : [ "https://jsonplaceholder.typicode.com" ],
-                 "url_pattern" : "/posts/1",
-                 "is_collection" : false,
-                 "method" : "GET"
+                 "host" : [ "http://localhost:8082" ],
+                 "url_pattern" : "/__health"
                } ],
-               "extra_config" : { },
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.54:8080/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.54:8080/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "democlient1" ],
+                   "scopes_key" : "scope"
+                 }
+               },
                "method" : "GET"
              }, {
-               "endpoint" : "/sample3/t2",
+               "endpoint" : "/demo/keycloak-protected",
                "backend" : [ {
-                 "host" : [ "https://jsonplaceholder.typicode.com/" ],
-                 "url_pattern" : "/posts/11",
-                 "extra_config" : { },
-                 "method" : "GET",
-                 "disable_host_sanitize" : true
+                 "host" : [ "http://localhost:8082" ],
+                 "url_pattern" : "/__health"
                } ],
                "extra_config" : {
                  "auth/basic" : {
                    "users" : {
-                     "test5" : "$2a$10$k6fn24V8BvyT6w4FBbbzZ.HaolopduHjDSCFYZRyKpEg4KlXST/gq"
+                     "consumer_ramesh" : "$2a$10$zptiG1eswxpKw9.OHVKjx.qKyShcbuGSWGetaMIRQ/vazBIgiiOP2"
                    }
                  }
                },
                "method" : "GET"
              } ],
-             "extra_config" : { }
+             "extra_config" : {
+               "security/cors" : {
+                 "allow_origins" : [ "*" ],
+                 "allow_methods" : [ "GET", "HEAD", "POST", "PUT", "DELETE" ],
+                 "allow_headers" : [ "*" ],
+                 "expose_headers" : [ "Content-Length", "Content-Type" ],
+                 "max_age" : "12h",
+                 "allow_credentials" : true
+               }
+             }
            }
