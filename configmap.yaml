@@ -16,6 +16,17 @@ data:
              "debug_endpoint" : false,
              "echo_endpoint" : false,
              "endpoints" : [ {
+               "endpoint" : "/basicoperation/testquery",
+               "backend" : [ {
+                 "host" : [ "https://api.nationalize.io" ],
+                 "url_pattern" : "/",
+                 "is_collection" : false,
+                 "method" : "GET"
+               } ],
+               "extra_config" : { },
+               "method" : "GET",
+               "input_query_strings" : [ "" ]
+             }, {
                "endpoint" : "/sample4/test",
                "backend" : [ {
                  "host" : [ "https://jsonplaceholder.typicode.com" ],
@@ -35,17 +46,6 @@ data:
                  }
                },
                "method" : "GET"
-             }, {
-               "endpoint" : "/basicoperation/testquery",
-               "backend" : [ {
-                 "host" : [ "https://api.nationalize.io" ],
-                 "url_pattern" : "/",
-                 "is_collection" : false,
-                 "method" : "GET"
-               } ],
-               "extra_config" : { },
-               "method" : "GET",
-               "input_query_strings" : [ "name" ]
              }, {
                "endpoint" : "/sample3/t2",
                "backend" : [ {
