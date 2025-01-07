@@ -47,7 +47,8 @@ data:
                    }
                  }
                },
-               "method" : "GET"
+               "method" : "GET",
+               "input_query_strings" : [ "name" ]
              } ],
              "extra_config" : { }
            }
