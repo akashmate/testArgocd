@@ -23,13 +23,7 @@ data:
                  "is_collection" : false,
                  "method" : "GET"
                } ],
-               "extra_config" : {
-                 "auth/basic" : {
-                   "users" : {
-                     "test5" : "$2a$10$k6fn24V8BvyT6w4FBbbzZ.HaolopduHjDSCFYZRyKpEg4KlXST/gq"
-                   }
-                 }
-               },
+               "extra_config" : { },
                "method" : "GET",
                "input_query_strings" : [ "name" ]
              }, {
@@ -40,13 +34,7 @@ data:
                  "is_collection" : false,
                  "method" : "GET"
                } ],
-               "extra_config" : {
-                 "auth/basic" : {
-                   "users" : {
-                     "test5" : "$2a$10$k6fn24V8BvyT6w4FBbbzZ.HaolopduHjDSCFYZRyKpEg4KlXST/gq"
-                   }
-                 }
-               },
+               "extra_config" : { },
                "method" : "GET",
                "input_query_strings" : [ "name" ]
              } ],
