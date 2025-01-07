@@ -44,6 +44,17 @@ data:
                "extra_config" : { },
                "method" : "GET",
                "input_query_strings" : [ "name" ]
+             }, {
+               "endpoint" : "/SoapTransform/transformapi",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects",
+                 "is_collection" : true,
+                 "encoding" : "json",
+                 "method" : "GET"
+               } ],
+               "extra_config" : { },
+               "method" : "GET"
              } ],
              "extra_config" : { }
            }
