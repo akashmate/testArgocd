@@ -8,53 +8,68 @@ data:
            {
              "$schema" : "https://www.krakend.io/schema/krakend.json",
              "version" : 3,
-             "name" : "MassilGW",
+             "name" : "gitgateway",
              "port" : 8082,
-             "host" : [ "localhost" ],
              "timeout" : "3000ms",
              "cache_ttl" : "300s",
              "debug_endpoint" : false,
              "echo_endpoint" : false,
              "endpoints" : [ {
-               "endpoint" : "/basicoperation/testquery",
+               "endpoint" : "/demo/keycloak-protected2",
                "backend" : [ {
-                 "host" : [ "https://api.nationalize.io" ],
-                 "url_pattern" : "/",
-                 "is_collection" : false,
-                 "method" : "GET"
+                 "host" : [ "http://localhost:8082" ],
+                 "url_pattern" : "/__health"
                } ],
-               "extra_config" : { },
-               "method" : "GET",
-               "input_query_strings" : [ "name" ]
+               "extra_config" : {
+                 "auth/basic" : {
+                   "users" : {
+                     "consumer_ramesh" : "$2a$10$zptiG1eswxpKw9.OHVKjx.qKyShcbuGSWGetaMIRQ/vazBIgiiOP2",
+                     "consumer_neel" : "$2a$10$eHerowcCmAhwo0sRgvtp.uDVmRzqUvT3Hkr9v5aZRmkMMUgat.6j."
+                   }
+                 }
+               },
+               "method" : "GET"
              }, {
-               "endpoint" : "/basicoperation/merge",
+               "endpoint" : "/demo/keycloak-protected1",
                "backend" : [ {
-                 "host" : [ "https://jsonplaceholder.typicode.com" ],
-                 "url_pattern" : "/posts/1",
-                 "extra_config" : { },
-                 "method" : "GET",
-                 "disable_host_sanitize" : true
-               }, {
-                 "host" : [ "https://api.nationalize.io" ],
-                 "url_pattern" : "/",
-                 "extra_config" : { },
-                 "method" : "GET",
-                 "disable_host_sanitize" : true
+                 "host" : [ "http://localhost:8082" ],
+                 "url_pattern" : "/__health"
                } ],
-               "extra_config" : { },
-               "method" : "GET",
-               "input_query_strings" : [ "name" ]
+               "extra_config" : {
+                 "auth/basic" : {
+                   "users" : {
+                     "consumer_ramesh" : "$2a$10$zptiG1eswxpKw9.OHVKjx.qKyShcbuGSWGetaMIRQ/vazBIgiiOP2",
+                     "consumer_neel" : "$2a$10$eHerowcCmAhwo0sRgvtp.uDVmRzqUvT3Hkr9v5aZRmkMMUgat.6j."
+                   }
+                 }
+               },
+               "method" : "GET"
              }, {
-               "endpoint" : "/SoapTransform/transformapi",
+               "endpoint" : "/api2/keycloak-protected1",
                "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects",
-                 "is_collection" : true,
-                 "encoding" : "json",
-                 "method" : "GET"
+                 "host" : [ "http://localhost:8082" ],
+                 "url_pattern" : "/__health"
                } ],
-               "extra_config" : { },
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.52:8080/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.52:8080/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes_key" : "scope"
+                 }
+               },
                "method" : "GET"
              } ],
-             "extra_config" : { }
+             "extra_config" : {
+               "security/cors" : {
+                 "allow_origins" : [ "*" ],
+                 "allow_methods" : [ "GET", "HEAD", "POST", "PUT", "DELETE" ],
+                 "allow_headers" : [ "*" ],
+                 "expose_headers" : [ "Content-Length", "Content-Type" ],
+                 "max_age" : "12h",
+                 "allow_credentials" : true
+               }
+             }
            }
