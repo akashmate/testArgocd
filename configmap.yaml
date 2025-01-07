@@ -45,7 +45,7 @@ data:
                } ],
                "extra_config" : { },
                "method" : "GET",
-               "input_query_strings" : [ "" ]
+               "input_query_strings" : [ "name" ]
              }, {
                "endpoint" : "/sample3/t2",
                "backend" : [ {
