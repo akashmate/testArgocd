@@ -16,26 +16,6 @@ data:
              "debug_endpoint" : false,
              "echo_endpoint" : false,
              "endpoints" : [ {
-               "endpoint" : "/sample4/test",
-               "backend" : [ {
-                 "host" : [ "https://jsonplaceholder.typicode.com" ],
-                 "url_pattern" : "/posts/1",
-                 "is_collection" : false,
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.53:8080/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.53:8080/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "Testapp1" ],
-                   "scopes_key" : "scope"
-                 }
-               },
-               "method" : "GET"
-             }, {
                "endpoint" : "/basicoperation/testquery",
                "backend" : [ {
                  "host" : [ "https://api.nationalize.io" ],
@@ -43,30 +23,31 @@ data:
                  "is_collection" : false,
                  "method" : "GET"
                } ],
-               "extra_config" : { },
+               "extra_config" : {
+                 "auth/basic" : {
+                   "users" : {
+                     "test5" : "$2a$10$k6fn24V8BvyT6w4FBbbzZ.HaolopduHjDSCFYZRyKpEg4KlXST/gq"
+                   }
+                 }
+               },
                "method" : "GET",
                "input_query_strings" : [ "name" ]
              }, {
-               "endpoint" : "/sample3/t2",
+               "endpoint" : "/requestbodygeneratorrequestbodygenerator/{id}",
                "backend" : [ {
-                 "host" : [ "https://jsonplaceholder.typicode.com/" ],
-                 "url_pattern" : "/posts/11",
-                 "extra_config" : { },
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "url_pattern" : "/posts/{id}",
+                 "extra_config" : {
+                   "modifier/body-generator" : {
+                     "template" : "ewogICJpZCI6ICJ7eyAucmVxX3BhcmFtcy5JZCB9fSIsCiAgIm1lc3NhZ2UiOiAiVGhlIHVzZXIgc2FpZCB7eyAucmVxX2JvZHkubWVzc2FnZX19Igp9",
+                     "debug" : true
+                   }
+                 },
                  "method" : "GET",
                  "disable_host_sanitize" : true
                } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.53:8080/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.53:8080/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "Testapp1" ],
-                   "scopes_key" : "scope"
-                 }
-               },
-               "method" : "GET"
+               "extra_config" : { },
+               "method" : "POST"
              } ],
              "extra_config" : { }
            }
