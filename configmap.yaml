@@ -98,6 +98,17 @@ data:
                "extra_config" : { },
                "output_encoding" : "json",
                "method" : "GET"
+             }, {
+               "endpoint" : "/basictesttestrsp",
+               "backend" : [ {
+                 "host" : [ "testrsp" ],
+                 "url_pattern" : "/objects/7",
+                 "is_collection" : false,
+                 "method" : "GET"
+               } ],
+               "extra_config" : { },
+               "output_encoding" : "no-op",
+               "method" : "GET"
              } ],
              "extra_config" : { }
            }
