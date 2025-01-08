@@ -16,6 +16,57 @@ data:
              "debug_endpoint" : false,
              "echo_endpoint" : false,
              "endpoints" : [ {
+               "endpoint" : "/billing/apple",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects/6",
+                 "is_collection" : false,
+                 "encoding" : "json",
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.57:8080/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.57:8080/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "TestApp" ],
+                   "scopes_key" : "scope"
+                 }
+               },
+               "method" : "GET"
+             }, {
+               "endpoint" : "/BasicAuth/testbasicauth",
+               "backend" : [ {
+                 "host" : [ "https://httpbin.org" ],
+                 "url_pattern" : "/basic-auth/user/pass",
+                 "is_collection" : false,
+                 "encoding" : "json",
+                 "method" : "GET"
+               } ],
+               "extra_config" : { },
+               "method" : "GET"
+             }, {
+               "endpoint" : "/sample/sample",
+               "backend" : [ {
+                 "host" : [ "localhost" ],
+                 "url_pattern" : "/",
+                 "is_collection" : false,
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.57:8080/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.57:8080/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes_key" : "scope"
+                 }
+               },
+               "method" : "GET"
+             }, {
                "endpoint" : "/basictest/flatmap",
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev" ],
@@ -125,57 +176,6 @@ data:
                  }
                },
                "output_encoding" : "no-op",
-               "method" : "GET"
-             }, {
-               "endpoint" : "/sample/sample",
-               "backend" : [ {
-                 "host" : [ "localhost" ],
-                 "url_pattern" : "/",
-                 "is_collection" : false,
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.57:8080/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.57:8080/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes_key" : "scope"
-                 }
-               },
-               "method" : "GET"
-             }, {
-               "endpoint" : "/BasicAuth/testbasicauth",
-               "backend" : [ {
-                 "host" : [ "https://httpbin.org" ],
-                 "url_pattern" : "/basic-auth/user/pass",
-                 "is_collection" : false,
-                 "encoding" : "json",
-                 "method" : "GET"
-               } ],
-               "extra_config" : { },
-               "method" : "GET"
-             }, {
-               "endpoint" : "/billing/apple",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects/6",
-                 "is_collection" : false,
-                 "encoding" : "json",
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.57:8080/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.57:8080/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "TestApp" ],
-                   "scopes_key" : "scope"
-                 }
-               },
                "method" : "GET"
              } ],
              "extra_config" : { }
