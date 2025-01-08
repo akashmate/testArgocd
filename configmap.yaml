@@ -162,6 +162,17 @@ data:
                  }
                },
                "method" : "GET"
+             }, {
+               "endpoint" : "/BasicAuth/testbasicauth",
+               "backend" : [ {
+                 "host" : [ "https://httpbin.org" ],
+                 "url_pattern" : "/basic-auth/user/pass",
+                 "is_collection" : false,
+                 "encoding" : "json",
+                 "method" : "GET"
+               } ],
+               "extra_config" : { },
+               "method" : "GET"
              } ],
              "extra_config" : { }
            }
