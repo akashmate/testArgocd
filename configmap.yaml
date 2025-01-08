@@ -69,8 +69,10 @@ data:
                "backend" : [ {
                  "host" : [ "https://jsonplaceholder.typicode.com" ],
                  "url_pattern" : "/posts/1",
-                 "is_collection" : false,
-                 "method" : "GET"
+                 "extra_config" : { },
+                 "method" : "GET",
+                 "deny" : [ "title", "userId", "body" ],
+                 "disable_host_sanitize" : true
                } ],
                "extra_config" : {
                  "auth/basic" : {
