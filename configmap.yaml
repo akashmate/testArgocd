@@ -32,13 +32,7 @@ data:
                  "method" : "GET",
                  "disable_host_sanitize" : true
                } ],
-               "extra_config" : {
-                 "auth/basic" : {
-                   "users" : {
-                     "sparrow" : "$2a$10$fy77r/0CaL7W987u23TAyeSwNeinqvCj0LXKKfvO60tw0wdNcS2IO"
-                   }
-                 }
-               },
+               "extra_config" : { },
                "method" : "GET"
              }, {
                "endpoint" : "/basictest/flatmapobject",
@@ -56,13 +50,7 @@ data:
                  "method" : "GET",
                  "disable_host_sanitize" : true
                } ],
-               "extra_config" : {
-                 "auth/basic" : {
-                   "users" : {
-                     "sparrow" : "$2a$10$fy77r/0CaL7W987u23TAyeSwNeinqvCj0LXKKfvO60tw0wdNcS2IO"
-                   }
-                 }
-               },
+               "extra_config" : { },
                "method" : "GET"
              }, {
                "endpoint" : "/basictest/deny",
@@ -74,13 +62,7 @@ data:
                  "deny" : [ "title", "userId", "body" ],
                  "disable_host_sanitize" : true
                } ],
-               "extra_config" : {
-                 "auth/basic" : {
-                   "users" : {
-                     "sparrow" : "$2a$10$fy77r/0CaL7W987u23TAyeSwNeinqvCj0LXKKfvO60tw0wdNcS2IO"
-                   }
-                 }
-               },
+               "extra_config" : { },
                "method" : "GET"
              } ],
              "extra_config" : { }
