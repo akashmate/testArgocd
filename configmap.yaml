@@ -78,7 +78,8 @@ data:
                  "disable_host_sanitize" : true
                } ],
                "extra_config" : { },
-               "method" : "GET"
+               "method" : "GET",
+               "input_query_strings" : [ "name" ]
              } ],
              "extra_config" : { }
            }
