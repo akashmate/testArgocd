@@ -131,8 +131,15 @@ data:
                "backend" : [ {
                  "host" : [ "https://jsonplaceholder.typicode.com" ],
                  "url_pattern" : "/posts/{id}",
-                 "is_collection" : false,
-                 "method" : "GET"
+                 "extra_config" : {
+                   "modifier/body-generator" : {
+                     "template" : "ewogICJpZCI6ICJ7eyAucmVxX3BhcmFtcy5JZCB9fSIsCiAgIm1lc3NhZ2UiOiAiVGhlIHVzZXIgc2FpZCB7eyAucmVxX2JvZHkubWVzc2FnZX19Igp9",
+                     "content_type" : "application/json",
+                     "debug" : true
+                   }
+                 },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
                } ],
                "extra_config" : { },
                "method" : "POST"
