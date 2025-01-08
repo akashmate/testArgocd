@@ -16,6 +16,17 @@ data:
              "debug_endpoint" : false,
              "echo_endpoint" : false,
              "endpoints" : [ {
+               "endpoint" : "/billing/apple",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects/6",
+                 "is_collection" : false,
+                 "encoding" : "json",
+                 "method" : "GET"
+               } ],
+               "extra_config" : { },
+               "method" : "GET"
+             }, {
                "endpoint" : "/basictest/flatmap",
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev" ],
@@ -125,17 +136,6 @@ data:
                  }
                },
                "output_encoding" : "no-op",
-               "method" : "GET"
-             }, {
-               "endpoint" : "/billing/apple",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects/6",
-                 "is_collection" : false,
-                 "encoding" : "json",
-                 "method" : "GET"
-               } ],
-               "extra_config" : { },
                "method" : "GET"
              } ],
              "extra_config" : { }
