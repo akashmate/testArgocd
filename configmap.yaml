@@ -98,6 +98,17 @@ data:
                "extra_config" : { },
                "output_encoding" : "no-op",
                "method" : "GET"
+             }, {
+               "endpoint" : "/basictest/target/objectname",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev/" ],
+                 "url_pattern" : "/objects/7",
+                 "extra_config" : { },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : { },
+               "method" : "GET"
              } ],
              "extra_config" : { }
            }
