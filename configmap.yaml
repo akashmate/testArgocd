@@ -34,9 +34,7 @@ data:
                } ],
                "extra_config" : {
                  "auth/basic" : {
-                   "users" : {
-                     "sparrow" : "$2a$10$fy77r/0CaL7W987u23TAyeSwNeinqvCj0LXKKfvO60tw0wdNcS2IO"
-                   }
+                   "users" : { }
                  }
                },
                "method" : "GET"
@@ -58,9 +56,7 @@ data:
                } ],
                "extra_config" : {
                  "auth/basic" : {
-                   "users" : {
-                     "sparrow" : "$2a$10$fy77r/0CaL7W987u23TAyeSwNeinqvCj0LXKKfvO60tw0wdNcS2IO"
-                   }
+                   "users" : { }
                  }
                },
                "method" : "GET"
@@ -74,9 +70,7 @@ data:
                } ],
                "extra_config" : {
                  "auth/basic" : {
-                   "users" : {
-                     "sparrow" : "$2a$10$fy77r/0CaL7W987u23TAyeSwNeinqvCj0LXKKfvO60tw0wdNcS2IO"
-                   }
+                   "users" : { }
                  }
                },
                "method" : "GET"
