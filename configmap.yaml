@@ -64,6 +64,22 @@ data:
                  }
                },
                "method" : "GET"
+             }, {
+               "endpoint" : "/basictest/deny",
+               "backend" : [ {
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "url_pattern" : "/posts/1",
+                 "is_collection" : false,
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "auth/basic" : {
+                   "users" : {
+                     "sparrow" : "$2a$10$fy77r/0CaL7W987u23TAyeSwNeinqvCj0LXKKfvO60tw0wdNcS2IO"
+                   }
+                 }
+               },
+               "method" : "GET"
              } ],
              "extra_config" : { }
            }
