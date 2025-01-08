@@ -99,9 +99,9 @@ data:
                "output_encoding" : "json",
                "method" : "GET"
              }, {
-               "endpoint" : "/basictesttestrsp",
+               "endpoint" : "/basictest/testrsp",
                "backend" : [ {
-                 "host" : [ "testrsp" ],
+                 "host" : [ "https://api.restful-api.dev/" ],
                  "url_pattern" : "/objects/7",
                  "is_collection" : false,
                  "method" : "GET"
