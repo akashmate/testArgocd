@@ -16,17 +16,6 @@ data:
              "debug_endpoint" : false,
              "echo_endpoint" : false,
              "endpoints" : [ {
-               "endpoint" : "/billing/apple",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects/6",
-                 "is_collection" : false,
-                 "encoding" : "json",
-                 "method" : "GET"
-               } ],
-               "extra_config" : { },
-               "method" : "GET"
-             }, {
                "endpoint" : "/basictest/flatmap",
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev" ],
@@ -138,17 +127,6 @@ data:
                "output_encoding" : "no-op",
                "method" : "GET"
              }, {
-               "endpoint" : "/BasicAuth/testbasicauth",
-               "backend" : [ {
-                 "host" : [ "https://httpbin.org" ],
-                 "url_pattern" : "/basic-auth/user/pass",
-                 "is_collection" : false,
-                 "encoding" : "json",
-                 "method" : "GET"
-               } ],
-               "extra_config" : { },
-               "method" : "GET"
-             }, {
                "endpoint" : "/sample/sample",
                "backend" : [ {
                  "host" : [ "localhost" ],
@@ -164,6 +142,23 @@ data:
                    "disable_jwk_security" : true,
                    "scopes_matcher" : "any",
                    "scopes_key" : "scope"
+                 }
+               },
+               "method" : "GET"
+             }, {
+               "endpoint" : "/billing/apple",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects/6",
+                 "is_collection" : false,
+                 "encoding" : "json",
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "auth/basic" : {
+                   "users" : {
+                     "sparrow" : "$2a$10$fy77r/0CaL7W987u23TAyeSwNeinqvCj0LXKKfvO60tw0wdNcS2IO"
+                   }
                  }
                },
                "method" : "GET"
