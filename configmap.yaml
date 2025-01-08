@@ -64,6 +64,21 @@ data:
                } ],
                "extra_config" : { },
                "method" : "GET"
+             }, {
+               "endpoint" : "/basictest/jmes",
+               "backend" : [ {
+                 "host" : [ "https://api.nationalize.io" ],
+                 "url_pattern" : "/",
+                 "extra_config" : {
+                   "modifier/jmespath" : {
+                     "expr" : "country[?probability > `0.02` ].country_id"
+                   }
+                 },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : { },
+               "method" : "GET"
              } ],
              "extra_config" : { }
            }
