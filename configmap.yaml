@@ -144,6 +144,24 @@ data:
                "extra_config" : { },
                "method" : "POST"
              }, {
+               "endpoint" : "/basictest/rspmanpulation",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects/7",
+                 "extra_config" : {
+                   "modifier/response-body-generator" : {
+                     "template" : "e3stICBpZiBlcSAyMDAgLnJlc3Bfc3RhdHVzIC19fQogICAge3stIHRvSnNvbiAucmVxX3BhcmFtcyAtfX0Ke3stIGVsc2UgLX19Cnt7LSBpZiAucmVxX3BhcmFtcy5JZCAtfX0KICAgICAgICB7CiAgICAgICAgICAgICJlcnJvciI6ICJjYW4ndCBnZXQgdXNlciB7eyAucmVxX3BhcmFtcy5JZCB9fSIKICAgICAgICB9CiAgICB7ey0gZWxzZSAtfX0KICAgICAgICB7CiAgICAgICAgICAgICJlcnJvciI6ICJJRCBwYXJhbWV0ZXIgaXMgbWlzc2luZyBvciBpbnZhbGlkIgogICAgICAgIH0KICAgIHt7LSBlbmQgLX19Cnt7LSBlbmQgLX19Cg==",
+                     "content_type" : "application/json",
+                     "debug" : true
+                   }
+                 },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : { },
+               "output_encoding" : "json",
+               "method" : "GET"
+             }, {
                "endpoint" : "/BasicAuth/testbasicauth",
                "backend" : [ {
                  "host" : [ "https://httpbin.org" ],
