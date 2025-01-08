@@ -8,178 +8,47 @@ data:
            {
              "$schema" : "https://www.krakend.io/schema/krakend.json",
              "version" : 3,
-             "name" : "MassilGW",
+             "name" : "gitgateway",
              "port" : 8082,
-             "host" : [ "localhost" ],
-             "timeout" : "10000ms",
+             "timeout" : "3000ms",
              "cache_ttl" : "300s",
              "debug_endpoint" : false,
              "echo_endpoint" : false,
              "endpoints" : [ {
-               "endpoint" : "/basictest/flatmap",
+               "endpoint" : "/demo/keycloak-protected2",
                "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects",
-                 "is_collection" : true,
-                 "extra_config" : {
-                   "proxy" : {
-                     "flatmap_filter" : [ {
-                       "type" : "move",
-                       "args" : [ "collection.*.data", "collection.*.newdata" ]
-                     } ]
-                   }
-                 },
-                 "method" : "GET",
-                 "disable_host_sanitize" : true
-               } ],
-               "extra_config" : { },
-               "method" : "GET"
-             }, {
-               "endpoint" : "/basictest/flatmapobject",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects/7",
-                 "extra_config" : {
-                   "proxy" : {
-                     "flatmap_filter" : [ {
-                       "type" : "move",
-                       "args" : [ "data.year", "Year" ]
-                     } ]
-                   }
-                 },
-                 "method" : "GET",
-                 "disable_host_sanitize" : true
-               } ],
-               "extra_config" : { },
-               "method" : "GET"
-             }, {
-               "endpoint" : "/basictest/deny",
-               "backend" : [ {
-                 "host" : [ "https://jsonplaceholder.typicode.com" ],
-                 "url_pattern" : "/posts/1",
-                 "extra_config" : { },
-                 "method" : "GET",
-                 "deny" : [ "title", "userId", "body" ],
-                 "disable_host_sanitize" : true
-               } ],
-               "extra_config" : { },
-               "method" : "GET"
-             }, {
-               "endpoint" : "/basictest/jmes",
-               "backend" : [ {
-                 "host" : [ "https://api.nationalize.io" ],
-                 "url_pattern" : "/",
-                 "extra_config" : {
-                   "modifier/jmespath" : {
-                     "expr" : "country[?probability > `0.02` ].country_id"
-                   }
-                 },
-                 "method" : "GET",
-                 "disable_host_sanitize" : true
-               } ],
-               "extra_config" : { },
-               "method" : "GET",
-               "input_query_strings" : [ "name" ]
-             }, {
-               "endpoint" : "/basictest/testrsp",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev/" ],
-                 "url_pattern" : "/objects/7",
-                 "extra_config" : {
-                   "modifier/response-body-generator" : {
-                     "template" : "ewogICJkYXRhIjoge3sgdG9Kc29uIC5yZXNwX2JvZHkgfX0sCiAgInN0YXR1c19jb2RlIjoge3sgdG9Kc29uIC5yZXNwX3N0YXR1cyB9fSwKICAiaGVhZGVycyI6IHt7IHRvSnNvbiAucmVzcF9oZWFkZXJzfX0KfQo=",
-                     "content_type" : "application/json",
-                     "debug" : true
-                   }
-                 },
-                 "method" : "GET",
-                 "disable_host_sanitize" : true
-               } ],
-               "extra_config" : { },
-               "output_encoding" : "no-op",
-               "method" : "GET"
-             }, {
-               "endpoint" : "/basictest/target/objectname",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev/" ],
-                 "url_pattern" : "/objects/7",
-                 "extra_config" : { },
-                 "method" : "GET",
-                 "disable_host_sanitize" : true
-               } ],
-               "extra_config" : { },
-               "method" : "GET"
-             }, {
-               "endpoint" : "/basictest/samplersp",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects/7",
-                 "is_collection" : false,
-                 "method" : "GET"
+                 "host" : [ "http://localhost:8082" ],
+                 "url_pattern" : "/__health"
                } ],
                "extra_config" : {
-                 "modifier/response-body-generator" : {
-                   "template" : "ewogICJkYXRhIjoge3sgdG9Kc29uIC5yZXNwX2JvZHkgfX0sCiAgInN0YXR1c19jb2RlIjoge3sgdG9Kc29uIC5yZXNwX3N0YXR1cyB9fSwKICAiaGVhZGVycyI6IHt7IHRvSnNvbiAucmVzcF9oZWFkZXJzIH19Cn0K",
-                   "content_type" : "application/json",
-                   "debug" : true
+                 "auth/basic" : {
+                   "users" : {
+                     "consumer_ramesh" : "$2a$10$zptiG1eswxpKw9.OHVKjx.qKyShcbuGSWGetaMIRQ/vazBIgiiOP2",
+                     "consumer_neel" : "$2a$10$eHerowcCmAhwo0sRgvtp.uDVmRzqUvT3Hkr9v5aZRmkMMUgat.6j."
+                   }
                  }
                },
-               "output_encoding" : "no-op",
                "method" : "GET"
              }, {
-               "endpoint" : "/basictest/requestbodygenerator/{id}",
+               "endpoint" : "/demo/keycloak-protected1",
                "backend" : [ {
-                 "host" : [ "https://jsonplaceholder.typicode.com" ],
-                 "url_pattern" : "/posts/{id}",
-                 "extra_config" : {
-                   "modifier/body-generator" : {
-                     "template" : "ewogICJpZCI6ICJ7eyAucmVxX3BhcmFtcy5JZCB9fSIsCiAgIm1lc3NhZ2UiOiAiVGhlIHVzZXIgc2FpZCB7eyAucmVxX2JvZHkubWVzc2FnZX19Igp9",
-                     "content_type" : "application/json",
-                     "debug" : true
+                 "host" : [ "http://localhost:8082" ],
+                 "url_pattern" : "/__health"
+               } ],
+               "extra_config" : {
+                 "auth/basic" : {
+                   "users" : {
+                     "consumer_ramesh" : "$2a$10$zptiG1eswxpKw9.OHVKjx.qKyShcbuGSWGetaMIRQ/vazBIgiiOP2",
+                     "consumer_neel" : "$2a$10$eHerowcCmAhwo0sRgvtp.uDVmRzqUvT3Hkr9v5aZRmkMMUgat.6j."
                    }
-                 },
-                 "method" : "GET",
-                 "disable_host_sanitize" : true
-               } ],
-               "extra_config" : { },
-               "method" : "POST"
-             }, {
-               "endpoint" : "/basictest/rspmanpulation",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects/7",
-                 "extra_config" : {
-                   "modifier/response-body-generator" : {
-                     "template" : "e3stICBpZiBlcSAyMDAgLnJlc3Bfc3RhdHVzIC19fQogICAge3stIHRvSnNvbiAucmVxX3BhcmFtcyAtfX0Ke3stIGVsc2UgLX19Cnt7LSBpZiAucmVxX3BhcmFtcy5JZCAtfX0KICAgICAgICB7CiAgICAgICAgICAgICJlcnJvciI6ICJjYW4ndCBnZXQgdXNlciB7eyAucmVxX3BhcmFtcy5JZCB9fSIKICAgICAgICB9CiAgICB7ey0gZWxzZSAtfX0KICAgICAgICB7CiAgICAgICAgICAgICJlcnJvciI6ICJJRCBwYXJhbWV0ZXIgaXMgbWlzc2luZyBvciBpbnZhbGlkIgogICAgICAgIH0KICAgIHt7LSBlbmQgLX19Cnt7LSBlbmQgLX19Cg==",
-                     "content_type" : "application/json",
-                     "debug" : true
-                   }
-                 },
-                 "method" : "GET",
-                 "disable_host_sanitize" : true
-               } ],
-               "extra_config" : { },
-               "output_encoding" : "json",
+                 }
+               },
                "method" : "GET"
              }, {
-               "endpoint" : "/BasicAuth/testbasicauth",
+               "endpoint" : "/api2/keycloak-protected1",
                "backend" : [ {
-                 "host" : [ "https://httpbin.org" ],
-                 "url_pattern" : "/basic-auth/user/pass",
-                 "is_collection" : false,
-                 "encoding" : "json",
-                 "method" : "GET"
-               } ],
-               "extra_config" : { },
-               "method" : "GET"
-             }, {
-               "endpoint" : "/billing/apple",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects/6",
-                 "is_collection" : false,
-                 "encoding" : "json",
-                 "method" : "GET"
+                 "host" : [ "http://localhost:8082" ],
+                 "url_pattern" : "/__health"
                } ],
                "extra_config" : {
                  "auth/validator" : {
@@ -188,53 +57,20 @@ data:
                    "issuer" : "http://10.175.1.57:8080/realms/master",
                    "disable_jwk_security" : true,
                    "scopes_matcher" : "any",
-                   "scopes" : [ "TestApp" ],
-                   "scopes_key" : "scope"
-                 }
-               },
-               "method" : "GET"
-             }, {
-               "endpoint" : "/billing/deny",
-               "backend" : [ {
-                 "host" : [ "https://jsonplaceholder.typicode.com" ],
-                 "url_pattern" : "/posts/1",
-                 "extra_config" : { },
-                 "method" : "GET",
-                 "deny" : [ "title", "userId", "body" ],
-                 "disable_host_sanitize" : true
-               } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.57:8080/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.57:8080/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "TestApp" ],
-                   "scopes_key" : "scope"
-                 }
-               },
-               "method" : "GET"
-             }, {
-               "endpoint" : "/TestQueryParams/testqueryparams",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects",
-                 "is_collection" : true,
-                 "encoding" : "json",
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.57:8080/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.57:8080/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
+                   "scopes" : [ "neelApp" ],
                    "scopes_key" : "scope"
                  }
                },
                "method" : "GET"
              } ],
-             "extra_config" : { }
+             "extra_config" : {
+               "security/cors" : {
+                 "allow_origins" : [ "*" ],
+                 "allow_methods" : [ "GET", "HEAD", "POST", "PUT", "DELETE" ],
+                 "allow_headers" : [ "*" ],
+                 "expose_headers" : [ "Content-Length", "Content-Type" ],
+                 "max_age" : "12h",
+                 "allow_credentials" : true
+               }
+             }
            }
