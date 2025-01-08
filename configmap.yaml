@@ -16,41 +16,16 @@ data:
              "debug_endpoint" : false,
              "echo_endpoint" : false,
              "endpoints" : [ {
-               "endpoint" : "/basic/securityPolicies",
-               "backend" : [ {
-                 "host" : [ "https://api.nationalize.io" ],
-                 "url_pattern" : "/",
-                 "is_collection" : false,
-                 "encoding" : "json",
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
-                 "auth/basic" : {
-                   "users" : {
-                     "test6" : "$2a$10$kN9DEG.2jM5rKL.DKa3qBuIZ7m62wyVIP1F2HTU5rBmV/qu9.reb2"
-                   }
-                 }
-               },
-               "method" : "GET"
-             }, {
-               "endpoint" : "/basic/flatmap",
+               "endpoint" : "/basictest/flatmap",
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects/7",
-                 "mapping" : {
-                   "data" : "Renamedata"
-                 },
-                 "extra_config" : { },
-                 "method" : "GET",
-                 "disable_host_sanitize" : true
-               }, {
-                 "host" : [ "https://api.restful-api.dev/" ],
-                 "url_pattern" : "/objects/7",
+                 "url_pattern" : "/objects",
+                 "is_collection" : true,
                  "extra_config" : {
                    "proxy" : {
                      "flatmap_filter" : [ {
                        "type" : "move",
-                       "args" : [ "data.year", "NewYear" ]
+                       "args" : [ "collection.*.data", "collection.*.newdata" ]
                      } ]
                    }
                  },
@@ -58,31 +33,16 @@ data:
                  "disable_host_sanitize" : true
                } ],
                "extra_config" : {
-                 "auth/basic" : {
-                   "users" : {
-                     "test6" : "$2a$10$kN9DEG.2jM5rKL.DKa3qBuIZ7m62wyVIP1F2HTU5rBmV/qu9.reb2"
-                   }
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.57:8080/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.57:8080/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes_key" : "scope"
                  }
                },
                "method" : "GET"
-             }, {
-               "endpoint" : "/basic/objects",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects",
-                 "is_collection" : false,
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
-                 "auth/basic" : {
-                   "users" : {
-                     "test6" : "$2a$10$kN9DEG.2jM5rKL.DKa3qBuIZ7m62wyVIP1F2HTU5rBmV/qu9.reb2"
-                   }
-                 }
-               },
-               "input_headers" : [ "" ],
-               "method" : "GET",
-               "input_query_strings" : [ "name" ]
              } ],
              "extra_config" : { }
            }
