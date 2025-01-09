@@ -26,6 +26,23 @@ data:
                "extra_config" : { },
                "method" : "GET",
                "input_query_strings" : [ "name" ]
+             }, {
+               "endpoint" : "/basicoperation/merge",
+               "backend" : [ {
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "url_pattern" : "/posts/1",
+                 "is_collection" : false,
+                 "method" : "GET"
+               }, {
+                 "host" : [ "https://api.nationalize.io" ],
+                 "url_pattern" : "/",
+                 "extra_config" : { },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : { },
+               "method" : "GET",
+               "input_query_strings" : [ "name" ]
              } ],
              "extra_config" : { }
            }
