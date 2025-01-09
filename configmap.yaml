@@ -16,6 +16,18 @@ data:
              "debug_endpoint" : false,
              "echo_endpoint" : false,
              "endpoints" : [ {
+               "endpoint" : "/BasicAuth/testbasicauth",
+               "backend" : [ {
+                 "host" : [ "https://httpbin.org" ],
+                 "url_pattern" : "/basic-auth/user/pass",
+                 "is_collection" : false,
+                 "encoding" : "json",
+                 "method" : "GET"
+               } ],
+               "extra_config" : { },
+               "input_headers" : [ "Authorization" ],
+               "method" : "GET"
+             }, {
                "endpoint" : "/basicoperation/testquery",
                "backend" : [ {
                  "host" : [ "https://api.nationalize.io" ],
@@ -126,17 +138,6 @@ data:
                },
                "method" : "GET",
                "input_query_strings" : [ "name" ]
-             }, {
-               "endpoint" : "/BasicAuth/testbasicauth",
-               "backend" : [ {
-                 "host" : [ "https://httpbin.org" ],
-                 "url_pattern" : "/basic-auth/user/pass",
-                 "is_collection" : false,
-                 "encoding" : "json",
-                 "method" : "GET"
-               } ],
-               "extra_config" : { },
-               "method" : "GET"
              } ],
              "extra_config" : { }
            }
