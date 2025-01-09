@@ -43,6 +43,25 @@ data:
                "extra_config" : { },
                "method" : "GET",
                "input_query_strings" : [ "name" ]
+             }, {
+               "endpoint" : "/basicoperation/flatmap",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev/" ],
+                 "url_pattern" : "/objects",
+                 "is_collection" : true,
+                 "extra_config" : {
+                   "proxy" : {
+                     "flatmap_filter" : [ {
+                       "type" : "move",
+                       "args" : [ "collection.*.data", "collection.*.newdata" ]
+                     } ]
+                   }
+                 },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : { },
+               "method" : "GET"
              } ],
              "extra_config" : { }
            }
