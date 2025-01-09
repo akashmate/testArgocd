@@ -67,8 +67,16 @@ data:
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev" ],
                  "url_pattern" : "/objects/7",
-                 "is_collection" : false,
-                 "method" : "GET"
+                 "extra_config" : {
+                   "proxy" : {
+                     "flatmap_filter" : [ {
+                       "type" : "move",
+                       "args" : [ "data.year", "YEAR" ]
+                     } ]
+                   }
+                 },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
                } ],
                "extra_config" : { },
                "method" : "GET"
