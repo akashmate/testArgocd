@@ -80,6 +80,22 @@ data:
                } ],
                "extra_config" : { },
                "method" : "GET"
+             }, {
+               "endpoint" : "/basicoperation/jmes",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/",
+                 "extra_config" : {
+                   "modifier/jmespath" : {
+                     "expr" : "country[?probability > `0.0` ].country_id"
+                   }
+                 },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : { },
+               "method" : "GET",
+               "input_query_strings" : [ "name" ]
              } ],
              "extra_config" : { }
            }
