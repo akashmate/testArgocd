@@ -23,7 +23,13 @@ data:
                  "is_collection" : false,
                  "method" : "GET"
                } ],
-               "extra_config" : { },
+               "extra_config" : {
+                 "auth/basic" : {
+                   "users" : {
+                     "sparrow" : "$2a$10$uwesX6QaNguIdZzED.SPuOI6jP0hEwA6GVc1s2dzI3QNIJLyzMdT."
+                   }
+                 }
+               },
                "method" : "GET",
                "input_query_strings" : [ "name" ]
              }, {
@@ -40,7 +46,13 @@ data:
                  "method" : "GET",
                  "disable_host_sanitize" : true
                } ],
-               "extra_config" : { },
+               "extra_config" : {
+                 "auth/basic" : {
+                   "users" : {
+                     "sparrow" : "$2a$10$uwesX6QaNguIdZzED.SPuOI6jP0hEwA6GVc1s2dzI3QNIJLyzMdT."
+                   }
+                 }
+               },
                "method" : "GET",
                "input_query_strings" : [ "name" ]
              }, {
@@ -60,7 +72,13 @@ data:
                  "method" : "GET",
                  "disable_host_sanitize" : true
                } ],
-               "extra_config" : { },
+               "extra_config" : {
+                 "auth/basic" : {
+                   "users" : {
+                     "sparrow" : "$2a$10$uwesX6QaNguIdZzED.SPuOI6jP0hEwA6GVc1s2dzI3QNIJLyzMdT."
+                   }
+                 }
+               },
                "method" : "GET"
              }, {
                "endpoint" : "/basicoperation/flatmapobject",
@@ -78,7 +96,13 @@ data:
                  "method" : "GET",
                  "disable_host_sanitize" : true
                } ],
-               "extra_config" : { },
+               "extra_config" : {
+                 "auth/basic" : {
+                   "users" : {
+                     "sparrow" : "$2a$10$uwesX6QaNguIdZzED.SPuOI6jP0hEwA6GVc1s2dzI3QNIJLyzMdT."
+                   }
+                 }
+               },
                "method" : "GET"
              }, {
                "endpoint" : "/basicoperation/jmes",
@@ -93,27 +117,15 @@ data:
                  "method" : "GET",
                  "disable_host_sanitize" : true
                } ],
-               "extra_config" : { },
+               "extra_config" : {
+                 "auth/basic" : {
+                   "users" : {
+                     "sparrow" : "$2a$10$uwesX6QaNguIdZzED.SPuOI6jP0hEwA6GVc1s2dzI3QNIJLyzMdT."
+                   }
+                 }
+               },
                "method" : "GET",
                "input_query_strings" : [ "name" ]
-             }, {
-               "endpoint" : "/basicoperation/rspmanpulation",
-               "backend" : [ {
-                 "host" : [ "https://jsonplaceholder.typicode.com" ],
-                 "url_pattern" : "/posts/1",
-                 "extra_config" : {
-                   "modifier/response-body-generator" : {
-                     "template" : "ewogICJkYXRhIjoge3sgdG9Kc29uIC5yZXNwX2JvZHkgfX0sCiAgInN0YXR1c19jb2RlIjoge3sgdG9Kc29uIC5yZXNwX3N0YXR1cyB9fSwKICAiaGVhZGVycyI6IHt7IHRvSnNvbiAucmVzcF9oZWFkZXJzIH19Cn0=",
-                     "content_type" : "application/json",
-                     "debug" : true
-                   }
-                 },
-                 "method" : "GET",
-                 "disable_host_sanitize" : true
-               } ],
-               "extra_config" : { },
-               "output_encoding" : "no-op",
-               "method" : "GET"
              } ],
              "extra_config" : { }
            }
