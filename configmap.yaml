@@ -36,7 +36,7 @@ data:
                } ],
                "extra_config" : { },
                "output_encoding" : "no-op",
-               "input_headers" : [ "Content-Type" ],
+               "input_headers" : [ "" ],
                "method" : "POST"
              } ],
              "extra_config" : { }
