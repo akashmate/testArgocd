@@ -16,12 +16,41 @@ data:
              "debug_endpoint" : false,
              "echo_endpoint" : false,
              "endpoints" : [ {
-               "endpoint" : "/test/testEP",
+               "endpoint" : "/ep/ep",
                "backend" : [ {
                  "host" : [ "https://jsonplaceholder.typicode.com" ],
                  "url_pattern" : "/posts/1",
                  "is_collection" : false,
+                 "encoding" : "json",
                  "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.60:8080/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.60:8080/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "MassilTechId" ],
+                   "scopes_key" : "scope"
+                 }
+               },
+               "output_encoding" : "json",
+               "method" : "GET"
+             }, {
+               "endpoint" : "/test/testEP",
+               "backend" : [ {
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "url_pattern" : "/posts/1",
+                 "extra_config" : {
+                   "qos/ratelimit/proxy" : {
+                     "max_rate" : 3,
+                     "capacity" : 3,
+                     "every" : "1m"
+                   }
+                 },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
                } ],
                "extra_config" : {
                  "auth/validator" : {
@@ -58,27 +87,6 @@ data:
                "output_encoding" : "no-op",
                "input_headers" : [ "Content-Type" ],
                "method" : "POST"
-             }, {
-               "endpoint" : "/ep/ep",
-               "backend" : [ {
-                 "host" : [ "https://jsonplaceholder.typicode.com" ],
-                 "url_pattern" : "/posts/1",
-                 "is_collection" : false,
-                 "encoding" : "json",
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.60:8080/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.60:8080/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes_key" : "scope"
-                 }
-               },
-               "output_encoding" : "json",
-               "method" : "GET"
              } ],
              "extra_config" : {
                "security/cors" : {
