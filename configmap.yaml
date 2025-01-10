@@ -26,16 +26,6 @@ data:
                "extra_config" : { },
                "method" : "GET"
              }, {
-               "endpoint" : "/test/soapservice",
-               "backend" : [ {
-                 "host" : [ "http://www.dneonline.com" ],
-                 "url_pattern" : "/calculator.asmx",
-                 "is_collection" : false,
-                 "method" : "POST"
-               } ],
-               "extra_config" : { },
-               "method" : "POST"
-             }, {
                "endpoint" : "/test/testsoapep",
                "backend" : [ {
                  "host" : [ "http://www.dneonline.com" ],
@@ -45,6 +35,7 @@ data:
                } ],
                "extra_config" : { },
                "output_encoding" : "no-op",
+               "input_headers" : [ "Content-Type" ],
                "method" : "POST"
              } ],
              "extra_config" : { }
