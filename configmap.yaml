@@ -35,6 +35,17 @@ data:
                } ],
                "extra_config" : { },
                "method" : "POST"
+             }, {
+               "endpoint" : "/test/testsoapep",
+               "backend" : [ {
+                 "host" : [ "http://www.dneonline.com" ],
+                 "url_pattern" : "/calculator.asmx",
+                 "is_collection" : false,
+                 "method" : "GET"
+               } ],
+               "extra_config" : { },
+               "output_encoding" : "no-op",
+               "method" : "POST"
              } ],
              "extra_config" : { }
            }
