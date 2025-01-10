@@ -30,8 +30,9 @@ data:
                "backend" : [ {
                  "host" : [ "http://www.dneonline.com" ],
                  "url_pattern" : "/calculator.asmx",
-                 "is_collection" : false,
-                 "method" : "GET"
+                 "extra_config" : { },
+                 "method" : "POST",
+                 "disable_host_sanitize" : true
                } ],
                "extra_config" : { },
                "output_encoding" : "no-op",
