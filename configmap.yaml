@@ -59,5 +59,12 @@ data:
                "input_headers" : [ "Content-Type" ],
                "method" : "POST"
              } ],
-             "extra_config" : { }
+             "extra_config" : {
+               "security/cors" : {
+                 "allow_origins" : [ "*" ],
+                 "allow_methods" : [ "GET", "POST" ],
+                 "allow_headers" : [ "*" ],
+                 "allow_credentials" : true
+               }
+             }
            }
