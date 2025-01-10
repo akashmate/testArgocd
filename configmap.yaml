@@ -26,16 +26,15 @@ data:
                "extra_config" : { },
                "method" : "GET"
              }, {
-               "endpoint" : "/test/test2",
+               "endpoint" : "/test/soapservice",
                "backend" : [ {
-                 "host" : [ "\"\"" ],
-                 "url_pattern" : "/posts/1",
-                 "extra_config" : { },
-                 "method" : "GET",
-                 "disable_host_sanitize" : true
+                 "host" : [ "http://www.dneonline.com" ],
+                 "url_pattern" : "/calculator.asmx",
+                 "is_collection" : false,
+                 "method" : "POST"
                } ],
                "extra_config" : { },
-               "method" : "GET"
+               "method" : "POST"
              } ],
              "extra_config" : { }
            }
