@@ -8,60 +8,13 @@ data:
            {
              "$schema" : "https://www.krakend.io/schema/krakend.json",
              "version" : 3,
-             "name" : "sample",
+             "name" : "MassilGW",
              "port" : 8082,
-             "host" : [ "http://localhost" ],
+             "host" : [ "localhost" ],
              "timeout" : "3000ms",
              "cache_ttl" : "300s",
              "debug_endpoint" : false,
              "echo_endpoint" : false,
-             "endpoints" : [ {
-               "endpoint" : "/testing2/test",
-               "backend" : [ {
-                 "host" : [ "https://jsonplaceholder.typicode.com" ],
-                 "url_pattern" : "/posts",
-                 "is_collection" : true,
-                 "encoding" : "json",
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
-                 "auth/basic" : {
-                   "users" : {
-                     "consumer_user" : "$2a$10$wlw5XE2N2e2EyhoJSYusQu50uivBeDVSmuy2SSL8gIWwJ1/goWWcW"
-                   }
-                 }
-               },
-               "output_encoding" : "json",
-               "method" : "GET"
-             }, {
-               "endpoint" : "/context1/test",
-               "backend" : [ {
-                 "host" : [ "https://jsonplaceholder.typicode.com" ],
-                 "url_pattern" : "/posts",
-                 "is_collection" : true,
-                 "encoding" : "json",
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.57:8080/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.57:8080/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "Test1234" ],
-                   "scopes_key" : "scope"
-                 }
-               },
-               "output_encoding" : "json",
-               "method" : "GET"
-             } ],
-             "extra_config" : {
-               "security/cors" : {
-                 "allow_origins" : [ "*" ],
-                 "allow_methods" : [ "GET", "POST" ],
-                 "allow_headers" : [ "*" ],
-                 "allow_credentials" : true
-               }
-             }
+             "endpoints" : [ ],
+             "extra_config" : { }
            }
