@@ -25,6 +25,17 @@ data:
                } ],
                "extra_config" : { },
                "method" : "GET"
+             }, {
+               "endpoint" : "/test/test2",
+               "backend" : [ {
+                 "host" : [ "\"\"" ],
+                 "url_pattern" : "/posts/1",
+                 "extra_config" : { },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : { },
+               "method" : "GET"
              } ],
              "extra_config" : { }
            }
