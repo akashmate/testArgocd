@@ -84,6 +84,16 @@ data:
                "extra_config" : { },
                "method" : "GET"
              }, {
+               "endpoint" : "/basicoperations/contentreplacer",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects/7",
+                 "is_collection" : false,
+                 "method" : "GET"
+               } ],
+               "extra_config" : { },
+               "method" : "GET"
+             }, {
                "endpoint" : "/basicoperations/endpointthrottling",
                "backend" : [ {
                  "host" : [ "https://jsonplaceholder.typicode.com" ],
