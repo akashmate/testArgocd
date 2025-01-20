@@ -20,6 +20,7 @@ data:
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev" ],
                  "url_pattern" : "/objects/7",
+                 "encoding" : "No-Op",
                  "extra_config" : {
                    "modifier/response-body-generator" : {
                      "template" : "ewogICJkYXRhIjoge3sgdG9Kc29uIC5yZXNwX2JvZHkgfX0sCiAgInN0YXR1c19jb2RlIjoge3sgdG9Kc29uIC5yZXNwX3N0YXR1cyB9fSwKICAiaGVhZGVycyI6IHt7IHRvSnNvbiAucmVzcF9oZWFkZXJzIH19Cn0=",
@@ -48,6 +49,23 @@ data:
                "extra_config" : { },
                "method" : "GET",
                "input_query_strings" : [ "name" ]
+             }, {
+               "endpoint" : "/basicoperations/merge",
+               "backend" : [ {
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "url_pattern" : "/posts/1",
+                 "extra_config" : { },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
+               }, {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects/7",
+                 "extra_config" : { },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : { },
+               "method" : "GET"
              }, {
                "endpoint" : "/basicoperations/flatmapobject",
                "backend" : [ {
@@ -80,23 +98,6 @@ data:
                      } ]
                    }
                  },
-                 "method" : "GET",
-                 "disable_host_sanitize" : true
-               } ],
-               "extra_config" : { },
-               "method" : "GET"
-             }, {
-               "endpoint" : "/basicoperations/merge",
-               "backend" : [ {
-                 "host" : [ "https://jsonplaceholder.typicode.com" ],
-                 "url_pattern" : "/posts/1",
-                 "extra_config" : { },
-                 "method" : "GET",
-                 "disable_host_sanitize" : true
-               }, {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects/7",
-                 "extra_config" : { },
                  "method" : "GET",
                  "disable_host_sanitize" : true
                } ],
