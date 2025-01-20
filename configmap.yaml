@@ -84,6 +84,22 @@ data:
                "extra_config" : { },
                "method" : "GET"
              }, {
+               "endpoint" : "/basicoperations/endpointthrottling",
+               "backend" : [ {
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "url_pattern" : "/posts/1",
+                 "is_collection" : false,
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "qos/ratelimit/router" : {
+                   "max_rate" : 5,
+                   "every" : "1m",
+                   "strategy" : "ip"
+                 }
+               },
+               "method" : "GET"
+             }, {
                "endpoint" : "/basicoperations/respmanipulation",
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev/" ],
