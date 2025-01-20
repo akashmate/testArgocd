@@ -16,27 +16,39 @@ data:
              "debug_endpoint" : false,
              "echo_endpoint" : false,
              "endpoints" : [ {
-               "endpoint" : "/basicoperations/sample",
+               "endpoint" : "/basicoperations/jmespath",
                "backend" : [ {
-                 "host" : [ "https://jsonplaceholder.typicode.com" ],
-                 "url_pattern" : "/posts/3",
-                 "extra_config" : { },
+                 "host" : [ "https://api.nationalize.io/" ],
+                 "url_pattern" : "/",
+                 "extra_config" : {
+                   "modifier/jmespath" : {
+                     "expr" : "country[?probability > `0.03` ].country_id"
+                   }
+                 },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : { },
+               "method" : "GET",
+               "input_query_strings" : [ "name" ]
+             }, {
+               "endpoint" : "/basicoperations/flatmapobject",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects/7",
+                 "extra_config" : {
+                   "proxy" : {
+                     "flatmap_filter" : [ {
+                       "type" : "move",
+                       "args" : [ "data.year", "year" ]
+                     } ]
+                   }
+                 },
                  "method" : "GET",
                  "disable_host_sanitize" : true
                } ],
                "extra_config" : { },
                "method" : "GET"
-             }, {
-               "endpoint" : "/basicoperations/testquery",
-               "backend" : [ {
-                 "host" : [ "https://api.nationalize.io/" ],
-                 "url_pattern" : "/",
-                 "is_collection" : false,
-                 "method" : "GET"
-               } ],
-               "extra_config" : { },
-               "method" : "GET",
-               "input_query_strings" : [ "name" ]
              }, {
                "endpoint" : "/basicoperations/flatmap",
                "backend" : [ {
@@ -48,24 +60,6 @@ data:
                      "flatmap_filter" : [ {
                        "type" : "move",
                        "args" : [ "collection.*.data", "collection.*.newdata" ]
-                     } ]
-                   }
-                 },
-                 "method" : "GET",
-                 "disable_host_sanitize" : true
-               } ],
-               "extra_config" : { },
-               "method" : "GET"
-             }, {
-               "endpoint" : "/basicoperations/flatmapobject",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects/7",
-                 "extra_config" : {
-                   "proxy" : {
-                     "flatmap_filter" : [ {
-                       "type" : "move",
-                       "args" : [ "data.year", "year" ]
                      } ]
                    }
                  },
@@ -92,21 +86,27 @@ data:
                "extra_config" : { },
                "method" : "GET"
              }, {
-               "endpoint" : "/basicoperations/jmespath",
+               "endpoint" : "/basicoperations/testquery",
                "backend" : [ {
                  "host" : [ "https://api.nationalize.io/" ],
                  "url_pattern" : "/",
-                 "extra_config" : {
-                   "modifier/jmespath" : {
-                     "expr" : "country[?probability > `0.03` ].country_id"
-                   }
-                 },
-                 "method" : "GET",
-                 "disable_host_sanitize" : true
+                 "is_collection" : false,
+                 "method" : "GET"
                } ],
                "extra_config" : { },
                "method" : "GET",
                "input_query_strings" : [ "name" ]
+             }, {
+               "endpoint" : "/basicoperations/sample",
+               "backend" : [ {
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "url_pattern" : "/posts/3",
+                 "extra_config" : { },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : { },
+               "method" : "GET"
              } ],
              "extra_config" : { }
            }
