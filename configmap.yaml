@@ -57,6 +57,24 @@ data:
                "extra_config" : { },
                "method" : "GET"
              }, {
+               "endpoint" : "/basicoperations/flatmapobject",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects/7",
+                 "extra_config" : {
+                   "proxy" : {
+                     "flatmap_filter" : [ {
+                       "type" : "move",
+                       "args" : [ "data.year", "year" ]
+                     } ]
+                   }
+                 },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : { },
+               "method" : "GET"
+             }, {
                "endpoint" : "/basicoperations/merge",
                "backend" : [ {
                  "host" : [ "https://jsonplaceholder.typicode.com" ],
