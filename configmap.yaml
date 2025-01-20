@@ -26,6 +26,16 @@ data:
                } ],
                "extra_config" : { },
                "method" : "GET"
+             }, {
+               "endpoint" : "/basicoperations/testquery",
+               "backend" : [ {
+                 "host" : [ "https://api.nationalize.io/" ],
+                 "url_pattern" : "/",
+                 "is_collection" : false,
+                 "method" : "GET"
+               } ],
+               "extra_config" : { },
+               "method" : "GET"
              } ],
              "extra_config" : { }
            }
