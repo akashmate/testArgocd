@@ -19,9 +19,10 @@ data:
                "endpoint" : "/basicoperations/sample",
                "backend" : [ {
                  "host" : [ "https://jsonplaceholder.typicode.com" ],
-                 "url_pattern" : "/posts/1",
-                 "is_collection" : false,
-                 "method" : "GET"
+                 "url_pattern" : "/posts/3",
+                 "extra_config" : { },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
                } ],
                "extra_config" : {
                  "auth/validator" : {
