@@ -38,6 +38,24 @@ data:
                "method" : "GET",
                "input_query_strings" : [ "name" ]
              }, {
+               "endpoint" : "/basicoperations/flatmap",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects",
+                 "extra_config" : {
+                   "proxy" : {
+                     "flatmap_filter" : [ {
+                       "type" : "move",
+                       "args" : [ "collection.*.data", "collection.*.newdata" ]
+                     } ]
+                   }
+                 },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : { },
+               "method" : "GET"
+             }, {
                "endpoint" : "/basicoperations/merge",
                "backend" : [ {
                  "host" : [ "https://jsonplaceholder.typicode.com" ],
