@@ -24,13 +24,7 @@ data:
                  "method" : "GET",
                  "disable_host_sanitize" : true
                } ],
-               "extra_config" : {
-                 "auth/basic" : {
-                   "users" : {
-                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
-                   }
-                 }
-               },
+               "extra_config" : { },
                "method" : "GET"
              }, {
                "endpoint" : "/basicoperations/testquery",
@@ -40,13 +34,7 @@ data:
                  "is_collection" : false,
                  "method" : "GET"
                } ],
-               "extra_config" : {
-                 "auth/basic" : {
-                   "users" : {
-                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
-                   }
-                 }
-               },
+               "extra_config" : { },
                "method" : "GET",
                "input_query_strings" : [ "name" ]
              }, {
@@ -66,13 +54,7 @@ data:
                  "method" : "GET",
                  "disable_host_sanitize" : true
                } ],
-               "extra_config" : {
-                 "auth/basic" : {
-                   "users" : {
-                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
-                   }
-                 }
-               },
+               "extra_config" : { },
                "method" : "GET"
              }, {
                "endpoint" : "/basicoperations/flatmapobject",
@@ -90,13 +72,7 @@ data:
                  "method" : "GET",
                  "disable_host_sanitize" : true
                } ],
-               "extra_config" : {
-                 "auth/basic" : {
-                   "users" : {
-                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
-                   }
-                 }
-               },
+               "extra_config" : { },
                "method" : "GET"
              }, {
                "endpoint" : "/basicoperations/respmanipulation",
@@ -112,13 +88,7 @@ data:
                  "method" : "GET",
                  "disable_host_sanitize" : true
                } ],
-               "extra_config" : {
-                 "auth/basic" : {
-                   "users" : {
-                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
-                   }
-                 }
-               },
+               "extra_config" : { },
                "output_encoding" : "no-op",
                "method" : "GET"
              }, {
@@ -134,11 +104,6 @@ data:
                    "max_rate" : 5,
                    "every" : "1m",
                    "strategy" : "ip"
-                 },
-                 "auth/basic" : {
-                   "users" : {
-                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
-                   }
                  }
                },
                "method" : "GET"
@@ -162,13 +127,7 @@ data:
                  "method" : "GET",
                  "disable_host_sanitize" : true
                } ],
-               "extra_config" : {
-                 "auth/basic" : {
-                   "users" : {
-                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
-                   }
-                 }
-               },
+               "extra_config" : { },
                "method" : "GET"
              }, {
                "endpoint" : "/basicoperations/responseschemavald",
@@ -216,13 +175,7 @@ data:
                  "method" : "GET",
                  "disable_host_sanitize" : true
                } ],
-               "extra_config" : {
-                 "auth/basic" : {
-                   "users" : {
-                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
-                   }
-                 }
-               },
+               "extra_config" : { },
                "method" : "GET",
                "input_query_strings" : [ "name" ]
              }, {
@@ -240,13 +193,7 @@ data:
                  "method" : "GET",
                  "disable_host_sanitize" : true
                } ],
-               "extra_config" : {
-                 "auth/basic" : {
-                   "users" : {
-                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
-                   }
-                 }
-               },
+               "extra_config" : { },
                "method" : "GET"
              }, {
                "endpoint" : "/basicoperations/jmespath",
@@ -261,13 +208,7 @@ data:
                  "method" : "GET",
                  "disable_host_sanitize" : true
                } ],
-               "extra_config" : {
-                 "auth/basic" : {
-                   "users" : {
-                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
-                   }
-                 }
-               },
+               "extra_config" : { },
                "method" : "GET",
                "input_query_strings" : [ "name" ]
              }, {
@@ -286,13 +227,7 @@ data:
                  "method" : "GET",
                  "disable_host_sanitize" : true
                } ],
-               "extra_config" : {
-                 "auth/basic" : {
-                   "users" : {
-                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
-                   }
-                 }
-               },
+               "extra_config" : { },
                "method" : "GET"
              }, {
                "endpoint" : "/basicoperations/throttling",
@@ -309,13 +244,7 @@ data:
                  "method" : "GET",
                  "disable_host_sanitize" : true
                } ],
-               "extra_config" : {
-                 "auth/basic" : {
-                   "users" : {
-                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
-                   }
-                 }
-               },
+               "extra_config" : { },
                "method" : "GET"
              }, {
                "endpoint" : "/basicoperations/testmartian",
@@ -328,13 +257,7 @@ data:
                  "method" : "GET",
                  "disable_host_sanitize" : true
                } ],
-               "extra_config" : {
-                 "auth/basic" : {
-                   "users" : {
-                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
-                   }
-                 }
-               },
+               "extra_config" : { },
                "method" : "GET"
              } ],
              "extra_config" : {
