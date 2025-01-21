@@ -12,7 +12,7 @@ data:
              "port" : 8082,
              "host" : [ "localhost" ],
              "timeout" : "10000ms",
-             "cache_ttl" : "",
+             "cache_ttl" : "300s",
              "debug_endpoint" : false,
              "echo_endpoint" : false,
              "endpoints" : [ {
