@@ -11,8 +11,8 @@ data:
              "name" : "MassilGW",
              "port" : 8082,
              "host" : [ "localhost" ],
-             "timeout" : "3000ms",
-             "cache_ttl" : "300s",
+             "timeout" : "10000ms",
+             "cache_ttl" : "",
              "debug_endpoint" : false,
              "echo_endpoint" : false,
              "endpoints" : [ {
