@@ -120,6 +120,64 @@ data:
                },
                "method" : "GET"
              }, {
+               "endpoint" : "/basicoperations/responseschemavald",
+               "backend" : [ {
+                 "host" : [ "https://api.nationalize.io" ],
+                 "url_pattern" : "/",
+                 "extra_config" : {
+                   "plugin/req-resp-modifier" : {
+                     "name" : [ "response-schema-validator" ],
+                     "response-schema-validator" : {
+                       "schema" : {
+                         "type" : "object",
+                         "properties" : {
+                           "count" : {
+                             "type" : "integer"
+                           },
+                           "country" : {
+                             "type" : "array",
+                             "items" : {
+                               "type" : "object",
+                               "properties" : {
+                                 "country_id" : {
+                                   "type" : "string"
+                                 },
+                                 "probability" : {
+                                   "type" : "string"
+                                 }
+                               },
+                               "required" : [ "country_id", "probability" ]
+                             }
+                           },
+                           "name" : {
+                             "type" : "string"
+                           }
+                         },
+                         "required" : [ "count", "country", "name" ]
+                       },
+                       "error" : {
+                         "body" : "Schema is not vali",
+                         "status" : 500
+                       }
+                     }
+                   }
+                 },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes_key" : "scope"
+                 }
+               },
+               "method" : "GET",
+               "input_query_strings" : [ "name" ]
+             }, {
                "endpoint" : "/basicoperations/contentreplacer",
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev" ],
