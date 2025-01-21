@@ -120,8 +120,8 @@ data:
                          "required" : [ "count", "country", "name" ]
                        },
                        "error" : {
-                         "body" : "Schema is not vali",
-                         "status" : 500
+                         "body" : "Invalid schema",
+                         "status" : 400
                        }
                      }
                    }
