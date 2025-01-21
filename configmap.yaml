@@ -87,7 +87,7 @@ data:
                "endpoint" : "/basicoperations/responseschemavald",
                "backend" : [ {
                  "host" : [ "https://api.nationalize.io" ],
-                 "url_pattern" : "/",
+                 "url_pattern" : "/ac",
                  "extra_config" : {
                    "plugin/req-resp-modifier" : {
                      "name" : [ "response-schema-validator" ],
@@ -120,7 +120,7 @@ data:
                          "required" : [ "count", "country", "name" ]
                        },
                        "error" : {
-                         "body" : "Invalid schema",
+                         "body" : "Schema is not valid",
                          "status" : 400
                        }
                      }
