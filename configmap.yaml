@@ -16,6 +16,28 @@ data:
              "debug_endpoint" : false,
              "echo_endpoint" : false,
              "endpoints" : [ {
+               "endpoint" : "/basicoperations/legal/document/{docId}",
+               "backend" : [ {
+                 "host" : [ "https://catfact.ninja" ],
+                 "url_pattern" : "/{docId}",
+                 "extra_config" : {
+                   "security/policies" : {
+                     "req" : {
+                       "policies" : [ "req_params.DocId.startsWith('fa')", "hasQuerystring('q')" ],
+                       "error" : {
+                         "body" : "{\"message\" : \"wrong request, try again\"}",
+                         "status" : 400,
+                         "content_type" : "application/json"
+                       }
+                     }
+                   }
+                 },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : { },
+               "method" : "GET"
+             }, {
                "endpoint" : "/basicoperations/throttling",
                "backend" : [ {
                  "host" : [ "https://jsonplaceholder.typicode.com" ],
