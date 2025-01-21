@@ -88,8 +88,20 @@ data:
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev" ],
                  "url_pattern" : "/objects/7",
-                 "is_collection" : false,
-                 "method" : "GET"
+                 "extra_config" : {
+                   "plugin/req-resp-modifier" : {
+                     "name" : [ "content-replacer" ],
+                     "content-replacer" : {
+                       "data" : {
+                         "find" : "Intel Core i9",
+                         "replace" : "Intel Core i10",
+                         "regexp" : false
+                       }
+                     }
+                   }
+                 },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
                } ],
                "extra_config" : { },
                "method" : "GET"
