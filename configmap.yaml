@@ -317,6 +317,25 @@ data:
                  }
                },
                "method" : "GET"
+             }, {
+               "endpoint" : "/basicoperations/testmartian",
+               "backend" : [ {
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "url_pattern" : "/posts/1",
+                 "extra_config" : {
+                   "modifier/martian" : "{\n  \"body.Modifier\": {\n    \"scope\": [\n      \"response\"\n    ],\n    \"@comment\": \"Send a {'msg':'you rock!'}\",\n    \"body\": \"eyJtc2ciOiJ5b3Ugcm9jayEifQ==\",\n    \"contentType\": \"application/json\"\n  }\n}"
+                 },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : {
+                 "auth/basic" : {
+                   "users" : {
+                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
+                   }
+                 }
+               },
+               "method" : "GET"
              } ],
              "extra_config" : {
                "security/cors" : {
