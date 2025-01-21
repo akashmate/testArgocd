@@ -30,7 +30,13 @@ data:
                  "method" : "GET",
                  "disable_host_sanitize" : true
                } ],
-               "extra_config" : { },
+               "extra_config" : {
+                 "auth/basic" : {
+                   "users" : {
+                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
+                   }
+                 }
+               },
                "method" : "GET"
              }, {
                "endpoint" : "/basicoperations/responsemanipulationWithGotmpl",
@@ -48,7 +54,13 @@ data:
                  "method" : "GET",
                  "disable_host_sanitize" : true
                } ],
-               "extra_config" : { },
+               "extra_config" : {
+                 "auth/basic" : {
+                   "users" : {
+                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
+                   }
+                 }
+               },
                "method" : "GET"
              }, {
                "endpoint" : "/basicoperations/jmespath",
@@ -63,7 +75,13 @@ data:
                  "method" : "GET",
                  "disable_host_sanitize" : true
                } ],
-               "extra_config" : { },
+               "extra_config" : {
+                 "auth/basic" : {
+                   "users" : {
+                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
+                   }
+                 }
+               },
                "method" : "GET",
                "input_query_strings" : [ "name" ]
              }, {
@@ -81,7 +99,13 @@ data:
                  "method" : "GET",
                  "disable_host_sanitize" : true
                } ],
-               "extra_config" : { },
+               "extra_config" : {
+                 "auth/basic" : {
+                   "users" : {
+                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
+                   }
+                 }
+               },
                "method" : "GET"
              }, {
                "endpoint" : "/basicoperations/responseschemavald",
@@ -129,7 +153,13 @@ data:
                  "method" : "GET",
                  "disable_host_sanitize" : true
                } ],
-               "extra_config" : { },
+               "extra_config" : {
+                 "auth/basic" : {
+                   "users" : {
+                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
+                   }
+                 }
+               },
                "method" : "GET",
                "input_query_strings" : [ "name" ]
              }, {
@@ -152,7 +182,13 @@ data:
                  "method" : "GET",
                  "disable_host_sanitize" : true
                } ],
-               "extra_config" : { },
+               "extra_config" : {
+                 "auth/basic" : {
+                   "users" : {
+                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
+                   }
+                 }
+               },
                "method" : "GET"
              }, {
                "endpoint" : "/basicoperations/endpointthrottling",
@@ -167,6 +203,11 @@ data:
                    "max_rate" : 5,
                    "every" : "1m",
                    "strategy" : "ip"
+                 },
+                 "auth/basic" : {
+                   "users" : {
+                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
+                   }
                  }
                },
                "method" : "GET"
@@ -184,7 +225,13 @@ data:
                  "method" : "GET",
                  "disable_host_sanitize" : true
                } ],
-               "extra_config" : { },
+               "extra_config" : {
+                 "auth/basic" : {
+                   "users" : {
+                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
+                   }
+                 }
+               },
                "output_encoding" : "no-op",
                "method" : "GET"
              }, {
@@ -203,7 +250,13 @@ data:
                  "method" : "GET",
                  "disable_host_sanitize" : true
                } ],
-               "extra_config" : { },
+               "extra_config" : {
+                 "auth/basic" : {
+                   "users" : {
+                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
+                   }
+                 }
+               },
                "method" : "GET"
              }, {
                "endpoint" : "/basicoperations/flatmap",
@@ -222,7 +275,13 @@ data:
                  "method" : "GET",
                  "disable_host_sanitize" : true
                } ],
-               "extra_config" : { },
+               "extra_config" : {
+                 "auth/basic" : {
+                   "users" : {
+                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
+                   }
+                 }
+               },
                "method" : "GET"
              }, {
                "endpoint" : "/basicoperations/testquery",
@@ -232,7 +291,13 @@ data:
                  "is_collection" : false,
                  "method" : "GET"
                } ],
-               "extra_config" : { },
+               "extra_config" : {
+                 "auth/basic" : {
+                   "users" : {
+                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
+                   }
+                 }
+               },
                "method" : "GET",
                "input_query_strings" : [ "name" ]
              }, {
@@ -244,8 +309,21 @@ data:
                  "method" : "GET",
                  "disable_host_sanitize" : true
                } ],
-               "extra_config" : { },
+               "extra_config" : {
+                 "auth/basic" : {
+                   "users" : {
+                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
+                   }
+                 }
+               },
                "method" : "GET"
              } ],
-             "extra_config" : { }
+             "extra_config" : {
+               "security/cors" : {
+                 "allow_origins" : [ "*" ],
+                 "allow_methods" : [ "GET", "HEAD", "POST" ],
+                 "allow_headers" : [ "*" ],
+                 "allow_credentials" : true
+               }
+             }
            }
