@@ -33,6 +33,35 @@ data:
                "extra_config" : { },
                "method" : "GET"
              }, {
+               "endpoint" : "/basicoperations/requestmanipulation",
+               "backend" : [ {
+                 "host" : [ "https://reqres.in" ],
+                 "url_pattern" : "/api/users",
+                 "extra_config" : {
+                   "modifier/body-generator" : {
+                     "template" : "ewogICAgIm5hbWUiOiAie3sgLnJlcV9ib2R5LnVwZGF0ZS5kYXRhLm5hbWUgfX0iLAogICAgImVtYWlsIjogInt7IC5yZXFfYm9keS51cGRhdGUuZGF0YS5lbWFpbCB9fSIKfQ==",
+                     "content_type" : "application/json",
+                     "debug" : true
+                   }
+                 },
+                 "method" : "POST",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : { },
+               "method" : "POST"
+             }, {
+               "endpoint" : "/basicoperations/wrappinggroup",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects/7",
+                 "group" : "data",
+                 "extra_config" : { },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : { },
+               "method" : "GET"
+             }, {
                "endpoint" : "/basicoperations/jmespath",
                "backend" : [ {
                  "host" : [ "https://api.nationalize.io/" ],
@@ -40,6 +69,55 @@ data:
                  "extra_config" : {
                    "modifier/jmespath" : {
                      "expr" : "country[?probability > `0.03` ].country_id"
+                   }
+                 },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : { },
+               "method" : "GET",
+               "input_query_strings" : [ "name" ]
+             }, {
+               "endpoint" : "/basicoperations/responseschemavald",
+               "backend" : [ {
+                 "host" : [ "https://api.nationalize.io" ],
+                 "url_pattern" : "/",
+                 "extra_config" : {
+                   "plugin/req-resp-modifier" : {
+                     "name" : [ "response-schema-validator" ],
+                     "response-schema-validator" : {
+                       "schema" : {
+                         "type" : "object",
+                         "properties" : {
+                           "count" : {
+                             "type" : "string"
+                           },
+                           "country" : {
+                             "type" : "array",
+                             "items" : {
+                               "type" : "object",
+                               "properties" : {
+                                 "country_id" : {
+                                   "type" : "string"
+                                 },
+                                 "probability" : {
+                                   "type" : "string"
+                                 }
+                               },
+                               "required" : [ "country_id", "probability" ]
+                             }
+                           },
+                           "name" : {
+                             "type" : "string"
+                           }
+                         },
+                         "required" : [ "count", "country", "name" ]
+                       },
+                       "error" : {
+                         "body" : "Schema is not valid",
+                         "status" : 400
+                       }
+                     }
                    }
                  },
                  "method" : "GET",
