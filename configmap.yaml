@@ -149,7 +149,7 @@ data:
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev" ],
                  "url_pattern" : "/objects/7",
-                 "group" : "data",
+                 "group" : "finaldata",
                  "extra_config" : { },
                  "method" : "GET",
                  "disable_host_sanitize" : true
