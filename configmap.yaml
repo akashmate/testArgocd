@@ -18,10 +18,9 @@ data:
              "endpoints" : [ {
                "endpoint" : "context/userId",
                "backend" : [ {
-                 "host" : [ "localhost" ],
-                 "url_pattern" : "/url",
+                 "host" : [ "http://localhost:8290" ],
+                 "url_pattern" : "/account",
                  "is_collection" : false,
-                 "encoding" : "json",
                  "method" : "GET"
                } ],
                "extra_config" : {
@@ -34,7 +33,6 @@ data:
                    "scopes_key" : "scope"
                  }
                },
-               "output_encoding" : "json",
                "method" : "GET"
              } ],
              "extra_config" : { }
