@@ -44,6 +44,27 @@ data:
                "extra_config" : { },
                "method" : "GET"
              }, {
+               "endpoint" : "/basicoperations/econtentreplacer",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev/" ],
+                 "url_pattern" : "/objects/7",
+                 "is_collection" : false,
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "plugin/req-resp-modifier" : {
+                   "content-replacer" : {
+                     "data.CPU model" : {
+                       "find" : "Intel Core i9",
+                       "replace" : "Intel Core test",
+                       "regexp" : false
+                     }
+                   },
+                   "name" : [ "content-replacer" ]
+                 }
+               },
+               "method" : "GET"
+             }, {
                "endpoint" : "/basicoperations/respmanipulation",
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev/" ],
@@ -270,6 +291,17 @@ data:
                "method" : "GET",
                "input_query_strings" : [ "name" ]
              }, {
+               "endpoint" : "/testservices/sample",
+               "backend" : [ {
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "url_pattern" : "/posts/3",
+                 "extra_config" : { },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : { },
+               "method" : "GET"
+             }, {
                "endpoint" : "/testservices/tickets",
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev" ],
@@ -280,17 +312,6 @@ data:
                } ],
                "extra_config" : { },
                "output_encoding" : "json",
-               "method" : "GET"
-             }, {
-               "endpoint" : "/testservices/sample",
-               "backend" : [ {
-                 "host" : [ "https://jsonplaceholder.typicode.com" ],
-                 "url_pattern" : "/posts/3",
-                 "extra_config" : { },
-                 "method" : "GET",
-                 "disable_host_sanitize" : true
-               } ],
-               "extra_config" : { },
                "method" : "GET"
              } ],
              "extra_config" : {
