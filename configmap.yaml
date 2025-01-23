@@ -498,15 +498,6 @@ data:
                "input_query_strings" : [ "name" ]
              } ],
              "extra_config" : {
-               "qos/ratelimit/service" : {
-                 "id" : 1,
-                 "capacity" : 1,
-                 "max_rate" : 3,
-                 "every" : "20s",
-                 "client_capacity" : 0,
-                 "client_max_rate" : 3,
-                 "strategy" : "ip"
-               },
                "security/cors" : {
                  "allow_origins" : [ "*" ],
                  "allow_methods" : [ "GET", "HEAD", "POST" ],
