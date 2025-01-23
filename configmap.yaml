@@ -218,7 +218,7 @@ data:
                "extra_config" : {
                  "plugin/req-resp-modifier" : {
                    "ip-filter" : {
-                     "CIDR" : [ "10.175.1.63" ],
+                     "CIDR" : [ "10.233.70.0" ],
                      "allow" : false
                    },
                    "name" : [ "ip-filter" ]
