@@ -40,13 +40,12 @@ data:
                "extra_config" : {
                  "qos/ratelimit/router" : {
                    "max_rate" : 3,
-                   "every" : "10s",
+                   "every" : "20s",
                    "strategy" : "ip"
                  }
                },
                "output_encoding" : "json",
-               "method" : "GET",
-               "input_query_strings" : [ "id" ]
+               "method" : "GET"
              }, {
                "endpoint" : "/testservices/tickets",
                "backend" : [ {
