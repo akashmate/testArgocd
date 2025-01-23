@@ -13,7 +13,6 @@ data:
              "timeout" : "3000ms",
              "cache_ttl" : "300s",
              "debug_endpoint" : false,
-             "echo_endpoint" : false,
              "endpoints" : [ {
                "endpoint" : "/api2/keycloak-protected1",
                "backend" : [ {
@@ -63,15 +62,6 @@ data:
                "method" : "GET"
              } ],
              "extra_config" : {
-               "auth/api-keys" : {
-                 "strategy" : "header",
-                 "identifier" : "Authorization",
-                 "keys" : [ {
-                   "key" : "2609d1c3-941a-481e-91b6-f7d1d4eaa422",
-                   "roles" : [ "consumer_ramesh" ],
-                   "@description" : "b to c app"
-                 } ]
-               },
                "security/cors" : {
                  "allow_origins" : [ "*" ],
                  "allow_methods" : [ "GET", "HEAD", "POST", "PUT", "DELETE" ],
@@ -79,6 +69,13 @@ data:
                  "expose_headers" : [ "Content-Length", "Content-Type" ],
                  "max_age" : "12h",
                  "allow_credentials" : true
+               },
+               "auth/api-keys" : {
+                 "keys" : [ {
+                   "key" : "2609d1c3-941a-481e-91b6-f7d1d4eaa422",
+                   "roles" : [ "consumer_ramesh" ],
+                   "@description" : "b to c app"
+                 } ]
                }
              }
            }
