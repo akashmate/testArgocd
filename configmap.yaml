@@ -8,102 +8,33 @@ data:
            {
              "$schema" : "https://www.krakend.io/schema/krakend.json",
              "version" : 3,
-             "name" : "gitgateway",
+             "name" : "Sample",
              "port" : 8082,
+             "host" : [ "http://localhost" ],
              "timeout" : "3000ms",
              "cache_ttl" : "300s",
              "debug_endpoint" : false,
              "endpoints" : [ {
-               "endpoint" : "/demo2345/keycloak-protected2",
+               "endpoint" : "/context4/end2",
                "backend" : [ {
-                 "host" : [ "http://localhost:8082" ],
-                 "url_pattern" : "/__health",
-                 "extra_config" : {
-                   "proxy" : {
-                     "shadow" : true
-                   }
-                 }
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "url_pattern" : "/posts",
+                 "is_collection" : true,
+                 "encoding" : "json",
+                 "method" : "GET"
                } ],
                "extra_config" : {
-                 "auth/basic" : {
-                   "users" : {
-                     "consumer_ramesh" : "$2a$10$zptiG1eswxpKw9.OHVKjx.qKyShcbuGSWGetaMIRQ/vazBIgiiOP2",
-                     "consumer_neel" : "$2a$10$eHerowcCmAhwo0sRgvtp.uDVmRzqUvT3Hkr9v5aZRmkMMUgat.6j."
-                   }
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://localhost:8080/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://localhost:8080/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes_key" : "scope"
                  }
                },
-               "method" : "GET"
-             }, {
-               "endpoint" : "/demo2345/keycloak-protected1",
-               "backend" : [ {
-                 "host" : [ "http://localhost:8082" ],
-                 "url_pattern" : "/__health"
-               } ],
-               "extra_config" : {
-                 "auth/basic" : {
-                   "users" : {
-                     "consumer_ramesh" : "$2a$10$zptiG1eswxpKw9.OHVKjx.qKyShcbuGSWGetaMIRQ/vazBIgiiOP2",
-                     "consumer_neel" : "$2a$10$eHerowcCmAhwo0sRgvtp.uDVmRzqUvT3Hkr9v5aZRmkMMUgat.6j."
-                   }
-                 }
-               },
-               "method" : "GET"
-             }, {
-               "endpoint" : "/api2/keycloak-protected1",
-               "backend" : [ {
-                 "host" : [ "http://localhost:8082" ],
-                 "url_pattern" : "/__health"
-               } ],
-               "extra_config" : {
-                 "auth/api-keys" : {
-                   "roles" : [ "consumer_ramesh" ]
-                 }
-               },
-               "method" : "GET"
-             }, {
-               "endpoint" : "/demo/keycloak-protected2",
-               "backend" : [ {
-                 "host" : [ "http://localhost:8082" ],
-                 "url_pattern" : "/__health",
-                 "extra_config" : {
-                   "proxy" : {
-                     "shadow" : true
-                   }
-                 }
-               } ],
-               "extra_config" : {
-                 "auth/basic" : {
-                   "users" : {
-                     "consumer_ramesh" : "$2a$10$zptiG1eswxpKw9.OHVKjx.qKyShcbuGSWGetaMIRQ/vazBIgiiOP2",
-                     "consumer_neel" : "$2a$10$eHerowcCmAhwo0sRgvtp.uDVmRzqUvT3Hkr9v5aZRmkMMUgat.6j."
-                   }
-                 }
-               },
-               "method" : "GET"
-             }, {
-               "endpoint" : "/demo/keycloak-protected1",
-               "backend" : [ {
-                 "host" : [ "http://localhost:8082" ],
-                 "url_pattern" : "/__health"
-               } ],
-               "extra_config" : {
-                 "auth/basic" : {
-                   "users" : {
-                     "consumer_ramesh" : "$2a$10$zptiG1eswxpKw9.OHVKjx.qKyShcbuGSWGetaMIRQ/vazBIgiiOP2",
-                     "consumer_neel" : "$2a$10$eHerowcCmAhwo0sRgvtp.uDVmRzqUvT3Hkr9v5aZRmkMMUgat.6j."
-                   }
-                 }
-               },
+               "output_encoding" : "json",
                "method" : "GET"
              } ],
-             "extra_config" : {
-               "security/cors" : {
-                 "allow_origins" : [ "*" ],
-                 "allow_methods" : [ "GET", "HEAD", "POST", "PUT", "DELETE" ],
-                 "allow_headers" : [ "*" ],
-                 "expose_headers" : [ "Content-Length", "Content-Type" ],
-                 "max_age" : "12h",
-                 "allow_credentials" : true
-               }
-             }
+             "extra_config" : { }
            }
