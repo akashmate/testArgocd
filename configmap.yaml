@@ -39,6 +39,7 @@ data:
                } ],
                "extra_config" : { },
                "output_encoding" : "json",
+               "input_headers" : [ "track_id" ],
                "method" : "GET",
                "input_query_strings" : [ "id" ]
              }, {
