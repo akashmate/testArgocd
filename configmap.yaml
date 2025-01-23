@@ -221,6 +221,29 @@ data:
                },
                "method" : "GET"
              }, {
+               "endpoint" : "/basicoperations/SequentialProxy",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects/7",
+                 "is_collection" : false,
+                 "method" : "GET"
+               }, {
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "url_pattern" : "/",
+                 "extra_config" : { },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : {
+                 "auth/basic" : {
+                   "users" : {
+                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
+                   }
+                 }
+               },
+               "method" : "GET",
+               "input_query_strings" : [ "userId" ]
+             }, {
                "endpoint" : "/basicoperations/ejmes",
                "backend" : [ {
                  "host" : [ "https://api.nationalize.io" ],
