@@ -42,6 +42,18 @@ data:
                "method" : "GET",
                "input_query_strings" : [ "id" ]
              }, {
+               "endpoint" : "/testservices/tickets",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects",
+                 "is_collection" : false,
+                 "encoding" : "json",
+                 "method" : "GET"
+               } ],
+               "extra_config" : { },
+               "output_encoding" : "json",
+               "method" : "GET"
+             }, {
                "endpoint" : "/auth/flatmapobject",
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev" ],
