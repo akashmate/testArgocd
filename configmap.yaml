@@ -127,6 +127,20 @@ data:
                "extra_config" : { },
                "method" : "GET"
              }, {
+               "endpoint" : "/basicoperations/ejmes",
+               "backend" : [ {
+                 "host" : [ "https://api.nationalize.io" ],
+                 "url_pattern" : "/",
+                 "is_collection" : false,
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "modifier/jmespath" : {
+                   "expr" : "country[?probability > `0.03` ].country_id"
+                 }
+               },
+               "method" : "GET"
+             }, {
                "endpoint" : "/basicoperations/jmespath",
                "backend" : [ {
                  "host" : [ "https://api.nationalize.io/" ],
