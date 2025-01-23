@@ -503,11 +503,11 @@ data:
              "extra_config" : {
                "qos/ratelimit/service" : {
                  "id" : 1,
-                 "capacity" : 1,
+                 "capacity" : 0,
                  "max_rate" : 3,
                  "every" : "20s",
                  "client_capacity" : 0,
-                 "client_max_rate" : 3,
+                 "client_max_rate" : 0,
                  "strategy" : "ip"
                },
                "security/cors" : {
