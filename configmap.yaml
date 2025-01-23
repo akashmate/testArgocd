@@ -183,6 +183,14 @@ data:
                  "url_pattern" : "/posts/1",
                  "is_collection" : false,
                  "method" : "GET"
+               }, {
+                 "host" : [ "https://reqres.in" ],
+                 "url_pattern" : "/api/users",
+                 "extra_config" : {
+                   "proxy" : { }
+                 },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
                } ],
                "extra_config" : {
                  "auth/basic" : {
