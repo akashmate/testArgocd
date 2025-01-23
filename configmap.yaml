@@ -177,6 +177,23 @@ data:
                },
                "method" : "POST"
              }, {
+               "endpoint" : "/basicoperations/testetimeout",
+               "backend" : [ {
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "url_pattern" : "/posts/1",
+                 "is_collection" : false,
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "auth/basic" : {
+                   "users" : {
+                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
+                   }
+                 }
+               },
+               "method" : "GET",
+               "timeout" : "3ns"
+             }, {
                "endpoint" : "/basicoperations/wrappinggroup",
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev" ],
