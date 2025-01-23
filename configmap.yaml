@@ -33,42 +33,6 @@ data:
                "extra_config" : { },
                "method" : "GET"
              }, {
-               "endpoint" : "/basicoperations/ipfilter",
-               "backend" : [ {
-                 "host" : [ "https://jsonplaceholder.typicode.com" ],
-                 "url_pattern" : "/posts/1",
-                 "is_collection" : false,
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
-                 "plugin/req-resp-modifier" : {
-                   "ip-filter" : {
-                     "CIDR" : [ "172.17.0.1" ],
-                     "allow" : true
-                   },
-                   "name" : [ "ip-filter" ]
-                 }
-               },
-               "method" : "GET"
-             }, {
-               "endpoint" : "/basicoperations/ipfilter",
-               "backend" : [ {
-                 "host" : [ "https://jsonplaceholder.typicode.com" ],
-                 "url_pattern" : "/posts/1",
-                 "is_collection" : false,
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
-                 "plugin/req-resp-modifier" : {
-                   "ip-filter" : {
-                     "CIDR" : [ "172.17.0.1" ],
-                     "allow" : true
-                   },
-                   "name" : [ "ip-filter" ]
-                 }
-               },
-               "method" : "GET"
-             }, {
                "endpoint" : "/basicoperations/sample",
                "backend" : [ {
                  "host" : [ "https://jsonplaceholder.typicode.com" ],
