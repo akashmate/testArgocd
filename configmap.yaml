@@ -282,15 +282,13 @@ data:
                  },
                  "plugin/req-resp-modifier" : {
                    "ip-filter" : {
-                     "CIDR" : [ "172.17.0.12" ],
-                     "allow" : true
+                     "CIDR" : [ "10.175.1.63" ],
+                     "allow" : false
                    },
                    "name" : [ "ip-filter" ]
                  }
                },
-               "input_headers" : [ "content-type" ],
-               "method" : "GET",
-               "input_query_strings" : [ "query", "query?", "query=" ]
+               "method" : "GET"
              }, {
                "endpoint" : "/basicoperations/responsemanipulationWithGotmpl",
                "backend" : [ {
