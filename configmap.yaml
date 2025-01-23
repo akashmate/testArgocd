@@ -40,6 +40,7 @@ data:
                "extra_config" : { },
                "output_encoding" : "json",
                "method" : "GET",
+               "input_query_strings" : [ "id" ],
                "cache_ttl" : "1m",
                "timeout" : "10s"
              }, {
