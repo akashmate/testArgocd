@@ -37,15 +37,11 @@ data:
                  "method" : "GET",
                  "disable_host_sanitize" : true
                } ],
-               "extra_config" : {
-                 "qos/ratelimit/router" : {
-                   "max_rate" : 3,
-                   "every" : "20s",
-                   "strategy" : "ip"
-                 }
-               },
+               "extra_config" : { },
                "output_encoding" : "json",
-               "method" : "GET"
+               "method" : "GET",
+               "cache_ttl" : "1m",
+               "timeout" : "10s"
              }, {
                "endpoint" : "/testservices/tickets",
                "backend" : [ {
