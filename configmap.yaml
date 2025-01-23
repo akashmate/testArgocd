@@ -139,7 +139,8 @@ data:
                    "expr" : "country[?probability > `0.03` ].country_id"
                  }
                },
-               "method" : "GET"
+               "method" : "GET",
+               "input_query_strings" : [ "name" ]
              }, {
                "endpoint" : "/basicoperations/jmespath",
                "backend" : [ {
@@ -269,17 +270,6 @@ data:
                "method" : "GET",
                "input_query_strings" : [ "name" ]
              }, {
-               "endpoint" : "/testservices/sample",
-               "backend" : [ {
-                 "host" : [ "https://jsonplaceholder.typicode.com" ],
-                 "url_pattern" : "/posts/3",
-                 "extra_config" : { },
-                 "method" : "GET",
-                 "disable_host_sanitize" : true
-               } ],
-               "extra_config" : { },
-               "method" : "GET"
-             }, {
                "endpoint" : "/testservices/tickets",
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev" ],
@@ -290,6 +280,17 @@ data:
                } ],
                "extra_config" : { },
                "output_encoding" : "json",
+               "method" : "GET"
+             }, {
+               "endpoint" : "/testservices/sample",
+               "backend" : [ {
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "url_pattern" : "/posts/3",
+                 "extra_config" : { },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : { },
                "method" : "GET"
              } ],
              "extra_config" : {
