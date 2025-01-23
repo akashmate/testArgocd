@@ -73,6 +73,43 @@ data:
                },
                "method" : "GET"
              }, {
+               "endpoint" : "/testservices/sample",
+               "backend" : [ {
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "url_pattern" : "/posts/3",
+                 "extra_config" : { },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : { },
+               "method" : "GET"
+             }, {
+               "endpoint" : "/testservices/enrolldetails",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects/7",
+                 "encoding" : "json",
+                 "extra_config" : { },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : { },
+               "output_encoding" : "json",
+               "method" : "GET",
+               "input_query_strings" : [ "id" ]
+             }, {
+               "endpoint" : "/testservices/tickets",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects",
+                 "is_collection" : false,
+                 "encoding" : "json",
+                 "method" : "GET"
+               } ],
+               "extra_config" : { },
+               "output_encoding" : "json",
+               "method" : "GET"
+             }, {
                "endpoint" : "/basicoperations/throttling",
                "backend" : [ {
                  "host" : [ "https://jsonplaceholder.typicode.com" ],
@@ -456,42 +493,6 @@ data:
                },
                "method" : "GET",
                "input_query_strings" : [ "name" ]
-             }, {
-               "endpoint" : "/testservices/sample",
-               "backend" : [ {
-                 "host" : [ "https://jsonplaceholder.typicode.com" ],
-                 "url_pattern" : "/posts/3",
-                 "extra_config" : { },
-                 "method" : "GET",
-                 "disable_host_sanitize" : true
-               } ],
-               "extra_config" : { },
-               "method" : "GET"
-             }, {
-               "endpoint" : "/testservices/enrolldetails",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects",
-                 "is_collection" : false,
-                 "encoding" : "json",
-                 "method" : "GET"
-               } ],
-               "extra_config" : { },
-               "output_encoding" : "json",
-               "method" : "GET",
-               "input_query_strings" : [ "id" ]
-             }, {
-               "endpoint" : "/testservices/tickets",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects",
-                 "is_collection" : false,
-                 "encoding" : "json",
-                 "method" : "GET"
-               } ],
-               "extra_config" : { },
-               "output_encoding" : "json",
-               "method" : "GET"
              } ],
              "extra_config" : {
                "security/cors" : {
