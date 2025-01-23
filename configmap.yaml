@@ -45,7 +45,8 @@ data:
                  }
                },
                "output_encoding" : "json",
-               "method" : "GET"
+               "method" : "GET",
+               "input_query_strings" : [ "id" ]
              }, {
                "endpoint" : "/testservices/tickets",
                "backend" : [ {
