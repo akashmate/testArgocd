@@ -192,7 +192,7 @@ data:
                  }
                },
                "method" : "GET",
-               "timeout" : "10ns"
+               "timeout" : "10000ns"
              }, {
                "endpoint" : "/basicoperations/wrappinggroup",
                "backend" : [ {
