@@ -15,31 +15,6 @@ data:
              "cache_ttl" : "300s",
              "debug_endpoint" : false,
              "endpoints" : [ {
-               "endpoint" : "/mucontext/getBrew",
-               "backend" : [ {
-                 "host" : [ "https://api.openbrewerydb.org" ],
-                 "url_pattern" : "/breweries",
-                 "is_collection" : true,
-                 "encoding" : "json",
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
-                 "modifier/jmespath" : {
-                   "expr" : "collection[?city == 'Bend'].name"
-                 },
-                 "proxy" : {
-                   "static" : {
-                     "data" : {
-                       "status" : 200,
-                       "message" : "success"
-                     },
-                     "strategy" : "always"
-                   }
-                 }
-               },
-               "output_encoding" : "json",
-               "method" : "GET"
-             }, {
                "endpoint" : "/testservices/sample",
                "backend" : [ {
                  "host" : [ "https://jsonplaceholder.typicode.com" ],
@@ -58,6 +33,11 @@ data:
                  "is_collection" : true,
                  "encoding" : "json",
                  "extra_config" : {
+                   "qos/ratelimit/proxy" : {
+                     "every" : "20s",
+                     "max_rate" : 5,
+                     "capacity" : 1
+                   },
                    "plugin/req-resp-modifier" : {
                      "name" : [ "content-replacer" ],
                      "content-replacer" : {
@@ -94,6 +74,31 @@ data:
                  "method" : "GET"
                } ],
                "extra_config" : { },
+               "output_encoding" : "json",
+               "method" : "GET"
+             }, {
+               "endpoint" : "/mucontext/getBrew",
+               "backend" : [ {
+                 "host" : [ "https://api.openbrewerydb.org" ],
+                 "url_pattern" : "/breweries",
+                 "is_collection" : true,
+                 "encoding" : "json",
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "modifier/jmespath" : {
+                   "expr" : "collection[?city == 'Bend'].name"
+                 },
+                 "proxy" : {
+                   "static" : {
+                     "data" : {
+                       "status" : 200,
+                       "message" : "success"
+                     },
+                     "strategy" : "always"
+                   }
+                 }
+               },
                "output_encoding" : "json",
                "method" : "GET"
              } ],
