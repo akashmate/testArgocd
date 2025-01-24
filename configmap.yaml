@@ -24,6 +24,9 @@ data:
                  "method" : "GET"
                } ],
                "extra_config" : {
+                 "modifier/jmespath" : {
+                   "expr" : "collection[?city == 'Oregon' ].name"
+                 },
                  "proxy" : {
                    "static" : {
                      "data" : {
