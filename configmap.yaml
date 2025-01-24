@@ -33,19 +33,6 @@ data:
                  "is_collection" : true,
                  "encoding" : "json",
                  "extra_config" : {
-                   "plugin/req-resp-modifier" : {
-                     "name" : [ "content-replacer" ],
-                     "content-replacer" : {
-                       "da" : {
-                         "find" : "enrollname",
-                         "replace" : "collection[].{name: name}",
-                         "regexp" : false
-                       }
-                     }
-                   },
-                   "modifier/jmespath" : {
-                     "expr" : "collection[].{id: id, name: name}"
-                   },
                    "proxy" : { }
                  },
                  "method" : "GET",
