@@ -15,88 +15,6 @@ data:
              "cache_ttl" : "300s",
              "debug_endpoint" : false,
              "endpoints" : [ {
-               "endpoint" : "/tickets/stopticket",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects/8",
-                 "encoding" : "json",
-                 "extra_config" : {
-                   "proxy" : { }
-                 },
-                 "method" : "GET",
-                 "disable_host_sanitize" : true
-               } ],
-               "extra_config" : { },
-               "output_encoding" : "json-collection",
-               "method" : "GET"
-             }, {
-               "endpoint" : "/testservices/sample",
-               "backend" : [ {
-                 "host" : [ "https://jsonplaceholder.typicode.com" ],
-                 "url_pattern" : "/posts/3",
-                 "extra_config" : { },
-                 "method" : "GET",
-                 "disable_host_sanitize" : true
-               } ],
-               "extra_config" : { },
-               "method" : "GET"
-             }, {
-               "endpoint" : "/testservices/enrolldetails",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects",
-                 "is_collection" : true,
-                 "encoding" : "json",
-                 "extra_config" : {
-                   "proxy" : { }
-                 },
-                 "method" : "GET",
-                 "disable_host_sanitize" : true
-               } ],
-               "extra_config" : { },
-               "output_encoding" : "json",
-               "method" : "GET",
-               "input_query_strings" : [ "id" ],
-               "cache_ttl" : "1m",
-               "timeout" : "10s"
-             }, {
-               "endpoint" : "/testservices/tickets",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects",
-                 "is_collection" : false,
-                 "encoding" : "json",
-                 "method" : "GET"
-               } ],
-               "extra_config" : { },
-               "output_encoding" : "json",
-               "method" : "GET"
-             }, {
-               "endpoint" : "/mucontext/getBrew",
-               "backend" : [ {
-                 "host" : [ "https://api.openbrewerydb.org" ],
-                 "url_pattern" : "/breweries",
-                 "is_collection" : true,
-                 "encoding" : "json",
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
-                 "modifier/jmespath" : {
-                   "expr" : "collection[?city == `Bend`].name"
-                 },
-                 "proxy" : {
-                   "static" : {
-                     "data" : {
-                       "status" : 200,
-                       "message" : "success"
-                     },
-                     "strategy" : "always"
-                   }
-                 }
-               },
-               "output_encoding" : "json",
-               "method" : "GET"
-             }, {
                "endpoint" : "/basicoperations/throttling",
                "backend" : [ {
                  "host" : [ "https://jsonplaceholder.typicode.com" ],
@@ -530,6 +448,88 @@ data:
                "method" : "GET",
                "cache_ttl" : "60s",
                "timeout" : "30s"
+             }, {
+               "endpoint" : "/tickets/stopticket",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects/8",
+                 "encoding" : "json",
+                 "extra_config" : {
+                   "proxy" : { }
+                 },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : { },
+               "output_encoding" : "json-collection",
+               "method" : "GET"
+             }, {
+               "endpoint" : "/testservices/sample",
+               "backend" : [ {
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "url_pattern" : "/posts/3",
+                 "extra_config" : { },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : { },
+               "method" : "GET"
+             }, {
+               "endpoint" : "/testservices/enrolldetails",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects",
+                 "is_collection" : true,
+                 "encoding" : "json",
+                 "extra_config" : {
+                   "proxy" : { }
+                 },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : { },
+               "output_encoding" : "json",
+               "method" : "GET",
+               "input_query_strings" : [ "id" ],
+               "cache_ttl" : "1m",
+               "timeout" : "10s"
+             }, {
+               "endpoint" : "/testservices/tickets",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects",
+                 "is_collection" : false,
+                 "encoding" : "json",
+                 "method" : "GET"
+               } ],
+               "extra_config" : { },
+               "output_encoding" : "json",
+               "method" : "GET"
+             }, {
+               "endpoint" : "/mucontext/getBrew",
+               "backend" : [ {
+                 "host" : [ "https://api.openbrewerydb.org" ],
+                 "url_pattern" : "/breweries",
+                 "is_collection" : true,
+                 "encoding" : "json",
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "modifier/jmespath" : {
+                   "expr" : "collection[?city == `Bend`].name"
+                 },
+                 "proxy" : {
+                   "static" : {
+                     "data" : {
+                       "status" : 200,
+                       "message" : "success"
+                     },
+                     "strategy" : "always"
+                   }
+                 }
+               },
+               "output_encoding" : "json",
+               "method" : "GET"
              } ],
              "extra_config" : {
                "security/cors" : {
