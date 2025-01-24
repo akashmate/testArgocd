@@ -25,7 +25,7 @@ data:
                } ],
                "extra_config" : {
                  "modifier/jmespath" : {
-                   "expr" : "collection[].{name : name, city : city}"
+                   "expr" : "collection[?city == `Bend`].name"
                  },
                  "proxy" : {
                    "static" : {
