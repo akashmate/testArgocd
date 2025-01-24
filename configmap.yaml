@@ -34,7 +34,7 @@ data:
                  "encoding" : "json",
                  "extra_config" : {
                    "modifier/jmespath" : {
-                     "expr" : "collection.data"
+                     "expr" : "{}"
                    },
                    "proxy" : { }
                  },
