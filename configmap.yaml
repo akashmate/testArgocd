@@ -45,8 +45,8 @@ data:
                    },
                    "proxy" : {
                      "flatmap_filter" : [ {
-                       "type" : "del",
-                       "args" : [ "collection.*.data" ]
+                       "type" : "append",
+                       "args" : [ "collection.*.data", "enrollData.*.name" ]
                      } ]
                    }
                  },
