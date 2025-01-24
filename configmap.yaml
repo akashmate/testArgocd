@@ -32,7 +32,13 @@ data:
                  "url_pattern" : "/objects",
                  "is_collection" : true,
                  "encoding" : "json",
-                 "extra_config" : { },
+                 "extra_config" : {
+                   "modifier/response-body-generator" : {
+                     "content_type" : "application/json",
+                     "template" : "ewogICJTZXJ2aWNlcyI6eyAKICAgICJlbnJvbGxEZXRhaWxzIjogInt7IC5yZXFfYm9keS4gY29sbGVjdGlvbiB9fSIKICB9Cn0K"
+                   },
+                   "proxy" : { }
+                 },
                  "method" : "GET",
                  "disable_host_sanitize" : true
                } ],
