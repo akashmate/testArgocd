@@ -33,10 +33,17 @@ data:
                  "is_collection" : true,
                  "encoding" : "json",
                  "extra_config" : {
-                   "modifier/response-body-generator" : {
-                     "content_type" : "application/json",
-                     "template" : "ewogICJTZXJ2aWNlcyI6eyAKICAgICJlbnJvbGxEZXRhaWxzIjogInt7IC5yZXFfYm9keS4gY29sbGVjdGlvbiB9fSIKICB9Cn0K"
+                   "modifier/jmespath" : {
+                     "expr" : "dssd"
                    },
+                   "proxy" : { }
+                 },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
+               }, {
+                 "host" : [ "http://localhost:3000" ],
+                 "url_pattern" : "/template",
+                 "extra_config" : {
                    "proxy" : { }
                  },
                  "method" : "GET",
