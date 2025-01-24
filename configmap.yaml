@@ -8,21 +8,28 @@ data:
            {
              "$schema" : "https://www.krakend.io/schema/krakend.json",
              "version" : 3,
-             "name" : "massil",
+             "name" : "Sample",
              "port" : 8082,
-             "host" : [ "http://localhost:" ],
+             "host" : [ "http://localhost" ],
              "timeout" : "3000ms",
              "cache_ttl" : "300s",
              "debug_endpoint" : false,
-             "echo_endpoint" : false,
              "endpoints" : [ {
-               "endpoint" : "/test-api/keys",
+               "endpoint" : "/context4/end2",
                "backend" : [ {
                  "host" : [ "https://jsonplaceholder.typicode.com" ],
-                 "url_pattern" : "/users",
+                 "url_pattern" : "/posts",
                  "is_collection" : true,
                  "encoding" : "json",
                  "method" : "GET"
+               }, {
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "url_pattern" : "/users",
+                 "extra_config" : {
+                   "proxy" : { }
+                 },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
                } ],
                "extra_config" : {
                  "auth/validator" : {
@@ -31,6 +38,7 @@ data:
                    "issuer" : "http://localhost:8080/realms/master",
                    "disable_jwk_security" : true,
                    "scopes_matcher" : "any",
+                   "scopes" : [ "testingdemo" ],
                    "scopes_key" : "scope"
                  }
                },
