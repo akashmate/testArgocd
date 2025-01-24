@@ -27,7 +27,8 @@ data:
                  "proxy" : {
                    "static" : {
                      "data" : {
-                       "city" : "norman"
+                       "status" : 200,
+                       "message" : "success"
                      },
                      "strategy" : "always"
                    }
