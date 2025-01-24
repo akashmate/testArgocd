@@ -58,7 +58,11 @@ data:
                  "method" : "GET",
                  "disable_host_sanitize" : true
                } ],
-               "extra_config" : { },
+               "extra_config" : {
+                 "modifier/jmespath" : {
+                   "expr" : "collection[].{id: id, name: name}"
+                 }
+               },
                "output_encoding" : "json",
                "method" : "GET",
                "input_query_strings" : [ "id" ],
