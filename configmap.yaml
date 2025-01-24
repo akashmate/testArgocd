@@ -57,17 +57,6 @@ data:
                  },
                  "method" : "GET",
                  "disable_host_sanitize" : true
-               }, {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects",
-                 "extra_config" : {
-                   "modifier/jmespath" : {
-                     "expr" : "collection[].{id: id, name: name}"
-                   },
-                   "proxy" : { }
-                 },
-                 "method" : "GET",
-                 "disable_host_sanitize" : true
                } ],
                "extra_config" : { },
                "output_encoding" : "json",
