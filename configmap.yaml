@@ -15,6 +15,27 @@ data:
              "cache_ttl" : "300s",
              "debug_endpoint" : false,
              "endpoints" : [ {
+               "endpoint" : "/mucontext/getBrew",
+               "backend" : [ {
+                 "host" : [ "https://api.openbrewerydb.org" ],
+                 "url_pattern" : "/breweries",
+                 "is_collection" : true,
+                 "encoding" : "json",
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes_key" : "scope"
+                 }
+               },
+               "output_encoding" : "json",
+               "method" : "GET"
+             }, {
                "endpoint" : "/testservices/sample",
                "backend" : [ {
                  "host" : [ "https://jsonplaceholder.typicode.com" ],
@@ -69,30 +90,6 @@ data:
                "extra_config" : { },
                "output_encoding" : "json",
                "method" : "GET"
-             }, {
-               "endpoint" : "/mucontextgetEmployeeDetails",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects",
-                 "encoding" : "json",
-                 "extra_config" : {
-                   "proxy" : { }
-                 },
-                 "method" : "GET",
-                 "disable_host_sanitize" : true
-               } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes_key" : "scope"
-                 }
-               },
-               "output_encoding" : "json",
-               "method" : "POST"
              } ],
              "extra_config" : {
                "security/cors" : {
