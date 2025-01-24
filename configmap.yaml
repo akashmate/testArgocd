@@ -33,9 +33,6 @@ data:
                  "is_collection" : true,
                  "encoding" : "json",
                  "extra_config" : {
-                   "modifier/jmespath" : {
-                     "expr" : "dssd"
-                   },
                    "proxy" : { }
                  },
                  "method" : "GET",
