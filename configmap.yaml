@@ -498,14 +498,5 @@ data:
                  "allow_headers" : [ "*" ],
                  "allow_credentials" : true
                }
-             },
-             "client_tls" : {
-               "id" : 3
-             },
-             "idle_timeout" : "",
-             "max_idle_connections" : 0,
-             "max_idle_connections_per_host" : 250,
-             "read_header_timeout" : "",
-             "read_timeout" : "",
-             "write_timeout" : ""
+             }
            }
