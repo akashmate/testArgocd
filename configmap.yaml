@@ -5,78 +5,57 @@ metadata:
   namespace: krakenddemo-namespace
 data:
   krakend.json: |
-           {
-             "$schema" : "https://www.krakend.io/schema/krakend.json",
-             "version" : 3,
-             "name" : "gitgateway",
-             "port" : 8082,
-             "timeout" : "3000ms",
-             "cache_ttl" : "300s",
-             "debug_endpoint" : false,
-             "plugin" : {
-               "pattern" : ".so",
-               "folder" : "/opt/krakend/plugins/"
-             },
-             "endpoints" : [ {
-               "endpoint" : "/api2/keycloak-protected1",
-               "backend" : [ {
-                 "host" : [ "http://localhost:8082" ],
-                 "url_pattern" : "/__health"
-               } ],
-               "extra_config" : {
-                 "auth/api-keys" : {
-                   "roles" : [ "consumer_ramesh" ]
-                 }
-               },
-               "method" : "GET"
-             }, {
-               "endpoint" : "/demo/keycloak-protected2",
-               "backend" : [ {
-                 "host" : [ "http://localhost:8082" ],
-                 "url_pattern" : "/__health"
-               } ],
-               "extra_config" : {
-                 "auth/basic" : {
-                   "users" : {
-                     "consumer_ramesh" : "$2a$10$zptiG1eswxpKw9.OHVKjx.qKyShcbuGSWGetaMIRQ/vazBIgiiOP2",
-                     "consumer_neel" : "$2a$10$eHerowcCmAhwo0sRgvtp.uDVmRzqUvT3Hkr9v5aZRmkMMUgat.6j."
-                   }
-                 }
-               },
-               "method" : "GET"
-             }, {
-               "endpoint" : "/demo/keycloak-protected1",
-               "backend" : [ {
-                 "host" : [ "http://localhost:8082" ],
-                 "url_pattern" : "/__health"
-               } ],
-               "extra_config" : {
-                 "auth/basic" : {
-                   "users" : {
-                     "consumer_ramesh" : "$2a$10$zptiG1eswxpKw9.OHVKjx.qKyShcbuGSWGetaMIRQ/vazBIgiiOP2",
-                     "consumer_neel" : "$2a$10$eHerowcCmAhwo0sRgvtp.uDVmRzqUvT3Hkr9v5aZRmkMMUgat.6j."
-                   }
-                 }
-               },
-               "method" : "GET"
-             } ],
-             "extra_config" : {
-               "security/cors" : {
-                 "allow_origins" : [ "*" ],
-                 "allow_methods" : [ "GET", "HEAD", "POST", "PUT", "DELETE" ],
-                 "allow_headers" : [ "*" ],
-                 "expose_headers" : [ "Content-Length", "Content-Type" ],
-                 "max_age" : "12h",
-                 "allow_credentials" : true
-               },
-               "auth/api-keys" : {
-                 "identifier" : "Authorization",
-                 "strategy" : "header",
-                 "keys" : [ {
-                   "key" : "2609d1c3-941a-481e-91b6-f7d1d4eaa422",
-                   "roles" : [ "consumer_ramesh" ],
-                   "@description" : "b to c app"
-                 } ]
-               }
-             }
+           {
+             "$schema" : "https://www.krakend.io/schema/krakend.json",
+             "version" : 3,
+             "name" : "MassilGW",
+             "port" : 8082,
+             "host" : [ "localhost" ],
+             "timeout" : "10000ms",
+             "cache_ttl" : "300s",
+             "debug_endpoint" : false,
+             "endpoints" : [ {
+               "endpoint" : "/tickets/stopticket",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects/8",
+                 "encoding" : "json",
+                 "extra_config" : {
+                   "proxy" : {
+                     "flatmap_filter" : [ {
+                       "type" : "move",
+                       "args" : [ "collection.*.data", "collection.*.newdata" ]
+                     }, {
+                       "type" : "move",
+                       "args" : [ "collection.*.data", "collection.*.newdata" ]
+                     } ]
+                   }
+                 },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : { },
+               "output_encoding" : "json-collection",
+               "method" : "GET"
+             }, {
+               "endpoint" : "/tickets/backendrespmanipulation",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects",
+                 "is_collection" : true,
+                 "encoding" : "json",
+                 "method" : "GET"
+               } ],
+               "extra_config" : { },
+               "output_encoding" : "json",
+               "method" : "GET"
+             } ],
+             "extra_config" : {
+               "security/cors" : {
+                 "allow_origins" : [ "*" ],
+                 "allow_methods" : [ "GET", "HEAD", "POST" ],
+                 "allow_headers" : [ "*" ],
+                 "allow_credentials" : true
+               }
+             }
            }
