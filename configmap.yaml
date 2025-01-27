@@ -19,7 +19,56 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
-               "endpoint" : "/backend/backendrespmanipulation",
+               "endpoint" : "/keynull",
+               "output_encoding" : "json",
+               "method" : "GET"
+             }, {
+               "endpoint" : "/keynull",
+               "output_encoding" : "json",
+               "method" : "GET"
+             }, {
+               "endpoint" : "/keynull",
+               "output_encoding" : "json",
+               "method" : "GET"
+             }, {
+               "endpoint" : "/keynull",
+               "output_encoding" : "json",
+               "method" : "GET"
+             }, {
+               "endpoint" : "/keynull",
+               "output_encoding" : "json",
+               "method" : "GET"
+             }, {
+               "endpoint" : "/key/stopticket",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects/8",
+                 "encoding" : "json",
+                 "extra_config" : {
+                   "proxy" : {
+                     "flatmap_filter" : [ {
+                       "type" : "move",
+                       "args" : [ "collection.*.data", "collection.*.newdata" ]
+                     }, {
+                       "type" : "move",
+                       "args" : [ "collection.*.data", "collection.*.newdata" ]
+                     } ]
+                   }
+                 },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : {
+                 "auth/basic" : {
+                   "users" : {
+                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
+                   }
+                 }
+               },
+               "output_encoding" : "json-collection",
+               "method" : "GET"
+             }, {
+               "endpoint" : "/key/backendrespmanipulation",
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev" ],
                  "url_pattern" : "/objects",
@@ -34,8 +83,33 @@ data:
                  "method" : "GET",
                  "disable_host_sanitize" : true
                } ],
-               "extra_config" : { },
+               "extra_config" : {
+                 "auth/basic" : {
+                   "users" : {
+                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
+                   }
+                 }
+               },
                "output_encoding" : "json",
+               "method" : "GET"
+             }, {
+               "endpoint" : "/key/rootobject",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev/" ],
+                 "url_pattern" : "/objects/7",
+                 "extra_config" : {
+                   "proxy" : { }
+                 },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : {
+                 "auth/basic" : {
+                   "users" : {
+                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
+                   }
+                 }
+               },
                "method" : "GET"
              } ],
              "extra_config" : {
