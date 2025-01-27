@@ -8,11 +8,11 @@ data:
            {
              "$schema" : "https://www.krakend.io/schema/krakend.json",
              "version" : 3,
-             "name" : "MassilGW",
-             "port" : 8082,
+             "name" : "Massil Gateway operations",
+             "port" : 8093,
              "host" : [ "localhost" ],
-             "timeout" : "10000ms",
-             "cache_ttl" : "300s",
+             "timeout" : "",
+             "cache_ttl" : "",
              "debug_endpoint" : false,
              "endpoints" : [ {
                "endpoint" : "/backend/backendrespmanipulation",
@@ -479,13 +479,43 @@ data:
                "method" : "GET",
                "cache_ttl" : "60s",
                "timeout" : "30s"
+             }, {
+               "endpoint" : "/tickets/stopticket",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects/8",
+                 "encoding" : "json",
+                 "extra_config" : {
+                   "proxy" : {
+                     "flatmap_filter" : [ {
+                       "type" : "move",
+                       "args" : [ "collection.*.data", "collection.*.newdata" ]
+                     }, {
+                       "type" : "move",
+                       "args" : [ "collection.*.data", "collection.*.newdata" ]
+                     } ]
+                   }
+                 },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : { },
+               "output_encoding" : "json-collection",
+               "method" : "GET"
              } ],
              "extra_config" : {
-               "security/cors" : {
-                 "allow_origins" : [ "*" ],
-                 "allow_methods" : [ "GET", "HEAD", "POST" ],
-                 "allow_headers" : [ "*" ],
-                 "allow_credentials" : true
+               "router" : {
+                 "id" : 1,
+                 "disable_gzip" : true
                }
-             }
+             },
+             "client_tls" : {
+               "id" : 1
+             },
+             "idle_timeout" : "",
+             "max_idle_connections" : 0,
+             "max_idle_connections_per_host" : 250,
+             "read_header_timeout" : "",
+             "read_timeout" : "",
+             "write_timeout" : ""
            }
