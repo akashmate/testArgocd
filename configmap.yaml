@@ -8,11 +8,11 @@ data:
            {
              "$schema" : "https://www.krakend.io/schema/krakend.json",
              "version" : 3,
-             "name" : "Massil Gateway operations",
-             "port" : 8093,
+             "name" : "MassilGW",
+             "port" : 8082,
              "host" : [ "localhost" ],
-             "timeout" : "",
-             "cache_ttl" : "",
+             "timeout" : "10000ms",
+             "cache_ttl" : "300s",
              "debug_endpoint" : false,
              "endpoints" : [ {
                "endpoint" : "/backend/backendrespmanipulation",
@@ -481,18 +481,11 @@ data:
                "timeout" : "30s"
              } ],
              "extra_config" : {
-               "router" : {
-                 "id" : 1,
-                 "disable_gzip" : true
+               "security/cors" : {
+                 "allow_origins" : [ "*" ],
+                 "allow_methods" : [ "GET", "HEAD", "POST" ],
+                 "allow_headers" : [ "*" ],
+                 "allow_credentials" : true
                }
-             },
-             "client_tls" : {
-               "id" : 1
-             },
-             "idle_timeout" : "",
-             "max_idle_connections" : 0,
-             "max_idle_connections_per_host" : 250,
-             "read_header_timeout" : "",
-             "read_timeout" : "",
-             "write_timeout" : ""
+             }
            }
