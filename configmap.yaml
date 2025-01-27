@@ -8,7 +8,7 @@ data:
            {
              "$schema" : "https://www.krakend.io/schema/krakend.json",
              "version" : 3,
-             "name" : "gateway operations",
+             "name" : "Massil Gateway operations",
              "port" : 8093,
              "host" : [ "localhost" ],
              "timeout" : "",
