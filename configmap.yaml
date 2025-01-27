@@ -11,8 +11,8 @@ data:
              "name" : "Massil Gateway ",
              "port" : 8093,
              "host" : [ "localhost" ],
-             "timeout" : "",
-             "cache_ttl" : "",
+             "timeout" : "3000ms",
+             "cache_ttl" : "300s",
              "debug_endpoint" : false,
              "endpoints" : [ {
                "endpoint" : "/backend/backendrespmanipulation",
