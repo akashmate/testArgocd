@@ -15,6 +15,18 @@ data:
              "cache_ttl" : "300s",
              "debug_endpoint" : false,
              "endpoints" : [ {
+               "endpoint" : "/backend/backendrespmanipulation",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects",
+                 "is_collection" : true,
+                 "encoding" : "json",
+                 "method" : "GET"
+               } ],
+               "extra_config" : { },
+               "output_encoding" : "json",
+               "method" : "GET"
+             }, {
                "endpoint" : "/tickets/stopticket",
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev" ],
