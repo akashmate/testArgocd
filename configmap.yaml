@@ -8,8 +8,8 @@ data:
            {
              "$schema" : "https://www.krakend.io/schema/krakend.json",
              "version" : 3,
-             "name" : "api-gateway",
-             "port" : 8082,
+             "name" : "Massil Gateway operations",
+             "port" : 8093,
              "host" : [ "localhost" ],
              "timeout" : "",
              "cache_ttl" : "",
@@ -531,14 +531,8 @@ data:
              } ],
              "extra_config" : {
                "router" : {
-                 "id" : 3,
+                 "id" : 1,
                  "disable_gzip" : true
-               },
-               "security/cors" : {
-                 "allow_origins" : [ "*" ],
-                 "allow_methods" : [ "GET", "HEAD", "POST" ],
-                 "allow_headers" : [ "*" ],
-                 "allow_credentials" : true
                }
              },
              "idle_timeout" : "",
