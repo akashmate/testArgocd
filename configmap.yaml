@@ -347,40 +347,24 @@ data:
              }, {
                "endpoint" : "/basicoperations/SequentialProxy",
                "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects/7",
-                 "is_collection" : false,
-                 "method" : "GET"
-               }, {
-                 "host" : [ "https://jsonplaceholder.typicode.com" ],
-                 "url_pattern" : "/",
-                 "extra_config" : { },
-                 "method" : "GET",
-                 "disable_host_sanitize" : true
-               } ],
-               "extra_config" : { },
-               "method" : "GET",
-               "cache_ttl" : "60s",
-               "timeout" : "30s"
-             }, {
-               "endpoint" : "/backend/backendrespmanipulation",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects",
-                 "is_collection" : true,
-                 "encoding" : "json",
+                 "host" : [ "https://jsonplaceholder.typicode.com/" ],
+                 "url_pattern" : "/comments",
                  "extra_config" : {
-                   "modifier/jmespath" : {
-                     "expr" : "collection[].{id: id, name: name}"
-                   },
                    "proxy" : { }
                  },
                  "method" : "GET",
                  "disable_host_sanitize" : true
+               }, {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects/7",
+                 "is_collection" : false,
+                 "method" : "GET"
                } ],
                "extra_config" : { },
-               "output_encoding" : "json",
-               "method" : "GET"
+               "method" : "GET",
+               "input_query_strings" : [ "postId={resp0_id}" ],
+               "cache_ttl" : "60s",
+               "timeout" : "30s"
              } ],
              "extra_config" : {
                "router" : {
