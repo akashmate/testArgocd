@@ -14,6 +14,7 @@ data:
              "timeout" : "3000ms",
              "cache_ttl" : "300s",
              "debug_endpoint" : false,
+             "echo_endpoint" : false,
              "plugin" : {
                "pattern" : ".so",
                "folder" : "/opt/krakend/plugins/"
