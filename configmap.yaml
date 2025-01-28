@@ -29,7 +29,16 @@ data:
                  "method" : "GET",
                  "disable_host_sanitize" : true
                } ],
-               "extra_config" : { },
+               "extra_config" : {
+                 "proxy" : {
+                   "static" : {
+                     "data" : {
+                       "Hi" : "i am static message"
+                     },
+                     "strategy" : "always"
+                   }
+                 }
+               },
                "method" : "GET"
              }, {
                "endpoint" : "/basicoperations/testetimeout",
