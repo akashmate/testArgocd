@@ -362,7 +362,7 @@ data:
                } ],
                "extra_config" : { },
                "method" : "GET",
-               "input_query_strings" : [ "postId={resp0_id}" ],
+               "input_query_strings" : [ "postId" ],
                "cache_ttl" : "60s",
                "timeout" : "30s"
              } ],
