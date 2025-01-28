@@ -22,8 +22,8 @@ data:
                "endpoint" : "/backend/backendrespmanipulation",
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects/6",
-                 "is_collection" : true,
+                 "url_pattern" : "/objects/7",
+                 "encoding" : "json",
                  "extra_config" : {
                    "proxy" : { }
                  },
@@ -31,9 +31,7 @@ data:
                  "disable_host_sanitize" : true
                }, {
                  "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects/7",
-                 "is_collection" : true,
-                 "encoding" : "json",
+                 "url_pattern" : "/objects/6",
                  "extra_config" : {
                    "proxy" : { }
                  },
