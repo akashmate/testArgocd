@@ -21,18 +21,19 @@ data:
              "endpoints" : [ {
                "endpoint" : "/backend/backendrespmanipulation",
                "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects/7",
-                 "encoding" : "json",
+                 "host" : [ "https://jsonplaceholder.typicode.com/" ],
+                 "url_pattern" : "/posts",
+                 "is_collection" : true,
                  "extra_config" : {
                    "proxy" : { }
                  },
                  "method" : "GET",
                  "disable_host_sanitize" : true
                }, {
-                 "host" : [ "https://jsonplaceholder.typicode.com/" ],
-                 "url_pattern" : "/posts",
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects",
                  "is_collection" : true,
+                 "encoding" : "json",
                  "extra_config" : {
                    "proxy" : { }
                  },
