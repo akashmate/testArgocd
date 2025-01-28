@@ -24,11 +24,7 @@ data:
                  "host" : [ "https://api.restful-api.dev" ],
                  "url_pattern" : "/objects",
                  "is_collection" : true,
-                 "encoding" : "json",
                  "extra_config" : {
-                   "modifier/jmespath" : {
-                     "expr" : "collection[].{id: id, name: name}"
-                   },
                    "proxy" : { }
                  },
                  "method" : "GET",
@@ -36,7 +32,12 @@ data:
                }, {
                  "host" : [ "https://api.restful-api.dev" ],
                  "url_pattern" : "/objects",
+                 "is_collection" : true,
+                 "encoding" : "json",
                  "extra_config" : {
+                   "modifier/jmespath" : {
+                     "expr" : "collection[].{id: id, name: name}"
+                   },
                    "proxy" : { }
                  },
                  "method" : "GET",
