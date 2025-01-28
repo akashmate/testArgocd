@@ -347,18 +347,18 @@ data:
              }, {
                "endpoint" : "/basicoperations/SequentialProxy",
                "backend" : [ {
-                 "host" : [ "https://jsonplaceholder.typicode.com/" ],
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects/7",
+                 "is_collection" : false,
+                 "method" : "GET"
+               }, {
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
                  "url_pattern" : "/comments",
                  "extra_config" : {
                    "proxy" : { }
                  },
                  "method" : "GET",
                  "disable_host_sanitize" : true
-               }, {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects/7",
-                 "is_collection" : false,
-                 "method" : "GET"
                } ],
                "extra_config" : { },
                "method" : "GET",
