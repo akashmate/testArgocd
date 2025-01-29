@@ -42,7 +42,8 @@ data:
                },
                "output_encoding" : "json",
                "input_headers" : [ "" ],
-               "method" : "GET"
+               "method" : "GET",
+               "input_query_strings" : [ "id" ]
              }, {
                "endpoint" : "/backend/backendrespmanipulation",
                "backend" : [ {
