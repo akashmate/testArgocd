@@ -20,28 +20,28 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
-               "endpoint" : "/backend/backendrespmanipulation",
+               "endpoint" : "/mucontext/getBrew",
                "backend" : [ {
-                 "host" : [ "https://jsonplaceholder.typicode.com/" ],
-                 "url_pattern" : "/posts",
-                 "is_collection" : true,
-                 "extra_config" : {
-                   "proxy" : { }
-                 },
-                 "method" : "GET",
-                 "disable_host_sanitize" : true
-               }, {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects",
+                 "host" : [ "https://api.openbrewerydb.org" ],
+                 "url_pattern" : "/breweries",
                  "is_collection" : true,
                  "encoding" : "json",
-                 "extra_config" : {
-                   "proxy" : { }
-                 },
-                 "method" : "GET",
-                 "disable_host_sanitize" : true
+                 "method" : "GET"
                } ],
-               "extra_config" : { },
+               "extra_config" : {
+                 "modifier/jmespath" : {
+                   "expr" : "collection[?city == 'Bend'].name"
+                 },
+                 "proxy" : {
+                   "static" : {
+                     "data" : {
+                       "status" : 200,
+                       "message" : "success"
+                     },
+                     "strategy" : "always"
+                   }
+                 }
+               },
                "output_encoding" : "json",
                "method" : "GET"
              } ],
