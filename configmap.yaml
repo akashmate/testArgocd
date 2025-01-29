@@ -60,7 +60,7 @@ data:
                          "status" : 422
                        },
                        "schema" : {
-                         "type" : "object"
+                         "type" : "array"
                        }
                      }
                    },
