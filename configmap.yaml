@@ -204,6 +204,18 @@ data:
                      "vijay" : "$2a$10$3P8gTibWNOZ05FgRCU5R8em8er2LXQnmk2tnUFlEMG95tGio6uPtO",
                      "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
                    }
+                 },
+                 "plugin/req-resp-modifier" : {
+                   "name" : [ "response-schema-validator" ],
+                   "response-schema-validator" : {
+                     "error" : {
+                       "body" : "Validation Error",
+                       "status" : 422
+                     },
+                     "schema" : {
+                       "type" : "array"
+                     }
+                   }
                  }
                },
                "output_encoding" : "json",
