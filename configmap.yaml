@@ -56,12 +56,11 @@ data:
                      "name" : [ "response-schema-validator" ],
                      "response-schema-validator" : {
                        "error" : {
-                         "body" : "Validation Error yyy",
+                         "body" : "Validation Error",
                          "status" : 422
                        },
                        "schema" : {
-                         "type" : "array",
-                         "required" : [ "body", "id", "title", "userId" ]
+                         "type" : "array"
                        }
                      }
                    },
