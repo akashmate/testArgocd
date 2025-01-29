@@ -52,18 +52,6 @@ data:
                  "is_collection" : true,
                  "encoding" : "json",
                  "extra_config" : {
-                   "plugin/req-resp-modifier" : {
-                     "name" : [ "response-schema-validator" ],
-                     "response-schema-validator" : {
-                       "error" : {
-                         "body" : "Validation Error",
-                         "status" : 422
-                       },
-                       "schema" : {
-                         "type" : "array"
-                       }
-                     }
-                   },
                    "proxy" : { }
                  },
                  "method" : "GET",
