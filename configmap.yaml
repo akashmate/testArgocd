@@ -61,24 +61,7 @@ data:
                        },
                        "schema" : {
                          "type" : "array",
-                         "items" : {
-                           "type" : "object",
-                           "properties" : {
-                             "body" : {
-                               "type" : "string"
-                             },
-                             "id" : {
-                               "type" : "number"
-                             },
-                             "title" : {
-                               "type" : "string"
-                             },
-                             "userId" : {
-                               "type" : "number"
-                             }
-                           },
-                           "required" : [ "body", "id", "title", "userId" ]
-                         }
+                         "required" : [ "body", "id", "title", "userId" ]
                        }
                      }
                    },
@@ -89,31 +72,6 @@ data:
                } ],
                "extra_config" : { },
                "output_encoding" : "json-collection",
-               "method" : "GET"
-             }, {
-               "endpoint" : "/mucontext/getBrew",
-               "backend" : [ {
-                 "host" : [ "https://api.openbrewerydb.org" ],
-                 "url_pattern" : "/breweries",
-                 "is_collection" : true,
-                 "encoding" : "json",
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
-                 "modifier/jmespath" : {
-                   "expr" : "collection[?city == 'Bend'].name"
-                 },
-                 "proxy" : {
-                   "static" : {
-                     "data" : {
-                       "status" : 200,
-                       "message" : "success"
-                     },
-                     "strategy" : "always"
-                   }
-                 }
-               },
-               "output_encoding" : "json",
                "method" : "GET"
              } ],
              "extra_config" : {
