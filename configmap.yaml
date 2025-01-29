@@ -181,8 +181,7 @@ data:
                      "Hard disk size" : {
                        "type" : "string"
                      }
-                   },
-                   "required" : [ "year" ]
+                   }
                  }
                },
                "output_encoding" : "json",
