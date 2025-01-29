@@ -56,7 +56,8 @@ data:
                      "name" : [ "response-schema-validator" ],
                      "response-schema-validator" : {
                        "error" : {
-                         "body" : "Validation Error"
+                         "body" : "Validation Error yyy",
+                         "status" : 422
                        },
                        "schema" : {
                          "type" : "array",
