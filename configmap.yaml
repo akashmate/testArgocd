@@ -83,7 +83,18 @@ data:
                  "encoding" : "json",
                  "method" : "GET"
                } ],
-               "extra_config" : { },
+               "extra_config" : {
+                 "plugin/req-resp-modifier" : {
+                   "name" : [ "content-replacer" ],
+                   "content-replacer" : {
+                     "hem" : {
+                       "find" : "data",
+                       "replace" : "enrollData",
+                       "regexp" : false
+                     }
+                   }
+                 }
+               },
                "output_encoding" : "json-collection",
                "method" : "GET"
              }, {
