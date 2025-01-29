@@ -50,8 +50,12 @@ data:
                  "host" : [ "https://jsonplaceholder.typicode.com" ],
                  "url_pattern" : "/posts",
                  "is_collection" : true,
-                 "encoding" : "xml",
-                 "method" : "GET"
+                 "encoding" : "json",
+                 "extra_config" : {
+                   "proxy" : { }
+                 },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
                } ],
                "extra_config" : { },
                "output_encoding" : "json",
