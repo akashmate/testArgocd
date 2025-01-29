@@ -106,7 +106,13 @@ data:
                  "encoding" : "json",
                  "method" : "GET"
                } ],
-               "extra_config" : { },
+               "extra_config" : {
+                 "qos/ratelimit/router" : {
+                   "every" : "20s",
+                   "max_rate" : 2,
+                   "strategy" : "ip"
+                 }
+               },
                "output_encoding" : "json",
                "method" : "GET"
              }, {
