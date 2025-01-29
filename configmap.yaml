@@ -90,12 +90,24 @@ data:
                      "hem" : {
                        "find" : "data",
                        "replace" : "enrollData",
-                       "regexp" : false
+                       "regexp" : true
                      }
                    }
                  }
                },
                "output_encoding" : "json-collection",
+               "method" : "GET"
+             }, {
+               "endpoint" : "/backend/eratelimit",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects",
+                 "is_collection" : true,
+                 "encoding" : "json",
+                 "method" : "GET"
+               } ],
+               "extra_config" : { },
+               "output_encoding" : "json",
                "method" : "GET"
              }, {
                "endpoint" : "/basicoperations/renameobject",
