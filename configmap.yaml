@@ -166,14 +166,6 @@ data:
                      "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
                    }
                  },
-                 "plugin/req-resp-modifier" : {
-                   "name" : [ "response-schema-validator" ],
-                   "response-schema-validator" : {
-                     "schema" : {
-                       "type" : "array"
-                     }
-                   }
-                 },
                  "validation/json-schema" : {
                    "type" : "object",
                    "properties" : {
@@ -188,6 +180,33 @@ data:
                      },
                      "Hard disk size" : {
                        "type" : "string"
+                     }
+                   }
+                 }
+               },
+               "output_encoding" : "json",
+               "method" : "POST"
+             }, {
+               "endpoint" : "/backend/erespSchemaVal",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects",
+                 "is_collection" : true,
+                 "encoding" : "json",
+                 "method" : "POST"
+               } ],
+               "extra_config" : {
+                 "auth/basic" : {
+                   "users" : {
+                     "vijay" : "$2a$10$3P8gTibWNOZ05FgRCU5R8em8er2LXQnmk2tnUFlEMG95tGio6uPtO",
+                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
+                   }
+                 },
+                 "plugin/req-resp-modifier" : {
+                   "name" : [ "response-schema-validator" ],
+                   "response-schema-validator" : {
+                     "schema" : {
+                       "type" : "array"
                      }
                    }
                  }
@@ -639,31 +658,6 @@ data:
                "input_query_strings" : [ "postId" ],
                "cache_ttl" : "60s",
                "timeout" : "30s"
-             }, {
-               "endpoint" : "/mucontext/getBrew",
-               "backend" : [ {
-                 "host" : [ "https://api.openbrewerydb.org" ],
-                 "url_pattern" : "/breweries",
-                 "is_collection" : true,
-                 "encoding" : "json",
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
-                 "modifier/jmespath" : {
-                   "expr" : "collection[?city == 'Bend'].name"
-                 },
-                 "proxy" : {
-                   "static" : {
-                     "data" : {
-                       "status" : 200,
-                       "message" : "success"
-                     },
-                     "strategy" : "always"
-                   }
-                 }
-               },
-               "output_encoding" : "json",
-               "method" : "GET"
              } ],
              "extra_config" : {
                "router" : {
