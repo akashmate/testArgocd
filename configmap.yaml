@@ -181,8 +181,7 @@ data:
                      "Hard disk size" : {
                        "type" : "string"
                      }
-                   },
-                   "required" : [ "year", "price", "CPU model", "Hard disk size" ]
+                   }
                  }
                },
                "output_encoding" : "json",
