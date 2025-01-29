@@ -20,29 +20,41 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
-               "endpoint" : "/mucontext/getBrew",
+               "endpoint" : "/backend/backendrespmanipulation",
                "backend" : [ {
-                 "host" : [ "https://api.openbrewerydb.org" ],
-                 "url_pattern" : "/breweries",
+                 "host" : [ "https://jsonplaceholder.typicode.com/" ],
+                 "url_pattern" : "/posts",
+                 "is_collection" : true,
+                 "extra_config" : {
+                   "proxy" : { }
+                 },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
+               }, {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects",
+                 "is_collection" : true,
+                 "encoding" : "json",
+                 "extra_config" : {
+                   "proxy" : { }
+                 },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : { },
+               "output_encoding" : "json",
+               "method" : "GET"
+             }, {
+               "endpoint" : "/backend/respschema",
+               "backend" : [ {
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "url_pattern" : "/posts",
                  "is_collection" : true,
                  "encoding" : "json",
                  "method" : "GET"
                } ],
-               "extra_config" : {
-                 "modifier/jmespath" : {
-                   "expr" : "collection[?city == 'Bend'].name"
-                 },
-                 "proxy" : {
-                   "static" : {
-                     "data" : {
-                       "status" : 200,
-                       "message" : "success"
-                     },
-                     "strategy" : "always"
-                   }
-                 }
-               },
-               "output_encoding" : "json",
+               "extra_config" : { },
+               "output_encoding" : "json-collection",
                "method" : "GET"
              } ],
              "extra_config" : {
