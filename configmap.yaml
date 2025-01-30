@@ -223,10 +223,18 @@ data:
                    "req" : {
                      "policies" : [ "abcd", "defg" ],
                      "error" : {
-                       "body" : "[B@3d444d3b",
+                       "body" : "[B@1957b800",
                        "status" : 400,
                        "content_type" : "application/json"
                      }
+                   },
+                   "resp" : {
+                     "error" : {
+                       "body" : "[B@1538ff3e",
+                       "status" : 404,
+                       "content_type" : "application/json"
+                     },
+                     "policies" : [ "res" ]
                    }
                  }
                },
@@ -334,7 +342,7 @@ data:
                    "name" : [ "response-schema-validator" ],
                    "response-schema-validator" : {
                      "error" : {
-                       "body" : "[B@7f5d4725",
+                       "body" : "[B@182a2aa5",
                        "status" : 422
                      },
                      "schema" : {
