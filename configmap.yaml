@@ -207,6 +207,9 @@ data:
                  "url_pattern" : "/objects",
                  "encoding" : "json",
                  "extra_config" : {
+                   "modifier/martian" : {
+                     "Status" : "Success"
+                   },
                    "proxy" : { }
                  },
                  "method" : "POST",
