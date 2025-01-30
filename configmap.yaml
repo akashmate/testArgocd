@@ -221,20 +221,20 @@ data:
                  },
                  "security/policies" : {
                    "req" : {
-                     "policies" : [ "abcd", "defg" ],
+                     "policies" : [ "req" ],
                      "error" : {
-                       "body" : "[B@1957b800",
+                       "body" : "[B@63111a88",
                        "status" : 400,
                        "content_type" : "application/json"
                      }
                    },
                    "resp" : {
                      "error" : {
-                       "body" : "[B@1538ff3e",
+                       "body" : "[B@75b3c64b",
                        "status" : 404,
                        "content_type" : "application/json"
                      },
-                     "policies" : [ "res" ]
+                     "policies" : [ "response" ]
                    }
                  }
                },
@@ -342,7 +342,7 @@ data:
                    "name" : [ "response-schema-validator" ],
                    "response-schema-validator" : {
                      "error" : {
-                       "body" : "[B@182a2aa5",
+                       "body" : "[B@28f16804",
                        "status" : 422
                      },
                      "schema" : {
