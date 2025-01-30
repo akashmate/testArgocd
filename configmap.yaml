@@ -223,14 +223,14 @@ data:
                    "req" : {
                      "policies" : [ "req" ],
                      "error" : {
-                       "body" : "\\x7b226d657373223a22206261642072657175657374227d",
+                       "body" : "[B@47e2b793",
                        "status" : 400,
                        "content_type" : "application/json"
                      }
                    },
                    "resp" : {
                      "error" : {
-                       "body" : "\\x7b226d657373616765223a226e6f7420666f756e64227d",
+                       "body" : "[B@5bddc5b",
                        "status" : 404,
                        "content_type" : "application/json"
                      },
@@ -342,7 +342,7 @@ data:
                    "name" : [ "response-schema-validator" ],
                    "response-schema-validator" : {
                      "error" : {
-                       "body" : "\\x56616c69646174696f6e204572726f72",
+                       "body" : "[B@5c66e5e7",
                        "status" : 422
                      },
                      "schema" : {
@@ -637,6 +637,28 @@ data:
                "method" : "GET",
                "input_query_strings" : [ "name" ]
              }, {
+               "endpoint" : "/basicoperations/resttosoap",
+               "backend" : [ {
+                 "host" : [ "http://www.dneonline.com" ],
+                 "url_pattern" : "/calculator.asmx",
+                 "extra_config" : {
+                   "backend/soap" : {
+                     "debug" : true,
+                     "template" : "PHNvYXBlbnY6RW52ZWxvcGUgeG1sbnM6c29hcGVudj0iaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvc29hcC9lbnZlbG9wZS8iIHhtbG5zOnRlbT0iaHR0cDovL3RlbXB1cmkub3JnLyI+CiAgIDxzb2FwZW52OkhlYWRlci8+CiAgIDxzb2FwZW52OkJvZHk+CiAgICAgIDx0ZW06QWRkPgogICAgICAgICA8dGVtOmludEE+e3sgLnJlcV9wYXJhbXMuYX19PC90ZW06aW50QT4KICAgICAgICAgPHRlbTppbnRCPnt7IC5yZXFfcGFyYW1zLmIgfX08L3RlbTppbnRCPgogICAgICA8L3RlbTpBZGQ+CiAgIDwvc29hcGVudjpCb2R5Pgo8L3NvYXBlbnY6RW52ZWxvcGU+",
+                     "content_type" : "application/xml"
+                   },
+                   "proxy" : { }
+                 },
+                 "method" : "POST",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : {
+                 "auth/api-keys" : {
+                   "roles" : [ "developer" ]
+                 }
+               },
+               "method" : "GET"
+             }, {
                "endpoint" : "/basicoperations/endpointthrottling",
                "backend" : [ {
                  "host" : [ "https://jsonplaceholder.typicode.com" ],
@@ -688,7 +710,7 @@ data:
                      "name" : [ "response-schema-validator" ],
                      "response-schema-validator" : {
                        "error" : {
-                         "body" : "[B@6f6327af",
+                         "body" : "[B@2f0ba69c",
                          "status" : 400
                        },
                        "schema" : {
@@ -732,29 +754,6 @@ data:
                },
                "method" : "GET",
                "input_query_strings" : [ "name" ]
-             }, {
-               "endpoint" : "/basicoperations/bresttosoap",
-               "backend" : [ {
-                 "host" : [ "http://www.dneonline.com" ],
-                 "url_pattern" : "/calculator.asmx",
-                 "encoding" : "xml",
-                 "extra_config" : {
-                   "backend/soap" : {
-                     "template" : "PHNvYXBlbnY6RW52ZWxvcGUgeG1sbnM6c29hcGVudj0iaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvc29hcC9lbnZlbG9wZS8iIHhtbG5zOnRlbT0iaHR0cDovL3RlbXB1cmkub3JnLyI+CiA8c29hcGVudjpIZWFkZXIvPgogPHNvYXBlbnY6Qm9keT4KICAgICA8dGVtOkFkZD4KICAgICAgICA8dGVtOmludEE+e3sgLnJlcV9wYXJhbXMuYX19PC90ZW06aW50QT4KICAgICAgICA8dGVtOmludEI+e3sgLnJlcV9wYXJhbXMuYiB9fTwvdGVtOmludEI+CiAgICAgPC90ZW06QWRkPgogPC9zb2FwZW52OkJvZHk+Cjwvc29hcGVudjpFbnZlbG9wZT4=",
-                     "content_type" : "application/xml"
-                   },
-                   "proxy" : { }
-                 },
-                 "method" : "POST",
-                 "disable_host_sanitize" : true
-               } ],
-               "extra_config" : {
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
-                 }
-               },
-               "output_encoding" : "json",
-               "method" : "POST"
              }, {
                "endpoint" : "/basicoperations/responsemanipulationWithGotmpl",
                "backend" : [ {
@@ -925,57 +924,6 @@ data:
                "cache_ttl" : "60s",
                "timeout" : "30s"
              }, {
-               "endpoint" : "/key/eparams",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects",
-                 "is_collection" : true,
-                 "encoding" : "json",
-                 "extra_config" : {
-                   "proxy" : { }
-                 },
-                 "method" : "GET",
-                 "disable_host_sanitize" : true
-               } ],
-               "extra_config" : {
-                 "auth/basic" : {
-                   "users" : {
-                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
-                   }
-                 }
-               },
-               "output_encoding" : "json",
-               "method" : "GET"
-             }, {
-               "endpoint" : "/key/stopticket",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects/8",
-                 "encoding" : "json",
-                 "extra_config" : {
-                   "proxy" : {
-                     "flatmap_filter" : [ {
-                       "type" : "move",
-                       "args" : [ "collection.*.data", "collection.*.newdata" ]
-                     }, {
-                       "type" : "move",
-                       "args" : [ "collection.*.data", "collection.*.newdata" ]
-                     } ]
-                   }
-                 },
-                 "method" : "GET",
-                 "disable_host_sanitize" : true
-               } ],
-               "extra_config" : {
-                 "auth/basic" : {
-                   "users" : {
-                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
-                   }
-                 }
-               },
-               "output_encoding" : "json-collection",
-               "method" : "GET"
-             }, {
                "endpoint" : "/key/backendrespmanipulation",
                "backend" : [ {
                  "host" : [ "https://jsonplaceholder.typicode.com/" ],
@@ -998,10 +946,8 @@ data:
                  "disable_host_sanitize" : true
                } ],
                "extra_config" : {
-                 "auth/basic" : {
-                   "users" : {
-                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
-                   }
+                 "auth/api-keys" : {
+                   "roles" : [ "developer" ]
                  }
                },
                "output_encoding" : "json",
@@ -1026,13 +972,87 @@ data:
                      "strategy" : "always"
                    }
                  },
-                 "auth/basic" : {
-                   "users" : {
-                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
-                   }
+                 "auth/api-keys" : {
+                   "roles" : [ "developer" ]
                  }
                },
                "method" : "GET"
+             }, {
+               "endpoint" : "/key/stopticket",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects/8",
+                 "encoding" : "json",
+                 "extra_config" : {
+                   "proxy" : {
+                     "flatmap_filter" : [ {
+                       "type" : "move",
+                       "args" : [ "collection.*.data", "collection.*.newdata" ]
+                     }, {
+                       "type" : "move",
+                       "args" : [ "collection.*.data", "collection.*.newdata" ]
+                     } ]
+                   }
+                 },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : {
+                 "auth/api-keys" : {
+                   "roles" : [ "developer" ]
+                 }
+               },
+               "output_encoding" : "json-collection",
+               "method" : "GET"
+             }, {
+               "endpoint" : "/key/ereqSchemaVal",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects",
+                 "encoding" : "json",
+                 "extra_config" : {
+                   "proxy" : { }
+                 },
+                 "method" : "POST",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : {
+                 "auth/api-keys" : {
+                   "roles" : [ "developer" ]
+                 },
+                 "validation/json-schema" : {
+                   "type" : "object",
+                   "properties" : {
+                     "id" : {
+                       "type" : "string"
+                     },
+                     "name" : {
+                       "type" : "string"
+                     },
+                     "data" : {
+                       "type" : "object",
+                       "properties" : {
+                         "year" : {
+                           "type" : "integer"
+                         },
+                         "price" : {
+                           "type" : "number"
+                         },
+                         "CPU model" : {
+                           "type" : "string"
+                         },
+                         "Hard disk size" : {
+                           "type" : "string"
+                         }
+                       },
+                       "required" : [ "year", "price", "CPU model", "Hard disk size" ]
+                     }
+                   },
+                   "required" : [ "name" ]
+                 }
+               },
+               "output_encoding" : "json",
+               "method" : "POST"
              }, {
                "endpoint" : "/key/erespSchemaVal",
                "backend" : [ {
@@ -1046,10 +1066,8 @@ data:
                  "disable_host_sanitize" : true
                } ],
                "extra_config" : {
-                 "auth/basic" : {
-                   "users" : {
-                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
-                   }
+                 "auth/api-keys" : {
+                   "roles" : [ "developer" ]
                  },
                  "plugin/req-resp-modifier" : {
                    "name" : [ "response-schema-validator" ],
@@ -1097,77 +1115,21 @@ data:
                "output_encoding" : "json",
                "method" : "POST"
              }, {
-               "endpoint" : "/key/ereqSchemaVal",
+               "endpoint" : "/key/eparams",
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev" ],
                  "url_pattern" : "/objects",
+                 "is_collection" : true,
                  "encoding" : "json",
                  "extra_config" : {
                    "proxy" : { }
                  },
-                 "method" : "POST",
+                 "method" : "GET",
                  "disable_host_sanitize" : true
                } ],
                "extra_config" : {
-                 "auth/basic" : {
-                   "users" : {
-                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
-                   }
-                 },
-                 "validation/json-schema" : {
-                   "type" : "object",
-                   "properties" : {
-                     "id" : {
-                       "type" : "string"
-                     },
-                     "name" : {
-                       "type" : "string"
-                     },
-                     "data" : {
-                       "type" : "object",
-                       "properties" : {
-                         "year" : {
-                           "type" : "integer"
-                         },
-                         "price" : {
-                           "type" : "number"
-                         },
-                         "CPU model" : {
-                           "type" : "string"
-                         },
-                         "Hard disk size" : {
-                           "type" : "string"
-                         }
-                       },
-                       "required" : [ "year", "price", "CPU model", "Hard disk size" ]
-                     }
-                   },
-                   "required" : [ "name" ]
-                 }
-               },
-               "output_encoding" : "json",
-               "method" : "POST"
-             }, {
-               "endpoint" : "/mucontext/getBrew",
-               "backend" : [ {
-                 "host" : [ "https://api.openbrewerydb.org" ],
-                 "url_pattern" : "/breweries",
-                 "is_collection" : true,
-                 "encoding" : "json",
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
-                 "modifier/jmespath" : {
-                   "expr" : "collection[?city == 'Bend'].name"
-                 },
-                 "proxy" : {
-                   "static" : {
-                     "data" : {
-                       "status" : 200,
-                       "message" : "success"
-                     },
-                     "strategy" : "always"
-                   }
+                 "auth/api-keys" : {
+                   "roles" : [ "developer" ]
                  }
                },
                "output_encoding" : "json",
