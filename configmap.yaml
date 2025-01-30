@@ -205,9 +205,12 @@ data:
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev" ],
                  "url_pattern" : "/objects",
-                 "is_collection" : true,
                  "encoding" : "json",
-                 "method" : "POST"
+                 "extra_config" : {
+                   "proxy" : { }
+                 },
+                 "method" : "POST",
+                 "disable_host_sanitize" : true
                } ],
                "extra_config" : {
                  "auth/basic" : {
