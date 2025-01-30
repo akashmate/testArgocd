@@ -35,8 +35,14 @@ data:
                  "disable_host_sanitize" : true
                } ],
                "extra_config" : {
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "consumer1id" ],
+                   "scopes_key" : "scope"
                  }
                },
                "method" : "GET"
@@ -50,8 +56,14 @@ data:
                  "disable_host_sanitize" : true
                } ],
                "extra_config" : {
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "consumer1id" ],
+                   "scopes_key" : "scope"
                  }
                },
                "method" : "GET"
@@ -64,8 +76,14 @@ data:
                  "method" : "GET"
                } ],
                "extra_config" : {
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "consumer1id" ],
+                   "scopes_key" : "scope"
                  },
                  "plugin/req-resp-modifier" : {
                    "name" : [ "content-replacer" ],
@@ -99,8 +117,14 @@ data:
                      "strategy" : "always"
                    }
                  },
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "consumer1id" ],
+                   "scopes_key" : "scope"
                  }
                },
                "method" : "GET"
@@ -119,8 +143,14 @@ data:
                  "disable_host_sanitize" : true
                } ],
                "extra_config" : {
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "consumer1id" ],
+                   "scopes_key" : "scope"
                  }
                },
                "output_encoding" : "no-op",
@@ -142,8 +172,14 @@ data:
                  "disable_host_sanitize" : true
                } ],
                "extra_config" : {
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "consumer1id" ],
+                   "scopes_key" : "scope"
                  }
                },
                "method" : "GET"
@@ -168,8 +204,14 @@ data:
                  "disable_host_sanitize" : true
                } ],
                "extra_config" : {
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "consumer1id" ],
+                   "scopes_key" : "scope"
                  }
                },
                "method" : "GET"
@@ -189,8 +231,14 @@ data:
                  "disable_host_sanitize" : true
                } ],
                "extra_config" : {
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "consumer1id" ],
+                   "scopes_key" : "scope"
                  }
                },
                "method" : "POST"
@@ -211,8 +259,14 @@ data:
                  "disable_host_sanitize" : true
                } ],
                "extra_config" : {
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "consumer1id" ],
+                   "scopes_key" : "scope"
                  }
                },
                "method" : "GET",
@@ -229,8 +283,14 @@ data:
                  "disable_host_sanitize" : true
                } ],
                "extra_config" : {
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "consumer1id" ],
+                   "scopes_key" : "scope"
                  }
                },
                "method" : "GET"
@@ -246,8 +306,14 @@ data:
                  "modifier/jmespath" : {
                    "expr" : "country[?probability > `0.03` ].country_id"
                  },
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "consumer1id" ],
+                   "scopes_key" : "scope"
                  }
                },
                "method" : "GET",
@@ -266,8 +332,14 @@ data:
                  "disable_host_sanitize" : true
                } ],
                "extra_config" : {
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "consumer1id" ],
+                   "scopes_key" : "scope"
                  }
                },
                "method" : "GET",
@@ -286,8 +358,14 @@ data:
                    "max_rate" : 5,
                    "strategy" : "ip"
                  },
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "consumer1id" ],
+                   "scopes_key" : "scope"
                  }
                },
                "method" : "GET"
@@ -338,8 +416,14 @@ data:
                  "disable_host_sanitize" : true
                } ],
                "extra_config" : {
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "consumer1id" ],
+                   "scopes_key" : "scope"
                  }
                },
                "method" : "GET",
@@ -353,8 +437,14 @@ data:
                  "method" : "GET"
                } ],
                "extra_config" : {
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "consumer1id" ],
+                   "scopes_key" : "scope"
                  },
                  "plugin/req-resp-modifier" : {
                    "name" : [ "ip-filter" ],
@@ -382,8 +472,14 @@ data:
                  "disable_host_sanitize" : true
                } ],
                "extra_config" : {
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "consumer1id" ],
+                   "scopes_key" : "scope"
                  }
                },
                "method" : "GET"
@@ -398,8 +494,14 @@ data:
                  "disable_host_sanitize" : true
                } ],
                "extra_config" : {
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "consumer1id" ],
+                   "scopes_key" : "scope"
                  },
                  "modifier/response-body-generator" : {
                    "content_type" : "application/json",
@@ -417,8 +519,14 @@ data:
                  "method" : "GET"
                } ],
                "extra_config" : {
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "consumer1id" ],
+                   "scopes_key" : "scope"
                  }
                },
                "method" : "GET",
@@ -439,8 +547,14 @@ data:
                  "disable_host_sanitize" : true
                } ],
                "extra_config" : {
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "consumer1id" ],
+                   "scopes_key" : "scope"
                  }
                },
                "method" : "GET"
@@ -456,8 +570,14 @@ data:
                  "proxy" : {
                    "sequential" : true
                  },
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "consumer1id" ],
+                   "scopes_key" : "scope"
                  }
                },
                "method" : "GET",
@@ -486,9 +606,8 @@ data:
                  }
                },
                "output_encoding" : "json",
-               "input_headers" : [ "" ],
-               "method" : "GET",
-               "input_query_strings" : [ "id" ]
+               "input_headers" : [ "id" ],
+               "method" : "GET"
              }, {
                "endpoint" : "/backend/backendrespmanipulation",
                "backend" : [ {
@@ -690,31 +809,6 @@ data:
                },
                "output_encoding" : "json",
                "method" : "POST"
-             }, {
-               "endpoint" : "/mucontext/getBrew",
-               "backend" : [ {
-                 "host" : [ "https://api.openbrewerydb.org" ],
-                 "url_pattern" : "/breweries",
-                 "is_collection" : true,
-                 "encoding" : "json",
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
-                 "modifier/jmespath" : {
-                   "expr" : "collection[?city == 'Bend'].name"
-                 },
-                 "proxy" : {
-                   "static" : {
-                     "data" : {
-                       "status" : 200,
-                       "message" : "success"
-                     },
-                     "strategy" : "always"
-                   }
-                 }
-               },
-               "output_encoding" : "json",
-               "method" : "GET"
              } ],
              "extra_config" : {
                "router" : {
@@ -726,14 +820,6 @@ data:
                  "allow_methods" : [ "GET", "POST" ],
                  "allow_headers" : [ "*" ],
                  "allow_credentials" : true
-               },
-               "auth/api-keys" : {
-                 "identifier" : "Authorization",
-                 "strategy" : "header",
-                 "keys" : [ {
-                   "key" : "079cb263-01fd-4a58-a255-924dc4623ce8",
-                   "roles" : [ "developer" ]
-                 } ]
                }
              },
              "client_tls" : {
