@@ -35,16 +35,6 @@ data:
                "extra_config" : {
                  "auth/api-keys" : {
                    "roles" : [ "developer" ]
-                 },
-                 "security/policies" : {
-                   "req" : {
-                     "policies" : [ "abcd" ],
-                     "error" : {
-                       "body" : "{}",
-                       "status" : 404,
-                       "content_type" : "application/json"
-                     }
-                   }
                  }
                },
                "output_encoding" : "json",
@@ -190,44 +180,6 @@ data:
                "output_encoding" : "json",
                "method" : "GET"
              }, {
-               "endpoint" : "/backend/ereqSchemaVal",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects",
-                 "encoding" : "json",
-                 "extra_config" : {
-                   "proxy" : { }
-                 },
-                 "method" : "POST",
-                 "disable_host_sanitize" : true
-               } ],
-               "extra_config" : {
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
-                 },
-                 "validation/json-schema" : {
-                   "type" : "object",
-                   "properties" : {
-                     "year" : {
-                       "type" : "number"
-                     },
-                     "price" : {
-                       "type" : "number"
-                     },
-                     "CPU model" : {
-                       "type" : "string"
-                     },
-                     "Hard disk size" : {
-                       "type" : "string"
-                     },
-                     "required" : [ "year", "price", "CPU model", "Hard disk size" ]
-                   },
-                   "required" : [ "name" ]
-                 }
-               },
-               "output_encoding" : "json",
-               "method" : "POST"
-             }, {
                "endpoint" : "/backend/erespSchemaVal",
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev" ],
@@ -259,65 +211,54 @@ data:
                "output_encoding" : "json",
                "method" : "POST"
              }, {
-               "endpoint" : "/mucontext/getBrew",
-               "backend" : [ {
-                 "host" : [ "https://api.openbrewerydb.org" ],
-                 "url_pattern" : "/breweries",
-                 "is_collection" : true,
-                 "encoding" : "json",
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
-                 "modifier/jmespath" : {
-                   "expr" : "collection[?city == 'Bend'].name"
-                 },
-                 "proxy" : {
-                   "static" : {
-                     "data" : {
-                       "status" : 200,
-                       "message" : "success"
-                     },
-                     "strategy" : "always"
-                   }
-                 }
-               },
-               "output_encoding" : "json",
-               "method" : "GET"
-             }, {
-               "endpoint" : "/demo/eparams",
+               "endpoint" : "/backend/ereqSchemaVal",
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev" ],
                  "url_pattern" : "/objects",
-                 "is_collection" : true,
                  "encoding" : "json",
                  "extra_config" : {
                    "proxy" : { }
                  },
-                 "method" : "GET",
+                 "method" : "POST",
                  "disable_host_sanitize" : true
                } ],
                "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes_key" : "scope"
+                 "auth/api-keys" : {
+                   "roles" : [ "developer" ]
                  },
-                 "security/policies" : {
-                   "req" : {
-                     "policies" : [ "abcd" ],
-                     "error" : {
-                       "body" : "{}",
-                       "status" : 404,
-                       "content_type" : "application/json"
+                 "validation/json-schema" : {
+                   "type" : "object",
+                   "properties" : {
+                     "id" : {
+                       "type" : "string"
+                     },
+                     "name" : {
+                       "type" : "string"
+                     },
+                     "data" : {
+                       "type" : "object",
+                       "properties" : {
+                         "year" : {
+                           "type" : "integer"
+                         },
+                         "price" : {
+                           "type" : "number"
+                         },
+                         "CPU model" : {
+                           "type" : "string"
+                         },
+                         "Hard disk size" : {
+                           "type" : "string"
+                         }
+                       },
+                       "required" : [ "year", "price", "CPU model", "Hard disk size" ]
                      }
-                   }
+                   },
+                   "required" : [ "name" ]
                  }
                },
                "output_encoding" : "json",
-               "method" : "GET"
+               "method" : "POST"
              }, {
                "endpoint" : "/basicoperations/throttling",
                "backend" : [ {
@@ -594,7 +535,7 @@ data:
                "endpoint" : "/basicoperations/responseschemavald",
                "backend" : [ {
                  "host" : [ "https://api.nationalize.io" ],
-                 "url_pattern" : "/",
+                 "url_pattern" : "/7",
                  "extra_config" : {
                    "plugin/req-resp-modifier" : {
                      "name" : [ "response-schema-validator" ],
@@ -631,7 +572,8 @@ data:
                          "required" : [ "count", "country", "name" ]
                        }
                      }
-                   }
+                   },
+                   "proxy" : { }
                  },
                  "method" : "GET",
                  "disable_host_sanitize" : true
@@ -763,6 +705,41 @@ data:
                "input_query_strings" : [ "postId" ],
                "cache_ttl" : "60s",
                "timeout" : "30s"
+             }, {
+               "endpoint" : "/demo/eparams",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects",
+                 "is_collection" : true,
+                 "encoding" : "json",
+                 "extra_config" : {
+                   "proxy" : { }
+                 },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes_key" : "scope"
+                 },
+                 "security/policies" : {
+                   "req" : {
+                     "policies" : [ "abcd" ],
+                     "error" : {
+                       "body" : "{}",
+                       "status" : 404,
+                       "content_type" : "application/json"
+                     }
+                   }
+                 }
+               },
+               "output_encoding" : "json",
+               "method" : "GET"
              } ],
              "extra_config" : {
                "router" : {
