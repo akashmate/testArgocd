@@ -307,7 +307,7 @@ data:
                    "req" : {
                      "policies" : [ "req_params.Id.matches('^[0-9]')" ],
                      "error" : {
-                       "body" : "\\x6964206d75737420626520696e7465676572",
+                       "body" : "[B@55874aa5",
                        "content_type" : "text/plain"
                      }
                    }
@@ -324,7 +324,7 @@ data:
                      "name" : [ "response-schema-validator" ],
                      "response-schema-validator" : {
                        "error" : {
-                         "body" : "[B@43a0e939",
+                         "body" : "[B@5eadd0e1",
                          "status" : 400
                        },
                        "schema" : {
