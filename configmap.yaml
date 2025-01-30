@@ -507,6 +507,16 @@ data:
                      "vijay" : "$2a$10$3P8gTibWNOZ05FgRCU5R8em8er2LXQnmk2tnUFlEMG95tGio6uPtO",
                      "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
                    }
+                 },
+                 "security/policies" : {
+                   "req" : {
+                     "policies" : [ "abcd" ],
+                     "error" : {
+                       "body" : "[B@508752a5",
+                       "status" : 404,
+                       "content_type" : "application/json"
+                     }
+                   }
                  }
                },
                "output_encoding" : "json",
@@ -696,37 +706,7 @@ data:
                        "status" : 422
                      },
                      "schema" : {
-                       "type" : "object",
-                       "properties" : {
-                         "id" : {
-                           "type" : "string"
-                         },
-                         "name" : {
-                           "type" : "string"
-                         },
-                         "createdAt" : {
-                           "type" : "string"
-                         },
-                         "data" : {
-                           "type" : "object",
-                           "properties" : {
-                             "year" : {
-                               "type" : "integer"
-                             },
-                             "price" : {
-                               "type" : "number"
-                             },
-                             "CPU model" : {
-                               "type" : "string"
-                             },
-                             "Hard disk size" : {
-                               "type" : "string"
-                             }
-                           },
-                           "required" : [ "year", "price", "CPU model", "Hard disk size" ]
-                         }
-                       },
-                       "required" : [ "name", "id", "createdAt" ]
+                       "type" : "array"
                      }
                    }
                  }
@@ -785,31 +765,6 @@ data:
                },
                "output_encoding" : "json",
                "method" : "POST"
-             }, {
-               "endpoint" : "/mucontext/getBrew",
-               "backend" : [ {
-                 "host" : [ "https://api.openbrewerydb.org" ],
-                 "url_pattern" : "/breweries",
-                 "is_collection" : true,
-                 "encoding" : "json",
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
-                 "modifier/jmespath" : {
-                   "expr" : "collection[?city == 'Bend'].name"
-                 },
-                 "proxy" : {
-                   "static" : {
-                     "data" : {
-                       "status" : 200,
-                       "message" : "success"
-                     },
-                     "strategy" : "always"
-                   }
-                 }
-               },
-               "output_encoding" : "json",
-               "method" : "GET"
              }, {
                "endpoint" : "/demo/eparams",
                "backend" : [ {
