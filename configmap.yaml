@@ -223,14 +223,14 @@ data:
                    "req" : {
                      "policies" : [ "req" ],
                      "error" : {
-                       "body" : "[B@47e2b793",
+                       "body" : "[B@409db9c5",
                        "status" : 400,
                        "content_type" : "application/json"
                      }
                    },
                    "resp" : {
                      "error" : {
-                       "body" : "[B@5bddc5b",
+                       "body" : "[B@662a1d23",
                        "status" : 404,
                        "content_type" : "application/json"
                      },
@@ -342,7 +342,7 @@ data:
                    "name" : [ "response-schema-validator" ],
                    "response-schema-validator" : {
                      "error" : {
-                       "body" : "[B@5c66e5e7",
+                       "body" : "[B@48a40e44",
                        "status" : 422
                      },
                      "schema" : {
