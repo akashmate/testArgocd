@@ -307,7 +307,7 @@ data:
                    "req" : {
                      "policies" : [ "req_params.Id.matches('^[0-9]')" ],
                      "error" : {
-                       "body" : "[B@19821457",
+                       "body" : "\\x6964206d75737420626520696e7465676572",
                        "content_type" : "text/plain"
                      }
                    }
@@ -324,7 +324,7 @@ data:
                      "name" : [ "response-schema-validator" ],
                      "response-schema-validator" : {
                        "error" : {
-                         "body" : "[B@3af616a6",
+                         "body" : "[B@52985e20",
                          "status" : 400
                        },
                        "schema" : {
@@ -376,8 +376,9 @@ data:
                  "encoding" : "xml",
                  "extra_config" : {
                    "backend/soap" : {
+                     "debug" : true,
                      "template" : "PHNvYXBlbnY6RW52ZWxvcGUgeG1sbnM6c29hcGVudj0iaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvc29hcC9lbnZlbG9wZS8iPgogIDxzb2FwZW52OkhlYWRlci8+CiAgPHNvYXBlbnY6Qm9keT4KICAgIDx0ZW06QWRkIHhtbG5zOnRlbT0iaHR0cDovL3RlbXB1cmkub3JnLyI+CiAgICAgIDx0ZW06aW50QT4xPC90ZW06aW50QT4KICAgICAgPHRlbTppbnRCPjI8L3RlbTppbnRCPgogICAgPC90ZW06QWRkPgogIDwvc29hcGVudjpCb2R5Pgo8L3NvYXBlbnY6RW52ZWxvcGU+",
-                     "content_type" : "application/soap+xml"
+                     "content_type" : "application/xml"
                    },
                    "proxy" : { }
                  },
