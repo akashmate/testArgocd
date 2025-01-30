@@ -305,7 +305,7 @@ data:
                },
                "output_encoding" : "no-op",
                "method" : "POST",
-               "input_query_strings" : [ "country" ]
+               "input_query_strings" : [ "country", "id" ]
              }, {
                "endpoint" : "/basicoperations/ejmes",
                "backend" : [ {
@@ -396,7 +396,7 @@ data:
                      "name" : [ "response-schema-validator" ],
                      "response-schema-validator" : {
                        "error" : {
-                         "body" : "[B@471014a5",
+                         "body" : "[B@1f460302",
                          "status" : 400
                        },
                        "schema" : {
