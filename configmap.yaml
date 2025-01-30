@@ -324,7 +324,7 @@ data:
                      "name" : [ "response-schema-validator" ],
                      "response-schema-validator" : {
                        "error" : {
-                         "body" : "[B@78dc01fc",
+                         "body" : "[B@64cc9bc6",
                          "status" : 400
                        },
                        "schema" : {
@@ -457,7 +457,7 @@ data:
                  "encoding" : "xml",
                  "extra_config" : {
                    "backend/soap" : {
-                     "template" : "PHNvYXA6RW52ZWxvcGUgeG1sbnM6c29hcD0iaHR0cDovL3d3dy53My5vcmcvMjAwMy8wNS9zb2FwLWVudmVsb3BlIiB4bWxuczp0ZW09Imh0dHA6Ly90ZW1wdXJpLm9yZy8iPgogICA8c29hcDpIZWFkZXIvPgogICA8c29hcDpCb2R5PgogICAgICA8dGVtOkFkZD4KICAgICAgICAgPHRlbTppbnRBPnt7IC5yZXFfYm9keS5hIH19PC90ZW06aW50QT4KICAgICAgICAgPHRlbTppbnRCPnt7IC5yZXFfcGFyYW1zLmlkIH19PC90ZW06aW50Qj4KICAgICAgPC90ZW06QWRkPgogICA8L3NvYXA6Qm9keT4KPC9zb2FwOkVudmVsb3BlPg==",
+                     "template" : "PHNvYXA6RW52ZWxvcGUgeG1sbnM6c29hcD0iaHR0cDovL3d3dy53My5vcmcvMjAwMy8wNS9zb2FwLWVudmVsb3BlIiB4bWxuczp0ZW09Imh0dHA6Ly90ZW1wdXJpLm9yZy8iPgogICAgPHNvYXA6SGVhZGVyLz4KICAgIDxzb2FwOkJvZHk+CiAgICAgICAgPHRlbTpBZGQ+CiAgICAgICAgICAgIDx0ZW06aW50QT57eyAucmVxX2JvZHkuYSB9fTwvdGVtOmludEE+CiAgICAgICAgICAgIDx0ZW06aW50Qj57eyAucmVxX3BhcmFtcy5pZCB9fTwvdGVtOmludEI+CiAgICAgICAgPC90ZW06QWRkPgogICAgPC9zb2FwOkJvZHk+Cjwvc29hcDpFbnZlbG9wZT4=",
                      "content_type" : "text/xml"
                    },
                    "proxy" : { }
