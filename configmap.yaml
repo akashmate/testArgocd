@@ -65,6 +65,31 @@ data:
                },
                "method" : "GET"
              }, {
+               "endpoint" : "/basicoperations/martianbody",
+               "backend" : [ {
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "url_pattern" : "/posts/1",
+                 "extra_config" : {
+                   "modifier/martian" : {
+                     "body.Modifier" : {
+                       "scope" : [ "request", "response" ],
+                       "@comment" : "Send a {'msg':'you rock!'}",
+                       "body" : "eyJtc2ciOiJ5b3Ugcm9jayEifQ==",
+                       "contentType" : "application/json"
+                     }
+                   },
+                   "proxy" : { }
+                 },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : {
+                 "auth/api-keys" : {
+                   "roles" : [ "developer" ]
+                 }
+               },
+               "method" : "GET"
+             }, {
                "endpoint" : "/basicoperations/testquery",
                "backend" : [ {
                  "host" : [ "https://api.nationalize.io/" ],
@@ -256,31 +281,6 @@ data:
                },
                "method" : "GET",
                "input_query_strings" : [ "name" ]
-             }, {
-               "endpoint" : "/basicoperations/martianheader",
-               "backend" : [ {
-                 "host" : [ "https://jsonplaceholder.typicode.com" ],
-                 "url_pattern" : "/posts/1",
-                 "extra_config" : {
-                   "modifier/martian" : {
-                     "body.Modifier" : {
-                       "scope" : [ "request", "response" ],
-                       "@comment" : "Send a {'msg':'you rock!'}",
-                       "body" : "eyJtc2ciOiJ5b3Ugcm9jayEifQ==",
-                       "contentType" : "application/json"
-                     }
-                   },
-                   "proxy" : { }
-                 },
-                 "method" : "GET",
-                 "disable_host_sanitize" : true
-               } ],
-               "extra_config" : {
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
-                 }
-               },
-               "method" : "GET"
              }, {
                "endpoint" : "/basicoperations/wrappinggroup",
                "backend" : [ {
