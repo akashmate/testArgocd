@@ -354,7 +354,7 @@ data:
                    "req" : {
                      "policies" : [ "req_params.Id.matches('^[0-9]')" ],
                      "error" : {
-                       "body" : "[B@33c93ca9",
+                       "body" : "\\x6964206d75737420626520696e7465676572",
                        "content_type" : "text/plain"
                      }
                    }
@@ -371,7 +371,7 @@ data:
                      "name" : [ "response-schema-validator" ],
                      "response-schema-validator" : {
                        "error" : {
-                         "body" : "[B@7783e3f3",
+                         "body" : "[B@3241beb4",
                          "status" : 400
                        },
                        "schema" : {
