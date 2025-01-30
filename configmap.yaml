@@ -50,6 +50,36 @@ data:
                "output_encoding" : "json",
                "method" : "GET"
              }, {
+               "endpoint" : "/backend/eparams",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects",
+                 "is_collection" : true,
+                 "encoding" : "json",
+                 "extra_config" : {
+                   "proxy" : { }
+                 },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : {
+                 "auth/api-keys" : {
+                   "roles" : [ "developer" ]
+                 },
+                 "security/policies" : {
+                   "req" : {
+                     "policies" : [ "abcd" ],
+                     "error" : {
+                       "body" : "{}",
+                       "status" : 404,
+                       "content_type" : "application/json"
+                     }
+                   }
+                 }
+               },
+               "output_encoding" : "json",
+               "method" : "GET"
+             }, {
                "endpoint" : "/backend/backendrespmanipulation",
                "backend" : [ {
                  "host" : [ "https://jsonplaceholder.typicode.com/" ],
@@ -219,9 +249,10 @@ data:
                      },
                      "Hard disk size" : {
                        "type" : "string"
-                     }
+                     },
+                     "required" : [ "year", "price", "CPU model", "Hard disk size" ]
                    },
-                   "required" : [ "year", "price", "CPU model", "Hard disk size" ]
+                   "required" : [ "name" ]
                  }
                },
                "output_encoding" : "json",
