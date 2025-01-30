@@ -223,7 +223,7 @@ data:
                    "req" : {
                      "policies" : [ "abcd", "defg" ],
                      "error" : {
-                       "body" : "\\x7b226d657373223a22206261642072657175657374227d",
+                       "body" : "[B@3d444d3b",
                        "status" : 400,
                        "content_type" : "application/json"
                      }
@@ -334,7 +334,7 @@ data:
                    "name" : [ "response-schema-validator" ],
                    "response-schema-validator" : {
                      "error" : {
-                       "body" : "\\x56616c69646174696f6e204572726f72",
+                       "body" : "[B@7f5d4725",
                        "status" : 422
                      },
                      "schema" : {
