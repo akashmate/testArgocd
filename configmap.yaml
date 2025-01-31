@@ -55,8 +55,10 @@ data:
                  "disable_host_sanitize" : true
                } ],
                "extra_config" : {
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
+                 "auth/basic" : {
+                   "users" : {
+                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
+                   }
                  }
                },
                "method" : "GET"
@@ -77,8 +79,10 @@ data:
                  "disable_host_sanitize" : true
                } ],
                "extra_config" : {
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
+                 "auth/basic" : {
+                   "users" : {
+                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
+                   }
                  }
                },
                "output_encoding" : "no-op",
@@ -93,8 +97,10 @@ data:
                  "disable_host_sanitize" : true
                } ],
                "extra_config" : {
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
+                 "auth/basic" : {
+                   "users" : {
+                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
+                   }
                  }
                },
                "method" : "GET"
@@ -107,8 +113,10 @@ data:
                  "method" : "GET"
                } ],
                "extra_config" : {
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
+                 "auth/basic" : {
+                   "users" : {
+                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
+                   }
                  },
                  "plugin/req-resp-modifier" : {
                    "name" : [ "content-replacer" ],
@@ -142,8 +150,10 @@ data:
                      "strategy" : "always"
                    }
                  },
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
+                 "auth/basic" : {
+                   "users" : {
+                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
+                   }
                  }
                },
                "method" : "GET"
@@ -162,8 +172,10 @@ data:
                  "disable_host_sanitize" : true
                } ],
                "extra_config" : {
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
+                 "auth/basic" : {
+                   "users" : {
+                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
+                   }
                  }
                },
                "output_encoding" : "no-op",
@@ -187,8 +199,10 @@ data:
                  "disable_host_sanitize" : true
                } ],
                "extra_config" : {
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
+                 "auth/basic" : {
+                   "users" : {
+                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
+                   }
                  }
                },
                "method" : "GET"
@@ -209,8 +223,10 @@ data:
                  "disable_host_sanitize" : true
                } ],
                "extra_config" : {
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
+                 "auth/basic" : {
+                   "users" : {
+                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
+                   }
                  }
                },
                "method" : "GET"
@@ -235,8 +251,10 @@ data:
                  "disable_host_sanitize" : true
                } ],
                "extra_config" : {
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
+                 "auth/basic" : {
+                   "users" : {
+                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
+                   }
                  }
                },
                "method" : "GET"
@@ -256,8 +274,10 @@ data:
                  "disable_host_sanitize" : true
                } ],
                "extra_config" : {
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
+                 "auth/basic" : {
+                   "users" : {
+                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
+                   }
                  }
                },
                "method" : "POST"
@@ -278,8 +298,10 @@ data:
                  "disable_host_sanitize" : true
                } ],
                "extra_config" : {
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
+                 "auth/basic" : {
+                   "users" : {
+                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
+                   }
                  }
                },
                "method" : "GET",
@@ -296,8 +318,10 @@ data:
                  "disable_host_sanitize" : true
                } ],
                "extra_config" : {
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
+                 "auth/basic" : {
+                   "users" : {
+                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
+                   }
                  }
                },
                "method" : "GET"
@@ -319,12 +343,15 @@ data:
                  "disable_host_sanitize" : true
                } ],
                "extra_config" : {
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
+                 "auth/basic" : {
+                   "users" : {
+                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
+                   }
                  }
                },
                "output_encoding" : "no-op",
-               "method" : "POST"
+               "method" : "POST",
+               "input_query_strings" : [ "country", "id" ]
              }, {
                "endpoint" : "/basicoperations/ejmes",
                "backend" : [ {
@@ -337,8 +364,10 @@ data:
                  "modifier/jmespath" : {
                    "expr" : "country[?probability > `0.03` ].country_id"
                  },
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
+                 "auth/basic" : {
+                   "users" : {
+                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
+                   }
                  }
                },
                "method" : "GET",
@@ -357,8 +386,10 @@ data:
                  "disable_host_sanitize" : true
                } ],
                "extra_config" : {
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
+                 "auth/basic" : {
+                   "users" : {
+                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
+                   }
                  }
                },
                "method" : "GET",
@@ -377,8 +408,10 @@ data:
                    "max_rate" : 5,
                    "strategy" : "ip"
                  },
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
+                 "auth/basic" : {
+                   "users" : {
+                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
+                   }
                  }
                },
                "method" : "GET"
@@ -391,8 +424,10 @@ data:
                  "method" : "GET"
                } ],
                "extra_config" : {
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
+                 "auth/basic" : {
+                   "users" : {
+                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
+                   }
                  },
                  "security/policies" : {
                    "req" : {
@@ -415,7 +450,7 @@ data:
                      "name" : [ "response-schema-validator" ],
                      "response-schema-validator" : {
                        "error" : {
-                         "body" : "[B@162740f4",
+                         "body" : "\\x536368656d61206973206e6f742076616c6964",
                          "status" : 400
                        },
                        "schema" : {
@@ -453,8 +488,10 @@ data:
                  "disable_host_sanitize" : true
                } ],
                "extra_config" : {
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
+                 "auth/basic" : {
+                   "users" : {
+                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
+                   }
                  }
                },
                "method" : "GET",
@@ -468,8 +505,10 @@ data:
                  "method" : "GET"
                } ],
                "extra_config" : {
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
+                 "auth/basic" : {
+                   "users" : {
+                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
+                   }
                  },
                  "plugin/req-resp-modifier" : {
                    "name" : [ "ip-filter" ],
@@ -497,8 +536,10 @@ data:
                  "disable_host_sanitize" : true
                } ],
                "extra_config" : {
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
+                 "auth/basic" : {
+                   "users" : {
+                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
+                   }
                  }
                },
                "method" : "GET"
@@ -513,8 +554,10 @@ data:
                  "disable_host_sanitize" : true
                } ],
                "extra_config" : {
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
+                 "auth/basic" : {
+                   "users" : {
+                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
+                   }
                  },
                  "modifier/response-body-generator" : {
                    "content_type" : "application/json",
@@ -532,8 +575,10 @@ data:
                  "method" : "GET"
                } ],
                "extra_config" : {
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
+                 "auth/basic" : {
+                   "users" : {
+                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
+                   }
                  }
                },
                "method" : "GET",
@@ -554,8 +599,10 @@ data:
                  "disable_host_sanitize" : true
                } ],
                "extra_config" : {
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
+                 "auth/basic" : {
+                   "users" : {
+                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
+                   }
                  }
                },
                "method" : "GET"
@@ -577,8 +624,10 @@ data:
                  "disable_host_sanitize" : true
                } ],
                "extra_config" : {
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
+                 "auth/basic" : {
+                   "users" : {
+                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
+                   }
                  }
                },
                "output_encoding" : "no-op",
@@ -603,8 +652,10 @@ data:
                  "disable_host_sanitize" : true
                } ],
                "extra_config" : {
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
+                 "auth/basic" : {
+                   "users" : {
+                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
+                   }
                  }
                },
                "method" : "GET"
@@ -620,65 +671,16 @@ data:
                  "proxy" : {
                    "sequential" : true
                  },
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
+                 "auth/basic" : {
+                   "users" : {
+                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
+                   }
                  }
                },
                "method" : "GET",
                "input_query_strings" : [ "postId" ],
                "cache_ttl" : "60s",
                "timeout" : "30s"
-             }, {
-               "endpoint" : "/key/eparams",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects",
-                 "is_collection" : true,
-                 "encoding" : "json",
-                 "extra_config" : {
-                   "proxy" : { }
-                 },
-                 "method" : "GET",
-                 "disable_host_sanitize" : true
-               } ],
-               "extra_config" : {
-                 "auth/basic" : {
-                   "users" : {
-                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
-                   }
-                 }
-               },
-               "output_encoding" : "json",
-               "method" : "GET"
-             }, {
-               "endpoint" : "/key/stopticket",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects/8",
-                 "encoding" : "json",
-                 "extra_config" : {
-                   "proxy" : {
-                     "flatmap_filter" : [ {
-                       "type" : "move",
-                       "args" : [ "collection.*.data", "collection.*.newdata" ]
-                     }, {
-                       "type" : "move",
-                       "args" : [ "collection.*.data", "collection.*.newdata" ]
-                     } ]
-                   }
-                 },
-                 "method" : "GET",
-                 "disable_host_sanitize" : true
-               } ],
-               "extra_config" : {
-                 "auth/basic" : {
-                   "users" : {
-                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
-                   }
-                 }
-               },
-               "output_encoding" : "json-collection",
-               "method" : "GET"
              }, {
                "endpoint" : "/key/backendrespmanipulation",
                "backend" : [ {
@@ -702,10 +704,8 @@ data:
                  "disable_host_sanitize" : true
                } ],
                "extra_config" : {
-                 "auth/basic" : {
-                   "users" : {
-                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
-                   }
+                 "auth/api-keys" : {
+                   "roles" : [ "developer" ]
                  }
                },
                "output_encoding" : "json",
@@ -730,13 +730,87 @@ data:
                      "strategy" : "always"
                    }
                  },
-                 "auth/basic" : {
-                   "users" : {
-                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
-                   }
+                 "auth/api-keys" : {
+                   "roles" : [ "developer" ]
                  }
                },
                "method" : "GET"
+             }, {
+               "endpoint" : "/key/stopticket",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects/8",
+                 "encoding" : "json",
+                 "extra_config" : {
+                   "proxy" : {
+                     "flatmap_filter" : [ {
+                       "type" : "move",
+                       "args" : [ "collection.*.data", "collection.*.newdata" ]
+                     }, {
+                       "type" : "move",
+                       "args" : [ "collection.*.data", "collection.*.newdata" ]
+                     } ]
+                   }
+                 },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : {
+                 "auth/api-keys" : {
+                   "roles" : [ "developer" ]
+                 }
+               },
+               "output_encoding" : "json-collection",
+               "method" : "GET"
+             }, {
+               "endpoint" : "/key/ereqSchemaVal",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects",
+                 "encoding" : "json",
+                 "extra_config" : {
+                   "proxy" : { }
+                 },
+                 "method" : "POST",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : {
+                 "auth/api-keys" : {
+                   "roles" : [ "developer" ]
+                 },
+                 "validation/json-schema" : {
+                   "type" : "object",
+                   "properties" : {
+                     "id" : {
+                       "type" : "string"
+                     },
+                     "name" : {
+                       "type" : "string"
+                     },
+                     "data" : {
+                       "type" : "object",
+                       "properties" : {
+                         "year" : {
+                           "type" : "integer"
+                         },
+                         "price" : {
+                           "type" : "number"
+                         },
+                         "CPU model" : {
+                           "type" : "string"
+                         },
+                         "Hard disk size" : {
+                           "type" : "string"
+                         }
+                       },
+                       "required" : [ "year", "price", "CPU model", "Hard disk size" ]
+                     }
+                   },
+                   "required" : [ "name" ]
+                 }
+               },
+               "output_encoding" : "json",
+               "method" : "POST"
              }, {
                "endpoint" : "/key/erespSchemaVal",
                "backend" : [ {
@@ -750,10 +824,8 @@ data:
                  "disable_host_sanitize" : true
                } ],
                "extra_config" : {
-                 "auth/basic" : {
-                   "users" : {
-                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
-                   }
+                 "auth/api-keys" : {
+                   "roles" : [ "developer" ]
                  },
                  "plugin/req-resp-modifier" : {
                    "name" : [ "response-schema-validator" ],
@@ -801,56 +873,25 @@ data:
                "output_encoding" : "json",
                "method" : "POST"
              }, {
-               "endpoint" : "/key/ereqSchemaVal",
+               "endpoint" : "/key/eparams",
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev" ],
                  "url_pattern" : "/objects",
+                 "is_collection" : true,
                  "encoding" : "json",
                  "extra_config" : {
                    "proxy" : { }
                  },
-                 "method" : "POST",
+                 "method" : "GET",
                  "disable_host_sanitize" : true
                } ],
                "extra_config" : {
-                 "auth/basic" : {
-                   "users" : {
-                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
-                   }
-                 },
-                 "validation/json-schema" : {
-                   "type" : "object",
-                   "properties" : {
-                     "id" : {
-                       "type" : "string"
-                     },
-                     "name" : {
-                       "type" : "string"
-                     },
-                     "data" : {
-                       "type" : "object",
-                       "properties" : {
-                         "year" : {
-                           "type" : "integer"
-                         },
-                         "price" : {
-                           "type" : "number"
-                         },
-                         "CPU model" : {
-                           "type" : "string"
-                         },
-                         "Hard disk size" : {
-                           "type" : "string"
-                         }
-                       },
-                       "required" : [ "year", "price", "CPU model", "Hard disk size" ]
-                     }
-                   },
-                   "required" : [ "name" ]
+                 "auth/api-keys" : {
+                   "roles" : [ "developer" ]
                  }
                },
                "output_encoding" : "json",
-               "method" : "POST"
+               "method" : "GET"
              }, {
                "endpoint" : "/backend/eparams",
                "backend" : [ {
@@ -1033,6 +1074,31 @@ data:
                "output_encoding" : "json",
                "method" : "GET"
              }, {
+               "endpoint" : "/backend/bmartain",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects",
+                 "encoding" : "json",
+                 "extra_config" : {
+                   "modifier/martian" : {
+                     "Status" : "Success"
+                   },
+                   "proxy" : { }
+                 },
+                 "method" : "POST",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : {
+                 "auth/basic" : {
+                   "users" : {
+                     "vijay" : "$2a$10$3P8gTibWNOZ05FgRCU5R8em8er2LXQnmk2tnUFlEMG95tGio6uPtO",
+                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
+                   }
+                 }
+               },
+               "output_encoding" : "json",
+               "method" : "POST"
+             }, {
                "endpoint" : "/backend/erespSchemaVal",
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev" ],
@@ -1148,31 +1214,6 @@ data:
                },
                "output_encoding" : "json",
                "method" : "POST"
-             }, {
-               "endpoint" : "/mucontext/getBrew",
-               "backend" : [ {
-                 "host" : [ "https://api.openbrewerydb.org" ],
-                 "url_pattern" : "/breweries",
-                 "is_collection" : true,
-                 "encoding" : "json",
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
-                 "modifier/jmespath" : {
-                   "expr" : "collection[?city == 'Bend'].name"
-                 },
-                 "proxy" : {
-                   "static" : {
-                     "data" : {
-                       "status" : 200,
-                       "message" : "success"
-                     },
-                     "strategy" : "always"
-                   }
-                 }
-               },
-               "output_encoding" : "json",
-               "method" : "GET"
              }, {
                "endpoint" : "/demo/eparams",
                "backend" : [ {
