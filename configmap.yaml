@@ -602,6 +602,7 @@ data:
                }, {
                  "host" : [ "https://jsonplaceholder.typicode.com/" ],
                  "url_pattern" : "comments?postId={resp0_id}",
+                 "is_collection" : true,
                  "extra_config" : {
                    "proxy" : { }
                  },
