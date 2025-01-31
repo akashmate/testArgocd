@@ -601,7 +601,7 @@ data:
                  "disable_host_sanitize" : true
                }, {
                  "host" : [ "https://jsonplaceholder.typicode.com/" ],
-                 "url_pattern" : "/?userId={resp0_id}",
+                 "url_pattern" : "comments?postId={resp0_id}",
                  "extra_config" : {
                    "proxy" : { }
                  },
@@ -620,6 +620,77 @@ data:
                "input_query_strings" : [ "postId" ],
                "cache_ttl" : "60s",
                "timeout" : "30s"
+             }, {
+               "endpoint" : "/rest/bresttosoapval",
+               "backend" : [ {
+                 "host" : [ "http://www.dneonline.com" ],
+                 "url_pattern" : "/calculator.asmx",
+                 "encoding" : "xml",
+                 "extra_config" : {
+                   "backend/soap" : {
+                     "debug" : true,
+                     "template" : "PHNvYXA6RW52ZWxvcGUgeG1sbnM6c29hcD0iaHR0cDovL3d3dy53My5vcmcvMjAwMy8wNS9zb2FwLWVudmVsb3BlIiB4bWxuczp0ZW09Imh0dHA6Ly90ZW1wdXJpLm9yZy8iPgogICA8c29hcDpIZWFkZXIvPgogICA8c29hcDpCb2R5PgogICAgICA8dGVtOkFkZD4KICAgICAgICAgPHRlbTppbnRBPnt7IC5yZXFfYm9keS5hIH19PC90ZW06aW50QT4KICAgICAgICAgPHRlbTppbnRCPnt7IC5yZXFfYm9keS5iIH19PC90ZW06aW50Qj4KICAgICAgPC90ZW06QWRkPgogICA8L3NvYXA6Qm9keT4KPC9zb2FwOkVudmVsb3BlPg==",
+                     "content_type" : "text/xml"
+                   },
+                   "proxy" : { }
+                 },
+                 "method" : "POST",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : { },
+               "output_encoding" : "json",
+               "method" : "POST"
+             }, {
+               "endpoint" : "/key/eparams",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects",
+                 "is_collection" : true,
+                 "encoding" : "json",
+                 "extra_config" : {
+                   "proxy" : { }
+                 },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : {
+                 "auth/basic" : {
+                   "users" : {
+                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
+                   }
+                 }
+               },
+               "output_encoding" : "json",
+               "method" : "GET"
+             }, {
+               "endpoint" : "/key/stopticket",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects/8",
+                 "encoding" : "json",
+                 "extra_config" : {
+                   "proxy" : {
+                     "flatmap_filter" : [ {
+                       "type" : "move",
+                       "args" : [ "collection.*.data", "collection.*.newdata" ]
+                     }, {
+                       "type" : "move",
+                       "args" : [ "collection.*.data", "collection.*.newdata" ]
+                     } ]
+                   }
+                 },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : {
+                 "auth/basic" : {
+                   "users" : {
+                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
+                   }
+                 }
+               },
+               "output_encoding" : "json-collection",
+               "method" : "GET"
              }, {
                "endpoint" : "/key/backendrespmanipulation",
                "backend" : [ {
@@ -643,8 +714,10 @@ data:
                  "disable_host_sanitize" : true
                } ],
                "extra_config" : {
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
+                 "auth/basic" : {
+                   "users" : {
+                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
+                   }
                  }
                },
                "output_encoding" : "json",
@@ -669,87 +742,13 @@ data:
                      "strategy" : "always"
                    }
                  },
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
-                 }
-               },
-               "method" : "GET"
-             }, {
-               "endpoint" : "/key/stopticket",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects/8",
-                 "encoding" : "json",
-                 "extra_config" : {
-                   "proxy" : {
-                     "flatmap_filter" : [ {
-                       "type" : "move",
-                       "args" : [ "collection.*.data", "collection.*.newdata" ]
-                     }, {
-                       "type" : "move",
-                       "args" : [ "collection.*.data", "collection.*.newdata" ]
-                     } ]
+                 "auth/basic" : {
+                   "users" : {
+                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
                    }
-                 },
-                 "method" : "GET",
-                 "disable_host_sanitize" : true
-               } ],
-               "extra_config" : {
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
                  }
                },
-               "output_encoding" : "json-collection",
                "method" : "GET"
-             }, {
-               "endpoint" : "/key/ereqSchemaVal",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects",
-                 "encoding" : "json",
-                 "extra_config" : {
-                   "proxy" : { }
-                 },
-                 "method" : "POST",
-                 "disable_host_sanitize" : true
-               } ],
-               "extra_config" : {
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
-                 },
-                 "validation/json-schema" : {
-                   "type" : "object",
-                   "properties" : {
-                     "id" : {
-                       "type" : "string"
-                     },
-                     "name" : {
-                       "type" : "string"
-                     },
-                     "data" : {
-                       "type" : "object",
-                       "properties" : {
-                         "year" : {
-                           "type" : "integer"
-                         },
-                         "price" : {
-                           "type" : "number"
-                         },
-                         "CPU model" : {
-                           "type" : "string"
-                         },
-                         "Hard disk size" : {
-                           "type" : "string"
-                         }
-                       },
-                       "required" : [ "year", "price", "CPU model", "Hard disk size" ]
-                     }
-                   },
-                   "required" : [ "name" ]
-                 }
-               },
-               "output_encoding" : "json",
-               "method" : "POST"
              }, {
                "endpoint" : "/key/erespSchemaVal",
                "backend" : [ {
@@ -763,14 +762,16 @@ data:
                  "disable_host_sanitize" : true
                } ],
                "extra_config" : {
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
+                 "auth/basic" : {
+                   "users" : {
+                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
+                   }
                  },
                  "plugin/req-resp-modifier" : {
                    "name" : [ "response-schema-validator" ],
                    "response-schema-validator" : {
                      "error" : {
-                       "body" : "\\x56616c69646174696f6e204572726f72",
+                       "body" : "Validation Error",
                        "status" : 422
                      },
                      "schema" : {
@@ -812,43 +813,54 @@ data:
                "output_encoding" : "json",
                "method" : "POST"
              }, {
-               "endpoint" : "/key/eparams",
+               "endpoint" : "/key/ereqSchemaVal",
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev" ],
                  "url_pattern" : "/objects",
-                 "is_collection" : true,
                  "encoding" : "json",
                  "extra_config" : {
-                   "proxy" : { }
-                 },
-                 "method" : "GET",
-                 "disable_host_sanitize" : true
-               } ],
-               "extra_config" : {
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
-                 }
-               },
-               "output_encoding" : "json",
-               "method" : "GET"
-             }, {
-               "endpoint" : "/rest/bresttosoapval",
-               "backend" : [ {
-                 "host" : [ "http://www.dneonline.com" ],
-                 "url_pattern" : "/calculator.asmx",
-                 "encoding" : "xml",
-                 "extra_config" : {
-                   "backend/soap" : {
-                     "debug" : true,
-                     "template" : "PHNvYXA6RW52ZWxvcGUgeG1sbnM6c29hcD0iaHR0cDovL3d3dy53My5vcmcvMjAwMy8wNS9zb2FwLWVudmVsb3BlIiB4bWxuczp0ZW09Imh0dHA6Ly90ZW1wdXJpLm9yZy8iPgogICA8c29hcDpIZWFkZXIvPgogICA8c29hcDpCb2R5PgogICAgICA8dGVtOkFkZD4KICAgICAgICAgPHRlbTppbnRBPnt7IC5yZXFfYm9keS5hIH19PC90ZW06aW50QT4KICAgICAgICAgPHRlbTppbnRCPnt7IC5yZXFfYm9keS5iIH19PC90ZW06aW50Qj4KICAgICAgPC90ZW06QWRkPgogICA8L3NvYXA6Qm9keT4KPC9zb2FwOkVudmVsb3BlPg==",
-                     "content_type" : "text/xml"
-                   },
                    "proxy" : { }
                  },
                  "method" : "POST",
                  "disable_host_sanitize" : true
                } ],
-               "extra_config" : { },
+               "extra_config" : {
+                 "auth/basic" : {
+                   "users" : {
+                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
+                   }
+                 },
+                 "validation/json-schema" : {
+                   "type" : "object",
+                   "properties" : {
+                     "id" : {
+                       "type" : "string"
+                     },
+                     "name" : {
+                       "type" : "string"
+                     },
+                     "data" : {
+                       "type" : "object",
+                       "properties" : {
+                         "year" : {
+                           "type" : "integer"
+                         },
+                         "price" : {
+                           "type" : "number"
+                         },
+                         "CPU model" : {
+                           "type" : "string"
+                         },
+                         "Hard disk size" : {
+                           "type" : "string"
+                         }
+                       },
+                       "required" : [ "year", "price", "CPU model", "Hard disk size" ]
+                     }
+                   },
+                   "required" : [ "name" ]
+                 }
+               },
                "output_encoding" : "json",
                "method" : "POST"
              }, {
@@ -1033,31 +1045,6 @@ data:
                "output_encoding" : "json",
                "method" : "GET"
              }, {
-               "endpoint" : "/backend/bmartain",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects",
-                 "encoding" : "json",
-                 "extra_config" : {
-                   "modifier/martian" : {
-                     "Status" : "Success"
-                   },
-                   "proxy" : { }
-                 },
-                 "method" : "POST",
-                 "disable_host_sanitize" : true
-               } ],
-               "extra_config" : {
-                 "auth/basic" : {
-                   "users" : {
-                     "vijay" : "$2a$10$3P8gTibWNOZ05FgRCU5R8em8er2LXQnmk2tnUFlEMG95tGio6uPtO",
-                     "consumer1" : "$2a$10$2qHOavVO4mXzh2XNLPziQuC7H1M/pjPlrFmnADyWEI7i5YqGW.4Uq"
-                   }
-                 }
-               },
-               "output_encoding" : "json",
-               "method" : "POST"
-             }, {
                "endpoint" : "/backend/erespSchemaVal",
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev" ],
@@ -1173,6 +1160,31 @@ data:
                },
                "output_encoding" : "json",
                "method" : "POST"
+             }, {
+               "endpoint" : "/mucontext/getBrew",
+               "backend" : [ {
+                 "host" : [ "https://api.openbrewerydb.org" ],
+                 "url_pattern" : "/breweries",
+                 "is_collection" : true,
+                 "encoding" : "json",
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "modifier/jmespath" : {
+                   "expr" : "collection[?city == 'Bend'].name"
+                 },
+                 "proxy" : {
+                   "static" : {
+                     "data" : {
+                       "status" : 200,
+                       "message" : "success"
+                     },
+                     "strategy" : "always"
+                   }
+                 }
+               },
+               "output_encoding" : "json",
+               "method" : "GET"
              }, {
                "endpoint" : "/demo/eparams",
                "backend" : [ {
