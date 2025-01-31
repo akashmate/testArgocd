@@ -17,7 +17,7 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
-               "endpoint" : "/api1/keycloak-protected5",
+               "endpoint" : "/api1/keycloak-protected6",
                "backend" : [ {
                  "host" : [ "http://localhost:8082" ],
                  "url_pattern" : "/__health"
