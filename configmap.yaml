@@ -20,6 +20,217 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
+               "endpoint" : "/key/backendrespmanipulation",
+               "backend" : [ {
+                 "host" : [ "https://jsonplaceholder.typicode.com/" ],
+                 "url_pattern" : "/posts",
+                 "is_collection" : true,
+                 "extra_config" : {
+                   "proxy" : { }
+                 },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
+               }, {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects",
+                 "is_collection" : true,
+                 "encoding" : "json",
+                 "extra_config" : {
+                   "proxy" : { }
+                 },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : {
+                 "auth/api-keys" : {
+                   "roles" : [ "developer" ]
+                 }
+               },
+               "output_encoding" : "json",
+               "method" : "GET"
+             }, {
+               "endpoint" : "/key/rootobject",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev/" ],
+                 "url_pattern" : "/objects/7",
+                 "extra_config" : {
+                   "proxy" : { }
+                 },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : {
+                 "proxy" : {
+                   "static" : {
+                     "data" : {
+                       "Hi" : "i am static message"
+                     },
+                     "strategy" : "always"
+                   }
+                 },
+                 "auth/api-keys" : {
+                   "roles" : [ "developer" ]
+                 }
+               },
+               "method" : "GET"
+             }, {
+               "endpoint" : "/key/stopticket",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects/8",
+                 "encoding" : "json",
+                 "extra_config" : {
+                   "proxy" : {
+                     "flatmap_filter" : [ {
+                       "type" : "move",
+                       "args" : [ "collection.*.data", "collection.*.newdata" ]
+                     }, {
+                       "type" : "move",
+                       "args" : [ "collection.*.data", "collection.*.newdata" ]
+                     } ]
+                   }
+                 },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : {
+                 "auth/api-keys" : {
+                   "roles" : [ "developer" ]
+                 }
+               },
+               "output_encoding" : "json-collection",
+               "method" : "GET"
+             }, {
+               "endpoint" : "/key/ereqSchemaVal",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects",
+                 "encoding" : "json",
+                 "extra_config" : {
+                   "proxy" : { }
+                 },
+                 "method" : "POST",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : {
+                 "auth/api-keys" : {
+                   "roles" : [ "developer" ]
+                 },
+                 "validation/json-schema" : {
+                   "type" : "object",
+                   "properties" : {
+                     "id" : {
+                       "type" : "string"
+                     },
+                     "name" : {
+                       "type" : "string"
+                     },
+                     "data" : {
+                       "type" : "object",
+                       "properties" : {
+                         "year" : {
+                           "type" : "integer"
+                         },
+                         "price" : {
+                           "type" : "number"
+                         },
+                         "CPU model" : {
+                           "type" : "string"
+                         },
+                         "Hard disk size" : {
+                           "type" : "string"
+                         }
+                       },
+                       "required" : [ "year", "price", "CPU model", "Hard disk size" ]
+                     }
+                   },
+                   "required" : [ "name" ]
+                 }
+               },
+               "output_encoding" : "json",
+               "method" : "POST"
+             }, {
+               "endpoint" : "/key/erespSchemaVal",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects",
+                 "encoding" : "json",
+                 "extra_config" : {
+                   "proxy" : { }
+                 },
+                 "method" : "POST",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : {
+                 "auth/api-keys" : {
+                   "roles" : [ "developer" ]
+                 },
+                 "plugin/req-resp-modifier" : {
+                   "name" : [ "response-schema-validator" ],
+                   "response-schema-validator" : {
+                     "error" : {
+                       "body" : "\\x56616c69646174696f6e204572726f72",
+                       "status" : 422
+                     },
+                     "schema" : {
+                       "type" : "object",
+                       "properties" : {
+                         "id" : {
+                           "type" : "string"
+                         },
+                         "name" : {
+                           "type" : "string"
+                         },
+                         "createdAt" : {
+                           "type" : "string"
+                         },
+                         "data" : {
+                           "type" : "object",
+                           "properties" : {
+                             "year" : {
+                               "type" : "integer"
+                             },
+                             "price" : {
+                               "type" : "number"
+                             },
+                             "CPU model" : {
+                               "type" : "string"
+                             },
+                             "Hard disk size" : {
+                               "type" : "string"
+                             }
+                           },
+                           "required" : [ "year", "price", "CPU model", "Hard disk size" ]
+                         }
+                       },
+                       "required" : [ "name", "id", "createdAt" ]
+                     }
+                   }
+                 }
+               },
+               "output_encoding" : "json",
+               "method" : "POST"
+             }, {
+               "endpoint" : "/key/eparams",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects",
+                 "is_collection" : true,
+                 "encoding" : "json",
+                 "extra_config" : {
+                   "proxy" : { }
+                 },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
+               } ],
+               "extra_config" : {
+                 "auth/api-keys" : {
+                   "roles" : [ "developer" ]
+                 }
+               },
+               "output_encoding" : "json",
+               "method" : "GET"
+             }, {
                "endpoint" : "/rest/bresttosoapval",
                "backend" : [ {
                  "host" : [ "http://www.dneonline.com" ],
@@ -682,217 +893,6 @@ data:
                "cache_ttl" : "60s",
                "timeout" : "30s"
              }, {
-               "endpoint" : "/key/backendrespmanipulation",
-               "backend" : [ {
-                 "host" : [ "https://jsonplaceholder.typicode.com/" ],
-                 "url_pattern" : "/posts",
-                 "is_collection" : true,
-                 "extra_config" : {
-                   "proxy" : { }
-                 },
-                 "method" : "GET",
-                 "disable_host_sanitize" : true
-               }, {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects",
-                 "is_collection" : true,
-                 "encoding" : "json",
-                 "extra_config" : {
-                   "proxy" : { }
-                 },
-                 "method" : "GET",
-                 "disable_host_sanitize" : true
-               } ],
-               "extra_config" : {
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
-                 }
-               },
-               "output_encoding" : "json",
-               "method" : "GET"
-             }, {
-               "endpoint" : "/key/rootobject",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev/" ],
-                 "url_pattern" : "/objects/7",
-                 "extra_config" : {
-                   "proxy" : { }
-                 },
-                 "method" : "GET",
-                 "disable_host_sanitize" : true
-               } ],
-               "extra_config" : {
-                 "proxy" : {
-                   "static" : {
-                     "data" : {
-                       "Hi" : "i am static message"
-                     },
-                     "strategy" : "always"
-                   }
-                 },
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
-                 }
-               },
-               "method" : "GET"
-             }, {
-               "endpoint" : "/key/stopticket",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects/8",
-                 "encoding" : "json",
-                 "extra_config" : {
-                   "proxy" : {
-                     "flatmap_filter" : [ {
-                       "type" : "move",
-                       "args" : [ "collection.*.data", "collection.*.newdata" ]
-                     }, {
-                       "type" : "move",
-                       "args" : [ "collection.*.data", "collection.*.newdata" ]
-                     } ]
-                   }
-                 },
-                 "method" : "GET",
-                 "disable_host_sanitize" : true
-               } ],
-               "extra_config" : {
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
-                 }
-               },
-               "output_encoding" : "json-collection",
-               "method" : "GET"
-             }, {
-               "endpoint" : "/key/ereqSchemaVal",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects",
-                 "encoding" : "json",
-                 "extra_config" : {
-                   "proxy" : { }
-                 },
-                 "method" : "POST",
-                 "disable_host_sanitize" : true
-               } ],
-               "extra_config" : {
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
-                 },
-                 "validation/json-schema" : {
-                   "type" : "object",
-                   "properties" : {
-                     "id" : {
-                       "type" : "string"
-                     },
-                     "name" : {
-                       "type" : "string"
-                     },
-                     "data" : {
-                       "type" : "object",
-                       "properties" : {
-                         "year" : {
-                           "type" : "integer"
-                         },
-                         "price" : {
-                           "type" : "number"
-                         },
-                         "CPU model" : {
-                           "type" : "string"
-                         },
-                         "Hard disk size" : {
-                           "type" : "string"
-                         }
-                       },
-                       "required" : [ "year", "price", "CPU model", "Hard disk size" ]
-                     }
-                   },
-                   "required" : [ "name" ]
-                 }
-               },
-               "output_encoding" : "json",
-               "method" : "POST"
-             }, {
-               "endpoint" : "/key/erespSchemaVal",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects",
-                 "encoding" : "json",
-                 "extra_config" : {
-                   "proxy" : { }
-                 },
-                 "method" : "POST",
-                 "disable_host_sanitize" : true
-               } ],
-               "extra_config" : {
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
-                 },
-                 "plugin/req-resp-modifier" : {
-                   "name" : [ "response-schema-validator" ],
-                   "response-schema-validator" : {
-                     "error" : {
-                       "body" : "Validation Error",
-                       "status" : 422
-                     },
-                     "schema" : {
-                       "type" : "object",
-                       "properties" : {
-                         "id" : {
-                           "type" : "string"
-                         },
-                         "name" : {
-                           "type" : "string"
-                         },
-                         "createdAt" : {
-                           "type" : "string"
-                         },
-                         "data" : {
-                           "type" : "object",
-                           "properties" : {
-                             "year" : {
-                               "type" : "integer"
-                             },
-                             "price" : {
-                               "type" : "number"
-                             },
-                             "CPU model" : {
-                               "type" : "string"
-                             },
-                             "Hard disk size" : {
-                               "type" : "string"
-                             }
-                           },
-                           "required" : [ "year", "price", "CPU model", "Hard disk size" ]
-                         }
-                       },
-                       "required" : [ "name", "id", "createdAt" ]
-                     }
-                   }
-                 }
-               },
-               "output_encoding" : "json",
-               "method" : "POST"
-             }, {
-               "endpoint" : "/key/eparams",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects",
-                 "is_collection" : true,
-                 "encoding" : "json",
-                 "extra_config" : {
-                   "proxy" : { }
-                 },
-                 "method" : "GET",
-                 "disable_host_sanitize" : true
-               } ],
-               "extra_config" : {
-                 "auth/api-keys" : {
-                   "roles" : [ "developer" ]
-                 }
-               },
-               "output_encoding" : "json",
-               "method" : "GET"
-             }, {
                "endpoint" : "/backend/eparams",
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev" ],
@@ -1260,6 +1260,14 @@ data:
                  "allow_methods" : [ "GET", "POST" ],
                  "allow_headers" : [ "*" ],
                  "allow_credentials" : true
+               },
+               "auth/api-keys" : {
+                 "identifier" : "Authorization",
+                 "strategy" : "header",
+                 "keys" : [ {
+                   "key" : "d9a54bd3-6b46-4bf8-914c-41d4aaa16a3e",
+                   "roles" : [ "developer" ]
+                 } ]
                }
              },
              "client_tls" : {
