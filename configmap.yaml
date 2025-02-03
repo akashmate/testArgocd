@@ -20,7 +20,7 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
-               "endpoint" : "/api/testnewendpoint",
+               "endpoint" : "/sample/testnewendpoint",
                "backend" : [ {
                  "host" : [ "https://jsonplaceholder.typicode.com" ],
                  "url_pattern" : "/posts/1",
