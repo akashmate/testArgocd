@@ -20,25 +20,6 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
-               "endpoint" : "/testnewapi/testnewendpoint",
-               "backend" : [ {
-                 "host" : [ "https://jsonplaceholder.typicode.com" ],
-                 "url_pattern" : "/posts/1",
-                 "is_collection" : false,
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes_key" : "scope"
-                 }
-               },
-               "method" : "GET"
-             }, {
                "endpoint" : "/basicoperations/throttling",
                "backend" : [ {
                  "host" : [ "https://jsonplaceholder.typicode.com" ],
@@ -651,6 +632,14 @@ data:
                  "allow_methods" : [ "GET", "POST" ],
                  "allow_headers" : [ "*" ],
                  "allow_credentials" : true
+               },
+               "auth/api-keys" : {
+                 "identifier" : "Authorization",
+                 "strategy" : "header",
+                 "keys" : [ {
+                   "key" : "d9a54bd3-6b46-4bf8-914c-41d4aaa16a3e",
+                   "roles" : [ "developer" ]
+                 } ]
                }
              },
              "client_tls" : {
