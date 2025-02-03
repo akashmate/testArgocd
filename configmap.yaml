@@ -20,7 +20,7 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
-               "endpoint" : "/newapi/myfirstendpoint",
+               "endpoint" : "/testnewapi/testnewendpoint",
                "backend" : [ {
                  "host" : [ "https://jsonplaceholder.typicode.com" ],
                  "url_pattern" : "/posts/1",
@@ -28,14 +28,6 @@ data:
                  "method" : "GET"
                } ],
                "extra_config" : {
-                 "qos/ratelimit/router" : {
-                   "capacity" : 20,
-                   "client_capacity" : 23,
-                   "client_max_rate" : 332,
-                   "every" : "2s",
-                   "max_rate" : 11,
-                   "strategy" : "ip"
-                 },
                  "auth/validator" : {
                    "alg" : "RS256",
                    "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
@@ -43,126 +35,9 @@ data:
                    "disable_jwk_security" : true,
                    "scopes_matcher" : "any",
                    "scopes_key" : "scope"
-                 },
-                 "plugin/req-resp-modifier" : {
-                   "name" : [ "ip-filter" ],
-                   "ip-filter" : {
-                     "CIDR" : [ "10.175.1.111" ],
-                     "allow" : true
-                   }
                  }
                },
-               "method" : "GET",
-               "cache_ttl" : "3s",
-               "timeout" : "02s"
-             }, {
-               "endpoint" : "/newapi/myfirstendpoint",
-               "backend" : [ {
-                 "host" : [ "https://jsonplaceholder.typicode.com" ],
-                 "url_pattern" : "/posts/1",
-                 "is_collection" : false,
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
-                 "qos/ratelimit/router" : {
-                   "capacity" : 20,
-                   "client_capacity" : 23,
-                   "client_max_rate" : 332,
-                   "every" : "2s",
-                   "max_rate" : 11,
-                   "strategy" : "ip"
-                 },
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes_key" : "scope"
-                 },
-                 "plugin/req-resp-modifier" : {
-                   "name" : [ "ip-filter" ],
-                   "ip-filter" : {
-                     "CIDR" : [ "10.175.1.111" ],
-                     "allow" : true
-                   }
-                 }
-               },
-               "method" : "GET",
-               "cache_ttl" : "3s",
-               "timeout" : "02s"
-             }, {
-               "endpoint" : "/newapi/myfirstendpoint",
-               "backend" : [ {
-                 "host" : [ "https://jsonplaceholder.typicode.com" ],
-                 "url_pattern" : "/posts/1",
-                 "is_collection" : false,
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
-                 "qos/ratelimit/router" : {
-                   "capacity" : 20,
-                   "client_capacity" : 23,
-                   "client_max_rate" : 332,
-                   "every" : "2s",
-                   "max_rate" : 11,
-                   "strategy" : "ip"
-                 },
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes_key" : "scope"
-                 },
-                 "plugin/req-resp-modifier" : {
-                   "name" : [ "ip-filter" ],
-                   "ip-filter" : {
-                     "CIDR" : [ "10.175.1.111" ],
-                     "allow" : true
-                   }
-                 }
-               },
-               "method" : "GET",
-               "cache_ttl" : "3s",
-               "timeout" : "02s"
-             }, {
-               "endpoint" : "/newapi/myfirstendpoint",
-               "backend" : [ {
-                 "host" : [ "https://jsonplaceholder.typicode.com" ],
-                 "url_pattern" : "/posts/1",
-                 "is_collection" : false,
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
-                 "qos/ratelimit/router" : {
-                   "capacity" : 20,
-                   "client_capacity" : 23,
-                   "client_max_rate" : 332,
-                   "every" : "2s",
-                   "max_rate" : 11,
-                   "strategy" : "ip"
-                 },
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes_key" : "scope"
-                 },
-                 "plugin/req-resp-modifier" : {
-                   "name" : [ "ip-filter" ],
-                   "ip-filter" : {
-                     "CIDR" : [ "10.175.1.111" ],
-                     "allow" : true
-                   }
-                 }
-               },
-               "method" : "GET",
-               "cache_ttl" : "3s",
-               "timeout" : "02s"
+               "method" : "GET"
              }, {
                "endpoint" : "/basicoperations/throttling",
                "backend" : [ {
