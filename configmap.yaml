@@ -20,7 +20,7 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
-               "endpoint" : "/testapi/test1",
+               "endpoint" : "/newapi/myfirstendpoint",
                "backend" : [ {
                  "host" : [ "https://jsonplaceholder.typicode.com" ],
                  "url_pattern" : "/posts/1",
@@ -28,6 +28,14 @@ data:
                  "method" : "GET"
                } ],
                "extra_config" : {
+                 "qos/ratelimit/router" : {
+                   "capacity" : 20,
+                   "client_capacity" : 23,
+                   "client_max_rate" : 332,
+                   "every" : "2s",
+                   "max_rate" : 11,
+                   "strategy" : "ip"
+                 },
                  "auth/validator" : {
                    "alg" : "RS256",
                    "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
@@ -35,18 +43,35 @@ data:
                    "disable_jwk_security" : true,
                    "scopes_matcher" : "any",
                    "scopes_key" : "scope"
+                 },
+                 "plugin/req-resp-modifier" : {
+                   "name" : [ "ip-filter" ],
+                   "ip-filter" : {
+                     "CIDR" : [ "10.175.1.111" ],
+                     "allow" : true
+                   }
                  }
                },
-               "method" : "GET"
+               "method" : "GET",
+               "cache_ttl" : "3s",
+               "timeout" : "02s"
              }, {
-               "endpoint" : "/sample1/testkrakend",
+               "endpoint" : "/newapi/myfirstendpoint",
                "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects/7",
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "url_pattern" : "/posts/1",
                  "is_collection" : false,
                  "method" : "GET"
                } ],
                "extra_config" : {
+                 "qos/ratelimit/router" : {
+                   "capacity" : 20,
+                   "client_capacity" : 23,
+                   "client_max_rate" : 332,
+                   "every" : "2s",
+                   "max_rate" : 11,
+                   "strategy" : "ip"
+                 },
                  "auth/validator" : {
                    "alg" : "RS256",
                    "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
@@ -54,9 +79,90 @@ data:
                    "disable_jwk_security" : true,
                    "scopes_matcher" : "any",
                    "scopes_key" : "scope"
+                 },
+                 "plugin/req-resp-modifier" : {
+                   "name" : [ "ip-filter" ],
+                   "ip-filter" : {
+                     "CIDR" : [ "10.175.1.111" ],
+                     "allow" : true
+                   }
                  }
                },
-               "method" : "GET"
+               "method" : "GET",
+               "cache_ttl" : "3s",
+               "timeout" : "02s"
+             }, {
+               "endpoint" : "/newapi/myfirstendpoint",
+               "backend" : [ {
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "url_pattern" : "/posts/1",
+                 "is_collection" : false,
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "qos/ratelimit/router" : {
+                   "capacity" : 20,
+                   "client_capacity" : 23,
+                   "client_max_rate" : 332,
+                   "every" : "2s",
+                   "max_rate" : 11,
+                   "strategy" : "ip"
+                 },
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes_key" : "scope"
+                 },
+                 "plugin/req-resp-modifier" : {
+                   "name" : [ "ip-filter" ],
+                   "ip-filter" : {
+                     "CIDR" : [ "10.175.1.111" ],
+                     "allow" : true
+                   }
+                 }
+               },
+               "method" : "GET",
+               "cache_ttl" : "3s",
+               "timeout" : "02s"
+             }, {
+               "endpoint" : "/newapi/myfirstendpoint",
+               "backend" : [ {
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "url_pattern" : "/posts/1",
+                 "is_collection" : false,
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "qos/ratelimit/router" : {
+                   "capacity" : 20,
+                   "client_capacity" : 23,
+                   "client_max_rate" : 332,
+                   "every" : "2s",
+                   "max_rate" : 11,
+                   "strategy" : "ip"
+                 },
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes_key" : "scope"
+                 },
+                 "plugin/req-resp-modifier" : {
+                   "name" : [ "ip-filter" ],
+                   "ip-filter" : {
+                     "CIDR" : [ "10.175.1.111" ],
+                     "allow" : true
+                   }
+                 }
+               },
+               "method" : "GET",
+               "cache_ttl" : "3s",
+               "timeout" : "02s"
              }, {
                "endpoint" : "/basicoperations/throttling",
                "backend" : [ {
@@ -659,47 +765,6 @@ data:
                "input_query_strings" : [ "postId" ],
                "cache_ttl" : "60s",
                "timeout" : "30s"
-             }, {
-               "endpoint" : "/testrestapi/restapi",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects",
-                 "is_collection" : true,
-                 "encoding" : "json",
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "consumer1id" ],
-                   "scopes_key" : "scope"
-                 }
-               },
-               "output_encoding" : "json-collection",
-               "method" : "GET"
-             }, {
-               "endpoint" : "/sample/testkrakend",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects/7",
-                 "is_collection" : false,
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes_key" : "scope"
-                 }
-               },
-               "method" : "GET"
              } ],
              "extra_config" : {
                "router" : {
