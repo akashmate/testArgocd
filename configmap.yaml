@@ -20,6 +20,17 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
+               "endpoint" : "/resttosoapapi/resttosoap",
+               "backend" : [ {
+                 "host" : [ "http://www.dneonline.com" ],
+                 "url_pattern" : "/calculator.asmx",
+                 "is_collection" : false,
+                 "method" : "POST"
+               } ],
+               "extra_config" : { },
+               "output_encoding" : "string",
+               "method" : "POST"
+             }, {
                "endpoint" : "/testflatmap/flatmap",
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev" ],
@@ -743,6 +754,13 @@ data:
                  "allow_methods" : [ "GET", "POST" ],
                  "allow_headers" : [ "*" ],
                  "allow_credentials" : true
+               },
+               "auth/api-keys" : {
+                 "identifier" : "Authorization",
+                 "strategy" : "header",
+                 "keys" : [ {
+                   "key" : "3fa2f9a9-be8b-471d-9ce5-965f80d41874"
+                 } ]
                }
              },
              "client_tls" : {
