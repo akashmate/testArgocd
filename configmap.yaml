@@ -20,6 +20,27 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
+               "endpoint" : "/reqmanipulationapi/reqmanipulation",
+               "backend" : [ {
+                 "host" : [ "https://reqres.in" ],
+                 "url_pattern" : "/api/users",
+                 "is_collection" : false,
+                 "encoding" : "json",
+                 "method" : "POST"
+               } ],
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "johny_joy" ],
+                   "scopes_key" : "scope"
+                 }
+               },
+               "method" : "POST"
+             }, {
                "endpoint" : "/resttosoapapi/resttosoap",
                "backend" : [ {
                  "host" : [ "http://www.dneonline.com" ],
@@ -763,13 +784,6 @@ data:
                  "allow_methods" : [ "GET", "POST" ],
                  "allow_headers" : [ "*" ],
                  "allow_credentials" : true
-               },
-               "auth/api-keys" : {
-                 "identifier" : "Authorization",
-                 "strategy" : "header",
-                 "keys" : [ {
-                   "key" : "3fa2f9a9-be8b-471d-9ce5-965f80d41874"
-                 } ]
                }
              },
              "client_tls" : {
