@@ -24,9 +24,17 @@ data:
                "backend" : [ {
                  "host" : [ "http://www.dneonline.com" ],
                  "url_pattern" : "/calculator.asmx",
-                 "is_collection" : false,
                  "encoding" : "xml",
-                 "method" : "POST"
+                 "extra_config" : {
+                   "backend/soap" : {
+                     "debug" : true,
+                     "template" : "PHNvYXA6RW52ZWxvcGUgeG1sbnM6c29hcD0iaHR0cDovL3d3dy53My5vcmcvMjAwMy8wNS9zb2FwLWVudmVsb3BlIiB4bWxuczp0ZW09Imh0dHA6Ly90ZW1wdXJpLm9yZy8iPgogICAgPHNvYXA6SGVhZGVyLz4KICAgIDxzb2FwOkJvZHk+CiAgICAgICAgPHRlbTpBZGQ+CiAgICAgICAgICAgIDx0ZW06aW50QT57eyAucmVxX2JvZHkuYSB9fTwvdGVtOmludEE+CiAgICAgICAgICAgIDx0ZW06aW50Qj57eyAucmVxX2JvZHkuYiB9fTwvdGVtOmludEI+CiAgICAgICAgPC90ZW06QWRkPgogICAgPC9zb2FwOkJvZHk+Cjwvc29hcDpFbnZlbG9wZT4=",
+                     "content_type" : "text/xml"
+                   },
+                   "proxy" : { }
+                 },
+                 "method" : "POST",
+                 "disable_host_sanitize" : true
                } ],
                "extra_config" : { },
                "output_encoding" : "no-op",
