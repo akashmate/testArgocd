@@ -29,7 +29,6 @@ data:
                } ],
                "extra_config" : {
                  "qos/ratelimit/router" : {
-                   "client_max_rate" : 3,
                    "every" : "1m",
                    "max_rate" : 7,
                    "strategy" : "ip"
