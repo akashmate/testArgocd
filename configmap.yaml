@@ -20,6 +20,46 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
+               "endpoint" : "/resttoGraphQL/marketing/{country_code}",
+               "backend" : [ {
+                 "host" : [ "https://countries.trevorblades.com" ],
+                 "url_pattern" : "/",
+                 "is_collection" : false,
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "consumer1id" ],
+                   "scopes_key" : "scope"
+                 }
+               },
+               "method" : "GET"
+             }, {
+               "endpoint" : "/reqmanipulationapi/reqmanipulation",
+               "backend" : [ {
+                 "host" : [ "https://reqres.in" ],
+                 "url_pattern" : "/api/users",
+                 "is_collection" : false,
+                 "encoding" : "json",
+                 "method" : "POST"
+               } ],
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes_key" : "scope"
+                 }
+               },
+               "method" : "POST"
+             }, {
                "endpoint" : "/ratelimitapi/ethrottling",
                "backend" : [ {
                  "host" : [ "https://jsonplaceholder.typicode.com" ],
@@ -29,6 +69,7 @@ data:
                } ],
                "extra_config" : {
                  "qos/ratelimit/router" : {
+                   "client_max_rate" : 3,
                    "every" : "1m",
                    "max_rate" : 7,
                    "strategy" : "ip"
@@ -39,68 +80,7 @@ data:
                    "issuer" : "http://10.175.1.110:31438/realms/master",
                    "disable_jwk_security" : true,
                    "scopes_matcher" : "any",
-                   "scopes" : [ "johny_joy" ],
                    "scopes_key" : "scope"
-                 }
-               },
-               "method" : "GET",
-               "cache_ttl" : "3s",
-               "timeout" : "1s"
-             }, {
-               "endpoint" : "/responseschemaapi/respvalidation/{id}",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects/{id}",
-                 "is_collection" : false,
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes_key" : "scope"
-                 },
-                 "plugin/req-resp-modifier" : {
-                   "name" : [ "response-schema-validator" ],
-                   "response-schema-validator" : {
-                     "error" : {
-                       "body" : "Inavlid response jsonschema not valid",
-                       "status" : 400
-                     },
-                     "schema" : {
-                       "type" : "object",
-                       "properties" : {
-                         "id" : {
-                           "type" : "string"
-                         },
-                         "name" : {
-                           "type" : "string"
-                         },
-                         "data" : {
-                           "type" : "object",
-                           "properties" : {
-                             "year" : {
-                               "type" : "integer"
-                             },
-                             "price" : {
-                               "type" : "number"
-                             },
-                             "CPU model" : {
-                               "type" : "string"
-                             },
-                             "Hard disk size" : {
-                               "type" : "string"
-                             }
-                           },
-                           "required" : [ "year", "price", "CPU model", "Hard disk size" ]
-                         }
-                       },
-                       "required" : [ "name" ]
-                     }
-                   }
                  }
                },
                "method" : "GET"
@@ -862,6 +842,27 @@ data:
                "input_query_strings" : [ "postId" ],
                "cache_ttl" : "60s",
                "timeout" : "30s"
+             }, {
+               "endpoint" : "/testapi/reqmanipulation",
+               "backend" : [ {
+                 "host" : [ "https://reqres.in" ],
+                 "url_pattern" : "/api/users",
+                 "is_collection" : false,
+                 "encoding" : "json",
+                 "method" : "POST"
+               } ],
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "johny_joy" ],
+                   "scopes_key" : "scope"
+                 }
+               },
+               "method" : "POST"
              } ],
              "extra_config" : {
                "router" : {
