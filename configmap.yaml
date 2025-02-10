@@ -12,7 +12,7 @@ data:
              "port" : 8082,
              "host" : [ "null" ],
              "timeout" : "3000ms",
-             "cache_ttl" : "300s",
+             "cache_ttl" : "3000s",
              "debug_endpoint" : false,
              "echo_endpoint" : false,
              "plugin" : {
