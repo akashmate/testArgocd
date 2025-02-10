@@ -20,17 +20,12 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
-               "endpoint" : "/testapi/fp",
+               "endpoint" : "/testapi/fp2",
                "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev/" ],
+                 "host" : [ "https://api.restful-api.dev" ],
                  "url_pattern" : "/objects",
-                 "is_collection" : true,
-                 "encoding" : "json",
-                 "extra_config" : {
-                   "proxy" : { }
-                 },
-                 "method" : "GET",
-                 "disable_host_sanitize" : true
+                 "is_collection" : false,
+                 "method" : "GET"
                } ],
                "extra_config" : {
                  "auth/validator" : {
@@ -46,12 +41,17 @@ data:
                "output_encoding" : "json-collection",
                "method" : "GET"
              }, {
-               "endpoint" : "/testapi/fp2",
+               "endpoint" : "/testapi/fp",
                "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
+                 "host" : [ "https://api.restful-api.dev/" ],
                  "url_pattern" : "/objects",
-                 "is_collection" : false,
-                 "method" : "GET"
+                 "is_collection" : true,
+                 "encoding" : "json",
+                 "extra_config" : {
+                   "proxy" : { }
+                 },
+                 "method" : "GET",
+                 "disable_host_sanitize" : true
                } ],
                "extra_config" : {
                  "auth/validator" : {
