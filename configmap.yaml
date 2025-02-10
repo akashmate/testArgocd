@@ -7,7 +7,7 @@ data:
   krakend.json: |
            {
              "$schema" : "https://www.krakend.io/schema/krakend.json",
-             "version" : 9,
+             "version" : 3,
              "name" : "MassilGW",
              "port" : 8082,
              "host" : [ "null" ],
