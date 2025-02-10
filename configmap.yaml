@@ -49,7 +49,7 @@ data:
                "backend" : [ {
                  "host" : [ "https://jsonplaceholder.typicode.com" ],
                  "url_pattern" : "/posts",
-                 "encoding" : "json",
+                 "encoding" : "No-Op",
                  "extra_config" : {
                    "proxy" : { }
                  },
