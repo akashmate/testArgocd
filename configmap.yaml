@@ -34,7 +34,8 @@ data:
                    "scopes_matcher" : "any",
                    "scopes_key" : "scope"
                  }
-               }
+               },
+               "method" : "GET"
              }, {
                "endpoint" : "/reqmanipulationapi/reqmanipulation",
                "backend" : [ {
