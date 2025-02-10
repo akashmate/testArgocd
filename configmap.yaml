@@ -50,7 +50,7 @@ data:
                "backend" : [ {
                  "host" : [ "https://jsonplaceholder.typicode.com" ],
                  "url_pattern" : "/objects",
-                 "is_collection" : false,
+                 "is_collection" : true,
                  "method" : "GET"
                } ],
                "extra_config" : {
@@ -64,7 +64,6 @@ data:
                    "scopes_key" : "scope"
                  }
                },
-               "output_encoding" : "fast-json",
                "method" : "GET"
              } ],
              "extra_config" : {
