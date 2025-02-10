@@ -23,10 +23,12 @@ spec:
         image: krakend/krakend-ee:watch
         ports:
         - containerPort: 8082
-        args:
-        - run
+        command:
+        - /bin/sh
         - -c
-        - /etc/krakend/config/krakend.json
+        - |
+          krakend check -tlc /etc/krakend/config/krakend.json && \
+          krakend run -c /etc/krakend/config/krakend.json
         env:
         - name: KRAKEND_LICENSE_PATH
           value: /etc/krakend/config/LICENSE
