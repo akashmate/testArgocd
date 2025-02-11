@@ -7,7 +7,7 @@ data:
   krakend.json: |
            {
              "$schema" : "https://www.krakend.io/schema/krakend.json",
-             "version" : 0,
+             "version" : 3,
              "name" : "gateway",
              "port" : 8082,
              "timeout" : "3000ms",
