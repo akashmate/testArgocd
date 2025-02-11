@@ -21,8 +21,8 @@ data:
              "endpoints" : [ {
                "endpoint" : "/Flatmap/flatmap",
                "backend" : [ {
-                 "host" : [ "https://api.nationalize.io" ],
-                 "url_pattern" : "/",
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects",
                  "extra_config" : {
                    "proxy" : {
                      "flatmap_filter" : [ {
@@ -34,7 +34,8 @@ data:
                      } ]
                    }
                  },
-                 "method" : "GET"
+                 "method" : "GET",
+                 "sd" : "static"
                } ],
                "extra_config" : { },
                "method" : "GET"
