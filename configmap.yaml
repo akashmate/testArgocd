@@ -20,21 +20,14 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
-               "endpoint" : "/krakend/versiontest",
+               "endpoint" : "/jmesapi/bjmes",
                "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects/9",
+                 "host" : [ "https://api.nationalize.io" ],
+                 "url_pattern" : "/",
                  "extra_config" : {
-                   "proxy" : { }
-                 },
-                 "method" : "GET",
-                 "disable_host_sanitize" : true
-               }, {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects",
-                 "is_collection" : true,
-                 "encoding" : "json",
-                 "extra_config" : {
+                   "modifier/jmespath" : {
+                     "expr" : "country[?probability > `0.03` ].country_id"
+                   },
                    "proxy" : { }
                  },
                  "method" : "GET",
@@ -47,12 +40,12 @@ data:
                    "issuer" : "http://10.175.1.110:31438/realms/master",
                    "disable_jwk_security" : true,
                    "scopes_matcher" : "any",
-                   "scopes" : [ "consumer1id" ],
+                   "scopes" : [ "johny_joy" ],
                    "scopes_key" : "scope"
                  }
                },
-               "output_encoding" : "json-collection",
-               "method" : "GET"
+               "method" : "GET",
+               "input_query_strings" : [ "name" ]
              } ],
              "extra_config" : {
                "router" : {
