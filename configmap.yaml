@@ -40,5 +40,13 @@ data:
                },
                "method" : "GET"
              } ],
-             "extra_config" : { }
+             "extra_config" : {
+               "security/cors" : {
+                 "allow_origins" : [ "*" ],
+                 "allow_methods" : [ "GET", "HEAD", "POST" ],
+                 "allow_headers" : [ "*" ],
+                 "expose_headers" : [ "*" ],
+                 "allow_credentials" : true
+               }
+             }
            }
