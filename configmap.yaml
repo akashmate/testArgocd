@@ -8,9 +8,8 @@ data:
            {
              "$schema" : "https://www.krakend.io/schema/krakend.json",
              "version" : 3,
-             "name" : "MassilGW",
+             "name" : "gateway",
              "port" : 8082,
-             "host" : [ "null" ],
              "timeout" : "3000ms",
              "cache_ttl" : "300s",
              "debug_endpoint" : false,
@@ -20,17 +19,11 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
-               "endpoint" : "/demotest/first/test",
+               "endpoint" : "/api1/keycloak-protected",
                "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects",
-                 "is_collection" : true,
-                 "encoding" : "json",
-                 "extra_config" : {
-                   "proxy" : { }
-                 },
-                 "method" : "GET",
-                 "disable_host_sanitize" : true
+                 "host" : [ "http://localhost:8082" ],
+                 "url_pattern" : "/__health",
+                 "extra_config" : { }
                } ],
                "extra_config" : {
                  "auth/validator" : {
@@ -39,81 +32,9 @@ data:
                    "issuer" : "http://10.175.1.110:31438/realms/master",
                    "disable_jwk_security" : true,
                    "scopes_matcher" : "any",
-                   "scopes" : [ "Testconsumer" ],
                    "scopes_key" : "scope"
                  }
-               },
-               "output_encoding" : "json-collection",
-               "method" : "GET"
-             }, {
-               "endpoint" : "/jmesapi/bjmes",
-               "backend" : [ {
-                 "host" : [ "https://api.nationalize.io" ],
-                 "url_pattern" : "/",
-                 "extra_config" : {
-                   "modifier/jmespath" : {
-                     "expr" : "country[?probability > `0.03` ].country_id"
-                   },
-                   "proxy" : { }
-                 },
-                 "method" : "GET",
-                 "disable_host_sanitize" : true
-               } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "johny_joy" ],
-                   "scopes_key" : "scope"
-                 }
-               },
-               "method" : "GET",
-               "input_query_strings" : [ "name" ]
-             }, {
-               "endpoint" : "/jmesapi/testnoop",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects/7",
-                 "encoding" : "No-Op",
-                 "extra_config" : {
-                   "proxy" : { }
-                 },
-                 "method" : "GET",
-                 "disable_host_sanitize" : true
-               } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "johny_joy" ],
-                   "scopes_key" : "scope"
-                 }
-               },
-               "output_encoding" : "no-op",
-               "method" : "GET"
-             } ],
-             "extra_config" : {
-               "router" : {
-                 "return_error_msg" : true,
-                 "disable_gzip" : true
-               },
-               "security/cors" : {
-                 "allow_origins" : [ "*" ],
-                 "allow_methods" : [ "GET", "POST" ],
-                 "allow_headers" : [ "*" ],
-                 "allow_credentials" : true
                }
-             },
-             "idle_timeout" : "0s",
-             "max_idle_connections" : 0,
-             "max_idle_connections_per_host" : 250,
-             "read_header_timeout" : "0s",
-             "read_timeout" : "0s",
-             "write_timeout" : "0s"
+             } ],
+             "extra_config" : { }
            }
