@@ -51,7 +51,7 @@ data:
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev" ],
                  "url_pattern" : "/objects/7",
-                 "encoding" : "json",
+                 "encoding" : "No-Op",
                  "extra_config" : {
                    "proxy" : { }
                  },
