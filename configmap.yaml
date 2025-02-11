@@ -5,55 +5,106 @@ metadata:
   namespace: krakenddemo-namespace
 data:
   krakend.json: |
-           {
-             "$schema" : "https://www.krakend.io/schema/krakend.json",
-             "version" : 3,
-             "name" : "apigateway",
-             "port" : 8082,
-             "timeout" : "3000ms",
-             "cache_ttl" : "300s",
-             "debug_endpoint" : false,
-             "echo_endpoint" : false,
-             "plugin" : {
-               "pattern" : ".so",
-               "folder" : "/opt/krakend/plugins/"
-             },
-             "endpoints" : [ {
-               "endpoint" : "/api2/api/keycloak-protected22",
-               "backend" : [ {
-                 "host" : [ "http://localhost:8082" ],
-                 "url_pattern" : "/__health",
-                 "extra_config" : { }
-               } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://localhost:8080/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://localhost:8080/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes_key" : "scope"
-                 }
-               },
-               "method" : "GET"
-             }, {
-               "endpoint" : "/api2/keycloak-protected22",
-               "backend" : [ {
-                 "host" : [ "http://localhost:8082" ],
-                 "url_pattern" : "/__health",
-                 "extra_config" : { }
-               } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://localhost:8080/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://localhost:8080/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes_key" : "scope"
-                 }
-               },
-               "method" : "GET"
-             } ],
-             "extra_config" : { }
+           {
+
+             "$schema" : "https://www.krakend.io/schema/krakend.json",
+
+             "version" : 0,
+
+             "name" : "apigateway",
+
+             "port" : 8082,
+
+             "timeout" : "3000ms",
+
+             "cache_ttl" : "300s",
+
+             "debug_endpoint" : false,
+
+             "echo_endpoint" : false,
+
+             "plugin" : {
+
+               "pattern" : ".so",
+
+               "folder" : "/opt/krakend/plugins/"
+
+             },
+
+             "endpoints" : [ {
+
+               "endpoint" : "/api2/api/keycloak-protected22",
+
+               "backend" : [ {
+
+                 "host" : [ "http://localhost:8082" ],
+
+                 "url_pattern" : "/__health",
+
+                 "extra_config" : { }
+
+               } ],
+
+               "extra_config" : {
+
+                 "auth/validator" : {
+
+                   "alg" : "RS256",
+
+                   "jwk_url" : "http://localhost:8080/realms/master/protocol/openid-connect/certs",
+
+                   "issuer" : "http://localhost:8080/realms/master",
+
+                   "disable_jwk_security" : true,
+
+                   "scopes_matcher" : "any",
+
+                   "scopes_key" : "scope"
+
+                 }
+
+               },
+
+               "method" : "GET"
+
+             }, {
+
+               "endpoint" : "/api2/keycloak-protected22",
+
+               "backend" : [ {
+
+                 "host" : [ "http://localhost:8082" ],
+
+                 "url_pattern" : "/__health",
+
+                 "extra_config" : { }
+
+               } ],
+
+               "extra_config" : {
+
+                 "auth/validator" : {
+
+                   "alg" : "RS256",
+
+                   "jwk_url" : "http://localhost:8080/realms/master/protocol/openid-connect/certs",
+
+                   "issuer" : "http://localhost:8080/realms/master",
+
+                   "disable_jwk_security" : true,
+
+                   "scopes_matcher" : "any",
+
+                   "scopes_key" : "scope"
+
+                 }
+
+               },
+
+               "method" : "GET"
+
+             } ],
+
+             "extra_config" : { }
+
            }
