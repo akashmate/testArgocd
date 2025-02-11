@@ -19,6 +19,17 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
+               "endpoint" : "/Flatmap/flatmap",
+               "backend" : [ {
+                 "host" : [ "https://api.nationalize.io" ],
+                 "url_pattern" : "/",
+                 "is_collection" : false,
+                 "extra_config" : { },
+                 "method" : "GET"
+               } ],
+               "extra_config" : { },
+               "method" : "GET"
+             }, {
                "endpoint" : "/basicoperation/testqueryparam",
                "backend" : [ {
                  "host" : [ "https://api.nationalize.io" ],
