@@ -28,7 +28,13 @@ data:
                  "extra_config" : { },
                  "method" : "GET"
                } ],
-               "extra_config" : { },
+               "extra_config" : {
+                 "auth/basic" : {
+                   "users" : {
+                     "hemanth" : "$2a$10$qGSaY6XpFZ9FEH/5gP2jaeJNNSQVrgDMZrX98JVyCNZhIY0Yu8vo2"
+                   }
+                 }
+               },
                "output_encoding" : "json",
                "method" : "GET",
                "input_query_strings" : [ "name" ]
