@@ -9,7 +9,7 @@ data:
 
              "$schema" : "https://www.krakend.io/schema/krakend.json",
 
-             "version" : 3,
+             "version" : 0,
 
              "name" : "apigateway",
 
