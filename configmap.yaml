@@ -23,34 +23,21 @@ data:
                "backend" : [ {
                  "host" : [ "https://api.nationalize.io" ],
                  "url_pattern" : "/",
-                 "is_collection" : false,
-                 "extra_config" : { },
+                 "extra_config" : {
+                   "proxy" : {
+                     "flatmap_filter" : [ {
+                       "type" : "move",
+                       "args" : [ "collection.*.data", "collection.*.Address" ]
+                     }, {
+                       "type" : "move",
+                       "args" : [ "collection.*.Address.color", "collection.*.Address.customcolor" ]
+                     } ]
+                   }
+                 },
                  "method" : "GET"
                } ],
                "extra_config" : { },
                "method" : "GET"
-             }, {
-               "endpoint" : "/basicoperation/testqueryparam",
-               "backend" : [ {
-                 "host" : [ "https://api.nationalize.io" ],
-                 "url_pattern" : "/",
-                 "is_collection" : false,
-                 "extra_config" : { },
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "HarryPotter" ],
-                   "scopes_key" : "scope"
-                 }
-               },
-               "method" : "GET",
-               "input_query_strings" : [ "name" ]
              }, {
                "endpoint" : "/basicoperation/testcollection",
                "backend" : [ {
@@ -101,6 +88,13 @@ data:
                  "allow_headers" : [ "*" ],
                  "expose_headers" : [ "*" ],
                  "allow_credentials" : true
+               },
+               "auth/api-keys" : {
+                 "identifier" : "Authorization",
+                 "strategy" : "header",
+                 "keys" : [ {
+                   "key" : "743ac991-3f16-48aa-b150-664fe5e9f36c"
+                 } ]
                }
              }
            }
