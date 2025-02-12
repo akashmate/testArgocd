@@ -23,6 +23,7 @@ data:
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev" ],
                  "url_pattern" : "/objects",
+                 "is_collection" : true,
                  "extra_config" : {
                    "proxy" : {
                      "flatmap_filter" : [ {
