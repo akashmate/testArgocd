@@ -19,7 +19,7 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
-               "endpoint" : "/v4/operation/bregex",
+               "endpoint" : "/v4/operation/bcontentreplacer",
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev" ],
                  "url_pattern" : "/objects",
@@ -37,19 +37,9 @@ data:
                    "scopes_matcher" : "any",
                    "scopes" : [ "krakend" ],
                    "scopes_key" : "scope"
-                 },
-                 "plugin/req-resp-modifier" : {
-                   "name" : [ "content-replacer" ],
-                   "content-replacer" : {
-                     "hem" : {
-                       "find" : "1",
-                       "replace" : "101",
-                       "regexp" : false
-                     }
-                   }
                  }
                },
-               "output_encoding" : "json",
+               "output_encoding" : "json-collection",
                "method" : "GET"
              }, {
                "endpoint" : "/v4/operation/bjmesresp",
