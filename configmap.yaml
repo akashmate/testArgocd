@@ -14,6 +14,10 @@ data:
              "cache_ttl" : "300s",
              "debug_endpoint" : false,
              "echo_endpoint" : false,
+             "plugin" : {
+               "pattern" : ".so",
+               "folder" : "/opt/krakend/plugins/"
+             },
              "endpoints" : [ {
                "endpoint" : "/api2/api/keycloak-protected22",
                "backend" : [ {
@@ -33,9 +37,5 @@ data:
                },
                "method" : "GET"
              } ],
-             "plugin" : {
-               "pattern" : ".so",
-               "folder" : "/opt/krakend/plugins/"
-             },
              "extra_config" : { }
            }
