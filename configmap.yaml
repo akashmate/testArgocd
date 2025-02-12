@@ -36,6 +36,16 @@ data:
                    "scopes_matcher" : "any",
                    "scopes" : [ "krakend" ],
                    "scopes_key" : "scope"
+                 },
+                 "plugin/req-resp-modifier" : {
+                   "name" : [ "content-replacer" ],
+                   "content-replacer" : {
+                     "120" : {
+                       "find" : "120",
+                       "replace" : "300",
+                       "regexp" : false
+                     }
+                   }
                  }
                },
                "output_encoding" : "json",
