@@ -26,8 +26,7 @@ data:
                  "is_collection" : true,
                  "encoding" : "json",
                  "extra_config" : { },
-                 "method" : "GET",
-                 "sd" : "static"
+                 "method" : "GET"
                } ],
                "extra_config" : {
                  "auth/validator" : {
@@ -40,7 +39,7 @@ data:
                    "scopes_key" : "scope"
                  }
                },
-               "output_encoding" : "json-collection",
+               "output_encoding" : "json",
                "method" : "GET"
              }, {
                "endpoint" : "/v4/operation/bjmesresp",
