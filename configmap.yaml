@@ -19,6 +19,17 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
+               "endpoint" : "/testapi/testep",
+               "backend" : [ {
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "url_pattern" : "/posts",
+                 "is_collection" : false,
+                 "extra_config" : { },
+                 "method" : "GET"
+               } ],
+               "extra_config" : { },
+               "method" : "GET"
+             }, {
                "endpoint" : "/v4/operation/bregex",
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev" ],
@@ -66,17 +77,6 @@ data:
                  }
                },
                "output_encoding" : "json",
-               "method" : "GET"
-             }, {
-               "endpoint" : "/testapi/testep",
-               "backend" : [ {
-                 "host" : [ "https://jsonplaceholder.typicode.com" ],
-                 "url_pattern" : "/posts",
-                 "is_collection" : false,
-                 "extra_config" : { },
-                 "method" : "GET"
-               } ],
-               "extra_config" : { },
                "method" : "GET"
              }, {
                "endpoint" : "/basicoperation/responseschemavalidator/{id}",
@@ -403,6 +403,13 @@ data:
                  "allow_headers" : [ "*" ],
                  "expose_headers" : [ "*" ],
                  "allow_credentials" : true
+               },
+               "auth/api-keys" : {
+                 "identifier" : "Authorization",
+                 "strategy" : "header",
+                 "keys" : [ {
+                   "key" : "743ac991-3f16-48aa-b150-664fe5e9f36c"
+                 } ]
                }
              }
            }
