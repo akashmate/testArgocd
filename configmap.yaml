@@ -19,12 +19,60 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
+               "endpoint" : "/testapi/testep",
+               "backend" : [ {
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "url_pattern" : "/posts",
+                 "is_collection" : false,
+                 "extra_config" : { },
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "HarryPotter" ],
+                   "scopes_key" : "scope"
+                 }
+               },
+               "method" : "GET"
+             }, {
+               "endpoint" : "/v4/operation/bjmesresp",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects",
+                 "is_collection" : true,
+                 "encoding" : "json",
+                 "extra_config" : { },
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "krakend" ],
+                   "scopes_key" : "scope"
+                 }
+               },
+               "output_encoding" : "json",
+               "method" : "GET"
+             }, {
                "endpoint" : "/basicoperation/responseschemavalidator/{id}",
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev/" ],
                  "url_pattern" : "/objects/{id}",
                  "is_collection" : false,
-                 "extra_config" : { },
+                 "extra_config" : {
+                   "modifier/body-generator" : {
+                     "template" : ""
+                   }
+                 },
                  "method" : "GET",
                  "sd" : "static"
                } ],
@@ -113,18 +161,7 @@ data:
                  "host" : [ "https://jsonplaceholder.typicode.com" ],
                  "url_pattern" : "/posts/{id}",
                  "is_collection" : false,
-                 "extra_config" : {
-                   "security/policies" : {
-                     "req" : {
-                       "policies" : [ "req_params.Id.matches('^[0-9]')" ],
-                       "error" : {
-                         "body" : "{\"message\":\"wrong request please make sure id is integer, try again\"}",
-                         "status" : 400,
-                         "content_type" : "application/json"
-                       }
-                     }
-                   }
-                 },
+                 "extra_config" : { },
                  "method" : "GET"
                } ],
                "extra_config" : {
@@ -291,29 +328,6 @@ data:
                },
                "method" : "GET"
              }, {
-               "endpoint" : "/v4/operation/bjmesresp",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects",
-                 "is_collection" : true,
-                 "encoding" : "json",
-                 "extra_config" : { },
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "krakend" ],
-                   "scopes_key" : "scope"
-                 }
-               },
-               "output_encoding" : "json-collection",
-               "method" : "GET"
-             }, {
                "endpoint" : "/SequentialProxy/SequentialProxy",
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev" ],
@@ -324,7 +338,7 @@ data:
                }, {
                  "host" : [ "https://jsonplaceholder.typicode.com" ],
                  "url_pattern" : "/comments?postId={resp0_id}",
-                 "is_collection" : false,
+                 "is_collection" : true,
                  "extra_config" : { },
                  "method" : "GET"
                } ],
@@ -338,6 +352,7 @@ data:
                    "issuer" : "http://10.175.1.110:31438/realms/master",
                    "disable_jwk_security" : true,
                    "scopes_matcher" : "any",
+                   "scopes" : [ "HarryPotter" ],
                    "scopes_key" : "scope"
                  }
                },
