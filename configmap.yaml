@@ -29,6 +29,9 @@ data:
                  "method" : "GET"
                } ],
                "extra_config" : {
+                 "modifier/jmespath" : {
+                   "expr" : "[].{id: id, name: name}"
+                 },
                  "auth/validator" : {
                    "alg" : "RS256",
                    "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
