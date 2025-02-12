@@ -108,6 +108,18 @@ data:
                "output_encoding" : "json",
                "method" : "GET"
              }, {
+               "endpoint" : "/resttosoapapi/resttosoap1",
+               "backend" : [ {
+                 "host" : [ "http://www.dneonline.com" ],
+                 "url_pattern" : "/calculator.asmx",
+                 "is_collection" : false,
+                 "extra_config" : { },
+                 "method" : "POST"
+               } ],
+               "extra_config" : { },
+               "output_encoding" : "no-op",
+               "method" : "GET"
+             }, {
                "endpoint" : "/testapi/testep",
                "backend" : [ {
                  "host" : [ "https://jsonplaceholder.typicode.com" ],
@@ -116,17 +128,7 @@ data:
                  "extra_config" : { },
                  "method" : "GET"
                } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "HarryPotter" ],
-                   "scopes_key" : "scope"
-                 }
-               },
+               "extra_config" : { },
                "method" : "GET"
              }, {
                "endpoint" : "/basicoperation/responseschemavalidator/{id}",
@@ -134,7 +136,11 @@ data:
                  "host" : [ "https://api.restful-api.dev/" ],
                  "url_pattern" : "/objects/{id}",
                  "is_collection" : false,
-                 "extra_config" : { },
+                 "extra_config" : {
+                   "modifier/body-generator" : {
+                     "template" : ""
+                   }
+                 },
                  "method" : "GET",
                  "sd" : "static"
                } ],
@@ -223,18 +229,7 @@ data:
                  "host" : [ "https://jsonplaceholder.typicode.com" ],
                  "url_pattern" : "/posts/{id}",
                  "is_collection" : false,
-                 "extra_config" : {
-                   "security/policies" : {
-                     "req" : {
-                       "policies" : [ "req_params.Id.matches('^[0-9]')" ],
-                       "error" : {
-                         "body" : "{\"message\":\"wrong request please make sure id is integer, try again\"}",
-                         "status" : 400,
-                         "content_type" : "application/json"
-                       }
-                     }
-                   }
-                 },
+                 "extra_config" : { },
                  "method" : "GET"
                } ],
                "extra_config" : {
@@ -411,7 +406,7 @@ data:
                }, {
                  "host" : [ "https://jsonplaceholder.typicode.com" ],
                  "url_pattern" : "/comments?postId={resp0_id}",
-                 "is_collection" : false,
+                 "is_collection" : true,
                  "extra_config" : { },
                  "method" : "GET"
                } ],
@@ -425,6 +420,7 @@ data:
                    "issuer" : "http://10.175.1.110:31438/realms/master",
                    "disable_jwk_security" : true,
                    "scopes_matcher" : "any",
+                   "scopes" : [ "HarryPotter" ],
                    "scopes_key" : "scope"
                  }
                },
