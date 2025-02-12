@@ -37,6 +37,32 @@ data:
                    "scopes_matcher" : "any",
                    "scopes" : [ "krakend" ],
                    "scopes_key" : "scope"
+                 },
+                 "plugin/req-resp-modifier" : {
+                   "name" : [ "response-schema-validator" ],
+                   "response-schema-validator" : {
+                     "error" : {
+                       "body" : "Validation Error",
+                       "status" : 422
+                     },
+                     "schema" : {
+                       "type" : "object",
+                       "properties" : {
+                         "data" : {
+                           "type" : "object",
+                           "properties" : {
+                             "capacity GB" : {
+                               "type" : "string"
+                             },
+                             "color" : {
+                               "type" : "string"
+                             }
+                           },
+                           "required" : [ "capacity GB", "color" ]
+                         }
+                       }
+                     }
+                   }
                  }
                },
                "output_encoding" : "json",
