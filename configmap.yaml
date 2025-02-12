@@ -24,7 +24,7 @@ data:
                  "host" : [ "https://api.restful-api.dev/" ],
                  "url_pattern" : "/objects/7",
                  "extra_config" : { },
-                 "target" : "LaptopDetails",
+                 "target" : "data",
                  "method" : "GET"
                } ],
                "extra_config" : {
