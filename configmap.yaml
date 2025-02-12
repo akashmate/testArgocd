@@ -30,7 +30,7 @@ data:
                } ],
                "extra_config" : {
                  "modifier/jmespath" : {
-                   "expr" : "collection[].{id: id, name: name}"
+                   "expr" : "collection[].{id: id}"
                  },
                  "auth/validator" : {
                    "alg" : "RS256",
