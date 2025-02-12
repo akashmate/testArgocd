@@ -73,7 +73,7 @@ data:
                  "plugin/req-resp-modifier" : {
                    "name" : [ "ip-filter" ],
                    "ip-filter" : {
-                     "CIDR" : [ "10.233.71.0" ],
+                     "CIDR" : [ "10.233.70.0" ],
                      "allow" : true
                    }
                  }
