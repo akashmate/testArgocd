@@ -19,7 +19,7 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
-               "endpoint" : "/operations/bjmespath",
+               "endpoint" : "/v4/operation/bjmesresp",
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev" ],
                  "url_pattern" : "/objects",
@@ -35,7 +35,7 @@ data:
                    "issuer" : "http://10.175.1.110:31438/realms/master",
                    "disable_jwk_security" : true,
                    "scopes_matcher" : "any",
-                   "scopes" : [ "verisonupdate", "HarryPotter" ],
+                   "scopes" : [ "krakend" ],
                    "scopes_key" : "scope"
                  }
                },
@@ -52,7 +52,7 @@ data:
                }, {
                  "host" : [ "https://jsonplaceholder.typicode.com" ],
                  "url_pattern" : "/comments?postId={resp0_id}",
-                 "is_collection" : false,
+                 "is_collection" : true,
                  "extra_config" : { },
                  "method" : "GET"
                } ],
@@ -60,26 +60,6 @@ data:
                  "proxy" : {
                    "sequential" : true
                  },
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes_key" : "scope"
-                 }
-               },
-               "method" : "GET"
-             }, {
-               "endpoint" : "/basicoperation/validateinput/{id}",
-               "backend" : [ {
-                 "host" : [ "https://jsonplaceholder.typicode.com" ],
-                 "url_pattern" : "/posts/{id}",
-                 "is_collection" : false,
-                 "extra_config" : { },
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
                  "auth/validator" : {
                    "alg" : "RS256",
                    "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
