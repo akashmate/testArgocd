@@ -23,7 +23,6 @@ data:
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev" ],
                  "url_pattern" : "/objects/6",
-                 "is_collection" : true,
                  "encoding" : "json",
                  "extra_config" : { },
                  "method" : "GET"
