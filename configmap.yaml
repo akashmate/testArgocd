@@ -51,7 +51,7 @@ data:
                "qos/ratelimit/service" : {
                  "capacity" : 1,
                  "client_capacity" : 1,
-                 "client_max_rate" : 3,
+                 "client_max_rate" : 100,
                  "every" : "1m",
                  "max_rate" : 10,
                  "strategy" : "ip"
