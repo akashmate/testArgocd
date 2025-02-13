@@ -19,63 +19,17 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
-               "endpoint" : "/responseschemaapi/respvalidation/{id}",
+               "endpoint" : "/apikey/testapikeyep",
                "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev/" ],
-                 "url_pattern" : "/objects/{id}",
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "url_pattern" : "/posts/1",
                  "is_collection" : false,
-                 "extra_config" : {
-                   "plugin/req-resp-modifier" : {
-                     "name" : [ "response-schema-validator" ],
-                     "response-schema-validator" : {
-                       "error" : {
-                         "body" : "Inavlid response jsonschema not valid",
-                         "status" : 400
-                       },
-                       "schema" : {
-                         "type" : "object",
-                         "properties" : {
-                           "id" : {
-                             "type" : "string"
-                           },
-                           "name" : {
-                             "type" : "string"
-                           },
-                           "data" : {
-                             "type" : "object",
-                             "properties" : {
-                               "year" : {
-                                 "type" : "integer"
-                               },
-                               "price" : {
-                                 "type" : "number"
-                               },
-                               "CPU model" : {
-                                 "type" : "string"
-                               },
-                               "Hard disk size" : {
-                                 "type" : "string"
-                               }
-                             },
-                             "required" : [ "year", "price", "CPU model", "Hard disk size" ]
-                           }
-                         },
-                         "required" : [ "id", "name", "data" ]
-                       }
-                     }
-                   }
-                 },
+                 "extra_config" : { },
                  "method" : "GET"
                } ],
                "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "Testconsumerid" ],
-                   "scopes_key" : "scope"
+                 "auth/api-keys" : {
+                   "roles" : [ "Developer", "Tester", "Tester" ]
                  }
                },
                "method" : "GET"
@@ -627,6 +581,20 @@ data:
                  "allow_headers" : [ "*" ],
                  "expose_headers" : [ "*" ],
                  "allow_credentials" : true
+               },
+               "auth/api-keys" : {
+                 "identifier" : "Authorization",
+                 "strategy" : "header",
+                 "keys" : [ {
+                   "key" : "272dc167-2072-400c-b1ea-3474157ca469",
+                   "roles" : [ "Developer" ]
+                 }, {
+                   "key" : "581185bc-0f1e-4a95-babf-d4aa8da1df20",
+                   "roles" : [ "Tester" ]
+                 }, {
+                   "key" : "743ac991-3f16-48aa-b150-664fe5e9f36c",
+                   "roles" : [ "Tester" ]
+                 } ]
                }
              }
            }
