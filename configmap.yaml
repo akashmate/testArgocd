@@ -19,6 +19,21 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
+               "endpoint" : "/apikey/testapikeyep",
+               "backend" : [ {
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "url_pattern" : "/posts/1",
+                 "is_collection" : false,
+                 "extra_config" : { },
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "auth/api-keys" : {
+                   "roles" : [ "Developer" ]
+                 }
+               },
+               "method" : "GET"
+             }, {
                "endpoint" : "/gatewayratelimitapi/gratelimitep",
                "backend" : [ {
                  "host" : [ "https://jsonplaceholder.typicode.com" ],
@@ -48,10 +63,18 @@ data:
                  "expose_headers" : [ "*" ],
                  "allow_credentials" : true
                },
+               "auth/api-keys" : {
+                 "identifier" : "Authorization",
+                 "strategy" : "header",
+                 "keys" : [ {
+                   "key" : "272dc167-2072-400c-b1ea-3474157ca469",
+                   "roles" : [ "Developer" ]
+                 } ]
+               },
                "qos/ratelimit/service" : {
                  "capacity" : 1,
                  "client_capacity" : 1,
-                 "client_max_rate" : 100,
+                 "client_max_rate" : 15,
                  "every" : "1m",
                  "max_rate" : 10,
                  "strategy" : "ip"
