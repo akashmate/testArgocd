@@ -19,7 +19,7 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
-               "endpoint" : "/ratelimit/ratelimiep",
+               "endpoint" : "/gatewayratelimitapi/gratelimitep",
                "backend" : [ {
                  "host" : [ "https://jsonplaceholder.typicode.com" ],
                  "url_pattern" : "/posts/1",
@@ -28,122 +28,32 @@ data:
                  "method" : "GET"
                } ],
                "extra_config" : {
-                 "qos/ratelimit/router" : {
-                   "client_max_rate" : 4,
-                   "every" : "1m",
-                   "strategy" : "ip"
-                 },
                  "auth/validator" : {
                    "alg" : "RS256",
                    "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
                    "issuer" : "http://10.175.1.110:31438/realms/master",
                    "disable_jwk_security" : true,
                    "scopes_matcher" : "any",
-                   "scopes" : [ "Testconsumerid" ],
-                   "scopes_key" : "scope"
-                 }
-               },
-               "method" : "GET"
-             }, {
-               "endpoint" : "/flatmap/flatmaap",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects",
-                 "is_collection" : true,
-                 "extra_config" : {
-                   "proxy" : {
-                     "flatmap_filter" : [ {
-                       "type" : "move",
-                       "args" : [ "collection.*.data", "collection.*.Address" ]
-                     }, {
-                       "type" : "move",
-                       "args" : [ "collection.*.Address.color", "collection.*.Address.customcolor" ]
-                     } ]
-                   }
-                 },
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
-                 "auth/basic" : {
-                   "users" : {
-                     "testconsumer" : "$2a$10$IwznC/4nZVKB7WX3meDezOpDZ3gSg5N00BrbnE6pKbK46/ZFuNhjW"
-                   }
-                 }
-               },
-               "method" : "GET"
-             }, {
-               "endpoint" : "/responseschemaapi/respvalidation/{id}",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects/{id}",
-                 "is_collection" : false,
-                 "extra_config" : {
-                   "plugin/req-resp-modifier" : {
-                     "name" : [ "response-schema-validator" ],
-                     "response-schema-validator" : {
-                       "error" : {
-                         "body" : "Inavlid response jsonschema not valid",
-                         "status" : 400
-                       },
-                       "schema" : {
-                         "type" : "object",
-                         "properties" : {
-                           "id" : {
-                             "type" : "string"
-                           },
-                           "name" : {
-                             "type" : "string"
-                           },
-                           "data" : {
-                             "type" : "object",
-                             "properties" : {
-                               "year" : {
-                                 "type" : "integer"
-                               },
-                               "price" : {
-                                 "type" : "number"
-                               },
-                               "CPU model" : {
-                                 "type" : "string"
-                               },
-                               "Hard disk size" : {
-                                 "type" : "string"
-                               }
-                             },
-                             "required" : [ "year", "price", "CPU model", "Hard disk size" ]
-                           }
-                         },
-                         "required" : [ "id", "name", "data" ]
-                       }
-                     }
-                   }
-                 },
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "Testconsumerid" ],
                    "scopes_key" : "scope"
                  }
                },
                "method" : "GET"
              } ],
              "extra_config" : {
-               "router" : {
-                 "return_error_msg" : true,
-                 "disable_gzip" : false
-               },
                "security/cors" : {
                  "allow_origins" : [ "*" ],
                  "allow_methods" : [ "GET", "HEAD", "POST" ],
                  "allow_headers" : [ "*" ],
                  "expose_headers" : [ "*" ],
                  "allow_credentials" : true
+               },
+               "qos/ratelimit/service" : {
+                 "capacity" : 1,
+                 "client_capacity" : 1,
+                 "client_max_rate" : 3,
+                 "every" : "1m",
+                 "max_rate" : 3,
+                 "strategy" : "ip"
                }
              }
            }
