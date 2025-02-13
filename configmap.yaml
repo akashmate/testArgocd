@@ -21,7 +21,7 @@ data:
              "endpoints" : [ {
                "endpoint" : "/basicoperation/responseschemavalidator/{id}",
                "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev/" ],
+                 "host" : [ "https://api.restful-api.dev" ],
                  "url_pattern" : "/objects/{id}",
                  "is_collection" : false,
                  "extra_config" : {
@@ -30,40 +30,42 @@ data:
                      "response-schema-validator" : {
                        "error" : {
                          "body" : "Inavlid response jsonschema not valid",
-                         "status" : 400
+                         "status" : 500
                        },
                        "schema" : {
                          "type" : "object",
                          "properties" : {
-                           "count" : {
+                           "id" : {
                              "type" : "string"
-                           },
-                           "country" : {
-                             "type" : "array",
-                             "items" : {
-                               "type" : "object",
-                               "properties" : {
-                                 "country_id" : {
-                                   "type" : "string"
-                                 },
-                                 "probability" : {
-                                   "type" : "string"
-                                 }
-                               },
-                               "required" : [ "country_id", "probability" ]
-                             }
                            },
                            "name" : {
                              "type" : "string"
+                           },
+                           "data" : {
+                             "type" : "object",
+                             "properties" : {
+                               "year" : {
+                                 "type" : "integer"
+                               },
+                               "price" : {
+                                 "type" : "number"
+                               },
+                               "CPU model" : {
+                                 "type" : "string"
+                               },
+                               "Hard disk size" : {
+                                 "type" : "string"
+                               }
+                             },
+                             "required" : [ "year", "price", "CPU model", "Hard disk size" ]
                            }
                          },
-                         "required" : [ "count", "country", "name" ]
+                         "required" : [ "id", "name", "data" ]
                        }
                      }
                    }
                  },
-                 "method" : "GET",
-                 "sd" : "static"
+                 "method" : "GET"
                } ],
                "extra_config" : {
                  "auth/validator" : {
