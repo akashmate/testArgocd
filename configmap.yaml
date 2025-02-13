@@ -5,75 +5,119 @@ metadata:
   namespace: krakenddemo-namespace
 data:
   krakend.json: |
-           {
-             "$schema" : "https://www.krakend.io/schema/krakend.json",
-             "version" : 3,
-             "name" : "massil",
-             "port" : 8082,
-             "host" : [ "http://localhost:8083" ],
-             "timeout" : "3000ms",
-             "cache_ttl" : "300s",
-             "debug_endpoint" : false,
-             "echo_endpoint" : false,
-             "plugin" : {
-               "pattern" : ".so",
-               "folder" : "/opt/krakend/plugins/"
-             },
-             "endpoints" : [ {
-               "endpoint" : "/test-path5/keysw",
-               "backend" : [ {
-                 "host" : [ "https://jsonplaceholder.typicode.com" ],
-                 "url_pattern" : "/getusers",
-                 "is_collection" : true,
-                 "encoding" : "json",
-                 "extra_config" : { },
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://localhost:8080/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://localhost:8080/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes_key" : "scope"
-                 }
-               },
-               "output_encoding" : "json",
-               "method" : "PUT"
-             }, {
-               "endpoint" : "/test-path5/keyss",
-               "backend" : [ {
-                 "host" : [ "https://jsonplaceholder.typicode.com" ],
-                 "url_pattern" : "/users",
-                 "is_collection" : false,
-                 "encoding" : "json",
-                 "extra_config" : { },
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://localhost:8080/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://localhost:8080/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes_key" : "scope"
-                 }
-               },
-               "output_encoding" : "json",
-               "method" : "POST"
-             }, {
-               "endpoint" : "/keys",
-               "backend" : [ {
-                 "host" : [ "https://jsonplaceholder.typicode.com" ],
-                 "url_pattern" : "/users",
-                 "is_collection" : true,
-                 "encoding" : "json",
-                 "method" : "GET"
-               } ],
-               "output_encoding" : "json",
-               "method" : "GET"
-             } ],
-             "extra_config" : { }
+           {
+             "$schema" : "https://www.krakend.io/schema/krakend.json",
+             "version" : 3,
+             "name" : "gateway",
+             "port" : 8082,
+             "timeout" : "3000ms",
+             "cache_ttl" : "300s",
+             "debug_endpoint" : true,
+             "echo_endpoint" : true,
+             "plugin" : {
+               "pattern" : ".so",
+               "folder" : "/opt/krakend/plugins/"
+             },
+             "endpoints" : [ {
+               "endpoint" : "/flatmap/flatmaap",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects",
+                 "is_collection" : true,
+                 "extra_config" : {
+                   "proxy" : {
+                     "flatmap_filter" : [ {
+                       "type" : "move",
+                       "args" : [ "collection.*.data", "collection.*.Address" ]
+                     }, {
+                       "type" : "move",
+                       "args" : [ "collection.*.Address.color", "collection.*.Address.customcolor" ]
+                     } ]
+                   }
+                 },
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "auth/basic" : {
+                   "users" : {
+                     "testconsumer" : "$2a$10$IwznC/4nZVKB7WX3meDezOpDZ3gSg5N00BrbnE6pKbK46/ZFuNhjW"
+                   }
+                 }
+               },
+               "method" : "GET"
+             }, {
+               "endpoint" : "/responseschemaapi/respvalidation/{id}",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects/{id}",
+                 "is_collection" : false,
+                 "extra_config" : {
+                   "plugin/req-resp-modifier" : {
+                     "name" : [ "response-schema-validator" ],
+                     "response-schema-validator" : {
+                       "error" : {
+                         "body" : "Inavlid response jsonschema not valid",
+                         "status" : 400
+                       },
+                       "schema" : {
+                         "type" : "object",
+                         "properties" : {
+                           "id" : {
+                             "type" : "string"
+                           },
+                           "name" : {
+                             "type" : "string"
+                           },
+                           "data" : {
+                             "type" : "object",
+                             "properties" : {
+                               "year" : {
+                                 "type" : "integer"
+                               },
+                               "price" : {
+                                 "type" : "number"
+                               },
+                               "CPU model" : {
+                                 "type" : "string"
+                               },
+                               "Hard disk size" : {
+                                 "type" : "string"
+                               }
+                             },
+                             "required" : [ "year", "price", "CPU model", "Hard disk size" ]
+                           }
+                         },
+                         "required" : [ "id", "name", "data" ]
+                       }
+                     }
+                   }
+                 },
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "Testconsumerid" ],
+                   "scopes_key" : "scope"
+                 }
+               },
+               "method" : "GET"
+             } ],
+             "extra_config" : {
+               "router" : {
+                 "return_error_msg" : true,
+                 "disable_gzip" : false
+               },
+               "security/cors" : {
+                 "allow_origins" : [ "*" ],
+                 "allow_methods" : [ "GET", "HEAD", "POST" ],
+                 "allow_headers" : [ "*" ],
+                 "expose_headers" : [ "*" ],
+                 "allow_credentials" : true
+               }
+             }
            }
