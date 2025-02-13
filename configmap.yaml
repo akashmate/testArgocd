@@ -30,7 +30,7 @@ data:
                      "response-schema-validator" : {
                        "error" : {
                          "body" : "Inavlid response jsonschema not valid",
-                         "status" : 500
+                         "status" : 400
                        },
                        "schema" : {
                          "type" : "object",
