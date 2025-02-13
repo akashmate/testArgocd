@@ -53,7 +53,7 @@ data:
                  "client_capacity" : 1,
                  "client_max_rate" : 3,
                  "every" : "1m",
-                 "max_rate" : 3,
+                 "max_rate" : 10,
                  "strategy" : "ip"
                }
              }
