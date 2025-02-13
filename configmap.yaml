@@ -8,9 +8,9 @@ data:
            {
              "$schema" : "https://www.krakend.io/schema/krakend.json",
              "version" : 3,
-             "name" : "Test sample Gateway10",
+             "name" : "Test Gateway",
              "port" : 8082,
-             "host" : [ "http://localhost" ],
+             "host" : [ "http://localhost.com" ],
              "timeout" : "3000ms",
              "cache_ttl" : "300s",
              "debug_endpoint" : false,
