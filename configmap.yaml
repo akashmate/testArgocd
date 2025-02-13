@@ -19,6 +19,33 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
+               "endpoint" : "/requestManipulation/requestmanipulationep",
+               "backend" : [ {
+                 "host" : [ "https://reqres.in" ],
+                 "url_pattern" : "/api/users",
+                 "is_collection" : false,
+                 "extra_config" : {
+                   "modifier/body-generator" : {
+                     "content_type" : "application/json",
+                     "debug" : true,
+                     "template" : "ewogICAgIm5hbWUiOiAie3sgLnJlcV9ib2R5LnVwZGF0ZS5kYXRhLm5hbWUgfX0iLAogICAgImVtYWlsIjogInt7IC5yZXFfYm9keS51cGRhdGUuZGF0YS5lbWFpbCB9fSIKfQ=="
+                   }
+                 },
+                 "method" : "POST",
+                 "sd" : "static"
+               } ],
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes_key" : "scope"
+                 }
+               },
+               "method" : "POST"
+             }, {
                "endpoint" : "/apikey/testapikeyep",
                "backend" : [ {
                  "host" : [ "https://jsonplaceholder.typicode.com" ],
@@ -62,20 +89,6 @@ data:
                  "allow_headers" : [ "*" ],
                  "expose_headers" : [ "*" ],
                  "allow_credentials" : true
-               },
-               "auth/api-keys" : {
-                 "identifier" : "Authorization",
-                 "strategy" : "header",
-                 "keys" : [ {
-                   "key" : "272dc167-2072-400c-b1ea-3474157ca469",
-                   "roles" : [ "Developer" ]
-                 }, {
-                   "key" : "581185bc-0f1e-4a95-babf-d4aa8da1df20",
-                   "roles" : [ "Tester" ]
-                 }, {
-                   "key" : "743ac991-3f16-48aa-b150-664fe5e9f36c",
-                   "roles" : [ "Tester" ]
-                 } ]
                },
                "qos/ratelimit/service" : {
                  "capacity" : 1,
