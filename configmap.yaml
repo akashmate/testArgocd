@@ -8,9 +8,9 @@ data:
            {
              "$schema" : "https://www.krakend.io/schema/krakend.json",
              "version" : 3,
-             "name" : "Test Gateway20",
+             "name" : "massil",
              "port" : 8082,
-             "host" : [ "http://localhost" ],
+             "host" : [ "http://localhost:8083" ],
              "timeout" : "3000ms",
              "cache_ttl" : "300s",
              "debug_endpoint" : false,
@@ -20,15 +20,58 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
-               "endpoint" : "/test3/testing",
+               "endpoint" : "/test-path5/keysw",
                "backend" : [ {
                  "host" : [ "https://jsonplaceholder.typicode.com" ],
-                 "url_pattern" : "/posts",
+                 "url_pattern" : "/getusers",
+                 "is_collection" : true,
+                 "encoding" : "json",
+                 "extra_config" : { },
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://localhost:8080/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://localhost:8080/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes_key" : "scope"
+                 }
+               },
+               "output_encoding" : "json",
+               "method" : "PUT"
+             }, {
+               "endpoint" : "/test-path5/keyss",
+               "backend" : [ {
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "url_pattern" : "/users",
+                 "is_collection" : false,
+                 "encoding" : "json",
+                 "extra_config" : { },
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://localhost:8080/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://localhost:8080/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes_key" : "scope"
+                 }
+               },
+               "output_encoding" : "json",
+               "method" : "POST"
+             }, {
+               "endpoint" : "/keys",
+               "backend" : [ {
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "url_pattern" : "/users",
                  "is_collection" : true,
                  "encoding" : "json",
                  "method" : "GET"
                } ],
-               "extra_config" : { },
                "output_encoding" : "json",
                "method" : "GET"
              } ],
