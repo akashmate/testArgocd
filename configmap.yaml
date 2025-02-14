@@ -33,7 +33,11 @@ data:
                  "extra_config" : { },
                  "method" : "GET"
                } ],
-               "extra_config" : { },
+               "extra_config" : {
+                 "auth/api-keys" : {
+                   "roles" : [ "finance" ]
+                 }
+               },
                "method" : "GET"
              }, {
                "endpoint" : "/samplejmes/samplejmesep",
@@ -86,7 +90,8 @@ data:
                  "identifier" : "Authorization",
                  "strategy" : "header",
                  "keys" : [ {
-                   "key" : "f38a07f1-c045-4872-8c5d-6f96638c0c60"
+                   "key" : "f38a07f1-c045-4872-8c5d-6f96638c0c60",
+                   "roles" : [ "finance" ]
                  } ]
                },
                "telemetry/logging" : {
