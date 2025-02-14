@@ -19,10 +19,11 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
-               "endpoint" : "/sampleresponsemanip/samplerespmanipulationep",
+               "endpoint" : "/sampleresponsemanip/samplemanipulation/{id}",
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev" ],
                  "url_pattern" : "/objects/{id}",
+                 "encoding" : "no-op",
                  "extra_config" : {
                    "modifier/response-body-generator" : {
                      "content_type" : "application/json",
@@ -44,7 +45,6 @@ data:
                    "scopes_key" : "scope"
                  }
                },
-               "output_encoding" : "json",
                "method" : "GET"
              }, {
                "endpoint" : "/samplejmes/samplejmesep",
