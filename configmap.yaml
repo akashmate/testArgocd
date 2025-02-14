@@ -40,16 +40,6 @@ data:
                    "scopes" : [ "sampleid" ],
                    "scopes_key" : "scope"
                  },
-                 "plugin/http-server" : {
-                   "name" : [ "redis-ratelimit" ],
-                   "redis-ratelimit" : {
-                     "burst" : 7,
-                     "host" : "redis:6379",
-                     "period" : "1m",
-                     "rate" : 10,
-                     "tokenizer" : "URL"
-                   }
-                 },
                  "plugin/req-resp-modifier" : {
                    "name" : [ "content-replacer" ],
                    "content-replacer" : {
