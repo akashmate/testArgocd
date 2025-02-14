@@ -19,6 +19,27 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
+               "endpoint" : "/sampleflatmap/flatmapep",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects",
+                 "is_collection" : true,
+                 "extra_config" : {
+                   "proxy" : {
+                     "flatmap_filter" : [ {
+                       "type" : "move",
+                       "args" : [ "collection.*.data", "collection.*.Address" ]
+                     }, {
+                       "type" : "move",
+                       "args" : [ "collection.*.Address.color", "collection.*.Address.customcolor" ]
+                     } ]
+                   }
+                 },
+                 "method" : "GET"
+               } ],
+               "extra_config" : { },
+               "method" : "GET"
+             }, {
                "endpoint" : "/sampleresponsemanip/samplerespmanipulationep",
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev" ],
@@ -855,6 +876,13 @@ data:
                  "allow_headers" : [ "*" ],
                  "expose_headers" : [ "*" ],
                  "allow_credentials" : true
+               },
+               "auth/api-keys" : {
+                 "identifier" : "Authorization",
+                 "strategy" : "header",
+                 "keys" : [ {
+                   "key" : "f38a07f1-c045-4872-8c5d-6f96638c0c60"
+                 } ]
                }
              }
            }
