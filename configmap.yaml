@@ -39,6 +39,16 @@ data:
                    "scopes_matcher" : "any",
                    "scopes" : [ "sampleid" ],
                    "scopes_key" : "scope"
+                 },
+                 "plugin/http-server" : {
+                   "name" : [ "redis-ratelimit" ],
+                   "redis-ratelimit" : {
+                     "burst" : 3,
+                     "host" : "redis:6379",
+                     "period" : "1m",
+                     "rate" : 10,
+                     "tokenizer" : "URL"
+                   }
                  }
                },
                "method" : "GET",
