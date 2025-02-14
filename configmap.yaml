@@ -23,9 +23,14 @@ data:
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev/" ],
                  "url_pattern" : "/objects/7",
-                 "is_collection" : false,
                  "encoding" : "json",
-                 "extra_config" : { },
+                 "extra_config" : {
+                   "modifier/response-body-generator" : {
+                     "content_type" : "application/json",
+                     "debug" : true,
+                     "template" : "ewogICJBZGRyZXNzIjoge3sgdG9Kc29uIC5yZXNwX2JvZHkgfX0sCiAgInN0YXR1c19jb2RlIjoge3sgdG9Kc29uIC5yZXNwX3N0YXR1cyB9fSwKICAiaGVhZGVycyI6IHt7IHRvSnNvbiAucmVzcF9oZWFkZXJzIH19Cn0="
+                   }
+                 },
                  "method" : "GET",
                  "sd" : "static"
                } ],
