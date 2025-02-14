@@ -35,7 +35,7 @@ data:
                } ],
                "extra_config" : {
                  "auth/api-keys" : {
-                   "roles" : [ "finance" ]
+                   "roles" : [ "finance", "" ]
                  }
                },
                "method" : "GET"
@@ -92,6 +92,9 @@ data:
                  "keys" : [ {
                    "key" : "f38a07f1-c045-4872-8c5d-6f96638c0c60",
                    "roles" : [ "finance" ]
+                 }, {
+                   "key" : "272dc167-2072-400c-b1ea-3474157ca469",
+                   "roles" : [ "" ]
                  } ]
                },
                "telemetry/logging" : {
