@@ -19,27 +19,6 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
-               "endpoint" : "/SequentialProxy/sequentialep",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects/7",
-                 "is_collection" : false,
-                 "extra_config" : { },
-                 "method" : "GET"
-               }, {
-                 "host" : [ "https://jsonplaceholder.typicode.com" ],
-                 "url_pattern" : "/comments?postId={resp0_id}",
-                 "is_collection" : false,
-                 "extra_config" : { },
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
-                 "auth/api-keys" : {
-                   "roles" : [ "Tester" ]
-                 }
-               },
-               "method" : "GET"
-             }, {
                "endpoint" : "/samplejmes/samplejmesep",
                "backend" : [ {
                  "host" : [ "https://api.nationalize.io" ],
@@ -60,16 +39,6 @@ data:
                    "scopes_matcher" : "any",
                    "scopes" : [ "sampleid" ],
                    "scopes_key" : "scope"
-                 },
-                 "plugin/req-resp-modifier" : {
-                   "name" : [ "content-replacer" ],
-                   "content-replacer" : {
-                     "data.Hard disk size" : {
-                       "find" : "1 TB",
-                       "replace" : "5 TB",
-                       "regexp" : false
-                     }
-                   }
                  }
                },
                "method" : "GET",
@@ -85,16 +54,6 @@ data:
                  "allow_headers" : [ "*" ],
                  "expose_headers" : [ "*" ],
                  "allow_credentials" : true
-               },
-               "auth/api-keys" : {
-                 "identifier" : "Authorization",
-                 "strategy" : "header",
-                 "keys" : [ {
-                   "key" : "743ac991-3f16-48aa-b150-664fe5e9f36c",
-                   "roles" : [ "Tester" ]
-                 }, {
-                   "key" : "f38a07f1-c045-4872-8c5d-6f96638c0c60"
-                 } ]
                },
                "telemetry/logging" : {
                  "format" : "default",
