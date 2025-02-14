@@ -19,6 +19,31 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
+               "endpoint" : "/samplejmes/samplejmesep",
+               "backend" : [ {
+                 "host" : [ "https://api.nationalize.io" ],
+                 "url_pattern" : "/",
+                 "extra_config" : {
+                   "modifier/jmespath" : {
+                     "expr" : "country[?probability > `0.03` ].country_id"
+                   }
+                 },
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "sampleid" ],
+                   "scopes_key" : "scope"
+                 }
+               },
+               "method" : "GET",
+               "input_query_strings" : [ "name" ]
+             }, {
                "endpoint" : "/apikey/testapikeyep",
                "backend" : [ {
                  "host" : [ "https://jsonplaceholder.typicode.com" ],
@@ -799,21 +824,15 @@ data:
                  "expose_headers" : [ "*" ],
                  "allow_credentials" : true
                },
-               "auth/api-keys" : {
-                 "identifier" : "Authorization",
-                 "strategy" : "header",
-                 "keys" : [ {
-                   "key" : "272dc167-2072-400c-b1ea-3474157ca469",
-                   "roles" : [ "Developer" ]
-                 }, {
-                   "key" : "581185bc-0f1e-4a95-babf-d4aa8da1df20",
-                   "roles" : [ "Tester" ]
-                 }, {
-                   "key" : "743ac991-3f16-48aa-b150-664fe5e9f36c",
-                   "roles" : [ "Tester" ]
-                 }, {
-                   "key" : "f38a07f1-c045-4872-8c5d-6f96638c0c60"
-                 } ]
+               "telemetry/logging" : {
+                 "format" : "default",
+                 "syslog_facility" : "local3",
+                 "level" : "DEBUG",
+                 "prefix" : "MASSIL",
+                 "stdout" : true
+               },
+               "telemetry/logstash" : {
+                 "enabled" : true
                }
              }
            }
