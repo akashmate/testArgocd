@@ -49,6 +49,16 @@ data:
                      "rate" : 10,
                      "tokenizer" : "URL"
                    }
+                 },
+                 "plugin/req-resp-modifier" : {
+                   "name" : [ "content-replacer" ],
+                   "content-replacer" : {
+                     "data.Hard disk size" : {
+                       "find" : "1 TB",
+                       "replace" : "5 TB",
+                       "regexp" : false
+                     }
+                   }
                  }
                },
                "method" : "GET",
