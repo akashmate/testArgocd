@@ -19,6 +19,33 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
+               "endpoint" : "/flatmap/flatmaap",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects",
+                 "is_collection" : true,
+                 "extra_config" : {
+                   "proxy" : {
+                     "flatmap_filter" : [ {
+                       "type" : "move",
+                       "args" : [ "collection.*.data", "collection.*.Address" ]
+                     }, {
+                       "type" : "move",
+                       "args" : [ "collection.*.Address.color", "collection.*.Address.customcolor" ]
+                     } ]
+                   }
+                 },
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "auth/basic" : {
+                   "users" : {
+                     "testconsumer" : "$2a$10$IwznC/4nZVKB7WX3meDezOpDZ3gSg5N00BrbnE6pKbK46/ZFuNhjW"
+                   }
+                 }
+               },
+               "method" : "GET"
+             }, {
                "endpoint" : "/jmes/jmes",
                "backend" : [ {
                  "host" : [ "https://api.nationalize.io" ],
