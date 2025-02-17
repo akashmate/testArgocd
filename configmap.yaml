@@ -21,8 +21,9 @@ data:
              "endpoints" : [ {
                "endpoint" : "/rspmanipulationapi/rspmaniplationep",
                "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
+                 "host" : [ "https://api.restful-api.dev/" ],
                  "url_pattern" : "/objects/7",
+                 "encoding" : "no-op",
                  "extra_config" : {
                    "modifier/response-body-generator" : {
                      "content_type" : "application/json",
@@ -43,6 +44,7 @@ data:
                    "scopes_key" : "scope"
                  }
                },
+               "output_encoding" : "no-op",
                "method" : "GET"
              }, {
                "endpoint" : "/respmanipulationapi/respmanipulationep",
