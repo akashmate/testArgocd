@@ -19,12 +19,84 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
+               "endpoint" : "/flatmap/manipulation",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects",
+                 "is_collection" : true,
+                 "encoding" : "json",
+                 "extra_config" : { },
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "krakendtest" ],
+                   "scopes_key" : "scope"
+                 }
+               },
+               "output_encoding" : "json",
+               "method" : "GET"
+             }, {
                "endpoint" : "/responseschemaapirespvalidation/{id}",
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev" ],
                  "url_pattern" : "/objects/{id}",
                  "is_collection" : false,
-                 "encoding" : "json",
+                 "encoding" : "no-op",
+                 "extra_config" : {
+                   "plugin/req-resp-modifier" : {
+                     "name" : [ "response-schema-validator" ],
+                     "response-schema-validator" : {
+                       "error" : {
+                         "body" : "Inavlid response jsonschema not valid",
+                         "status" : 400
+                       },
+                       "schema" : {
+                         "type" : "object",
+                         "properties" : {
+                           "count" : {
+                             "type" : "string"
+                           },
+                           "country" : {
+                             "type" : "array",
+                             "items" : {
+                               "type" : "object",
+                               "properties" : {
+                                 "country_id" : {
+                                   "type" : "string"
+                                 },
+                                 "probability" : {
+                                   "type" : "string"
+                                 }
+                               },
+                               "required" : [ "country_id", "probability" ]
+                             }
+                           },
+                           "name" : {
+                             "type" : "string"
+                           }
+                         },
+                         "required" : [ "count", "country", "name" ]
+                       }
+                     }
+                   }
+                 },
+                 "method" : "GET"
+               } ],
+               "extra_config" : { },
+               "output_encoding" : "no-op",
+               "method" : "GET"
+             }, {
+               "endpoint" : "/sampleResponseschema/responseschemavald/{id}",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects/{id}",
+                 "is_collection" : false,
                  "extra_config" : {
                    "plugin/req-resp-modifier" : {
                      "name" : [ "response-schema-validator" ],
@@ -69,105 +141,11 @@ data:
                  "method" : "GET",
                  "sd" : "static"
                } ],
-               "extra_config" : { },
-               "output_encoding" : "no-op",
-               "method" : "GET"
-             }, {
-               "endpoint" : "/flatmap/manipulation",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects",
-                 "is_collection" : true,
-                 "encoding" : "json",
-                 "extra_config" : { },
-                 "method" : "GET"
-               } ],
                "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "krakendtest" ],
-                   "scopes_key" : "scope"
-                 }
-               },
-               "output_encoding" : "no-op",
-               "method" : "GET"
-             }, {
-               "endpoint" : "/resttosoapapi/resttosoapep",
-               "backend" : [ {
-                 "host" : [ "http://www.dneonline.com" ],
-                 "url_pattern" : "/calculator.asmx",
-                 "is_collection" : false,
-                 "extra_config" : {
-                   "backend/soap" : {
-                     "debug" : true,
-                     "template" : "PHNvYXA6RW52ZWxvcGUgeG1sbnM6c29hcD0iaHR0cDovL3d3dy53My5vcmcvMjAwMy8wNS9zb2FwLWVudmVsb3BlIiB4bWxuczp0ZW09Imh0dHA6Ly90ZW1wdXJpLm9yZy8iPgogICA8c29hcDpIZWFkZXIvPgogICA8c29hcDpCb2R5PgogICAgICA8dGVtOkFkZD4KICAgICAgICAgPHRlbTppbnRBPnt7IC5yZXFfYm9keS5BIH19PC90ZW06aW50QT4KICAgICAgICAgPHRlbTppbnRCPnt7IC5yZXFfYm9keS5CIH19PC90ZW06aW50Qj4KICAgICAgPC90ZW06QWRkPgogICA8L3NvYXA6Qm9keT4KPC9zb2FwOkVudmVsb3BlPgo=",
-                     "content_type" : "text/xml"
+                 "auth/basic" : {
+                   "users" : {
+                     "sampleconsumer" : "$2a$10$UxHb5GLfNLIEPNeL7dMV.OfareBLIQggkSHFZyA3dtlQDayy4kviK"
                    }
-                 },
-                 "method" : "POST"
-               } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "krakendtest" ],
-                   "scopes_key" : "scope"
-                 }
-               },
-               "output_encoding" : "xml",
-               "method" : "POST"
-             }, {
-               "endpoint" : "/basicmanipulation/firstendpoint",
-               "backend" : [ {
-                 "host" : [ "https://jsonplaceholder.typicode.com" ],
-                 "url_pattern" : "/posts/1",
-                 "is_collection" : false,
-                 "encoding" : "json",
-                 "extra_config" : { },
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "krakendtest" ],
-                   "scopes_key" : "scope"
-                 }
-               },
-               "output_encoding" : "json",
-               "method" : "GET"
-             }, {
-               "endpoint" : "/sampleflatmap/flatmapep",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects",
-                 "is_collection" : true,
-                 "extra_config" : {
-                   "proxy" : {
-                     "flatmap_filter" : [ {
-                       "type" : "move",
-                       "args" : [ "collection.*.data", "collection.*.Address" ]
-                     }, {
-                       "type" : "move",
-                       "args" : [ "collection.*.Address.color", "collection.*.Address.customcolor" ]
-                     } ]
-                   }
-                 },
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
-                 "auth/api-keys" : {
-                   "roles" : [ "finance" ]
                  }
                },
                "method" : "GET"
@@ -182,13 +160,6 @@ data:
                  "allow_headers" : [ "*" ],
                  "expose_headers" : [ "*" ],
                  "allow_credentials" : true
-               },
-               "auth/api-keys" : {
-                 "identifier" : "Authorization",
-                 "strategy" : "header",
-                 "keys" : [ {
-                   "key" : "37eb407a-c163-4085-ae33-b0b278577ada"
-                 } ]
                },
                "telemetry/logging" : {
                  "format" : "default",
