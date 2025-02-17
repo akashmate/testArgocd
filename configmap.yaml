@@ -19,43 +19,15 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
-               "endpoint" : "/respmanipulationapi/respmanipulationep",
+               "endpoint" : "/rspmanipulationapi/rspmaniplationep",
                "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev/" ],
-                 "url_pattern" : "/objects/7",
-                 "encoding" : "no-op",
-                 "extra_config" : {
-                   "modifier/response-body-generator" : {
-                     "content_type" : "application/json",
-                     "debug" : true,
-                     "template" : "ewogICJBZGRyZXNzIjoge3sgdG9Kc29uIC5yZXNwX2JvZHkgfX0sCiAgInN0YXR1c19jb2RlIjoge3sgdG9Kc29uIC5yZXNwX3N0YXR1cyB9fSwKICAiaGVhZGVycyI6IHt7IHRvSnNvbiAucmVzcF9oZWFkZXJzIH19Cn0="
-                   }
-                 },
-                 "method" : "GET",
-                 "sd" : "static"
-               } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "Testconsumerid", "sampleid" ],
-                   "scopes_key" : "scope"
-                 }
-               },
-               "method" : "GET"
-             }, {
-               "endpoint" : "/massil/massilep",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev/" ],
+                 "host" : [ "https://api.restful-api.dev" ],
                  "url_pattern" : "/objects/7",
                  "extra_config" : {
                    "modifier/response-body-generator" : {
                      "content_type" : "application/json",
                      "debug" : true,
-                     "template" : "ewogICAgIkFkZHJlc3MiOiB7eyB0b0pzb24gLnJlc3BfYm9keSB9fSwKICAgICJzdGF0dXNfY29kZSI6IHt7IHRvSnNvbiAucmVzcF9zdGF0dXMgfX0sCiAgICAiaGVhZGVycyI6IHt7IHRvSnNvbiAucmVzcF9oZWFkZXJzIH19Cn0="
+                     "template" : "ewogICJkYXRhIjoge3sgdG9Kc29uIC5yZXNwX2JvZHkgfX0sCiAgInN0YXR1c19jb2RlIjoge3sgdG9Kc29uIC5yZXNwX3N0YXR1cyB9fSwKICAiaGVhZGVycyI6IHt7IHRvSnNvbiAucmVzcF9oZWFkZXJzIH19Cn0="
                    }
                  },
                  "method" : "GET"
@@ -67,11 +39,9 @@ data:
                    "issuer" : "http://10.175.1.110:31438/realms/master",
                    "disable_jwk_security" : true,
                    "scopes_matcher" : "any",
-                   "scopes" : [ "sampleid" ],
                    "scopes_key" : "scope"
                  }
                },
-               "output_encoding" : "json",
                "method" : "GET"
              } ],
              "extra_config" : {
