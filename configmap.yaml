@@ -19,38 +19,11 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
-               "endpoint" : "/jmes/respmanupilation",
-               "backend" : [ {
-                 "host" : [ "https://api.nationalize.io" ],
-                 "url_pattern" : "/",
-                 "extra_config" : {
-                   "modifier/jmespath" : {
-                     "expr" : "country[?probability > `0.03` ].country_id"
-                   }
-                 },
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "krakendtest" ],
-                   "scopes_key" : "scope"
-                 }
-               },
-               "output_encoding" : "json",
-               "method" : "GET",
-               "input_query_strings" : [ "name" ]
-             }, {
-               "endpoint" : "/responseschemaapirespvalidation/{id}",
+               "endpoint" : "/responseschemaapi/respvald/{id}",
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev" ],
                  "url_pattern" : "/objects/{id}",
                  "is_collection" : false,
-                 "encoding" : "json",
                  "extra_config" : {
                    "plugin/req-resp-modifier" : {
                      "name" : [ "response-schema-validator" ],
@@ -93,12 +66,36 @@ data:
                      }
                    }
                  },
-                 "method" : "GET",
-                 "sd" : "static"
+                 "method" : "GET"
                } ],
                "extra_config" : { },
-               "output_encoding" : "no-op",
                "method" : "GET"
+             }, {
+               "endpoint" : "/jmes/respmanupilation",
+               "backend" : [ {
+                 "host" : [ "https://api.nationalize.io" ],
+                 "url_pattern" : "/",
+                 "extra_config" : {
+                   "modifier/jmespath" : {
+                     "expr" : "country[?probability > `0.03` ].country_id"
+                   }
+                 },
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "krakendtest" ],
+                   "scopes_key" : "scope"
+                 }
+               },
+               "output_encoding" : "json",
+               "method" : "GET",
+               "input_query_strings" : [ "name" ]
              }, {
                "endpoint" : "/flatmap/manipulation",
                "backend" : [ {
@@ -209,6 +206,13 @@ data:
                  "allow_headers" : [ "*" ],
                  "expose_headers" : [ "*" ],
                  "allow_credentials" : true
+               },
+               "auth/api-keys" : {
+                 "identifier" : "Authorization",
+                 "strategy" : "header",
+                 "keys" : [ {
+                   "key" : "37eb407a-c163-4085-ae33-b0b278577ada"
+                 } ]
                },
                "telemetry/logging" : {
                  "format" : "default",
