@@ -25,7 +25,14 @@ data:
                  "url_pattern" : "/objects",
                  "is_collection" : true,
                  "encoding" : "json",
-                 "extra_config" : { },
+                 "extra_config" : {
+                   "proxy" : {
+                     "flatmap_filter" : [ {
+                       "type" : "move",
+                       "args" : [ "collection.*.data", "collection.*.userData" ]
+                     } ]
+                   }
+                 },
                  "method" : "GET"
                } ],
                "extra_config" : {
