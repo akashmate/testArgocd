@@ -25,6 +25,11 @@ data:
                  "url_pattern" : "/posts/1",
                  "is_collection" : false,
                  "extra_config" : {
+                   "qos/ratelimit/proxy" : {
+                     "every" : "1m",
+                     "max_rate" : 5,
+                     "capacity" : 5
+                   },
                    "modifier/martian" : {
                      "body.Modifier" : {
                        "scope" : [ "response" ],
