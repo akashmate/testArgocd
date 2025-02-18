@@ -54,7 +54,7 @@ data:
                  "encoding" : "no-op",
                  "extra_config" : {
                    "modifier/jmespath" : {
-                     "expr" : "[].data"
+                     "expr" : "[?data != `null`].data"
                    }
                  },
                  "method" : "GET"
