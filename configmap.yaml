@@ -28,7 +28,7 @@ data:
                    "auth/client-credentials" : {
                      "client_id" : "G2DvPxOFuhjUzn8wQVgNP2_dMbQa",
                      "client_secret" : "g83a6GBUob4DpSTWT6YepGZBk6ka",
-                     "token_url" : "https://10.233.70.0:9443/oauth2/token"
+                     "token_url" : "https://10.175.1.58:9443/oauth2/token"
                    }
                  },
                  "method" : "GET"
