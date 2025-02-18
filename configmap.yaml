@@ -29,7 +29,7 @@ data:
                      "auto_join_policies" : true,
                      "debug" : true,
                      "jwt" : {
-                       "policies" : [ "has(JWT.azp) && 'krakendtest' == JWT.azp" ]
+                       "policies" : [ "has(JWT.azp) && 'krakendtest' == JWT.Test" ]
                      }
                    }
                  },
