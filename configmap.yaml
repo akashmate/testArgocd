@@ -24,7 +24,18 @@ data:
                  "host" : [ "https://jsonplaceholder.typicode.com" ],
                  "url_pattern" : "/posts/{id}",
                  "is_collection" : false,
-                 "extra_config" : { },
+                 "extra_config" : {
+                   "security/policies" : {
+                     "req" : {
+                       "policies" : [ "req_params.Id.matches('^[0-9]+$')" ],
+                       "error" : {
+                         "body" : "{\"ErrorMessage\":\"Invalid id please provide integer values\"}",
+                         "status" : 400,
+                         "content_type" : "application/json"
+                       }
+                     }
+                   }
+                 },
                  "method" : "GET"
                } ],
                "extra_config" : {
