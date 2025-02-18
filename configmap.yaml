@@ -28,11 +28,11 @@ data:
                    "security/policies" : {
                      "resp" : {
                        "error" : {
-                         "body" : "{\"ErrorMessage\":\"body is not availbale\"}",
+                         "body" : "{\"ErrorMessage\":\"body...is not availbale\"}",
                          "status" : 400,
                          "content_type" : "application/json"
                        },
-                       "policies" : [ "                  !isEmpty(resp_data.body)" ]
+                       "policies" : [ "                  !isEmpty(resp_data.body)", "!isEmpty(resp_data.message)" ]
                      }
                    }
                  },
