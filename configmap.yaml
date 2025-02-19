@@ -19,14 +19,15 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
-               "endpoint" : "/schema/request",
+               "endpoint" : "/resttosoapapi/resttosoapep",
                "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects",
+                 "host" : [ "http://www.dneonline.com" ],
+                 "url_pattern" : "/calculator.asmx",
                  "is_collection" : false,
-                 "encoding" : "json",
+                 "encoding" : "xml",
                  "extra_config" : { },
-                 "method" : "POST"
+                 "method" : "POST",
+                 "sd" : "static"
                } ],
                "extra_config" : {
                  "auth/validator" : {
@@ -37,36 +38,9 @@ data:
                    "scopes_matcher" : "any",
                    "scopes" : [ "krakendtest" ],
                    "scopes_key" : "scope"
-                 },
-                 "validation/json-schema" : {
-                   "type" : "object",
-                   "properties" : {
-                     "name" : {
-                       "type" : "string"
-                     },
-                     "data" : {
-                       "type" : "object",
-                       "properties" : {
-                         "year" : {
-                           "type" : "integer"
-                         },
-                         "price" : {
-                           "type" : "integer"
-                         },
-                         "CPU model" : {
-                           "type" : "string"
-                         },
-                         "Hard disk size" : {
-                           "type" : "string"
-                         }
-                       },
-                       "required" : [ "year", "price", "CPU model", "Hard disk size" ]
-                     }
-                   },
-                   "required" : [ "name" ]
                  }
                },
-               "output_encoding" : "json",
+               "output_encoding" : "xml",
                "method" : "POST"
              } ],
              "extra_config" : {
