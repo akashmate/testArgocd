@@ -42,15 +42,14 @@ data:
                "output_encoding" : "json",
                "method" : "POST"
              }, {
-               "endpoint" : "/krakend/deleteObject",
+               "endpoint" : "/krakend/ratelimit",
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects/ff808181932badb601951d8b52a45d4c",
-                 "is_collection" : false,
+                 "url_pattern" : "/objects",
+                 "is_collection" : true,
                  "encoding" : "json",
                  "extra_config" : { },
-                 "method" : "DELETE",
-                 "sd" : "static"
+                 "method" : "GET"
                } ],
                "extra_config" : {
                  "auth/validator" : {
@@ -64,13 +63,13 @@ data:
                  }
                },
                "output_encoding" : "json",
-               "method" : "DELETE"
+               "method" : "GET"
              }, {
-               "endpoint" : "/krakend/ratelimit",
+               "endpoint" : "/krakend/object/{id}",
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects",
-                 "is_collection" : true,
+                 "url_pattern" : "/objects/{id}",
+                 "is_collection" : false,
                  "encoding" : "json",
                  "extra_config" : { },
                  "method" : "GET"
