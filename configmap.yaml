@@ -45,11 +45,12 @@ data:
                "endpoint" : "/krakend/deleteObject",
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects/6",
+                 "url_pattern" : "/objects/ff808181932badb601951d8b52a45d4c",
                  "is_collection" : false,
                  "encoding" : "json",
                  "extra_config" : { },
-                 "method" : "DELETE"
+                 "method" : "DELETE",
+                 "sd" : "static"
                } ],
                "extra_config" : {
                  "auth/validator" : {
