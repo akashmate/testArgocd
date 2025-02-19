@@ -28,10 +28,11 @@ data:
                  "method" : "GET"
                }, {
                  "host" : [ "https://jsonplaceholder.typicode.com" ],
-                 "url_pattern" : "/?userId={resp0_id}",
+                 "url_pattern" : "/comments?postId={resp0_id}",
                  "is_collection" : true,
                  "extra_config" : { },
-                 "method" : "GET"
+                 "method" : "GET",
+                 "sd" : "static"
                } ],
                "extra_config" : {
                  "proxy" : {
