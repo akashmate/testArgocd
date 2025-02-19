@@ -90,7 +90,7 @@ data:
                    "modifier/body-generator" : {
                      "content_type" : "text/xml",
                      "debug" : true,
-                     "template" : "PHNvYXBlbnY6RW52ZWxvcGUgeG1sbnM6c29hcGVudj0iaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvc29hcC9lbnZlbG9wZS8iIHhtbG5zOnRlbT0iaHR0cDovL3RlbXB1cmkub3JnLyI+CiAgICA8c29hcGVudjpIZWFkZXIvPgogICAgPHNvYXBlbnY6Qm9keT4KICAgICAgICA8dGVtOkFkZD4KICAgICAgICAgICAgPHRlbTppbnRBPnt7IGluZGV4IC5yZXFfcXVlcnlzdHJpbmcgXCJhXCIgMCB9fTwvdGVtOmludEE+CiAgICAgICAgICAgIDx0ZW06aW50Qj57eyBpbmRleCAucmVxX3F1ZXJ5c3RyaW5nIFwiYlwiIDAgfX08L3RlbTppbnRCPgogICAgICAgIDwvdGVtOkFkZD4KICAgIDwvc29hcGVudjpCb2R5Pgo8L3NvYXBlbnY6RW52ZWxvcGU+"
+                     "template" : "PHNvYXBlbnY6RW52ZWxvcGUgeG1sbnM6c29hcGVudj0iaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvc29hcC9lbnZlbG9wZS8iIHhtbG5zOnRlbT0iaHR0cDovL3RlbXB1cmkub3JnLyI+CiAgICA8c29hcGVudjpIZWFkZXIvPgogICAgPHNvYXBlbnY6Qm9keT4KICAgICAgICA8dGVtOkFkZD4KICAgICAgICAgICAgPHRlbTppbnRBPnt7IGluZGV4IC5xdWVyeSBcImFcIiAwIH19PC90ZW06aW50QT4KICAgICAgICAgICAgPHRlbTppbnRCPnt7IGluZGV4IC5xdWVyeSBcImJcIiAwIH19PC90ZW06aW50Qj4KICAgICAgICA8L3RlbTpBZGQ+CiAgICA8L3NvYXBlbnY6Qm9keT4KPC9zb2FwZW52OkVudmVsb3BlPg=="
                    }
                  },
                  "method" : "POST",
