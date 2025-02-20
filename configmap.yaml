@@ -70,7 +70,7 @@ data:
                    "auto_join_policies" : true,
                    "debug" : true,
                    "jwt" : {
-                     "policies" : [ "has(JWT.test)" ]
+                     "policies" : [ "has(JWT.client_id) ", " 'Massil' == JWT.client_id" ]
                    }
                  }
                },
