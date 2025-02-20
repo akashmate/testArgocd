@@ -19,6 +19,34 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
+               "endpoint" : "/authclientcredentialsapi/autclinetcredep",
+               "backend" : [ {
+                 "host" : [ "https://10.233.70.0:8243" ],
+                 "url_pattern" : "/pizzashack/1.0.0/menu",
+                 "is_collection" : false,
+                 "extra_config" : {
+                   "auth/client-credentials" : {
+                     "client_id" : "1BXThs2syXT0r_MXNH2HO9JGdWka",
+                     "client_secret" : "3lfxsCUQyY65deRazc7Sm3gQWdQa",
+                     "token_url" : "https://10.175.1.62:9443/oauth2/token"
+                   }
+                 },
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "krakendtest" ],
+                   "scopes_key" : "scope"
+                 }
+               },
+               "output_encoding" : "json-collection",
+               "method" : "GET"
+             }, {
                "endpoint" : "/SequentialProxy/testsequential",
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev" ],
