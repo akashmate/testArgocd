@@ -25,7 +25,11 @@ data:
                  "url_pattern" : "/objects",
                  "is_collection" : true,
                  "encoding" : "json",
-                 "extra_config" : { },
+                 "extra_config" : {
+                   "qos/http-cache" : {
+                     "shared" : true
+                   }
+                 },
                  "method" : "GET",
                  "sd" : "static"
                } ],
