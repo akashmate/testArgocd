@@ -164,7 +164,7 @@ data:
                      "name" : [ "content-replacer" ],
                      "content-replacer" : {
                        "data.creditcard" : {
-                         "find" : "(^\\\\d{4})(.*)",
+                         "find" : "(^\\d{4})(.*)",
                          "replace" : "${1}-XXXX",
                          "regexp" : true
                        }
