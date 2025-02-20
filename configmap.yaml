@@ -19,6 +19,175 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
+               "endpoint" : "/esecuritypolicy/jwtvalidationep1",
+               "backend" : [ {
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "url_pattern" : "/posts/1",
+                 "is_collection" : false,
+                 "extra_config" : { },
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "krakendtest", "Massil@123" ],
+                   "scopes_key" : "scope"
+                 },
+                 "security/policies" : {
+                   "auto_join_policies" : true,
+                   "debug" : true,
+                   "jwt" : {
+                     "policies" : [ "has(JWT.client_id) ", " 'krakendtest' == JWT.client_id" ]
+                   }
+                 }
+               },
+               "method" : "GET"
+             }, {
+               "endpoint" : "/esecuritypolicy/eresponseschemavaldep/{id}",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects/{id}",
+                 "is_collection" : false,
+                 "extra_config" : { },
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "qos/ratelimit/router" : {
+                   "client_max_rate" : 3,
+                   "every" : "1m",
+                   "max_rate" : 5,
+                   "strategy" : "ip"
+                 },
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "krakendtest", "Massil@123" ],
+                   "scopes_key" : "scope"
+                 },
+                 "plugin/req-resp-modifier" : {
+                   "name" : [ "response-schema-validator" ],
+                   "response-schema-validator" : {
+                     "error" : {
+                       "body" : "Inavlid response jsonschema not valid",
+                       "status" : 400
+                     },
+                     "schema" : {
+                       "$schema" : "http://json-schema.org/draft-07/schema#",
+                       "type" : "object",
+                       "properties" : {
+                         "id" : {
+                           "type" : "string"
+                         },
+                         "name" : {
+                           "type" : "string"
+                         },
+                         "data" : {
+                           "type" : "object",
+                           "properties" : {
+                             "year" : {
+                               "type" : "integer"
+                             },
+                             "price" : {
+                               "type" : "number"
+                             },
+                             "CPU model" : {
+                               "type" : "string"
+                             },
+                             "Hard disk size" : {
+                               "type" : "string"
+                             }
+                           },
+                           "required" : [ "year", "price", "CPU model", "Hard disk size" ]
+                         }
+                       },
+                       "required" : [ "id", "name", "data" ]
+                     }
+                   }
+                 }
+               },
+               "method" : "GET"
+             }, {
+               "endpoint" : "/esecuritypolicy/invalidjwtep",
+               "backend" : [ {
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "url_pattern" : "/posts/1",
+                 "is_collection" : false,
+                 "extra_config" : { },
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "krakendtest", "Massil@123" ],
+                   "scopes_key" : "scope"
+                 },
+                 "security/policies" : {
+                   "jwt" : {
+                     "policies" : [ "has(JWT.client_id) ", " 'Massil' == JWT.client_id" ]
+                   }
+                 }
+               },
+               "method" : "GET"
+             }, {
+               "endpoint" : "/esecuritypolicy/erequestschemavaldep",
+               "backend" : [ {
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "url_pattern" : "/posts/1",
+                 "is_collection" : false,
+                 "extra_config" : { },
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "krakendtest", "Massil@123" ],
+                   "scopes_key" : "scope"
+                 },
+                 "validation/json-schema" : {
+                   "type" : "object",
+                   "properties" : {
+                     "name" : {
+                       "type" : "string"
+                     },
+                     "data" : {
+                       "type" : "object",
+                       "properties" : {
+                         "year" : {
+                           "type" : "integer"
+                         },
+                         "price" : {
+                           "type" : "number"
+                         },
+                         "CPU model" : {
+                           "type" : "string"
+                         },
+                         "Hard disk size" : {
+                           "type" : "string"
+                         }
+                       },
+                       "required" : [ "year", "price", "CPU model", "Hard disk size" ]
+                     }
+                   },
+                   "required" : [ "name" ]
+                 }
+               },
+               "method" : "POST"
+             }, {
                "endpoint" : "/schemav/resonse",
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev" ],
@@ -184,178 +353,6 @@ data:
                    "scopes_matcher" : "any",
                    "scopes" : [ "krakendtest" ],
                    "scopes_key" : "scope"
-                 }
-               },
-               "method" : "GET"
-             }, {
-               "endpoint" : "/esecuritypolicy/erequestschemavaldep",
-               "backend" : [ {
-                 "host" : [ "https://jsonplaceholder.typicode.com" ],
-                 "url_pattern" : "/posts/1",
-                 "is_collection" : false,
-                 "extra_config" : { },
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "krakendtest", "Massil@123" ],
-                   "scopes_key" : "scope"
-                 },
-                 "validation/json-schema" : {
-                   "type" : "object",
-                   "properties" : {
-                     "name" : {
-                       "type" : "string"
-                     },
-                     "data" : {
-                       "type" : "object",
-                       "properties" : {
-                         "year" : {
-                           "type" : "integer"
-                         },
-                         "price" : {
-                           "type" : "number"
-                         },
-                         "CPU model" : {
-                           "type" : "string"
-                         },
-                         "Hard disk size" : {
-                           "type" : "string"
-                         }
-                       },
-                       "required" : [ "year", "price", "CPU model", "Hard disk size" ]
-                     }
-                   },
-                   "required" : [ "name" ]
-                 }
-               },
-               "method" : "POST"
-             }, {
-               "endpoint" : "/esecuritypolicy/testep",
-               "backend" : [ {
-                 "host" : [ "http://10.175.1.62:3000" ],
-                 "url_pattern" : "/Testendpoint",
-                 "is_collection" : false,
-                 "extra_config" : {
-                   "qos/circuit-breaker" : {
-                     "interval" : 60,
-                     "log_status_change" : true,
-                     "max_errors" : 3,
-                     "name" : "CB-1",
-                     "timeout" : 5
-                   }
-                 },
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "krakendtest", "Massil@123" ],
-                   "scopes_key" : "scope"
-                 }
-               },
-               "method" : "GET"
-             }, {
-               "endpoint" : "/esecuritypolicy/jwtvalidationep1",
-               "backend" : [ {
-                 "host" : [ "https://jsonplaceholder.typicode.com" ],
-                 "url_pattern" : "/posts/1",
-                 "is_collection" : false,
-                 "extra_config" : { },
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "krakendtest", "Massil@123" ],
-                   "scopes_key" : "scope"
-                 },
-                 "security/policies" : {
-                   "auto_join_policies" : true,
-                   "debug" : true,
-                   "jwt" : {
-                     "policies" : [ "has(JWT.client_id) ", " 'krakendtest' == JWT.client_id" ]
-                   }
-                 }
-               },
-               "method" : "GET"
-             }, {
-               "endpoint" : "/esecuritypolicy/eresponseschemavaldep/{id}",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects/{id}",
-                 "is_collection" : false,
-                 "extra_config" : { },
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
-                 "qos/ratelimit/router" : {
-                   "client_max_rate" : 3,
-                   "every" : "1m",
-                   "max_rate" : 5,
-                   "strategy" : "ip"
-                 },
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "krakendtest", "Massil@123" ],
-                   "scopes_key" : "scope"
-                 },
-                 "plugin/req-resp-modifier" : {
-                   "name" : [ "response-schema-validator" ],
-                   "response-schema-validator" : {
-                     "error" : {
-                       "body" : "Inavlid response jsonschema not valid",
-                       "status" : 400
-                     },
-                     "schema" : {
-                       "$schema" : "http://json-schema.org/draft-07/schema#",
-                       "type" : "object",
-                       "properties" : {
-                         "id" : {
-                           "type" : "string"
-                         },
-                         "name" : {
-                           "type" : "string"
-                         },
-                         "data" : {
-                           "type" : "object",
-                           "properties" : {
-                             "year" : {
-                               "type" : "integer"
-                             },
-                             "price" : {
-                               "type" : "number"
-                             },
-                             "CPU model" : {
-                               "type" : "string"
-                             },
-                             "Hard disk size" : {
-                               "type" : "string"
-                             }
-                           },
-                           "required" : [ "year", "price", "CPU model", "Hard disk size" ]
-                         }
-                       },
-                       "required" : [ "id", "name", "data" ]
-                     }
-                   }
                  }
                },
                "method" : "GET"
