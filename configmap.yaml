@@ -19,14 +19,14 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
-               "endpoint" : "/schemav/response",
+               "endpoint" : "/schemav/resonse",
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev" ],
                  "url_pattern" : "/objects",
+                 "is_collection" : true,
                  "encoding" : "json",
                  "extra_config" : { },
-                 "method" : "GET",
-                 "sd" : "static"
+                 "method" : "GET"
                } ],
                "extra_config" : {
                  "auth/validator" : {
