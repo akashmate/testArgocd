@@ -19,6 +19,28 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
+               "endpoint" : "/amqp/produceamqp",
+               "backend" : [ {
+                 "host" : [ "amqp://guest:guest@172.17.64.1:5672" ],
+                 "url_pattern" : "/",
+                 "is_collection" : false,
+                 "extra_config" : { },
+                 "method" : "POST"
+               } ],
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "krakendtest" ],
+                   "scopes_key" : "scope"
+                 }
+               },
+               "output_encoding" : "json",
+               "method" : "POST"
+             }, {
                "endpoint" : "/cb/templatetest",
                "backend" : [ {
                  "host" : [ "http://10.175.1.65:3000" ],
@@ -41,28 +63,6 @@ data:
                },
                "output_encoding" : "json",
                "method" : "GET"
-             }, {
-               "endpoint" : "/amqp/produceamqp",
-               "backend" : [ {
-                 "host" : [ "amqp://guest:guest@172.17.64.1:5672" ],
-                 "url_pattern" : "/",
-                 "is_collection" : false,
-                 "extra_config" : { },
-                 "method" : "POST"
-               } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "krakendtest" ],
-                   "scopes_key" : "scope"
-                 }
-               },
-               "output_encoding" : "json",
-               "method" : "POST"
              }, {
                "endpoint" : "/resttosoapapi/resttosoapep",
                "backend" : [ {
