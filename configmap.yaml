@@ -21,11 +21,12 @@ data:
              "endpoints" : [ {
                "endpoint" : "/amqp/produceamqp",
                "backend" : [ {
-                 "host" : [ "amqp://guest:guest@172.17.64.1:5672" ],
+                 "host" : [ "amqp://guest:guest@10.175.1.62:5672" ],
                  "url_pattern" : "/",
                  "is_collection" : false,
                  "extra_config" : { },
-                 "method" : "POST"
+                 "method" : "POST",
+                 "sd" : "static"
                } ],
                "extra_config" : {
                  "auth/validator" : {
