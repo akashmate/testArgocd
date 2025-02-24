@@ -19,15 +19,36 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
-               "endpoint" : "/redis/testcache",
+               "endpoint" : "/krakend/object",
                "backend" : [ {
-                 "host" : [ "http://10.175.1.62:8290" ],
-                 "url_pattern" : "/HelloWorld",
-                 "extra_config" : {
-                   "qos/http-cache" : {
-                     "shared" : true
-                   }
-                 },
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects",
+                 "is_collection" : false,
+                 "encoding" : "json",
+                 "extra_config" : { },
+                 "method" : "POST"
+               } ],
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "krakendtest", "Massil@123" ],
+                   "scopes_key" : "scope"
+                 }
+               },
+               "output_encoding" : "json",
+               "method" : "POST"
+             }, {
+               "endpoint" : "/krakend/object/{id}",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects/{id}",
+                 "is_collection" : false,
+                 "encoding" : "json",
+                 "extra_config" : { },
                  "method" : "GET"
                } ],
                "extra_config" : {
@@ -37,45 +58,35 @@ data:
                    "issuer" : "http://10.175.1.110:31438/realms/master",
                    "disable_jwk_security" : true,
                    "scopes_matcher" : "any",
-                   "scopes" : [ "krakendtest" ],
+                   "scopes" : [ "krakendtest", "Massil@123" ],
                    "scopes_key" : "scope"
                  }
                },
-               "method" : "GET",
-               "cache_ttl" : "1s"
+               "output_encoding" : "json",
+               "method" : "GET"
              }, {
-               "endpoint" : "/redis/concureentcalls",
+               "endpoint" : "/krakend/putobject/{id}",
                "backend" : [ {
-                 "host" : [ "http://10.175.1.58:8290" ],
-                 "url_pattern" : "/HelloWorld/HelloWorld2",
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects/{id}",
                  "is_collection" : false,
+                 "encoding" : "json",
                  "extra_config" : { },
-                 "method" : "GET",
-                 "sd" : "static"
-               }, {
-                 "host" : [ "http://10.175.1.58:8290" ],
-                 "url_pattern" : "/HelloWorld",
-                 "is_collection" : false,
-                 "extra_config" : { },
-                 "method" : "GET",
-                 "sd" : "static"
+                 "method" : "PUT"
                } ],
                "extra_config" : {
-                 "proxy" : {
-                   "sequential" : false
-                 },
                  "auth/validator" : {
                    "alg" : "RS256",
                    "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
                    "issuer" : "http://10.175.1.110:31438/realms/master",
                    "disable_jwk_security" : true,
                    "scopes_matcher" : "any",
-                   "scopes" : [ "krakendtest" ],
+                   "scopes" : [ "krakendtest", "Massil@123" ],
                    "scopes_key" : "scope"
                  }
                },
-               "concurrent_calls" : 3,
-               "method" : "GET"
+               "output_encoding" : "json",
+               "method" : "PUT"
              } ],
              "extra_config" : {
                "router" : {
