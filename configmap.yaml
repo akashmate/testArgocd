@@ -19,60 +19,14 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
-               "endpoint" : "/krakend/patchObject/{id}",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects/{id}",
-                 "is_collection" : true,
-                 "encoding" : "json",
-                 "extra_config" : { },
-                 "method" : "PATCH"
-               } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "krakendtest", "Massil@123" ],
-                   "scopes_key" : "scope"
-                 }
-               },
-               "output_encoding" : "json",
-               "method" : "PATCH"
-             }, {
-               "endpoint" : "/krakend/object",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects",
-                 "is_collection" : false,
-                 "encoding" : "json",
-                 "extra_config" : { },
-                 "method" : "POST"
-               } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "krakendtest", "Massil@123" ],
-                   "scopes_key" : "scope"
-                 }
-               },
-               "output_encoding" : "json",
-               "method" : "POST"
-             }, {
-               "endpoint" : "/krakend/object/{id}",
+               "endpoint" : "/krakend/putobject/{id}",
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev" ],
                  "url_pattern" : "/objects/{id}",
                  "is_collection" : false,
                  "encoding" : "json",
                  "extra_config" : { },
-                 "method" : "GET"
+                 "method" : "PUT"
                } ],
                "extra_config" : {
                  "auth/validator" : {
@@ -86,30 +40,7 @@ data:
                  }
                },
                "output_encoding" : "json",
-               "method" : "GET"
-             }, {
-               "endpoint" : "/krakend/objects",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects",
-                 "is_collection" : true,
-                 "encoding" : "json",
-                 "extra_config" : { },
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "krakendtest", "Massil@123" ],
-                   "scopes_key" : "scope"
-                 }
-               },
-               "output_encoding" : "json-collection",
-               "method" : "GET"
+               "method" : "PUT"
              }, {
                "endpoint" : "/krakend/deleteObject/{id}",
                "backend" : [ {
@@ -134,14 +65,37 @@ data:
                "output_encoding" : "json",
                "method" : "DELETE"
              }, {
-               "endpoint" : "/krakend/putobject/{id}",
+               "endpoint" : "/krakend/objects",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects",
+                 "is_collection" : true,
+                 "encoding" : "json",
+                 "extra_config" : { },
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "krakendtest", "Massil@123" ],
+                   "scopes_key" : "scope"
+                 }
+               },
+               "output_encoding" : "json-collection",
+               "method" : "GET"
+             }, {
+               "endpoint" : "/krakend/object/{id}",
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev" ],
                  "url_pattern" : "/objects/{id}",
                  "is_collection" : false,
                  "encoding" : "json",
                  "extra_config" : { },
-                 "method" : "PUT"
+                 "method" : "GET"
                } ],
                "extra_config" : {
                  "auth/validator" : {
@@ -155,7 +109,53 @@ data:
                  }
                },
                "output_encoding" : "json",
-               "method" : "PUT"
+               "method" : "GET"
+             }, {
+               "endpoint" : "/krakend/object",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects",
+                 "is_collection" : false,
+                 "encoding" : "json",
+                 "extra_config" : { },
+                 "method" : "POST"
+               } ],
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "krakendtest", "Massil@123" ],
+                   "scopes_key" : "scope"
+                 }
+               },
+               "output_encoding" : "json",
+               "method" : "POST"
+             }, {
+               "endpoint" : "/krakend/patchObject/{id}",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects/{id}",
+                 "is_collection" : true,
+                 "encoding" : "json",
+                 "extra_config" : { },
+                 "method" : "PATCH"
+               } ],
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "krakendtest", "Massil@123" ],
+                   "scopes_key" : "scope"
+                 }
+               },
+               "output_encoding" : "json",
+               "method" : "PATCH"
              }, {
                "endpoint" : "/gateway/gateway/hello/{id}",
                "backend" : [ {
