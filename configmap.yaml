@@ -310,7 +310,7 @@ data:
                "plugin/http-server" : {
                  "name" : [ "url-rewrite" ],
                  "url-rewrite" : {
-                   "regexp" : [ [ "/hi-there/([\\w\\d\\s]+)/bar", "/hello/${1}" ] ]
+                   "regexp" : [ [ "/hi-there/([\\w\\d\\s]+)/bar", "/gateway/hello/${1}" ] ]
                  }
                },
                "auth/validator" : {
