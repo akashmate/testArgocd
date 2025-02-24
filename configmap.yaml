@@ -22,10 +22,11 @@ data:
                "endpoint" : "/gateway/hello/123",
                "backend" : [ {
                  "host" : [ "http://10.175.1.58:3000" ],
-                 "url_pattern" : "/hello/123",
+                 "url_pattern" : "/gateway/hello/123",
                  "is_collection" : false,
                  "extra_config" : { },
-                 "method" : "GET"
+                 "method" : "GET",
+                 "sd" : "static"
                } ],
                "extra_config" : {
                  "auth/validator" : {
