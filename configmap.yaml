@@ -19,6 +19,27 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
+               "endpoint" : "/gateway/urlrewrite/{id}/bar",
+               "backend" : [ {
+                 "host" : [ "http://10.175.1.58:3000" ],
+                 "url_pattern" : "/hello/123",
+                 "is_collection" : false,
+                 "extra_config" : { },
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes_key" : "scope"
+                 }
+               },
+               "output_encoding" : "json",
+               "method" : "GET"
+             }, {
                "endpoint" : "/krakend/object",
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev" ],
@@ -179,6 +200,12 @@ data:
                  "allow_headers" : [ "*" ],
                  "expose_headers" : [ "*" ],
                  "allow_credentials" : true
+               },
+               "plugin/http-server" : {
+                 "name" : [ "url-rewrite" ],
+                 "url-rewrite" : {
+                   "regexp" : [ [ "/hi-there/([\\\\w\\\\d\\\\s]+)/ba", "/hello/${1}" ] ]
+                 }
                },
                "auth/validator" : {
                  "shared_cache_duration" : 3600
