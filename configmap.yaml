@@ -39,160 +39,13 @@ data:
                },
                "output_encoding" : "json",
                "method" : "GET"
-             }, {
-               "endpoint" : "/krakend/object",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects",
-                 "is_collection" : false,
-                 "encoding" : "json",
-                 "extra_config" : { },
-                 "method" : "POST"
-               } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "krakendtest", "Massil@123" ],
-                   "scopes_key" : "scope"
-                 }
-               },
-               "output_encoding" : "json",
-               "method" : "POST"
-             }, {
-               "endpoint" : "/krakend/object/{id}",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects/{id}",
-                 "is_collection" : false,
-                 "encoding" : "json",
-                 "extra_config" : { },
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "krakendtest", "Massil@123" ],
-                   "scopes_key" : "scope"
-                 }
-               },
-               "output_encoding" : "json",
-               "method" : "GET"
-             }, {
-               "endpoint" : "/krakend/deleteObject/{id}",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects/{id}",
-                 "is_collection" : false,
-                 "encoding" : "json",
-                 "extra_config" : { },
-                 "method" : "DELETE"
-               } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "krakendtest", "Massil@123" ],
-                   "scopes_key" : "scope"
-                 }
-               },
-               "output_encoding" : "json",
-               "method" : "DELETE"
-             }, {
-               "endpoint" : "/krakend/putobject/{id}",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects/{id}",
-                 "is_collection" : false,
-                 "encoding" : "json",
-                 "extra_config" : { },
-                 "method" : "PUT"
-               } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "krakendtest", "Massil@123" ],
-                   "scopes_key" : "scope"
-                 }
-               },
-               "output_encoding" : "json",
-               "method" : "PUT"
-             }, {
-               "endpoint" : "/redis/testcache",
-               "backend" : [ {
-                 "host" : [ "http://10.175.1.62:8290" ],
-                 "url_pattern" : "/HelloWorld",
-                 "extra_config" : {
-                   "qos/http-cache" : {
-                     "shared" : true
-                   }
-                 },
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "krakendtest" ],
-                   "scopes_key" : "scope"
-                 }
-               },
-               "method" : "GET",
-               "cache_ttl" : "1s"
-             }, {
-               "endpoint" : "/redis/concureentcalls",
-               "backend" : [ {
-                 "host" : [ "http://10.175.1.58:8290" ],
-                 "url_pattern" : "/HelloWorld/HelloWorld2",
-                 "is_collection" : false,
-                 "extra_config" : { },
-                 "method" : "GET",
-                 "sd" : "static"
-               }, {
-                 "host" : [ "http://10.175.1.58:8290" ],
-                 "url_pattern" : "/HelloWorld",
-                 "is_collection" : false,
-                 "extra_config" : { },
-                 "method" : "GET",
-                 "sd" : "static"
-               } ],
-               "extra_config" : {
-                 "proxy" : {
-                   "sequential" : false
-                 },
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "krakendtest" ],
-                   "scopes_key" : "scope"
-                 }
-               },
-               "concurrent_calls" : 3,
-               "method" : "GET"
              } ],
              "extra_config" : {
                "router" : {
                  "return_error_msg" : true
+               },
+               "auth/basic" : {
+                 "htpasswd_path" : "/etc/krakend"
                },
                "security/cors" : {
                  "allow_origins" : [ "*" ],
@@ -204,7 +57,7 @@ data:
                "plugin/http-server" : {
                  "name" : [ "url-rewrite" ],
                  "url-rewrite" : {
-                   "regexp" : [ [ "/hi-there/([\\\\w\\\\d\\\\s]+)/ba", "/hello/${1}" ] ]
+                   "regexp" : [ [ "/hi-there/([\\w\\d\\s]+)/bar", "/hello/${1}" ] ]
                  }
                },
                "auth/validator" : {
