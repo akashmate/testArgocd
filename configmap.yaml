@@ -300,9 +300,6 @@ data:
                "router" : {
                  "return_error_msg" : true
                },
-               "auth/basic" : {
-                 "htpasswd_path" : "/etc/krakend"
-               },
                "security/cors" : {
                  "allow_origins" : [ "*" ],
                  "allow_methods" : [ "GET", "HEAD", "POST" ],
