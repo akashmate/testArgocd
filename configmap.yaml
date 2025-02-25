@@ -29,7 +29,7 @@ data:
                      "content-replacer" : {
                        "data.creditcard" : {
                          "find" : "(\\d{4}$)",
-                         "replace" : "XXXX-XXXX-{1}",
+                         "replace" : "XXXX-XXXX-${1}",
                          "regexp" : true
                        }
                      }
