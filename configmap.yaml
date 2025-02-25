@@ -19,6 +19,209 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
+               "endpoint" : "/basicmanipulation/firstendpoint",
+               "backend" : [ {
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "url_pattern" : "/posts/1",
+                 "is_collection" : false,
+                 "encoding" : "json",
+                 "extra_config" : { },
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "auth/api-keys" : {
+                   "roles" : [ "Developer" ]
+                 }
+               },
+               "output_encoding" : "json",
+               "method" : "GET"
+             }, {
+               "endpoint" : "/basicmanipulation/contentreplacer",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects/7",
+                 "extra_config" : {
+                   "plugin/req-resp-modifier" : {
+                     "name" : [ "content-replacer" ],
+                     "content-replacer" : {
+                       "data.CPU model" : {
+                         "find" : "Intel Core i9",
+                         "replace" : "Intel",
+                         "regexp" : false
+                       }
+                     }
+                   }
+                 },
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "auth/api-keys" : {
+                   "roles" : [ "Developer" ]
+                 }
+               },
+               "method" : "GET"
+             }, {
+               "endpoint" : "/basicmanipulation/regexcontentreplacer",
+               "backend" : [ {
+                 "host" : [ "http://10.175.1.62:3000" ],
+                 "url_pattern" : "/Testregexcontentreplacer",
+                 "extra_config" : {
+                   "plugin/req-resp-modifier" : {
+                     "name" : [ "content-replacer" ],
+                     "content-replacer" : {
+                       "data.creditcard" : {
+                         "find" : "(^\\d{4})(.*)",
+                         "replace" : "${1}-XXXX",
+                         "regexp" : true
+                       }
+                     }
+                   }
+                 },
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "auth/api-keys" : {
+                   "roles" : [ "Developer" ]
+                 }
+               },
+               "method" : "GET"
+             }, {
+               "endpoint" : "/basicmanipulation/ejmes",
+               "backend" : [ {
+                 "host" : [ "https://api.nationalize.io/" ],
+                 "url_pattern" : "/",
+                 "is_collection" : false,
+                 "extra_config" : { },
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "modifier/jmespath" : {
+                   "expr" : "country[?probability > `0.03` ].country_id"
+                 },
+                 "auth/api-keys" : {
+                   "roles" : [ "Developer" ]
+                 }
+               },
+               "method" : "GET",
+               "input_query_strings" : [ "name" ]
+             }, {
+               "endpoint" : "/basicmanipulation/renameobject",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects/7",
+                 "mapping" : {
+                   "data" : "newdata"
+                 },
+                 "extra_config" : { },
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "auth/api-keys" : {
+                   "roles" : [ "Developer" ]
+                 }
+               },
+               "method" : "GET"
+             }, {
+               "endpoint" : "/basicmanipulation/econtentreplacer",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects/7",
+                 "is_collection" : false,
+                 "extra_config" : { },
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "auth/api-keys" : {
+                   "roles" : [ "Developer" ]
+                 },
+                 "plugin/req-resp-modifier" : {
+                   "name" : [ "content-replacer" ],
+                   "content-replacer" : {
+                     "data.CPU model" : {
+                       "find" : "Intel Core i9",
+                       "replace" : "Intel",
+                       "regexp" : false
+                     }
+                   }
+                 }
+               },
+               "method" : "GET"
+             }, {
+               "endpoint" : "/basicmanipulation/deny",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects/7",
+                 "group" : "Studentdetails",
+                 "extra_config" : { },
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "auth/api-keys" : {
+                   "roles" : [ "Developer" ]
+                 }
+               },
+               "method" : "GET"
+             }, {
+               "endpoint" : "/basicmanipulation/rootobject",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects/7",
+                 "extra_config" : { },
+                 "target" : "data",
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "auth/api-keys" : {
+                   "roles" : [ "Developer" ]
+                 }
+               },
+               "method" : "GET"
+             }, {
+               "endpoint" : "/basicmanipulation/estaticdata",
+               "backend" : [ {
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "url_pattern" : "/posts/1",
+                 "is_collection" : false,
+                 "extra_config" : { },
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "proxy" : {
+                   "static" : {
+                     "data" : {
+                       "Hi" : "I am static data"
+                     },
+                     "strategy" : "always"
+                   }
+                 },
+                 "auth/api-keys" : {
+                   "roles" : [ "Developer" ]
+                 }
+               },
+               "method" : "GET"
+             }, {
+               "endpoint" : "/basicmanipulation/erespmanipulationwithgotmpl",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects/7",
+                 "is_collection" : false,
+                 "encoding" : "json",
+                 "extra_config" : { },
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "auth/api-keys" : {
+                   "roles" : [ "Developer" ]
+                 },
+                 "modifier/response-body-generator" : {
+                   "content_type" : "application/json",
+                   "debug" : true,
+                   "template" : "ewogICJBZGRyZXNzIjoge3sgdG9Kc29uIC5yZXNwX2JvZHkgfX0sCiAgInN0YXR1c19jb2RlIjoge3sgdG9Kc29uIC5yZXNwX3N0YXR1cyB9fSwKICAiaGVhZGVycyI6IHt7IHRvSnNvbiAucmVzcF9oZWFkZXJzIH19Cn0="
+                 }
+               },
+               "output_encoding" : "no-op",
+               "method" : "GET"
+             }, {
                "endpoint" : "/contentreplacer/contentreplacerep",
                "backend" : [ {
                  "host" : [ "http://10.175.1.58:3000" ],
@@ -362,6 +565,14 @@ data:
                  "url-rewrite" : {
                    "regexp" : [ [ "/hi-there/([\\w\\d\\s]+)/bar", "/gateway/hello/${1}" ] ]
                  }
+               },
+               "auth/api-keys" : {
+                 "identifier" : "Authorization",
+                 "strategy" : "header",
+                 "keys" : [ {
+                   "key" : "37eb407a-c163-4085-ae33-b0b278577ada",
+                   "roles" : [ "Developer" ]
+                 } ]
                },
                "auth/validator" : {
                  "shared_cache_duration" : 3600
