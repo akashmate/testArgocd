@@ -29,7 +29,7 @@ data:
                    "modifier/body-generator" : {
                      "content_type" : "text/xml",
                      "debug" : true,
-                     "template" : "PHNvYXBlbnY6RW52ZWxvcGUgeG1sbnM6c29hcGVudj0iaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvc29hcC9lbnZlbG9wZS8iIHhtbG5zOnRlbT0iaHR0cDovL3RlbXB1cmkub3JnLyI+CiAgIDxzb2FwZW52OkhlYWRlci8+CiAgIDxzb2FwZW52OkJvZHk+CiAgICAgIDx0ZW06QWRkPgogICAgICAgICA8dGVtOmludEE+e3sgLnJlcV9oZWFkZXJzLmFbMF0gfX08L3RlbTppbnRBPgogICAgICAgICA8dGVtOmludEI+e3sgLnJlcV9oZWFkZXJzLmJbMF0gfX08L3RlbTppbnRCPgogICAgICA8L3RlbTpBZGQ+CiAgIDwvc29hcGVudjpCb2R5Pgo8L3NvYXBlbnY6RW52ZWxvcGU+"
+                     "template" : "PHNvYXBlbnY6RW52ZWxvcGUgeG1sbnM6c29hcGVudj0iaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvc29hcC9lbnZlbG9wZS8iIHhtbG5zOnRlbT0iaHR0cDovL3RlbXB1cmkub3JnLyI+CiAgIDxzb2FwZW52OkhlYWRlci8+CiAgIDxzb2FwZW52OkJvZHk+CiAgICAgIDx0ZW06QWRkPgogICAgICAgICA8dGVtOmludEE+e3sgLnJlcV9oZWFkZXJzLmEgfX08L3RlbTppbnRBPgogICAgICAgICA8dGVtOmludEI+e3sgLnJlcV9oZWFkZXJzLmIgfX08L3RlbTppbnRCPgogICAgICA8L3RlbTpBZGQ+CiAgIDwvc29hcGVudjpCb2R5Pgo8L3NvYXBlbnY6RW52ZWxvcGU+"
                    }
                  },
                  "method" : "POST",
@@ -110,6 +110,36 @@ data:
                "output_encoding" : "xml",
                "method" : "POST",
                "input_query_strings" : [ "a" ]
+             }, {
+               "endpoint" : "/rest/header",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects/{id}",
+                 "is_collection" : false,
+                 "encoding" : "json",
+                 "extra_config" : {
+                   "modifier/body-generator" : {
+                     "content_type" : "application/json",
+                     "debug" : true,
+                     "template" : "ewogICAibmFtZSI6ICJBcHBsZSBNYWNCb29rIFBybyAxNiIsCiAgICJkYXRhIjogewogICAgICAieWVhciI6IHt7IC5yZXFfaGVhZGVycy55ZWFyIH19LAogICAgICAicHJpY2UiOiAxODQ5Ljk5LAogICAgICAiQ1BVIG1vZGVsIjogIkludGVsIENvcmUgaTkiLAogICAgICAiSGFyZCBkaXNrIHNpemUiOiAiMSBUQiIKICAgfQp9"
+                   }
+                 },
+                 "method" : "POST",
+                 "sd" : "static"
+               } ],
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "krakendtest" ],
+                   "scopes_key" : "scope"
+                 }
+               },
+               "output_encoding" : "json",
+               "method" : "POST"
              }, {
                "endpoint" : "/contentreplacer/contentreplacerep",
                "backend" : [ {
