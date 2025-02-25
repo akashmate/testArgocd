@@ -19,6 +19,37 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
+               "endpoint" : "/contentreplacer/contentreplacerep",
+               "backend" : [ {
+                 "host" : [ "http://10.175.1.58:3000" ],
+                 "url_pattern" : "/Testregexcontentreplacer",
+                 "extra_config" : {
+                   "plugin/req-resp-modifier" : {
+                     "name" : [ "content-replacer" ],
+                     "content-replacer" : {
+                       "data.creditcard" : {
+                         "find" : "(^\\\\d{4})(.*)",
+                         "replace" : "XXXX-XXXX-XXXX-${1}",
+                         "regexp" : true
+                       }
+                     }
+                   }
+                 },
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "krakendtest" ],
+                   "scopes_key" : "scope"
+                 }
+               },
+               "method" : "GET"
+             }, {
                "endpoint" : "/responsemanipulation/responsemanipulationwithgotemplateEP",
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev" ],
