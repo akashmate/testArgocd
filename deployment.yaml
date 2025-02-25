@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: krakend-container
-        image: krakend/krakend-ee:watch
+        image: krakend/krakend-ee:2.7
         ports:
         - containerPort: 8082
         command:
