@@ -19,7 +19,7 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
-               "endpoint" : "/rest/tosoapheader",
+               "endpoint" : "/rest/tosoapquery",
                "backend" : [ {
                  "host" : [ "http://www.dneonline.com" ],
                  "url_pattern" : "/calculator.asmx",
@@ -29,7 +29,7 @@ data:
                    "modifier/body-generator" : {
                      "content_type" : "text/xml",
                      "debug" : true,
-                     "template" : "PHNvYXBlbnY6RW52ZWxvcGUgeG1sbnM6c29hcGVudj0iaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvc29hcC9lbnZlbG9wZS8iIHhtbG5zOnRlbT0iaHR0cDovL3RlbXB1cmkub3JnLyI+CiAgIDxzb2FwZW52OkhlYWRlci8+CiAgIDxzb2FwZW52OkJvZHk+CiAgICAgIDx0ZW06QWRkPgogICAgICAgICA8dGVtOmludEE+e3sgLnJlcV9oZWFkZXJzLmEgfX08L3RlbTppbnRBPgogICAgICAgICA8dGVtOmludEI+e3sgLnJlcV9oZWFkZXJzLmIgfX08L3RlbTppbnRCPgogICAgICA8L3RlbTpBZGQ+CiAgIDwvc29hcGVudjpCb2R5Pgo8L3NvYXBlbnY6RW52ZWxvcGU+"
+                     "template" : "PHNvYXBlbnY6RW52ZWxvcGUgeG1sbnM6c29hcGVudj0iaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvc29hcC9lbnZlbG9wZS8iIHhtbG5zOnRlbT0iaHR0cDovL3RlbXB1cmkub3JnLyI+CiAgICA8c29hcGVudjpIZWFkZXIvPgogICAgPHNvYXBlbnY6Qm9keT4KICAgICAgICA8dGVtOkFkZD4KICAgICAgICAgICAgPHRlbTppbnRBPnt7IC5yZXFfYm9keS5hIH19PC90ZW06aW50QT4KICAgICAgICAgICAgPHRlbTppbnRCPnt7IC5yZXFfcXVlcnlzdHJpbmcuYVswXSB9fTwvdGVtOmludEI+CiAgICAgICAgPC90ZW06QWRkPgogICAgPC9zb2FwZW52OkJvZHk+Cjwvc29hcGVudjpFbnZlbG9wZT4="
                    }
                  },
                  "method" : "POST",
@@ -47,8 +47,8 @@ data:
                  }
                },
                "output_encoding" : "xml",
-               "input_headers" : [ "a", "b" ],
-               "method" : "POST"
+               "method" : "POST",
+               "input_query_strings" : [ "a" ]
              }, {
                "endpoint" : "/rest/tosoap",
                "backend" : [ {
@@ -80,7 +80,7 @@ data:
                "output_encoding" : "xml",
                "method" : "POST"
              }, {
-               "endpoint" : "/rest/tosoapquery",
+               "endpoint" : "/rest/tosoapheader",
                "backend" : [ {
                  "host" : [ "http://www.dneonline.com" ],
                  "url_pattern" : "/calculator.asmx",
@@ -90,7 +90,7 @@ data:
                    "modifier/body-generator" : {
                      "content_type" : "text/xml",
                      "debug" : true,
-                     "template" : "PHNvYXBlbnY6RW52ZWxvcGUgeG1sbnM6c29hcGVudj0iaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvc29hcC9lbnZlbG9wZS8iIHhtbG5zOnRlbT0iaHR0cDovL3RlbXB1cmkub3JnLyI+CiAgICA8c29hcGVudjpIZWFkZXIvPgogICAgPHNvYXBlbnY6Qm9keT4KICAgICAgICA8dGVtOkFkZD4KICAgICAgICAgICAgPHRlbTppbnRBPnt7IC5yZXFfYm9keS5hIH19PC90ZW06aW50QT4KICAgICAgICAgICAgPHRlbTppbnRCPnt7IC5yZXFfcXVlcnlzdHJpbmcuYVswXSB9fTwvdGVtOmludEI+CiAgICAgICAgPC90ZW06QWRkPgogICAgPC9zb2FwZW52OkJvZHk+Cjwvc29hcGVudjpFbnZlbG9wZT4="
+                     "template" : "PHNvYXBlbnY6RW52ZWxvcGUgeG1sbnM6c29hcGVudj0iaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvc29hcC9lbnZlbG9wZS8iIHhtbG5zOnRlbT0iaHR0cDovL3RlbXB1cmkub3JnLyI+CiAgIDxzb2FwZW52OkhlYWRlci8+CiAgIDxzb2FwZW52OkJvZHk+CiAgICAgIDx0ZW06QWRkPgogICAgICAgICA8dGVtOmludEE+e3sgLnJlcV9oZWFkZXJzLkFbMF0gfX08L3RlbTppbnRBPgogICAgICAgICA8dGVtOmludEI+e3sgLnJlcV9oZWFkZXJzLkJbMF0gfX08L3RlbTppbnRCPgogICAgICA8L3RlbTpBZGQ+CiAgIDwvc29hcGVudjpCb2R5Pgo8L3NvYXBlbnY6RW52ZWxvcGU+"
                    }
                  },
                  "method" : "POST",
@@ -108,8 +108,8 @@ data:
                  }
                },
                "output_encoding" : "xml",
-               "method" : "POST",
-               "input_query_strings" : [ "a" ]
+               "input_headers" : [ "a", "b" ],
+               "method" : "POST"
              }, {
                "endpoint" : "/contentreplacer/contentreplacerep",
                "backend" : [ {
