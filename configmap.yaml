@@ -43,13 +43,14 @@ data:
                "endpoint" : "/contentreplacer/testcache1",
                "backend" : [ {
                  "host" : [ "http://10.175.1.64:8290" ],
-                 "url_pattern" : "/HelloWorld",
+                 "url_pattern" : "/HelloWorld/testwithscript",
                  "extra_config" : {
                    "qos/http-cache" : {
                      "shared" : true
                    }
                  },
-                 "method" : "GET"
+                 "method" : "GET",
+                 "sd" : "static"
                } ],
                "extra_config" : {
                  "auth/validator" : {
