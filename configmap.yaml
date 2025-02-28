@@ -21,7 +21,7 @@ data:
              "endpoints" : [ {
                "endpoint" : "/contentreplacer/contentreplacerep",
                "backend" : [ {
-                 "host" : [ "http://10.175.1.58:3000" ],
+                 "host" : [ "http://10.175.1.64:3000" ],
                  "url_pattern" : "/Testregexcontentreplacer",
                  "extra_config" : {
                    "plugin/req-resp-modifier" : {
@@ -35,7 +35,8 @@ data:
                      }
                    }
                  },
-                 "method" : "GET"
+                 "method" : "GET",
+                 "sd" : "static"
                } ],
                "extra_config" : {
                  "auth/validator" : {
