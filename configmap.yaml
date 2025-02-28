@@ -19,11 +19,10 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
-               "endpoint" : "/contentreplacer/withoutcache",
+               "endpoint" : "/contentreplacer/Testcacewithwso2ep",
                "backend" : [ {
                  "host" : [ "http://10.175.1.64:8290" ],
-                 "url_pattern" : "/HelloWorld",
-                 "is_collection" : false,
+                 "url_pattern" : "/HelloWorld/testwithscript",
                  "extra_config" : { },
                  "method" : "GET"
                } ],
