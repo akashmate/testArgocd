@@ -19,90 +19,6 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
-               "endpoint" : "/contentreplacer/Testcacewithwso2ep",
-               "backend" : [ {
-                 "host" : [ "http://10.175.1.64:8290" ],
-                 "url_pattern" : "/HelloWorld/testwithscript",
-                 "extra_config" : {
-                   "qos/http-cache" : {
-                     "shared" : true
-                   }
-                 },
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "krakendtest" ],
-                   "scopes_key" : "scope"
-                 }
-               },
-               "method" : "GET"
-             }, {
-               "endpoint" : "/contentreplacer/testcache1",
-               "backend" : [ {
-                 "host" : [ "http://10.175.1.64:8290" ],
-                 "url_pattern" : "/HelloWorld/testwithscript",
-                 "extra_config" : {
-                   "qos/http-cache" : {
-                     "shared" : true
-                   }
-                 },
-                 "method" : "GET",
-                 "sd" : "static"
-               } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "krakendtest" ],
-                   "scopes_key" : "scope"
-                 }
-               },
-               "method" : "GET"
-             }, {
-               "endpoint" : "/contentreplacer/contentreplacerep",
-               "backend" : [ {
-                 "host" : [ "http://10.175.1.64:3000" ],
-                 "url_pattern" : "/Testregexcontentreplacer",
-                 "extra_config" : {
-                   "qos/http-cache" : {
-                     "shared" : true
-                   },
-                   "plugin/req-resp-modifier" : {
-                     "name" : [ "content-replacer" ],
-                     "content-replacer" : {
-                       "data.creditcard" : {
-                         "find" : "\\d{4}-\\d{4}-(\\d{4})",
-                         "replace" : "XXXX-XXXX-${1}",
-                         "regexp" : true
-                       }
-                     }
-                   }
-                 },
-                 "method" : "GET",
-                 "sd" : "static"
-               } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "krakendtest" ],
-                   "scopes_key" : "scope"
-                 }
-               },
-               "method" : "GET"
-             }, {
                "endpoint" : "/krakend/patchObject/{id}",
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev" ],
@@ -240,6 +156,90 @@ data:
                },
                "output_encoding" : "json",
                "method" : "POST"
+             }, {
+               "endpoint" : "/contentreplacer/Testcacewithwso2ep",
+               "backend" : [ {
+                 "host" : [ "http://10.175.1.64:8290" ],
+                 "url_pattern" : "/HelloWorld/testwithscript",
+                 "extra_config" : {
+                   "qos/http-cache" : {
+                     "shared" : true
+                   }
+                 },
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "krakendtest" ],
+                   "scopes_key" : "scope"
+                 }
+               },
+               "method" : "GET"
+             }, {
+               "endpoint" : "/contentreplacer/testcache1",
+               "backend" : [ {
+                 "host" : [ "http://10.175.1.64:8290" ],
+                 "url_pattern" : "/HelloWorld/testwithscript",
+                 "extra_config" : {
+                   "qos/http-cache" : {
+                     "shared" : true
+                   }
+                 },
+                 "method" : "GET",
+                 "sd" : "static"
+               } ],
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "krakendtest" ],
+                   "scopes_key" : "scope"
+                 }
+               },
+               "method" : "GET"
+             }, {
+               "endpoint" : "/contentreplacer/contentreplacerep",
+               "backend" : [ {
+                 "host" : [ "http://10.175.1.64:3000" ],
+                 "url_pattern" : "/Testregexcontentreplacer",
+                 "extra_config" : {
+                   "qos/http-cache" : {
+                     "shared" : true
+                   },
+                   "plugin/req-resp-modifier" : {
+                     "name" : [ "content-replacer" ],
+                     "content-replacer" : {
+                       "data.creditcard" : {
+                         "find" : "\\d{4}-\\d{4}-(\\d{4})",
+                         "replace" : "XXXX-XXXX-${1}",
+                         "regexp" : true
+                       }
+                     }
+                   }
+                 },
+                 "method" : "GET",
+                 "sd" : "static"
+               } ],
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "krakendtest" ],
+                   "scopes_key" : "scope"
+                 }
+               },
+               "method" : "GET"
              }, {
                "endpoint" : "/testapi1/test1",
                "backend" : [ {
