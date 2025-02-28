@@ -23,11 +23,7 @@ data:
                "backend" : [ {
                  "host" : [ "http://10.175.1.64:8290" ],
                  "url_pattern" : "/HelloWorld/testwithscript",
-                 "extra_config" : {
-                   "qos/http-cache" : {
-                     "shared" : true
-                   }
-                 },
+                 "extra_config" : { },
                  "method" : "GET"
                } ],
                "extra_config" : {
