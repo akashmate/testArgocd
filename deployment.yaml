@@ -27,7 +27,6 @@ spec:
         - /bin/sh
         - -c
         - |
-          krakend check -tlc /etc/krakend/config/krakend.json && \
           krakend run -c /etc/krakend/config/krakend.json
         env:
         - name: KRAKEND_LICENSE_PATH
