@@ -49,8 +49,7 @@ data:
                    "scopes_key" : "scope"
                  }
                },
-               "method" : "GET",
-               "cache_ttl" : "1s"
+               "method" : "GET"
              }, {
                "endpoint" : "/rest/tosoapheader",
                "backend" : [ {
