@@ -10,7 +10,7 @@ data:
              "version" : 3,
              "name" : "gateway",
              "port" : 8082,
-             "timeout" : "3000ms",
+             "timeout" : "6000ms",
              "cache_ttl" : "1h",
              "debug_endpoint" : false,
              "echo_endpoint" : true,
@@ -19,13 +19,17 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
-               "endpoint" : "/contentreplacer/withoutcache",
+               "endpoint" : "/contentreplacer/testcache1",
                "backend" : [ {
                  "host" : [ "http://10.175.1.64:8290" ],
-                 "url_pattern" : "/HelloWorld",
-                 "is_collection" : false,
-                 "extra_config" : { },
-                 "method" : "GET"
+                 "url_pattern" : "/HelloWorld/testwithscript",
+                 "extra_config" : {
+                   "qos/http-cache" : {
+                     "shared" : true
+                   }
+                 },
+                 "method" : "GET",
+                 "sd" : "static"
                } ],
                "extra_config" : {
                  "auth/validator" : {
@@ -40,17 +44,13 @@ data:
                },
                "method" : "GET"
              }, {
-               "endpoint" : "/contentreplacer/testcache1",
+               "endpoint" : "/contentreplacer/withoutcache",
                "backend" : [ {
                  "host" : [ "http://10.175.1.64:8290" ],
-                 "url_pattern" : "/HelloWorld/testwithscript",
-                 "extra_config" : {
-                   "qos/http-cache" : {
-                     "shared" : true
-                   }
-                 },
-                 "method" : "GET",
-                 "sd" : "static"
+                 "url_pattern" : "/HelloWorld",
+                 "is_collection" : false,
+                 "extra_config" : { },
+                 "method" : "GET"
                } ],
                "extra_config" : {
                  "auth/validator" : {
