@@ -18,10 +18,6 @@ data:
                "pattern" : ".so",
                "folder" : "/opt/krakend/plugins/"
              },
-             "tls" : {
-               "public_key" : "d:/etc/test/cert.pem",
-               "private_key" : "D:/etc/test/key.pem"
-             },
              "endpoints" : [ {
                "endpoint" : "/contentreplacer/Testcacewithwso2ep",
                "backend" : [ {
