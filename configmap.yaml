@@ -41,8 +41,8 @@ data:
              }, {
                "endpoint" : "/contentreplacer/testcache1",
                "backend" : [ {
-                 "host" : [ "https://jsonplaceholder.typicode.com" ],
-                 "url_pattern" : "/posts/1",
+                 "host" : [ "http://10.175.1.64:8290" ],
+                 "url_pattern" : "/HelloWorld/testwithscript",
                  "extra_config" : {
                    "qos/http-cache" : {
                      "shared" : true
