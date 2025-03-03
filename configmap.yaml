@@ -258,7 +258,7 @@ data:
                    "name" : [ "ip-filter" ],
                    "ip-filter" : {
                      "CIDR" : [ "10.233.70.0" ],
-                     "allow" : false
+                     "allow" : true
                    }
                  }
                },
