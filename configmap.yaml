@@ -19,6 +19,62 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
+               "endpoint" : "/responseschemaapi/respvald/{id}",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects/{id}",
+                 "is_collection" : false,
+                 "extra_config" : {
+                   "plugin/req-resp-modifier" : {
+                     "name" : [ "response-schema-validator" ],
+                     "response-schema-validator" : {
+                       "error" : {
+                         "body" : "Inavlid response jsonschema not valid",
+                         "status" : 400
+                       },
+                       "schema" : {
+                         "$schema" : "http://json-schema.org/draft-07/schema#",
+                         "type" : "object",
+                         "properties" : {
+                           "id" : {
+                             "type" : "string"
+                           },
+                           "name" : {
+                             "type" : "string"
+                           },
+                           "data" : {
+                             "type" : "object",
+                             "properties" : {
+                               "year" : {
+                                 "type" : "integer"
+                               },
+                               "price" : {
+                                 "type" : "number"
+                               },
+                               "CPU model" : {
+                                 "type" : "string"
+                               },
+                               "Hard disk size" : {
+                                 "type" : "string"
+                               }
+                             },
+                             "required" : [ "year", "price", "CPU model", "Hard disk size" ]
+                           }
+                         },
+                         "required" : [ "id", "name", "data" ]
+                       }
+                     }
+                   }
+                 },
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "auth/api-keys" : {
+                   "roles" : [ "Developer" ]
+                 }
+               },
+               "method" : "GET"
+             }, {
                "endpoint" : "/securitypolicyapi/ereqsecuritypolicyep/{id}",
                "backend" : [ {
                  "host" : [ "https://jsonplaceholder.typicode.com" ],
@@ -747,6 +803,14 @@ data:
                  "url-rewrite" : {
                    "regexp" : [ [ "/hi-there/([\\w\\d\\s]+)/bar", "/gateway/hello/${1}" ] ]
                  }
+               },
+               "auth/api-keys" : {
+                 "identifier" : "Authorization",
+                 "strategy" : "header",
+                 "keys" : [ {
+                   "key" : "37eb407a-c163-4085-ae33-b0b278577ada",
+                   "roles" : [ "Developer" ]
+                 } ]
                },
                "auth/validator" : {
                  "shared_cache_duration" : 3600
