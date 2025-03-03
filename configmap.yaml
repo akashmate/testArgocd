@@ -19,6 +19,50 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
+               "endpoint" : "/requestschemaapi/requestschemep",
+               "backend" : [ {
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "url_pattern" : "/posts/1",
+                 "is_collection" : false,
+                 "extra_config" : { },
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "auth/basic" : {
+                   "users" : {
+                     "krakend" : "$2a$10$nuSXxZnJH5GNOsa3.qPL2uyqVDcB8z3oDxY2sm8Hd/f/lsGWhoy.K"
+                   }
+                 },
+                 "validation/json-schema" : {
+                   "type" : "object",
+                   "properties" : {
+                     "name" : {
+                       "type" : "string"
+                     },
+                     "data" : {
+                       "type" : "object",
+                       "properties" : {
+                         "year" : {
+                           "type" : "integer"
+                         },
+                         "price" : {
+                           "type" : "number"
+                         },
+                         "CPU model" : {
+                           "type" : "string"
+                         },
+                         "Hard disk size" : {
+                           "type" : "string"
+                         }
+                       },
+                       "required" : [ "year", "price", "CPU model", "Hard disk size" ]
+                     }
+                   },
+                   "required" : [ "name" ]
+                 }
+               },
+               "method" : "POST"
+             }, {
                "endpoint" : "/basicmanipulation/erespmanipulationwithgotmpl",
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev" ],
@@ -824,14 +868,6 @@ data:
                  "url-rewrite" : {
                    "regexp" : [ [ "/hi-there/([\\w\\d\\s]+)/bar", "/gateway/hello/${1}" ] ]
                  }
-               },
-               "auth/api-keys" : {
-                 "identifier" : "Authorization",
-                 "strategy" : "header",
-                 "keys" : [ {
-                   "key" : "37eb407a-c163-4085-ae33-b0b278577ada",
-                   "roles" : [ "Developer" ]
-                 } ]
                },
                "auth/validator" : {
                  "shared_cache_duration" : 3600
