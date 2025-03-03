@@ -196,7 +196,7 @@ data:
                        "status" : 400,
                        "content_type" : "application/json"
                      },
-                     "policies" : [ "!isEmpty(resp_data.body)", "!isEmpty(resp_data.test)" ]
+                     "policies" : [ "!isEmpty(resp_data.body)" ]
                    }
                  }
                },
