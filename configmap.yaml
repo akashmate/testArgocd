@@ -19,6 +19,32 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
+               "endpoint" : "/cache/concurrentcalls",
+               "backend" : [ {
+                 "host" : [ "http://10.175.1.71:8285" ],
+                 "url_pattern" : "/massil",
+                 "is_collection" : false,
+                 "extra_config" : { },
+                 "method" : "GET",
+                 "sd" : "static"
+               } ],
+               "extra_config" : {
+                 "proxy" : {
+                   "sequential" : false
+                 },
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "krakendtest" ],
+                   "scopes_key" : "scope"
+                 }
+               },
+               "concurrent_calls" : 3,
+               "method" : "GET"
+             }, {
                "endpoint" : "/cache/cahceep",
                "backend" : [ {
                  "host" : [ "http://10.175.1.71:8285" ],
@@ -48,32 +74,6 @@ data:
                    }
                  }
                },
-               "method" : "GET"
-             }, {
-               "endpoint" : "/cache/concurrentcalls",
-               "backend" : [ {
-                 "host" : [ "http://10.175.1.71:8285" ],
-                 "url_pattern" : "/massil",
-                 "is_collection" : false,
-                 "extra_config" : { },
-                 "method" : "GET",
-                 "sd" : "static"
-               } ],
-               "extra_config" : {
-                 "proxy" : {
-                   "sequential" : false
-                 },
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "krakendtest" ],
-                   "scopes_key" : "scope"
-                 }
-               },
-               "concurrent_calls" : 3,
                "method" : "GET"
              }, {
                "endpoint" : "/emp/{id}",
