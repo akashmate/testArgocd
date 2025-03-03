@@ -19,209 +19,10 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
-               "endpoint" : "/responsemanipulation/responsemanipulationwithgotemplateEP",
+               "endpoint" : "/basicmanipulation/erespmanipulationwithgotmpl",
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev" ],
                  "url_pattern" : "/objects/7",
-                 "encoding" : "no-op",
-                 "extra_config" : {
-                   "modifier/response-body-generator" : {
-                     "content_type" : "application/json",
-                     "debug" : true,
-                     "template" : "ewogICJBZGRyZXNzIjoge3sgdG9Kc29uIC5yZXNwX2JvZHkgfX0sCiAgInN0YXR1c19jb2RlIjoge3sgdG9Kc29uIC5yZXNwX3N0YXR1cyB9fSwKICAiaGVhZGVycyI6IHt7IHRvSnNvbiAucmVzcF9oZWFkZXJzIH19Cn0="
-                   }
-                 },
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "krakendtest" ],
-                   "scopes_key" : "scope"
-                 }
-               },
-               "output_encoding" : "no-op",
-               "method" : "GET"
-             }, {
-               "endpoint" : "/soap/subtract",
-               "backend" : [ {
-                 "host" : [ "http://www.dneonline.com" ],
-                 "url_pattern" : "/calculator.asmx",
-                 "encoding" : "xml",
-                 "extra_config" : {
-                   "backend/soap" : {
-                     "template" : "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzb2FwZW52OkVudmVsb3BlIHhtbG5zOnNvYXBlbnY9Imh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3NvYXAvZW52ZWxvcGUvIj4KICAgIDxzb2FwZW52OkhlYWRlci8+CiAgICA8c29hcGVudjpCb2R5PgogICAgICAgIDx3ZWI6U3VidHJhY3QgeG1sbnM6d2ViPSJodHRwOi8vdGVtcHVyaS5vcmcvIj4KICAgICAgICAgICAgPHdlYjppbnRBPnt7LnJlcV9ib2R5LlN1YnRyYWN0LmludEF9fTwvd2ViOmludEE+CiAgICAgICAgICAgIDx3ZWI6aW50Qj57ey5yZXFfYm9keS5TdWJ0cmFjdC5pbnRCfX08L3dlYjppbnRCPgogICAgICAgIDwvd2ViOlN1YnRyYWN0PgogICAgPC9zb2FwZW52OkJvZHk+Cjwvc29hcGVudjpFbnZlbG9wZT4K",
-                     "content_type" : "text/xml"
-                   }
-                 },
-                 "method" : "POST",
-                 "sd" : "static"
-               } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "krakendtest" ],
-                   "scopes_key" : "scope"
-                 },
-                 "modifier/response-body-generator" : {
-                   "template" : "e3t0b0pzb24gLnJlc3BfYm9keS5FbnZlbG9wZS5Cb2R5fX0="
-                 }
-               },
-               "output_encoding" : "json",
-               "method" : "POST"
-             }, {
-               "endpoint" : "/soap/multiply",
-               "backend" : [ {
-                 "host" : [ "http://www.dneonline.com" ],
-                 "url_pattern" : "/calculator.asmx",
-                 "encoding" : "xml",
-                 "extra_config" : {
-                   "backend/soap" : {
-                     "template" : "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzb2FwZW52OkVudmVsb3BlIHhtbG5zOnNvYXBlbnY9Imh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3NvYXAvZW52ZWxvcGUvIj4KICAgIDxzb2FwZW52OkhlYWRlci8+CiAgICA8c29hcGVudjpCb2R5PgogICAgICAgIDx3ZWI6TXVsdGlwbHkgeG1sbnM6d2ViPSJodHRwOi8vdGVtcHVyaS5vcmcvIj4KICAgICAgICAgICAgPHdlYjppbnRBPnt7LnJlcV9ib2R5Lk11bHRpcGx5LmludEF9fTwvd2ViOmludEE+CiAgICAgICAgICAgIDx3ZWI6aW50Qj57ey5yZXFfYm9keS5NdWx0aXBseS5pbnRCfX08L3dlYjppbnRCPgogICAgICAgIDwvd2ViOk11bHRpcGx5PgogICAgPC9zb2FwZW52OkJvZHk+Cjwvc29hcGVudjpFbnZlbG9wZT4K",
-                     "content_type" : "text/xml"
-                   }
-                 },
-                 "method" : "POST",
-                 "sd" : "static"
-               } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "krakendtest" ],
-                   "scopes_key" : "scope"
-                 },
-                 "modifier/response-body-generator" : {
-                   "template" : "e3t0b0pzb24gLnJlc3BfYm9keS5FbnZlbG9wZS5Cb2R5fX0="
-                 }
-               },
-               "output_encoding" : "json",
-               "method" : "POST"
-             }, {
-               "endpoint" : "/soap/divide",
-               "backend" : [ {
-                 "host" : [ "http://www.dneonline.com" ],
-                 "url_pattern" : "/calculator.asmx",
-                 "encoding" : "xml",
-                 "extra_config" : {
-                   "backend/soap" : {
-                     "template" : "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzb2FwZW52OkVudmVsb3BlIHhtbG5zOnNvYXBlbnY9Imh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3NvYXAvZW52ZWxvcGUvIj4KICAgIDxzb2FwZW52OkhlYWRlci8+CiAgICA8c29hcGVudjpCb2R5PgogICAgICAgIDx3ZWI6RGl2aWRlIHhtbG5zOndlYj0iaHR0cDovL3RlbXB1cmkub3JnLyI+CiAgICAgICAgICAgIDx3ZWI6aW50QT57ey5yZXFfYm9keS5EaXZpZGUuaW50QX19PC93ZWI6aW50QT4KICAgICAgICAgICAgPHdlYjppbnRCPnt7LnJlcV9ib2R5LkRpdmlkZS5pbnRCfX08L3dlYjppbnRCPgogICAgICAgIDwvd2ViOkRpdmlkZT4KICAgIDwvc29hcGVudjpCb2R5Pgo8L3NvYXBlbnY6RW52ZWxvcGU+Cg==",
-                     "content_type" : "text/xml"
-                   }
-                 },
-                 "method" : "POST",
-                 "sd" : "static"
-               } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "krakendtest" ],
-                   "scopes_key" : "scope"
-                 },
-                 "modifier/response-body-generator" : {
-                   "template" : "e3t0b0pzb24gLnJlc3BfYm9keS5FbnZlbG9wZS5Cb2R5fX0="
-                 }
-               },
-               "output_encoding" : "json",
-               "method" : "POST"
-             }, {
-               "endpoint" : "/soap/add",
-               "backend" : [ {
-                 "host" : [ "http://www.dneonline.com" ],
-                 "url_pattern" : "/calculator.asmx",
-                 "encoding" : "xml",
-                 "extra_config" : {
-                   "backend/soap" : {
-                     "template" : "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzb2FwZW52OkVudmVsb3BlIHhtbG5zOnNvYXBlbnY9Imh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3NvYXAvZW52ZWxvcGUvIj4KICAgIDxzb2FwZW52OkhlYWRlci8+CiAgICA8c29hcGVudjpCb2R5PgogICAgICAgIDx3ZWI6QWRkIHhtbG5zOndlYj0iaHR0cDovL3RlbXB1cmkub3JnLyI+CiAgICAgICAgICAgIDx3ZWI6aW50QT57ey5yZXFfYm9keS5BZGQuaW50QX19PC93ZWI6aW50QT4KICAgICAgICAgICAgPHdlYjppbnRCPnt7LnJlcV9ib2R5LkFkZC5pbnRCfX08L3dlYjppbnRCPgogICAgICAgIDwvd2ViOkFkZD4KICAgIDwvc29hcGVudjpCb2R5Pgo8L3NvYXBlbnY6RW52ZWxvcGU+Cg==",
-                     "content_type" : "text/xml"
-                   }
-                 },
-                 "method" : "POST",
-                 "sd" : "static"
-               } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "krakendtest" ],
-                   "scopes_key" : "scope"
-                 },
-                 "modifier/response-body-generator" : {
-                   "template" : "e3t0b0pzb24gLnJlc3BfYm9keS5FbnZlbG9wZS5Cb2R5fX0="
-                 }
-               },
-               "output_encoding" : "json",
-               "method" : "POST"
-             }, {
-               "endpoint" : "/testsampleapi/testsampleep",
-               "backend" : [ {
-                 "host" : [ "https://jsonplaceholder.typicode.com" ],
-                 "url_pattern" : "/posts/1",
-                 "is_collection" : false,
-                 "extra_config" : { },
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "krakendtest" ],
-                   "scopes_key" : "scope"
-                 }
-               },
-               "method" : "GET"
-             }, {
-               "endpoint" : "/testsampleapi/rspmanipulationep",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects/7",
-                 "extra_config" : {
-                   "modifier/response-body-generator" : {
-                     "content_type" : "application/json",
-                     "debug" : true,
-                     "template" : "ewogICJBZGRyZXNzIjoge3sgdG9Kc29uIC5yZXNwX2JvZHkgfX0sCiAgInN0YXR1c19jb2RlIjoge3sgdG9Kc29uIC5yZXNwX3N0YXR1cyB9fSwKICAiaGVhZGVycyI6IHt7IHRvSnNvbiAucmVzcF9oZWFkZXJzIH19Cn0="
-                   }
-                 },
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "krakendtest" ],
-                   "scopes_key" : "scope"
-                 }
-               },
-               "method" : "GET"
-             }, {
-               "endpoint" : "/basicmanipulation/firstendpoint",
-               "backend" : [ {
-                 "host" : [ "https://jsonplaceholder.typicode.com" ],
-                 "url_pattern" : "/posts/1",
                  "is_collection" : false,
                  "encoding" : "json",
                  "extra_config" : { },
@@ -230,88 +31,59 @@ data:
                "extra_config" : {
                  "auth/api-keys" : {
                    "roles" : [ "Developer" ]
-                 }
-               },
-               "output_encoding" : "json",
-               "method" : "GET"
-             }, {
-               "endpoint" : "/basicmanipulation/contentreplacer",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects/7",
-                 "extra_config" : {
-                   "plugin/req-resp-modifier" : {
-                     "name" : [ "content-replacer" ],
-                     "content-replacer" : {
-                       "data.CPU model" : {
-                         "find" : "Intel Core i9",
-                         "replace" : "Intel",
-                         "regexp" : false
-                       }
-                     }
-                   }
                  },
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
-                 "auth/api-keys" : {
-                   "roles" : [ "Developer" ]
+                 "modifier/response-body-generator" : {
+                   "content_type" : "application/json",
+                   "debug" : true,
+                   "template" : "ewogICJBZGRyZXNzIjoge3sgdG9Kc29uIC5yZXNwX2JvZHkgfX0sCiAgInN0YXR1c19jb2RlIjoge3sgdG9Kc29uIC5yZXNwX3N0YXR1cyB9fSwKICAiaGVhZGVycyI6IHt7IHRvSnNvbiAucmVzcF9oZWFkZXJzIH19Cn0="
                  }
                },
+               "output_encoding" : "no-op",
                "method" : "GET"
              }, {
-               "endpoint" : "/basicmanipulation/regexcontentreplacer",
+               "endpoint" : "/basicmanipulation/estaticdata",
                "backend" : [ {
-                 "host" : [ "http://10.175.1.58:3000" ],
-                 "url_pattern" : "/Testregexcontentreplacer",
-                 "extra_config" : {
-                   "plugin/req-resp-modifier" : {
-                     "name" : [ "content-replacer" ],
-                     "content-replacer" : {
-                       "data.creditcard" : {
-                         "find" : "(^\\d{4})(.*)",
-                         "replace" : "${1}-XXXX",
-                         "regexp" : true
-                       }
-                     }
-                   }
-                 },
-                 "method" : "GET",
-                 "sd" : "static"
-               } ],
-               "extra_config" : {
-                 "auth/api-keys" : {
-                   "roles" : [ "Developer" ]
-                 }
-               },
-               "method" : "GET"
-             }, {
-               "endpoint" : "/basicmanipulation/ejmes",
-               "backend" : [ {
-                 "host" : [ "https://api.nationalize.io/" ],
-                 "url_pattern" : "/",
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "url_pattern" : "/posts/1",
                  "is_collection" : false,
                  "extra_config" : { },
                  "method" : "GET"
                } ],
                "extra_config" : {
-                 "modifier/jmespath" : {
-                   "expr" : "country[?probability > `0.03` ].country_id"
+                 "proxy" : {
+                   "static" : {
+                     "data" : {
+                       "Hi" : "I am static data"
+                     },
+                     "strategy" : "always"
+                   }
                  },
                  "auth/api-keys" : {
                    "roles" : [ "Developer" ]
                  }
                },
-               "method" : "GET",
-               "input_query_strings" : [ "name" ]
+               "method" : "GET"
              }, {
-               "endpoint" : "/basicmanipulation/renameobject",
+               "endpoint" : "/basicmanipulation/rootobject",
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev" ],
                  "url_pattern" : "/objects/7",
-                 "mapping" : {
-                   "data" : "newdata"
-                 },
+                 "extra_config" : { },
+                 "target" : "data",
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "auth/api-keys" : {
+                   "roles" : [ "Developer" ]
+                 }
+               },
+               "method" : "GET"
+             }, {
+               "endpoint" : "/basicmanipulation/deny",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects/7",
+                 "group" : "Studentdetails",
                  "extra_config" : { },
                  "method" : "GET"
                } ],
@@ -347,11 +119,13 @@ data:
                },
                "method" : "GET"
              }, {
-               "endpoint" : "/basicmanipulation/deny",
+               "endpoint" : "/basicmanipulation/renameobject",
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev" ],
                  "url_pattern" : "/objects/7",
-                 "group" : "Studentdetails",
+                 "mapping" : {
+                   "data" : "newdata"
+                 },
                  "extra_config" : { },
                  "method" : "GET"
                } ],
@@ -362,12 +136,67 @@ data:
                },
                "method" : "GET"
              }, {
-               "endpoint" : "/basicmanipulation/rootobject",
+               "endpoint" : "/basicmanipulation/ejmes",
+               "backend" : [ {
+                 "host" : [ "https://api.nationalize.io/" ],
+                 "url_pattern" : "/",
+                 "is_collection" : false,
+                 "extra_config" : { },
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "modifier/jmespath" : {
+                   "expr" : "country[?probability > `0.03` ].country_id"
+                 },
+                 "auth/api-keys" : {
+                   "roles" : [ "Developer" ]
+                 }
+               },
+               "method" : "GET",
+               "input_query_strings" : [ "name" ]
+             }, {
+               "endpoint" : "/basicmanipulation/regexcontentreplacer",
+               "backend" : [ {
+                 "host" : [ "http://10.175.1.58:3000" ],
+                 "url_pattern" : "/Testregexcontentreplacer",
+                 "extra_config" : {
+                   "plugin/req-resp-modifier" : {
+                     "name" : [ "content-replacer" ],
+                     "content-replacer" : {
+                       "data.creditcard" : {
+                         "find" : "(^\\d{4})(.*)",
+                         "replace" : "${1}-XXXX",
+                         "regexp" : true
+                       }
+                     }
+                   }
+                 },
+                 "method" : "GET",
+                 "sd" : "static"
+               } ],
+               "extra_config" : {
+                 "auth/api-keys" : {
+                   "roles" : [ "Developer" ]
+                 }
+               },
+               "method" : "GET"
+             }, {
+               "endpoint" : "/basicmanipulation/contentreplacer",
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev" ],
                  "url_pattern" : "/objects/7",
-                 "extra_config" : { },
-                 "target" : "data",
+                 "extra_config" : {
+                   "plugin/req-resp-modifier" : {
+                     "name" : [ "content-replacer" ],
+                     "content-replacer" : {
+                       "data.CPU model" : {
+                         "find" : "Intel Core i9",
+                         "replace" : "Intel",
+                         "regexp" : false
+                       }
+                     }
+                   }
+                 },
                  "method" : "GET"
                } ],
                "extra_config" : {
@@ -377,34 +206,11 @@ data:
                },
                "method" : "GET"
              }, {
-               "endpoint" : "/basicmanipulation/estaticdata",
+               "endpoint" : "/basicmanipulation/firstendpoint",
                "backend" : [ {
                  "host" : [ "https://jsonplaceholder.typicode.com" ],
                  "url_pattern" : "/posts/1",
                  "is_collection" : false,
-                 "extra_config" : { },
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
-                 "proxy" : {
-                   "static" : {
-                     "data" : {
-                       "Hi" : "I am static data"
-                     },
-                     "strategy" : "always"
-                   }
-                 },
-                 "auth/api-keys" : {
-                   "roles" : [ "Developer" ]
-                 }
-               },
-               "method" : "GET"
-             }, {
-               "endpoint" : "/basicmanipulation/erespmanipulationwithgotmpl",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects/7",
-                 "is_collection" : false,
                  "encoding" : "json",
                  "extra_config" : { },
                  "method" : "GET"
@@ -412,160 +218,9 @@ data:
                "extra_config" : {
                  "auth/api-keys" : {
                    "roles" : [ "Developer" ]
-                 },
-                 "modifier/response-body-generator" : {
-                   "content_type" : "application/json",
-                   "debug" : true,
-                   "template" : "ewogICJBZGRyZXNzIjoge3sgdG9Kc29uIC5yZXNwX2JvZHkgfX0sCiAgInN0YXR1c19jb2RlIjoge3sgdG9Kc29uIC5yZXNwX3N0YXR1cyB9fSwKICAiaGVhZGVycyI6IHt7IHRvSnNvbiAucmVzcF9oZWFkZXJzIH19Cn0="
-                 }
-               },
-               "output_encoding" : "no-op",
-               "method" : "GET"
-             }, {
-               "endpoint" : "/testsoapapi/multiply",
-               "backend" : [ {
-                 "host" : [ "http://www.dneonline.com" ],
-                 "url_pattern" : "/calculator.asmx",
-                 "encoding" : "xml",
-                 "extra_config" : {
-                   "backend/soap" : {
-                     "template" : "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzb2FwZW52OkVudmVsb3BlIHhtbG5zOnNvYXBlbnY9Imh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3NvYXAvZW52ZWxvcGUvIj4KICAgIDxzb2FwZW52OkhlYWRlci8+CiAgICA8c29hcGVudjpCb2R5PgogICAgICAgIDx3ZWI6TXVsdGlwbHkgeG1sbnM6d2ViPSJodHRwOi8vdGVtcHVyaS5vcmcvIj4KICAgICAgICAgICAgPHdlYjppbnRBPnt7LnJlcV9ib2R5Lk11bHRpcGx5LmludEF9fTwvd2ViOmludEE+CiAgICAgICAgICAgIDx3ZWI6aW50Qj57ey5yZXFfYm9keS5NdWx0aXBseS5pbnRCfX08L3dlYjppbnRCPgogICAgICAgIDwvd2ViOk11bHRpcGx5PgogICAgPC9zb2FwZW52OkJvZHk+Cjwvc29hcGVudjpFbnZlbG9wZT4K",
-                     "content_type" : "text/xml"
-                   }
-                 },
-                 "method" : "POST",
-                 "sd" : "static"
-               } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "krakendtest" ],
-                   "scopes_key" : "scope"
-                 },
-                 "modifier/response-body-generator" : {
-                   "template" : "e3t0b0pzb24gLnJlc3BfYm9keS5FbnZlbG9wZS5Cb2R5fX0="
                  }
                },
                "output_encoding" : "json",
-               "method" : "POST"
-             }, {
-               "endpoint" : "/testsoapapi/add",
-               "backend" : [ {
-                 "host" : [ "http://www.dneonline.com" ],
-                 "url_pattern" : "/calculator.asmx",
-                 "encoding" : "xml",
-                 "extra_config" : {
-                   "backend/soap" : {
-                     "template" : "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzb2FwZW52OkVudmVsb3BlIHhtbG5zOnNvYXBlbnY9Imh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3NvYXAvZW52ZWxvcGUvIj4KICAgIDxzb2FwZW52OkhlYWRlci8+CiAgICA8c29hcGVudjpCb2R5PgogICAgICAgIDx3ZWI6QWRkIHhtbG5zOndlYj0iaHR0cDovL3RlbXB1cmkub3JnLyI+CiAgICAgICAgICAgIDx3ZWI6aW50QT57ey5yZXFfYm9keS5BZGQuaW50QX19PC93ZWI6aW50QT4KICAgICAgICAgICAgPHdlYjppbnRCPnt7LnJlcV9ib2R5LkFkZC5pbnRCfX08L3dlYjppbnRCPgogICAgICAgIDwvd2ViOkFkZD4KICAgIDwvc29hcGVudjpCb2R5Pgo8L3NvYXBlbnY6RW52ZWxvcGU+Cg==",
-                     "content_type" : "text/xml"
-                   }
-                 },
-                 "method" : "POST",
-                 "sd" : "static"
-               } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "krakendtest" ],
-                   "scopes_key" : "scope"
-                 },
-                 "modifier/response-body-generator" : {
-                   "template" : "e3t0b0pzb24gLnJlc3BfYm9keS5FbnZlbG9wZS5Cb2R5fX0="
-                 }
-               },
-               "output_encoding" : "json",
-               "method" : "POST"
-             }, {
-               "endpoint" : "/testsoapapi/subtract",
-               "backend" : [ {
-                 "host" : [ "http://www.dneonline.com" ],
-                 "url_pattern" : "/calculator.asmx",
-                 "encoding" : "xml",
-                 "extra_config" : {
-                   "backend/soap" : {
-                     "template" : "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzb2FwZW52OkVudmVsb3BlIHhtbG5zOnNvYXBlbnY9Imh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3NvYXAvZW52ZWxvcGUvIj4KICAgIDxzb2FwZW52OkhlYWRlci8+CiAgICA8c29hcGVudjpCb2R5PgogICAgICAgIDx3ZWI6U3VidHJhY3QgeG1sbnM6d2ViPSJodHRwOi8vdGVtcHVyaS5vcmcvIj4KICAgICAgICAgICAgPHdlYjppbnRBPnt7LnJlcV9ib2R5LlN1YnRyYWN0LmludEF9fTwvd2ViOmludEE+CiAgICAgICAgICAgIDx3ZWI6aW50Qj57ey5yZXFfYm9keS5TdWJ0cmFjdC5pbnRCfX08L3dlYjppbnRCPgogICAgICAgIDwvd2ViOlN1YnRyYWN0PgogICAgPC9zb2FwZW52OkJvZHk+Cjwvc29hcGVudjpFbnZlbG9wZT4K",
-                     "content_type" : "text/xml"
-                   }
-                 },
-                 "method" : "POST",
-                 "sd" : "static"
-               } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "krakendtest" ],
-                   "scopes_key" : "scope"
-                 },
-                 "modifier/response-body-generator" : {
-                   "template" : "e3t0b0pzb24gLnJlc3BfYm9keS5FbnZlbG9wZS5Cb2R5fX0="
-                 }
-               },
-               "output_encoding" : "json",
-               "method" : "POST"
-             }, {
-               "endpoint" : "/testsoapapi/divide",
-               "backend" : [ {
-                 "host" : [ "http://www.dneonline.com" ],
-                 "url_pattern" : "/calculator.asmx",
-                 "encoding" : "xml",
-                 "extra_config" : {
-                   "backend/soap" : {
-                     "template" : "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzb2FwZW52OkVudmVsb3BlIHhtbG5zOnNvYXBlbnY9Imh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3NvYXAvZW52ZWxvcGUvIj4KICAgIDxzb2FwZW52OkhlYWRlci8+CiAgICA8c29hcGVudjpCb2R5PgogICAgICAgIDx3ZWI6RGl2aWRlIHhtbG5zOndlYj0iaHR0cDovL3RlbXB1cmkub3JnLyI+CiAgICAgICAgICAgIDx3ZWI6aW50QT57ey5yZXFfYm9keS5EaXZpZGUuaW50QX19PC93ZWI6aW50QT4KICAgICAgICAgICAgPHdlYjppbnRCPnt7LnJlcV9ib2R5LkRpdmlkZS5pbnRCfX08L3dlYjppbnRCPgogICAgICAgIDwvd2ViOkRpdmlkZT4KICAgIDwvc29hcGVudjpCb2R5Pgo8L3NvYXBlbnY6RW52ZWxvcGU+Cg==",
-                     "content_type" : "text/xml"
-                   }
-                 },
-                 "method" : "POST",
-                 "sd" : "static"
-               } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "krakendtest" ],
-                   "scopes_key" : "scope"
-                 },
-                 "modifier/response-body-generator" : {
-                   "template" : "e3t0b0pzb24gLnJlc3BfYm9keS5FbnZlbG9wZS5Cb2R5fX0="
-                 }
-               },
-               "output_encoding" : "json",
-               "method" : "POST"
-             }, {
-               "endpoint" : "/v5/getobjects",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects",
-                 "is_collection" : true,
-                 "encoding" : "json",
-                 "extra_config" : { },
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes_key" : "scope"
-                 }
-               },
-               "output_encoding" : "json-collection",
                "method" : "GET"
              } ],
              "extra_config" : {
@@ -584,6 +239,14 @@ data:
                  "url-rewrite" : {
                    "regexp" : [ [ "/hi-there/([\\w\\d\\s]+)/bar", "/gateway/hello/${1}" ] ]
                  }
+               },
+               "auth/api-keys" : {
+                 "identifier" : "Authorization",
+                 "strategy" : "header",
+                 "keys" : [ {
+                   "key" : "37eb407a-c163-4085-ae33-b0b278577ada",
+                   "roles" : [ "Developer" ]
+                 } ]
                },
                "auth/validator" : {
                  "shared_cache_duration" : 3600
