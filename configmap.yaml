@@ -19,20 +19,71 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
-               "endpoint" : "/securitypolicyapi/responsepolicyep",
+               "endpoint" : "/securitypolicyapi/ereqsecuritypolicyep/{id}",
+               "backend" : [ {
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "url_pattern" : "/posts/{id}",
+                 "is_collection" : false,
+                 "extra_config" : { },
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "krakendtest" ],
+                   "scopes_key" : "scope"
+                 }
+               },
+               "method" : "GET"
+             }, {
+               "endpoint" : "/securitypolicyapi/bresponsepolicyinvalid",
                "backend" : [ {
                  "host" : [ "https://jsonplaceholder.typicode.com" ],
                  "url_pattern" : "/posts/1",
                  "is_collection" : false,
                  "extra_config" : {
                    "security/policies" : {
+                     "debug" : true,
                      "resp" : {
                        "error" : {
-                         "body" : "{\"ErrorMessage\":\"Body is not present in response\"}",
+                         "body" : "{\"ErrorMessage\":\"test feild is not present in response\"}",
                          "status" : 400,
                          "content_type" : "application/json"
                        },
-                       "policies" : [ "!isEmpty(resp_data.body)" ]
+                       "policies" : [ "!isEmpty(resp_data.test)" ]
+                     }
+                   }
+                 },
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "krakendtest" ],
+                   "scopes_key" : "scope"
+                 }
+               },
+               "method" : "GET"
+             }, {
+               "endpoint" : "/securitypolicyapi/jwtvalidationep",
+               "backend" : [ {
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "url_pattern" : "/posts/1",
+                 "is_collection" : false,
+                 "extra_config" : {
+                   "security/policies" : {
+                     "auto_join_policies" : true,
+                     "debug" : true,
+                     "jwt" : {
+                       "policies" : [ "has(JWT.azp) && 'krakendtest' == JWT.azp" ]
                      }
                    }
                  },
@@ -83,69 +134,23 @@ data:
                },
                "method" : "GET"
              }, {
-               "endpoint" : "/securitypolicyapi/jwtvalidationep",
+               "endpoint" : "/securitypolicyapi/responsepolicyep",
                "backend" : [ {
                  "host" : [ "https://jsonplaceholder.typicode.com" ],
                  "url_pattern" : "/posts/1",
                  "is_collection" : false,
                  "extra_config" : {
                    "security/policies" : {
-                     "auto_join_policies" : true,
-                     "debug" : true,
-                     "jwt" : {
-                       "policies" : [ "has(JWT.azp) && 'krakendtest' == JWT.azp" ]
+                     "resp" : {
+                       "error" : {
+                         "body" : "{\"ErrorMessage\":\"Body is not present in response\"}",
+                         "status" : 400,
+                         "content_type" : "application/json"
+                       },
+                       "policies" : [ "!isEmpty(resp_data.body)" ]
                      }
                    }
                  },
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "krakendtest" ],
-                   "scopes_key" : "scope"
-                 }
-               },
-               "method" : "GET"
-             }, {
-               "endpoint" : "/securitypolicyapi/binavlidjwtep",
-               "backend" : [ {
-                 "host" : [ "https://jsonplaceholder.typicode.com" ],
-                 "url_pattern" : "/posts/1",
-                 "is_collection" : false,
-                 "extra_config" : {
-                   "security/policies" : {
-                     "debug" : true,
-                     "jwt" : {
-                       "policies" : [ "has(JWT.client_id) ", " 'Massil' == JWT.client_id" ]
-                     }
-                   }
-                 },
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "krakendtest" ],
-                   "scopes_key" : "scope"
-                 }
-               },
-               "method" : "GET"
-             }, {
-               "endpoint" : "/securitypolicyapi/ereqsecuritypolicyep/{id}",
-               "backend" : [ {
-                 "host" : [ "https://jsonplaceholder.typicode.com" ],
-                 "url_pattern" : "/posts/{id}",
-                 "is_collection" : false,
-                 "extra_config" : { },
                  "method" : "GET"
                } ],
                "extra_config" : {
