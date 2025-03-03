@@ -19,15 +19,12 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
-               "endpoint" : "/cache/cahceep",
+               "endpoint" : "/emp/{id}",
                "backend" : [ {
-                 "host" : [ "http://10.175.1.71:8285" ],
-                 "url_pattern" : "/massil",
-                 "extra_config" : {
-                   "qos/http-cache" : {
-                     "shared" : true
-                   }
-                 },
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects/{id}",
+                 "encoding" : "json",
+                 "extra_config" : { },
                  "method" : "GET"
                } ],
                "extra_config" : {
@@ -41,6 +38,7 @@ data:
                    "scopes_key" : "scope"
                  }
                },
+               "output_encoding" : "json",
                "method" : "GET"
              }, {
                "endpoint" : "/emp/employee",
@@ -89,13 +87,14 @@ data:
                "output_encoding" : "json-collection",
                "method" : "GET"
              }, {
-               "endpoint" : "/emp/{id}",
+               "endpoint" : "/emp/update/{id}",
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev" ],
                  "url_pattern" : "/objects/{id}",
+                 "is_collection" : false,
                  "encoding" : "json",
                  "extra_config" : { },
-                 "method" : "GET"
+                 "method" : "PUT"
                } ],
                "extra_config" : {
                  "auth/validator" : {
@@ -109,6 +108,30 @@ data:
                  }
                },
                "output_encoding" : "json",
+               "method" : "PUT"
+             }, {
+               "endpoint" : "/cache/cahceep",
+               "backend" : [ {
+                 "host" : [ "http://10.175.1.71:8285" ],
+                 "url_pattern" : "/massil",
+                 "extra_config" : {
+                   "qos/http-cache" : {
+                     "shared" : true
+                   }
+                 },
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "krakendtest" ],
+                   "scopes_key" : "scope"
+                 }
+               },
                "method" : "GET"
              }, {
                "endpoint" : "/basicmanipulation/eratelimitep",
