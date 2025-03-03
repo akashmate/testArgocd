@@ -19,29 +19,6 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
-               "endpoint" : "/emp/{id}",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects/{id}",
-                 "is_collection" : true,
-                 "encoding" : "json",
-                 "extra_config" : { },
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "krakendtest" ],
-                   "scopes_key" : "scope"
-                 }
-               },
-               "output_encoding" : "json",
-               "method" : "GET"
-             }, {
                "endpoint" : "/basicmanipulation/eratelimitep",
                "backend" : [ {
                  "host" : [ "https://jsonplaceholder.typicode.com" ],
@@ -52,6 +29,8 @@ data:
                } ],
                "extra_config" : {
                  "qos/ratelimit/router" : {
+                   "capacity" : 5,
+                   "client_capacity" : 5,
                    "client_max_rate" : 5,
                    "every" : "1m",
                    "max_rate" : 5,
@@ -320,6 +299,29 @@ data:
                "extra_config" : {
                  "auth/api-keys" : {
                    "roles" : [ "Developer" ]
+                 }
+               },
+               "output_encoding" : "json",
+               "method" : "GET"
+             }, {
+               "endpoint" : "/emp/{id}",
+               "backend" : [ {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects/{id}",
+                 "is_collection" : true,
+                 "encoding" : "json",
+                 "extra_config" : { },
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "krakendtest" ],
+                   "scopes_key" : "scope"
                  }
                },
                "output_encoding" : "json",
@@ -1270,6 +1272,14 @@ data:
                  "url-rewrite" : {
                    "regexp" : [ [ "/hi-there/([\\w\\d\\s]+)/bar", "/gateway/hello/${1}" ] ]
                  }
+               },
+               "auth/api-keys" : {
+                 "identifier" : "Authorization",
+                 "strategy" : "header",
+                 "keys" : [ {
+                   "key" : "37eb407a-c163-4085-ae33-b0b278577ada",
+                   "roles" : [ "Developer" ]
+                 } ]
                },
                "auth/validator" : {
                  "shared_cache_duration" : 3600
