@@ -19,6 +19,117 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
+               "endpoint" : "/epolicy/evalidjwtep",
+               "backend" : [ {
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "url_pattern" : "/posts/1",
+                 "is_collection" : false,
+                 "extra_config" : { },
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes_key" : "scope"
+                 },
+                 "security/policies" : {
+                   "jwt" : {
+                     "policies" : [ "has(JWT.client_id) \"", " \" 'newClient' == JWT.client_id" ]
+                   }
+                 }
+               },
+               "method" : "GET"
+             }, {
+               "endpoint" : "/epolicy/validjwtep",
+               "backend" : [ {
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "url_pattern" : "/posts/1",
+                 "is_collection" : false,
+                 "extra_config" : { },
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes_key" : "scope"
+                 },
+                 "security/policies" : {
+                   "debug" : true,
+                   "jwt" : {
+                     "policies" : [ "has(JWT.client_id) \"", " \" 'krakend' == JWT.client_id" ]
+                   }
+                 }
+               },
+               "method" : "GET"
+             }, {
+               "endpoint" : "/epolicy/eresppolicy",
+               "backend" : [ {
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "url_pattern" : "/posts/1",
+                 "is_collection" : false,
+                 "extra_config" : { },
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes_key" : "scope"
+                 },
+                 "security/policies" : {
+                   "resp" : {
+                     "error" : {
+                       "body" : "{\"Message\":\"body is not present in response\"}",
+                       "status" : 400,
+                       "content_type" : "application/json"
+                     },
+                     "policies" : [ "!isEmpty(resp_data.body)" ]
+                   }
+                 }
+               },
+               "method" : "GET"
+             }, {
+               "endpoint" : "/epolicy/erequestpolicyy/{id}",
+               "backend" : [ {
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "url_pattern" : "/posts/{id}",
+                 "is_collection" : false,
+                 "extra_config" : { },
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes_key" : "scope"
+                 },
+                 "security/policies" : {
+                   "req" : {
+                     "policies" : [ "req_params.Id.matches('^[0-9]+$')" ],
+                     "error" : {
+                       "body" : "{\"Message\":\"Please provide integer values only for id\"}",
+                       "status" : 400,
+                       "content_type" : "application/json"
+                     }
+                   }
+                 }
+               },
+               "method" : "GET"
+             }, {
                "endpoint" : "/eresponseapi/econtentreplacerep",
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev/" ],
