@@ -19,7 +19,7 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
-               "endpoint" : "/testlifecycle/deprecate",
+               "endpoint" : "/test/testep",
                "backend" : [ {
                  "host" : [ "https://jsonplaceholder.typicode.com" ],
                  "url_pattern" : "/posts/1",
