@@ -19,6 +19,37 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
+               "endpoint" : "/epolicy/invalidrsppolicy",
+               "backend" : [ {
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "url_pattern" : "/posts/1",
+                 "is_collection" : false,
+                 "extra_config" : { },
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "newClient" ],
+                   "scopes_key" : "scope"
+                 },
+                 "security/policies" : {
+                   "resp" : {
+                     "error" : {
+                       "body" : "{\"Message\":\" user is not present in response body\"}",
+                       "status" : 400,
+                       "content_type" : "application/json"
+                     },
+                     "policies" : [ "!isEmpty(resp_data.user)" ]
+                   }
+                 }
+               },
+               "method" : "GET"
+             }, {
                "endpoint" : "/epolicy/invalidjwt",
                "backend" : [ {
                  "host" : [ "https://jsonplaceholder.typicode.com" ],
@@ -38,6 +69,7 @@ data:
                    "scopes_key" : "scope"
                  },
                  "security/policies" : {
+                   "debug" : true,
                    "jwt" : {
                      "policies" : [ "has(JWT.client_id) \"", " \" 'Massil' == JWT.client_id" ]
                    }
