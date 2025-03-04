@@ -19,20 +19,20 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
-               "endpoint" : "/bsecuritypolicy/brequestpolicy/{id}",
+               "endpoint" : "/bsecuritypolicy/bresppolicy/{id}",
                "backend" : [ {
-                 "host" : [ "https://jsonplaceholder.typicode.com" ],
-                 "url_pattern" : "/posts/{id}",
+                 "host" : [ "https://api.restful-api.dev/" ],
+                 "url_pattern" : "/objects/{id}",
                  "is_collection" : false,
                  "extra_config" : {
                    "security/policies" : {
-                     "req" : {
-                       "policies" : [ "req_params.Id.matches('^[0-9]+$')" ],
+                     "resp" : {
                        "error" : {
-                         "body" : "{\"Message\":\"please provide integer values only\"}",
+                         "body" : "{\"Message\":\"Response body does not contain year\"}",
                          "status" : 400,
                          "content_type" : "application/json"
-                       }
+                       },
+                       "policies" : [ "!isEmpty(resp_data.year)" ]
                      }
                    }
                  },
@@ -51,20 +51,20 @@ data:
                },
                "method" : "GET"
              }, {
-               "endpoint" : "/bsecuritypolicy/bresppolicy/{id}",
+               "endpoint" : "/bsecuritypolicy/brequestpolicy/{id}",
                "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev/" ],
-                 "url_pattern" : "/objects/{id}",
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "url_pattern" : "/posts/{id}",
                  "is_collection" : false,
                  "extra_config" : {
                    "security/policies" : {
-                     "resp" : {
+                     "req" : {
+                       "policies" : [ "req_params.Id.matches('^[0-9]+$')" ],
                        "error" : {
-                         "body" : "{\"Message\":\"Response body does not contain year\"}",
+                         "body" : "{\"Message\":\"please provide integer values only\"}",
                          "status" : 400,
                          "content_type" : "application/json"
-                       },
-                       "policies" : [ "!isEmpty(resp_data.data.year)" ]
+                       }
                      }
                    }
                  },
