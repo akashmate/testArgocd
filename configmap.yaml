@@ -114,7 +114,8 @@ data:
                    "scopes_key" : "scope"
                  }
                },
-               "method" : "GET"
+               "method" : "GET",
+               "input_query_strings" : [ "name" ]
              }, {
                "endpoint" : "/bresponseapi/ballow",
                "backend" : [ {
