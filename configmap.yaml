@@ -142,8 +142,8 @@ data:
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev/" ],
                  "url_pattern" : "/objects/7",
-                 "is_collection" : false,
                  "extra_config" : { },
+                 "target" : "data",
                  "method" : "GET"
                } ],
                "extra_config" : {
