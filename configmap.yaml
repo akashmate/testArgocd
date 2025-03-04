@@ -50,7 +50,7 @@ data:
                  "security/policies" : {
                    "debug" : true,
                    "jwt" : {
-                     "policies" : [ "has(JWT.client_id) ", "'Massil' == JWT.client_id" ]
+                     "policies" : [ "has(JWT.client_id)", "'abcdef' == JWT.client_id" ]
                    }
                  }
                },
