@@ -1417,6 +1417,11 @@ data:
                  "name" : [ "url-rewrite" ],
                  "url-rewrite" : {
                    "regexp" : [ [ "/hi-there/([\\w\\d\\s]+)/bar", "/gateway/hello/${1}" ] ]
+                 },
+                 "ip-filter" : {
+                   "id" : 1,
+                   "CIDR" : [ "10.175.1.70" ],
+                   "allow" : false
                  }
                },
                "auth/validator" : {
