@@ -19,35 +19,23 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
-               "endpoint" : "/bsecuritypolicy/testep/{id}",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev/" ],
-                 "url_pattern" : "/objects/{id}",
-                 "is_collection" : false,
-                 "encoding" : "no-op",
-                 "extra_config" : { },
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "newClient" ],
-                   "scopes_key" : "scope"
-                 }
-               },
-               "output_encoding" : "no-op",
-               "method" : "GET"
-             }, {
                "endpoint" : "/bsecuritypolicy/brequestpolicy/{id}",
                "backend" : [ {
                  "host" : [ "https://jsonplaceholder.typicode.com" ],
                  "url_pattern" : "/posts/{id}",
                  "is_collection" : false,
-                 "extra_config" : { },
+                 "extra_config" : {
+                   "security/policies" : {
+                     "req" : {
+                       "policies" : [ "req_params.Id.matches('^[0-9]+$')" ],
+                       "error" : {
+                         "body" : "{\"Message\":\"please provide integer values only\"}",
+                         "status" : 400,
+                         "content_type" : "application/json"
+                       }
+                     }
+                   }
+                 },
                  "method" : "GET"
                } ],
                "extra_config" : {
