@@ -267,12 +267,15 @@ data:
                  },
                  "security/policies" : {
                    "req" : {
-                     "policies" : [ "req_params.Id.matches('^[0-9]+$')", "null", "null", "null", "null", "null", "null", "null" ],
+                     "policies" : [ "req_params.Id.matches('^[0-9]+$')" ],
                      "error" : {
                        "body" : "{\"Message\":\"Please provide integer values only for id\"}",
                        "status" : 400,
                        "content_type" : "application/json"
                      }
+                   },
+                   "resp" : {
+                     "policies" : [ "null", "null", "null", "null" ]
                    }
                  }
                },
