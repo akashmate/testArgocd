@@ -67,7 +67,7 @@ data:
                  "plugin/req-resp-modifier" : {
                    "name" : [ "ip-filter" ],
                    "ip-filter" : {
-                     "CIDR" : [ "10.233.70.0" ],
+                     "CIDR" : [ "10.233.70.1" ],
                      "allow" : false
                    }
                  }
@@ -92,13 +92,6 @@ data:
                    "scopes_matcher" : "any",
                    "scopes" : [ "newClient" ],
                    "scopes_key" : "scope"
-                 },
-                 "plugin/req-resp-modifier" : {
-                   "name" : [ "ip-filter" ],
-                   "ip-filter" : {
-                     "CIDR" : [ "10.233.70.0" ],
-                     "allow" : false
-                   }
                  },
                  "modifier/response-body-generator" : {
                    "content_type" : "application/json",
