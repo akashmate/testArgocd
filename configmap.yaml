@@ -50,6 +50,13 @@ data:
                  "encoding" : "json",
                  "extra_config" : { },
                  "method" : "GET"
+               }, {
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects/9",
+                 "is_collection" : false,
+                 "encoding" : "json",
+                 "extra_config" : { },
+                 "method" : "GET"
                } ],
                "extra_config" : {
                  "auth/validator" : {
