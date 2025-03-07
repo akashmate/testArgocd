@@ -19,6 +19,17 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
+               "endpoint" : "/testapi/testep",
+               "backend" : [ {
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "url_pattern" : "/posts/1",
+                 "is_collection" : false,
+                 "extra_config" : { },
+                 "method" : "GET"
+               } ],
+               "extra_config" : { },
+               "method" : "GET"
+             }, {
                "endpoint" : "/sample1/samplep",
                "backend" : [ {
                  "host" : [ "https://jsonplaceholder.typicode.com" ],
@@ -96,23 +107,6 @@ data:
                  }
                },
                "method" : "POST"
-             }, {
-               "endpoint" : "/testapi/testep",
-               "backend" : [ {
-                 "host" : [ "https://jsonplaceholder.typicode.com" ],
-                 "url_pattern" : "/posts/1",
-                 "is_collection" : false,
-                 "extra_config" : { },
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
-                 "auth/basic" : {
-                   "users" : {
-                     "massil" : "$2a$10$pz12ux0B4W0LJdUjhb5yTOrpvwr/fjcJvWVmz.WxNy9oreDdUg7Oq"
-                   }
-                 }
-               },
-               "method" : "GET"
              }, {
                "endpoint" : "/endpointlevel/resttosoap",
                "backend" : [ {
