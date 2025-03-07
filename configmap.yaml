@@ -27,7 +27,13 @@ data:
                  "extra_config" : { },
                  "method" : "GET"
                } ],
-               "extra_config" : { },
+               "extra_config" : {
+                 "auth/basic" : {
+                   "users" : {
+                     "massil" : "$2a$10$pz12ux0B4W0LJdUjhb5yTOrpvwr/fjcJvWVmz.WxNy9oreDdUg7Oq"
+                   }
+                 }
+               },
                "method" : "GET"
              }, {
                "endpoint" : "/endpointlevel/resttosoap",
