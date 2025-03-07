@@ -24,7 +24,7 @@ data:
                  "host" : [ "http://www.dneonline.com" ],
                  "url_pattern" : "/calculator.asmx",
                  "is_collection" : false,
-                 "encoding" : "no-op",
+                 "encoding" : "xml",
                  "extra_config" : {
                    "backend/soap" : {
                      "debug" : true,
@@ -32,7 +32,8 @@ data:
                      "content_type" : "text/xml"
                    }
                  },
-                 "method" : "POST"
+                 "method" : "POST",
+                 "sd" : "static"
                } ],
                "extra_config" : {
                  "auth/validator" : {
