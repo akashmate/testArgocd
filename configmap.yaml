@@ -28,11 +28,6 @@ data:
                  "method" : "GET"
                } ],
                "extra_config" : {
-                 "auth/basic" : {
-                   "users" : {
-                     "massil" : "$2a$10$pz12ux0B4W0LJdUjhb5yTOrpvwr/fjcJvWVmz.WxNy9oreDdUg7Oq"
-                   }
-                 },
                  "security/policies" : {
                    "req" : {
                      "policies" : [ "req_params.Id.matches('^[0-9]+$')" ],
@@ -55,11 +50,6 @@ data:
                  "method" : "GET"
                } ],
                "extra_config" : {
-                 "auth/basic" : {
-                   "users" : {
-                     "massil" : "$2a$10$pz12ux0B4W0LJdUjhb5yTOrpvwr/fjcJvWVmz.WxNy9oreDdUg7Oq"
-                   }
-                 },
                  "plugin/req-resp-modifier" : {
                    "name" : [ "ip-filter" ],
                    "ip-filter" : {
@@ -84,11 +74,6 @@ data:
                    "every" : "1m",
                    "max_rate" : 5,
                    "strategy" : "ip"
-                 },
-                 "auth/basic" : {
-                   "users" : {
-                     "massil" : "$2a$10$pz12ux0B4W0LJdUjhb5yTOrpvwr/fjcJvWVmz.WxNy9oreDdUg7Oq"
-                   }
                  }
                },
                "method" : "GET",
@@ -103,11 +88,6 @@ data:
                  "method" : "GET"
                } ],
                "extra_config" : {
-                 "auth/basic" : {
-                   "users" : {
-                     "massil" : "$2a$10$pz12ux0B4W0LJdUjhb5yTOrpvwr/fjcJvWVmz.WxNy9oreDdUg7Oq"
-                   }
-                 },
                  "validation/json-schema" : {
                    "$schema" : "http://json-schema.org/draft-07/schema#",
                    "type" : "object",
@@ -151,11 +131,6 @@ data:
                  "method" : "GET"
                } ],
                "extra_config" : {
-                 "auth/basic" : {
-                   "users" : {
-                     "massil" : "$2a$10$pz12ux0B4W0LJdUjhb5yTOrpvwr/fjcJvWVmz.WxNy9oreDdUg7Oq"
-                   }
-                 },
                  "plugin/req-resp-modifier" : {
                    "name" : [ "response-schema-validator" ],
                    "response-schema-validator" : {
@@ -207,13 +182,7 @@ data:
                  "extra_config" : { },
                  "method" : "GET"
                } ],
-               "extra_config" : {
-                 "auth/basic" : {
-                   "users" : {
-                     "massil" : "$2a$10$pz12ux0B4W0LJdUjhb5yTOrpvwr/fjcJvWVmz.WxNy9oreDdUg7Oq"
-                   }
-                 }
-               },
+               "extra_config" : { },
                "method" : "GET"
              }, {
                "endpoint" : "/endpointlevel/invalidrsppolicy",
@@ -225,11 +194,6 @@ data:
                  "method" : "GET"
                } ],
                "extra_config" : {
-                 "auth/basic" : {
-                   "users" : {
-                     "massil" : "$2a$10$pz12ux0B4W0LJdUjhb5yTOrpvwr/fjcJvWVmz.WxNy9oreDdUg7Oq"
-                   }
-                 },
                  "security/policies" : {
                    "resp" : {
                      "error" : {
@@ -259,11 +223,6 @@ data:
                      },
                      "strategy" : "always"
                    }
-                 },
-                 "auth/basic" : {
-                   "users" : {
-                     "massil" : "$2a$10$pz12ux0B4W0LJdUjhb5yTOrpvwr/fjcJvWVmz.WxNy9oreDdUg7Oq"
-                   }
                  }
                },
                "method" : "GET"
@@ -284,13 +243,7 @@ data:
                  "method" : "POST",
                  "sd" : "static"
                } ],
-               "extra_config" : {
-                 "auth/basic" : {
-                   "users" : {
-                     "massil" : "$2a$10$pz12ux0B4W0LJdUjhb5yTOrpvwr/fjcJvWVmz.WxNy9oreDdUg7Oq"
-                   }
-                 }
-               },
+               "extra_config" : { },
                "output_encoding" : "xml",
                "method" : "POST"
              }, {
@@ -303,11 +256,6 @@ data:
                  "method" : "GET"
                } ],
                "extra_config" : {
-                 "auth/basic" : {
-                   "users" : {
-                     "massil" : "$2a$10$pz12ux0B4W0LJdUjhb5yTOrpvwr/fjcJvWVmz.WxNy9oreDdUg7Oq"
-                   }
-                 },
                  "plugin/req-resp-modifier" : {
                    "name" : [ "content-replacer" ],
                    "content-replacer" : {
@@ -332,11 +280,6 @@ data:
                "extra_config" : {
                  "modifier/jmespath" : {
                    "expr" : "country[?probability > `0.03` ].country_id"
-                 },
-                 "auth/basic" : {
-                   "users" : {
-                     "massil" : "$2a$10$pz12ux0B4W0LJdUjhb5yTOrpvwr/fjcJvWVmz.WxNy9oreDdUg7Oq"
-                   }
                  }
                },
                "method" : "GET",
@@ -350,13 +293,7 @@ data:
                  "extra_config" : { },
                  "method" : "GET"
                } ],
-               "extra_config" : {
-                 "auth/basic" : {
-                   "users" : {
-                     "massil" : "$2a$10$pz12ux0B4W0LJdUjhb5yTOrpvwr/fjcJvWVmz.WxNy9oreDdUg7Oq"
-                   }
-                 }
-               },
+               "extra_config" : { },
                "method" : "GET"
              }, {
                "endpoint" : "/endpointlevel/erspmaniplationep",
@@ -369,11 +306,6 @@ data:
                  "method" : "GET"
                } ],
                "extra_config" : {
-                 "auth/basic" : {
-                   "users" : {
-                     "massil" : "$2a$10$pz12ux0B4W0LJdUjhb5yTOrpvwr/fjcJvWVmz.WxNy9oreDdUg7Oq"
-                   }
-                 },
                  "modifier/response-body-generator" : {
                    "content_type" : "application/json",
                    "debug" : true,
@@ -539,6 +471,13 @@ data:
                    "CIDR" : [ "10.175.1.70" ],
                    "allow" : false
                  }
+               },
+               "auth/api-keys" : {
+                 "identifier" : "Authorization",
+                 "strategy" : "header",
+                 "keys" : [ {
+                   "key" : "819462f2-d873-4115-bfc0-891d32398365"
+                 } ]
                }
              }
            }
