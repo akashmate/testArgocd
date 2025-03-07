@@ -324,12 +324,13 @@ data:
                "endpoint" : "/backendoperation/rename",
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/posts/1",
+                 "url_pattern" : "/objects/7",
                  "mapping" : {
                    "data" : "transformeddata"
                  },
                  "extra_config" : { },
-                 "method" : "GET"
+                 "method" : "GET",
+                 "sd" : "static"
                } ],
                "extra_config" : {
                  "auth/validator" : {
