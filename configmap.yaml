@@ -20,6 +20,7 @@ data:
              },
              "endpoints" : [ {
                "method" : "GET",
+               "output_encoding" : "json",
                "backend" : [ {
                  "method" : "GET",
                  "url_pattern" : "/posts/1",
@@ -27,7 +28,7 @@ data:
                  "is_collection" : false,
                  "extra_config" : { }
                } ],
-               "endpoint" : "/sample1/samplep",
+               "endpoint" : "/sample123/samplepe",
                "extra_config" : {
                  "auth/validator" : {
                    "alg" : "RS256",
@@ -35,30 +36,6 @@ data:
                    "issuer" : "http://10.175.1.110:31438/realms/master",
                    "disable_jwk_security" : true,
                    "scopes_matcher" : "any",
-                   "scopes" : [ "newClient" ],
-                   "scopes_key" : "scope"
-                 }
-               }
-             }, {
-               "method" : "GET",
-               "output_encoding" : "json",
-               "backend" : [ {
-                 "method" : "GET",
-                 "url_pattern" : "/objects/6",
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "is_collection" : false,
-                 "encoding" : "json",
-                 "extra_config" : { }
-               } ],
-               "endpoint" : "/sample1/respschema",
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "newClient" ],
                    "scopes_key" : "scope"
                  }
                }
