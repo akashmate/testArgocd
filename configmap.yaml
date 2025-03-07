@@ -19,108 +19,36 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
-               "endpoint" : "/endpointlevel/erequestpolicy/{id}",
+               "endpoint" : "/endpointlevel/resttosoap",
                "backend" : [ {
-                 "host" : [ "https://jsonplaceholder.typicode.com" ],
-                 "url_pattern" : "/posts/{id}",
+                 "host" : [ "http://www.dneonline.com" ],
+                 "url_pattern" : "/calculator.asmx",
                  "is_collection" : false,
-                 "extra_config" : { },
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
-                 "security/policies" : {
-                   "req" : {
-                     "policies" : [ "req_params.Id.matches('^[0-9]+$')" ],
-                     "error" : {
-                       "body" : "{\"Message\":\"Please provide integer values only\"}",
-                       "status" : 400,
-                       "content_type" : "application/json"
-                     }
+                 "encoding" : "xml",
+                 "extra_config" : {
+                   "backend/soap" : {
+                     "debug" : true,
+                     "template" : "PHNvYXA6RW52ZWxvcGUgeG1sbnM6c29hcD0iaHR0cDovL3d3dy53My5vcmcvMjAwMy8wNS9zb2FwLWVudmVsb3BlIiB4bWxuczp0ZW09Imh0dHA6Ly90ZW1wdXJpLm9yZy8iPgogICA8c29hcDpIZWFkZXIvPgogICA8c29hcDpCb2R5PgogICAgICA8dGVtOkFkZD4KICAgICAgICAgPHRlbTppbnRBPnt7IC5yZXFfYm9keS5BIH19PC90ZW06aW50QT4KICAgICAgICAgPHRlbTppbnRCPnt7IC5yZXFfYm9keS5CIH19PC90ZW06aW50Qj4KICAgICAgPC90ZW06QWRkPgogICA8L3NvYXA6Qm9keT4KPC9zb2FwOkVudmVsb3BlPg==",
+                     "content_type" : "text/xml"
                    }
-                 }
-               },
-               "method" : "GET"
-             }, {
-               "endpoint" : "/endpointlevel/eipfilter",
-               "backend" : [ {
-                 "host" : [ "https://jsonplaceholder.typicode.com" ],
-                 "url_pattern" : "/posts/1",
-                 "is_collection" : false,
-                 "extra_config" : { },
-                 "method" : "GET"
+                 },
+                 "method" : "POST",
+                 "sd" : "static"
                } ],
-               "extra_config" : {
-                 "plugin/req-resp-modifier" : {
-                   "name" : [ "ip-filter" ],
-                   "ip-filter" : {
-                     "CIDR" : [ "10.233.70.1" ],
-                     "allow" : false
-                   }
-                 }
-               },
-               "method" : "GET"
-             }, {
-               "endpoint" : "/endpointlevel/ethrottling",
-               "backend" : [ {
-                 "host" : [ "https://jsonplaceholder.typicode.com" ],
-                 "url_pattern" : "/posts/1",
-                 "is_collection" : false,
-                 "extra_config" : { },
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
-                 "qos/ratelimit/router" : {
-                   "client_capacity" : 5,
-                   "every" : "1m",
-                   "max_rate" : 5,
-                   "strategy" : "ip"
-                 }
-               },
-               "method" : "GET",
-               "timeout" : "10ns"
-             }, {
-               "endpoint" : "/endpointlevel/ereqschemavald",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects/7",
-                 "is_collection" : false,
-                 "extra_config" : { },
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
-                 "validation/json-schema" : {
-                   "$schema" : "http://json-schema.org/draft-07/schema#",
-                   "type" : "object",
-                   "properties" : {
-                     "id" : {
-                       "type" : "string"
-                     },
-                     "name" : {
-                       "type" : "string"
-                     },
-                     "data" : {
-                       "type" : "object",
-                       "properties" : {
-                         "year" : {
-                           "type" : "integer"
-                         },
-                         "price" : {
-                           "type" : "number"
-                         },
-                         "CPU model" : {
-                           "type" : "string"
-                         },
-                         "Hard disk size" : {
-                           "type" : "string"
-                         }
-                       },
-                       "required" : [ "year", "price", "CPU model", "Hard disk size" ]
-                     }
-                   },
-                   "required" : [ "id", "name", "data" ]
-                 }
-               },
+               "extra_config" : { },
+               "output_encoding" : "xml",
                "method" : "POST"
+             }, {
+               "endpoint" : "/endpointlevel/validjwtpolicy",
+               "backend" : [ {
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "url_pattern" : "/posts/1",
+                 "is_collection" : false,
+                 "extra_config" : { },
+                 "method" : "GET"
+               } ],
+               "extra_config" : { },
+               "method" : "GET"
              }, {
                "endpoint" : "/endpointlevel/responseschemavald/{id}",
                "backend" : [ {
@@ -174,16 +102,48 @@ data:
                },
                "method" : "GET"
              }, {
-               "endpoint" : "/endpointlevel/eresppolicy",
+               "endpoint" : "/endpointlevel/ereqschemavald",
                "backend" : [ {
-                 "host" : [ "https://jsonplaceholder.typicode.com" ],
-                 "url_pattern" : "/posts/1",
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects/7",
                  "is_collection" : false,
                  "extra_config" : { },
                  "method" : "GET"
                } ],
-               "extra_config" : { },
-               "method" : "GET"
+               "extra_config" : {
+                 "validation/json-schema" : {
+                   "$schema" : "http://json-schema.org/draft-07/schema#",
+                   "type" : "object",
+                   "properties" : {
+                     "id" : {
+                       "type" : "string"
+                     },
+                     "name" : {
+                       "type" : "string"
+                     },
+                     "data" : {
+                       "type" : "object",
+                       "properties" : {
+                         "year" : {
+                           "type" : "integer"
+                         },
+                         "price" : {
+                           "type" : "number"
+                         },
+                         "CPU model" : {
+                           "type" : "string"
+                         },
+                         "Hard disk size" : {
+                           "type" : "string"
+                         }
+                       },
+                       "required" : [ "year", "price", "CPU model", "Hard disk size" ]
+                     }
+                   },
+                   "required" : [ "id", "name", "data" ]
+                 }
+               },
+               "method" : "POST"
              }, {
                "endpoint" : "/endpointlevel/invalidrsppolicy",
                "backend" : [ {
@@ -207,7 +167,40 @@ data:
                },
                "method" : "GET"
              }, {
-               "endpoint" : "/endpointlevel/staticrsp",
+               "endpoint" : "/endpointlevel/eresppolicy",
+               "backend" : [ {
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "url_pattern" : "/posts/1",
+                 "is_collection" : false,
+                 "extra_config" : { },
+                 "method" : "GET"
+               } ],
+               "extra_config" : { },
+               "method" : "GET"
+             }, {
+               "endpoint" : "/endpointlevel/erequestpolicy/{id}",
+               "backend" : [ {
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "url_pattern" : "/posts/{id}",
+                 "is_collection" : false,
+                 "extra_config" : { },
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "security/policies" : {
+                   "req" : {
+                     "policies" : [ "req_params.Id.matches('^[0-9]+$')" ],
+                     "error" : {
+                       "body" : "{\"Message\":\"Please provide integer values only\"}",
+                       "status" : 400,
+                       "content_type" : "application/json"
+                     }
+                   }
+                 }
+               },
+               "method" : "GET"
+             }, {
+               "endpoint" : "/endpointlevel/ethrottling",
                "backend" : [ {
                  "host" : [ "https://jsonplaceholder.typicode.com" ],
                  "url_pattern" : "/posts/1",
@@ -216,36 +209,53 @@ data:
                  "method" : "GET"
                } ],
                "extra_config" : {
-                 "proxy" : {
-                   "static" : {
-                     "data" : {
-                       "Hi" : "I am from static message"
-                     },
-                     "strategy" : "always"
+                 "qos/ratelimit/router" : {
+                   "client_capacity" : 5,
+                   "every" : "1m",
+                   "max_rate" : 5,
+                   "strategy" : "ip"
+                 }
+               },
+               "method" : "GET",
+               "timeout" : "10ns"
+             }, {
+               "endpoint" : "/endpointlevel/eipfilter",
+               "backend" : [ {
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "url_pattern" : "/posts/1",
+                 "is_collection" : false,
+                 "extra_config" : { },
+                 "method" : "GET"
+               } ],
+               "extra_config" : {
+                 "plugin/req-resp-modifier" : {
+                   "name" : [ "ip-filter" ],
+                   "ip-filter" : {
+                     "CIDR" : [ "10.233.70.1" ],
+                     "allow" : false
                    }
                  }
                },
                "method" : "GET"
              }, {
-               "endpoint" : "/endpointlevel/resttosoap",
+               "endpoint" : "/endpointlevel/erspmaniplationep",
                "backend" : [ {
-                 "host" : [ "http://www.dneonline.com" ],
-                 "url_pattern" : "/calculator.asmx",
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects/7",
                  "is_collection" : false,
-                 "encoding" : "xml",
-                 "extra_config" : {
-                   "backend/soap" : {
-                     "debug" : true,
-                     "template" : "PHNvYXA6RW52ZWxvcGUgeG1sbnM6c29hcD0iaHR0cDovL3d3dy53My5vcmcvMjAwMy8wNS9zb2FwLWVudmVsb3BlIiB4bWxuczp0ZW09Imh0dHA6Ly90ZW1wdXJpLm9yZy8iPgogICA8c29hcDpIZWFkZXIvPgogICA8c29hcDpCb2R5PgogICAgICA8dGVtOkFkZD4KICAgICAgICAgPHRlbTppbnRBPnt7IC5yZXFfYm9keS5BIH19PC90ZW06aW50QT4KICAgICAgICAgPHRlbTppbnRCPnt7IC5yZXFfYm9keS5CIH19PC90ZW06aW50Qj4KICAgICAgPC90ZW06QWRkPgogICA8L3NvYXA6Qm9keT4KPC9zb2FwOkVudmVsb3BlPg==",
-                     "content_type" : "text/xml"
-                   }
-                 },
-                 "method" : "POST",
-                 "sd" : "static"
+                 "encoding" : "no-op",
+                 "extra_config" : { },
+                 "method" : "GET"
                } ],
-               "extra_config" : { },
-               "output_encoding" : "xml",
-               "method" : "POST"
+               "extra_config" : {
+                 "modifier/response-body-generator" : {
+                   "content_type" : "application/json",
+                   "debug" : true,
+                   "template" : "ewogICJBZGRyZXNzIjoge3sgdG9Kc29uIC5yZXNwX2JvZHkgfX0sCiAgInN0YXR1c19jb2RlIjoge3sgdG9Kc29uIC5yZXNwX3N0YXR1cyB9fSwKICAiaGVhZGVycyI6IHt7IHRvSnNvbiAucmVzcF9oZWFkZXJzIH19Cn0="
+                 }
+               },
+               "output_encoding" : "no-op",
+               "method" : "GET"
              }, {
                "endpoint" : "/endpointlevel/regexcontentreplacer",
                "backend" : [ {
@@ -285,7 +295,7 @@ data:
                "method" : "GET",
                "input_query_strings" : [ "name" ]
              }, {
-               "endpoint" : "/endpointlevel/validjwtpolicy",
+               "endpoint" : "/endpointlevel/staticrsp",
                "backend" : [ {
                  "host" : [ "https://jsonplaceholder.typicode.com" ],
                  "url_pattern" : "/posts/1",
@@ -293,26 +303,16 @@ data:
                  "extra_config" : { },
                  "method" : "GET"
                } ],
-               "extra_config" : { },
-               "method" : "GET"
-             }, {
-               "endpoint" : "/endpointlevel/erspmaniplationep",
-               "backend" : [ {
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "url_pattern" : "/objects/7",
-                 "is_collection" : false,
-                 "encoding" : "no-op",
-                 "extra_config" : { },
-                 "method" : "GET"
-               } ],
                "extra_config" : {
-                 "modifier/response-body-generator" : {
-                   "content_type" : "application/json",
-                   "debug" : true,
-                   "template" : "ewogICJBZGRyZXNzIjoge3sgdG9Kc29uIC5yZXNwX2JvZHkgfX0sCiAgInN0YXR1c19jb2RlIjoge3sgdG9Kc29uIC5yZXNwX3N0YXR1cyB9fSwKICAiaGVhZGVycyI6IHt7IHRvSnNvbiAucmVzcF9oZWFkZXJzIH19Cn0="
+                 "proxy" : {
+                   "static" : {
+                     "data" : {
+                       "Hi" : "I am from static message"
+                     },
+                     "strategy" : "always"
+                   }
                  }
                },
-               "output_encoding" : "no-op",
                "method" : "GET"
              }, {
                "endpoint" : "/testapi/testep",
