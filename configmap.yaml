@@ -19,6 +19,17 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
+               "endpoint" : "/testapi/testep",
+               "backend" : [ {
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "url_pattern" : "/posts/1",
+                 "is_collection" : false,
+                 "extra_config" : { },
+                 "method" : "GET"
+               } ],
+               "extra_config" : { },
+               "method" : "GET"
+             }, {
                "endpoint" : "/endpointlevel/erequestpolicy/{id}",
                "backend" : [ {
                  "host" : [ "https://jsonplaceholder.typicode.com" ],
@@ -315,27 +326,6 @@ data:
                "output_encoding" : "no-op",
                "method" : "GET"
              }, {
-               "endpoint" : "/testapi/testep",
-               "backend" : [ {
-                 "host" : [ "https://jsonplaceholder.typicode.com" ],
-                 "url_pattern" : "/posts/1",
-                 "is_collection" : false,
-                 "extra_config" : { },
-                 "method" : "GET"
-               } ],
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "newClient" ],
-                   "scopes_key" : "scope"
-                 }
-               },
-               "method" : "GET"
-             }, {
                "endpoint" : "/v6/backend/jmes",
                "backend" : [ {
                  "host" : [ "https://api.restful-api.dev" ],
@@ -471,13 +461,6 @@ data:
                    "CIDR" : [ "10.175.1.70" ],
                    "allow" : false
                  }
-               },
-               "auth/api-keys" : {
-                 "identifier" : "Authorization",
-                 "strategy" : "header",
-                 "keys" : [ {
-                   "key" : "819462f2-d873-4115-bfc0-891d32398365"
-                 } ]
                }
              }
            }
