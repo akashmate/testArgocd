@@ -107,13 +107,13 @@ data:
                }
              }, {
                "method" : "GET",
-               "output_encoding" : "json",
+               "output_encoding" : "no-op",
                "backend" : [ {
                  "method" : "GET",
                  "url_pattern" : "/objects/6",
                  "host" : [ "https://api.restful-api.dev" ],
                  "is_collection" : false,
-                 "encoding" : "json",
+                 "encoding" : "no-op",
                  "extra_config" : { }
                } ],
                "endpoint" : "/v7backend/gotemplate",
