@@ -25,7 +25,11 @@ data:
                  "url_pattern" : "/objects",
                  "host" : [ "https://api.restful-api.dev" ],
                  "is_collection" : true,
-                 "extra_config" : { }
+                 "extra_config" : {
+                   "modifier/jmespath" : {
+                     "expr" : "collection[].data"
+                   }
+                 }
                } ],
                "endpoint" : "/v7backend/object",
                "extra_config" : {
