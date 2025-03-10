@@ -27,7 +27,50 @@ data:
                  "host" : [ "https://api.restful-api.dev" ],
                  "is_collection" : false,
                  "encoding" : "json",
-                 "extra_config" : { }
+                 "extra_config" : {
+                   "plugin/req-resp-modifier" : {
+                     "name" : [ "response-schema-validator" ],
+                     "response-schema-validator" : {
+                       "error" : {
+                         "body" : "Validation Error",
+                         "status" : 500
+                       },
+                       "schema" : {
+                         "type" : "object",
+                         "properties" : {
+                           "id" : {
+                             "type" : "string"
+                           },
+                           "name" : {
+                             "type" : "string"
+                           },
+                           "data" : {
+                             "type" : "object",
+                             "properties" : {
+                               "year" : {
+                                 "type" : "integer"
+                               },
+                               "price" : {
+                                 "type" : "number"
+                               },
+                               "CPU model" : {
+                                 "type" : "string"
+                               },
+                               "Hard disk size" : {
+                                 "type" : "string"
+                               },
+                               "color" : {
+                                 "type" : "string"
+                               }
+                             },
+                             "required" : [ "color", "price" ]
+                           }
+                         },
+                         "required" : [ "id", "name", "data" ]
+                       }
+                     }
+                   }
+                 }
                } ],
                "endpoint" : "/v7backend/respschemavalid/{id}",
                "extra_config" : {
