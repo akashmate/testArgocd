@@ -419,13 +419,9 @@ data:
                  "url_pattern" : "/objects",
                  "host" : [ "https://api.restful-api.dev" ],
                  "is_collection" : true,
-                 "extra_config" : {
-                   "modifier/jmespath" : {
-                     "expr" : "collection[].data"
-                   }
-                 }
+                 "extra_config" : { }
                } ],
-               "endpoint" : "/v7backend/object",
+               "endpoint" : "/v7backend/flatmapManuplation",
                "extra_config" : {
                  "auth/validator" : {
                    "alg" : "RS256",
@@ -472,23 +468,18 @@ data:
                }
              }, {
                "method" : "GET",
-               "output_encoding" : "json-collection",
                "backend" : [ {
                  "method" : "GET",
                  "url_pattern" : "/objects",
                  "host" : [ "https://api.restful-api.dev" ],
                  "is_collection" : true,
-                 "encoding" : "json",
                  "extra_config" : {
-                   "proxy" : {
-                     "flatmap_filter" : [ {
-                       "type" : "move",
-                       "args" : [ "[].*.data", "[].*.empData" ]
-                     } ]
+                   "modifier/jmespath" : {
+                     "expr" : "collection[].data"
                    }
                  }
                } ],
-               "endpoint" : "/v7backend/flatmapManuplation",
+               "endpoint" : "/v7backend/object",
                "extra_config" : {
                  "auth/validator" : {
                    "alg" : "RS256",
