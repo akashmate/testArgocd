@@ -28,8 +28,8 @@ data:
                  "extra_config" : {
                    "qos/ratelimit/proxy" : {
                      "every" : "1m",
-                     "max_rate" : 5,
-                     "capacity" : 5
+                     "max_rate" : 2,
+                     "capacity" : 2
                    }
                  }
                } ],
