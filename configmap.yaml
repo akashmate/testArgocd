@@ -22,12 +22,12 @@ data:
                "method" : "GET",
                "backend" : [ {
                  "method" : "GET",
-                 "url_pattern" : "/posts/1",
-                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "url_pattern" : "/basic-auth/user/pass",
+                 "host" : [ "https://httpbin.org" ],
                  "is_collection" : false,
                  "extra_config" : { }
                } ],
-               "endpoint" : "/testlifecycle1/testlifecycleep",
+               "endpoint" : "/v7backend/ntlmAuth",
                "extra_config" : {
                  "auth/validator" : {
                    "alg" : "RS256",
@@ -35,7 +35,7 @@ data:
                    "issuer" : "http://10.175.1.110:31438/realms/master",
                    "disable_jwk_security" : true,
                    "scopes_matcher" : "any",
-                   "scopes" : [ "newClient" ],
+                   "scopes" : [ "krakendtest" ],
                    "scopes_key" : "scope"
                  }
                }
@@ -275,6 +275,27 @@ data:
                    "disable_jwk_security" : true,
                    "scopes_matcher" : "any",
                    "scopes" : [ "krakendtest" ],
+                   "scopes_key" : "scope"
+                 }
+               }
+             }, {
+               "method" : "GET",
+               "backend" : [ {
+                 "method" : "GET",
+                 "url_pattern" : "/posts/1",
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "is_collection" : false,
+                 "extra_config" : { }
+               } ],
+               "endpoint" : "/testlifecycle1/testlifecycleep",
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "newClient" ],
                    "scopes_key" : "scope"
                  }
                }
