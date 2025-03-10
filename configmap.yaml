@@ -20,17 +20,14 @@ data:
              },
              "endpoints" : [ {
                "method" : "GET",
+               "output_encoding" : "no-op",
                "backend" : [ {
                  "method" : "GET",
                  "url_pattern" : "/basic-auth/user/pass",
                  "host" : [ "https://httpbin.org" ],
                  "is_collection" : false,
-                 "extra_config" : {
-                   "auth/ntlm" : {
-                     "password" : "pass",
-                     "user" : "user"
-                   }
-                 }
+                 "encoding" : "no-op",
+                 "extra_config" : { }
                } ],
                "endpoint" : "/v7backend/ntlmAuth",
                "extra_config" : {
