@@ -618,17 +618,6 @@ data:
                    "CIDR" : [ "10.175.1.70" ],
                    "allow" : false
                  }
-               },
-               "telemetry/logging" : {
-                 "format" : "default",
-                 "syslog_facility" : "local3",
-                 "level" : "INFO",
-                 "prefix" : "[KRAKEND]",
-                 "syslog" : false,
-                 "stdout" : true
-               },
-               "telemetry/logstash" : {
-                 "enabled" : false
                }
              }
            }
