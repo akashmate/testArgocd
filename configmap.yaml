@@ -20,13 +20,13 @@ data:
              },
              "endpoints" : [ {
                "method" : "GET",
-               "output_encoding" : "no-op",
+               "output_encoding" : "json-collection",
                "backend" : [ {
                  "method" : "GET",
                  "url_pattern" : "/objects",
                  "host" : [ "https://api.restful-api.dev" ],
                  "is_collection" : true,
-                 "encoding" : "no-op",
+                 "encoding" : "json",
                  "extra_config" : {
                    "plugin/req-resp-modifier" : {
                      "name" : [ "content-replacer" ],
