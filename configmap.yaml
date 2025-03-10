@@ -256,12 +256,13 @@ data:
                "backend" : [ {
                  "method" : "GET",
                  "url_pattern" : "/massil",
-                 "host" : [ "http://10.175.1.58:8290" ],
+                 "host" : [ "http://10.175.1.58:8285" ],
                  "extra_config" : {
                    "qos/http-cache" : {
                      "shared" : true
                    }
-                 }
+                 },
+                 "sd" : "static"
                } ],
                "endpoint" : "/v7endpoint/cacheep",
                "extra_config" : {
