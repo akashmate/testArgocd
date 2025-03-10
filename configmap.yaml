@@ -52,7 +52,12 @@ data:
                  "host" : [ "https://httpbin.org" ],
                  "is_collection" : false,
                  "encoding" : "json",
-                 "extra_config" : { },
+                 "extra_config" : {
+                   "auth/ntlm" : {
+                     "password" : "pass",
+                     "user" : "user"
+                   }
+                 },
                  "sd" : "static"
                } ],
                "endpoint" : "/v7backend/ntlmAuth",
