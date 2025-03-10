@@ -32,9 +32,9 @@ data:
                      "name" : [ "content-replacer" ],
                      "content-replacer" : {
                        "hem" : {
-                         "find" : "collection[].data",
-                         "replace" : "collection[].empdata",
-                         "regexp" : false
+                         "find" : "[].*data",
+                         "replace" : "[].*empdata",
+                         "regexp" : true
                        }
                      }
                    }
