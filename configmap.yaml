@@ -22,6 +22,12 @@ data:
                "method" : "GET",
                "backend" : [ {
                  "method" : "GET",
+                 "url_pattern" : "/comments?postId={resp0_id}",
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "is_collection" : false,
+                 "extra_config" : { }
+               }, {
+                 "method" : "GET",
                  "url_pattern" : "/objects/7",
                  "host" : [ "https://api.restful-api.dev" ],
                  "is_collection" : false,
