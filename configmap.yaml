@@ -20,7 +20,7 @@ data:
              },
              "endpoints" : [ {
                "method" : "GET",
-               "output_encoding" : "no-op",
+               "output_encoding" : "json",
                "backend" : [ {
                  "method" : "GET",
                  "url_pattern" : "/basic-auth/user/pass",
