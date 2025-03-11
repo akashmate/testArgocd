@@ -37,6 +37,16 @@ data:
                    "scopes_matcher" : "any",
                    "scopes" : [ "newClient" ],
                    "scopes_key" : "scope"
+                 },
+                 "security/policies" : {
+                   "req" : {
+                     "policies" : [ "req_params.Id.matches('^[0-9]+$')" ],
+                     "error" : {
+                       "body" : "{\"ErrorMessage\":\"Please provide Integer values\"}",
+                       "status" : 400,
+                       "content_type" : "application/json"
+                     }
+                   }
                  }
                }
              }, {
