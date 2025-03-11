@@ -20,6 +20,34 @@ data:
              },
              "endpoints" : [ {
                "method" : "GET",
+               "output_encoding" : "no-op",
+               "backend" : [ {
+                 "method" : "GET",
+                 "url_pattern" : "/objects/7",
+                 "host" : [ "https://api.restful-api.dev/" ],
+                 "encoding" : "no-op",
+                 "extra_config" : {
+                   "modifier/response-body-generator" : {
+                     "content_type" : "application/json",
+                     "debug" : true,
+                     "template" : "ewogICJBZGRyZXNzIjoge3sgdG9Kc29uIC5yZXNwX2JvZHkgfX0sCiAgInN0YXR1c19jb2RlIjoge3sgdG9Kc29uIC5yZXNwX3N0YXR1cyB9fSwKICAiaGVhZGVycyI6IHt7IHRvSnNvbiAucmVzcF9oZWFkZXJzIH19Cn0="
+                   }
+                 }
+               } ],
+               "endpoint" : "/testapi1/respmanipulation",
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "newClient" ],
+                   "scopes_key" : "scope"
+                 }
+               }
+             }, {
+               "method" : "GET",
                "backend" : [ {
                  "method" : "GET",
                  "url_pattern" : "/posts/{id}",
