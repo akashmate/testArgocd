@@ -20,18 +20,47 @@ data:
              },
              "endpoints" : [ {
                "method" : "GET",
+               "output_encoding" : "json",
                "backend" : [ {
                  "method" : "GET",
-                 "url_pattern" : "/objects",
+                 "url_pattern" : "/objects/6",
                  "host" : [ "https://api.restful-api.dev" ],
-                 "is_collection" : true,
+                 "encoding" : "json",
+                 "mapping" : {
+                   "data" : "empData"
+                 },
+                 "extra_config" : { },
+                 "sd" : "static"
+               } ],
+               "endpoint" : "/v7backend/renaming",
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "krakendtest" ],
+                   "scopes_key" : "scope"
+                 }
+               }
+             }, {
+               "method" : "GET",
+               "output_encoding" : "no-op",
+               "backend" : [ {
+                 "method" : "GET",
+                 "url_pattern" : "/objects/6",
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "encoding" : "no-op",
                  "extra_config" : {
-                   "modifier/jmespath" : {
-                     "expr" : "collection[].data"
+                   "modifier/response-body-generator" : {
+                     "content_type" : "application/json",
+                     "debug" : true,
+                     "template" : "ewogICAgIm5hbWUiOiB7e3RvUHJldHR5SnNvbiAucmVzcF9ib2R5Lm5hbWV9fSwKICAgICJpZCI6IHt7dG9QcmV0dHlKc29uIC5yZXNwX2JvZHkuaWR9fSwKICAgICJnZW5lcmF0aW9uIjoge3t0b1ByZXR0eUpzb24gLnJlc3BfYm9keS5kYXRhLmdlbmVyYXRpb259fSwKICAgICJwcmljZSI6IHt7dG9QcmV0dHlKc29uIC5yZXNwX2JvZHkuZGF0YS5wcmljZX19Cn0="
                    }
                  }
                } ],
-               "endpoint" : "/v7backend/object",
+               "endpoint" : "/v7backend/gotemplate",
                "extra_config" : {
                  "auth/validator" : {
                    "alg" : "RS256",
@@ -74,67 +103,6 @@ data:
                }
              }, {
                "method" : "GET",
-               "output_encoding" : "json",
-               "backend" : [ {
-                 "method" : "GET",
-                 "url_pattern" : "/objects/{id}",
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "encoding" : "json",
-                 "extra_config" : {
-                   "plugin/req-resp-modifier" : {
-                     "name" : [ "content-replacer" ],
-                     "content-replacer" : {
-                       "data.color" : {
-                         "find" : "Purple",
-                         "replace" : "Black",
-                         "regexp" : false
-                       }
-                     }
-                   }
-                 }
-               } ],
-               "endpoint" : "/v7backend/bcontentreplacer/{id}",
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "krakendtest" ],
-                   "scopes_key" : "scope"
-                 }
-               }
-             }, {
-               "method" : "GET",
-               "output_encoding" : "no-op",
-               "backend" : [ {
-                 "method" : "GET",
-                 "url_pattern" : "/objects/6",
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "encoding" : "no-op",
-                 "extra_config" : {
-                   "modifier/response-body-generator" : {
-                     "content_type" : "application/json",
-                     "debug" : true,
-                     "template" : "ewogICAgIm5hbWUiOiB7e3RvUHJldHR5SnNvbiAucmVzcF9ib2R5Lm5hbWV9fSwKICAgICJpZCI6IHt7dG9QcmV0dHlKc29uIC5yZXNwX2JvZHkuaWR9fSwKICAgICJnZW5lcmF0aW9uIjoge3t0b1ByZXR0eUpzb24gLnJlc3BfYm9keS5kYXRhLmdlbmVyYXRpb259fSwKICAgICJwcmljZSI6IHt7dG9QcmV0dHlKc29uIC5yZXNwX2JvZHkuZGF0YS5wcmljZX19Cn0="
-                   }
-                 }
-               } ],
-               "endpoint" : "/v7backend/gotemplate",
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "krakendtest" ],
-                   "scopes_key" : "scope"
-                 }
-               }
-             }, {
-               "method" : "GET",
                "backend" : [ {
                  "method" : "GET",
                  "url_pattern" : "/objects",
@@ -149,37 +117,6 @@ data:
                  }
                } ],
                "endpoint" : "/v7backend/bproxy",
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "krakendtest" ],
-                   "scopes_key" : "scope"
-                 }
-               }
-             }, {
-               "method" : "GET",
-               "backend" : [ {
-                 "method" : "GET",
-                 "url_pattern" : "/posts/1",
-                 "host" : [ "https://jsonplaceholder.typicode.com" ],
-                 "is_collection" : false,
-                 "extra_config" : {
-                   "modifier/martian" : {
-                     "body.Modifier" : {
-                       "scope" : [ "response" ],
-                       "@comment" : "Send a {'msg':'you rock!'}",
-                       "body" : "eyJtc2ciOiJ5b3Ugcm9jayEifQ==",
-                       "contentType" : "application/json"
-                     }
-                   }
-                 },
-                 "sd" : "static"
-               } ],
-               "endpoint" : "/v7backend/reqmartain",
                "extra_config" : {
                  "auth/validator" : {
                    "alg" : "RS256",
@@ -261,42 +198,22 @@ data:
                "method" : "GET",
                "backend" : [ {
                  "method" : "GET",
-                 "url_pattern" : "/objects",
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "is_collection" : true,
+                 "url_pattern" : "/posts/1",
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "is_collection" : false,
                  "extra_config" : {
-                   "proxy" : {
-                     "flatmap_filter" : [ {
-                       "type" : "move",
-                       "args" : [ "collection.*.data", "collection.*.empData" ]
-                     } ]
+                   "modifier/martian" : {
+                     "body.Modifier" : {
+                       "scope" : [ "response" ],
+                       "@comment" : "Send a {'msg':'you rock!'}",
+                       "body" : "eyJtc2ciOiJ5b3Ugcm9jayEifQ==",
+                       "contentType" : "application/json"
+                     }
                    }
-                 }
+                 },
+                 "sd" : "static"
                } ],
-               "endpoint" : "/v7backend/flatmapManuplation",
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "krakendtest" ],
-                   "scopes_key" : "scope"
-                 }
-               }
-             }, {
-               "method" : "GET",
-               "output_encoding" : "json-collection",
-               "backend" : [ {
-                 "method" : "GET",
-                 "url_pattern" : "/objects",
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "is_collection" : true,
-                 "encoding" : "json",
-                 "extra_config" : { }
-               } ],
-               "endpoint" : "/v7backend/renaming",
+               "endpoint" : "/v7backend/reqmartain",
                "extra_config" : {
                  "auth/validator" : {
                    "alg" : "RS256",
@@ -326,6 +243,92 @@ data:
                  "sd" : "static"
                } ],
                "endpoint" : "/v7backend/reqbodyManuplation",
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "krakendtest" ],
+                   "scopes_key" : "scope"
+                 }
+               }
+             }, {
+               "method" : "GET",
+               "backend" : [ {
+                 "method" : "GET",
+                 "url_pattern" : "/objects",
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "is_collection" : true,
+                 "extra_config" : {
+                   "proxy" : {
+                     "flatmap_filter" : [ {
+                       "type" : "move",
+                       "args" : [ "collection.*.data", "collection.*.empData" ]
+                     } ]
+                   }
+                 }
+               } ],
+               "endpoint" : "/v7backend/flatmapManuplation",
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "krakendtest" ],
+                   "scopes_key" : "scope"
+                 }
+               }
+             }, {
+               "method" : "GET",
+               "output_encoding" : "json",
+               "backend" : [ {
+                 "method" : "GET",
+                 "url_pattern" : "/objects/{id}",
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "encoding" : "json",
+                 "extra_config" : {
+                   "plugin/req-resp-modifier" : {
+                     "name" : [ "content-replacer" ],
+                     "content-replacer" : {
+                       "data.color" : {
+                         "find" : "Purple",
+                         "replace" : "Black",
+                         "regexp" : false
+                       }
+                     }
+                   }
+                 }
+               } ],
+               "endpoint" : "/v7backend/bcontentreplacer/{id}",
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "krakendtest" ],
+                   "scopes_key" : "scope"
+                 }
+               }
+             }, {
+               "method" : "GET",
+               "backend" : [ {
+                 "method" : "GET",
+                 "url_pattern" : "/objects",
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "is_collection" : true,
+                 "extra_config" : {
+                   "modifier/jmespath" : {
+                     "expr" : "collection[].data"
+                   }
+                 }
+               } ],
+               "endpoint" : "/v7backend/object",
                "extra_config" : {
                  "auth/validator" : {
                    "alg" : "RS256",
