@@ -29,15 +29,6 @@ data:
                } ],
                "endpoint" : "/testapi1/requestschema",
                "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "newClient" ],
-                   "scopes_key" : "scope"
-                 },
                  "validation/json-schema" : {
                    "$schema" : "http://json-schema.org/draft-07/schema#",
                    "type" : "object",
@@ -87,17 +78,7 @@ data:
                  }
                } ],
                "endpoint" : "/testapi1/respmanipulation",
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "newClient" ],
-                   "scopes_key" : "scope"
-                 }
-               }
+               "extra_config" : { }
              }, {
                "method" : "GET",
                "backend" : [ {
@@ -109,15 +90,6 @@ data:
                } ],
                "endpoint" : "/testapi1/testep/{id}",
                "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "newClient" ],
-                   "scopes_key" : "scope"
-                 },
                  "security/policies" : {
                    "req" : {
                      "policies" : [ "req_params.Id.matches('^[0-9]+$')" ],
@@ -1259,6 +1231,13 @@ data:
                    "CIDR" : [ "10.175.1.70" ],
                    "allow" : false
                  }
+               },
+               "auth/api-keys" : {
+                 "identifier" : "Authorization",
+                 "strategy" : "header",
+                 "keys" : [ {
+                   "key" : "819462f2-d873-4115-bfc0-891d32398365"
+                 } ]
                }
              }
            }
