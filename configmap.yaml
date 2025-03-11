@@ -42,6 +42,7 @@ data:
                    "issuer" : "http://10.175.1.110:31438/realms/master",
                    "disable_jwk_security" : true,
                    "scopes_matcher" : "any",
+                   "scopes" : [ "newClient" ],
                    "scopes_key" : "scope"
                  },
                  "modifier/response-body-generator" : {
@@ -72,6 +73,7 @@ data:
                    "issuer" : "http://10.175.1.110:31438/realms/master",
                    "disable_jwk_security" : true,
                    "scopes_matcher" : "any",
+                   "scopes" : [ "newClient" ],
                    "scopes_key" : "scope"
                  },
                  "modifier/response-body-generator" : {
@@ -102,6 +104,7 @@ data:
                    "issuer" : "http://10.175.1.110:31438/realms/master",
                    "disable_jwk_security" : true,
                    "scopes_matcher" : "any",
+                   "scopes" : [ "newClient" ],
                    "scopes_key" : "scope"
                  },
                  "modifier/response-body-generator" : {
@@ -132,6 +135,7 @@ data:
                    "issuer" : "http://10.175.1.110:31438/realms/master",
                    "disable_jwk_security" : true,
                    "scopes_matcher" : "any",
+                   "scopes" : [ "newClient" ],
                    "scopes_key" : "scope"
                  },
                  "modifier/response-body-generator" : {
