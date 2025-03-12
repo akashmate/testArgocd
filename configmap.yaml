@@ -20,6 +20,126 @@ data:
              },
              "endpoints" : [ {
                "method" : "POST",
+               "output_encoding" : "json",
+               "backend" : [ {
+                 "method" : "POST",
+                 "url_pattern" : "/services/TemperatureConversions.wso",
+                 "host" : [ "http://webservices.daehosting.com" ],
+                 "encoding" : "xml",
+                 "extra_config" : {
+                   "backend/soap" : {
+                     "template" : "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzb2FwZW52OkVudmVsb3BlIHhtbG5zOnNvYXBlbnY9Imh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3NvYXAvZW52ZWxvcGUvIj4KICAgIDxzb2FwZW52OkhlYWRlci8+CiAgICA8c29hcGVudjpCb2R5PgogICAgICAgIDx3ZWI6RmFocmVuaGVpdFRvQ2Vsc2l1cyB4bWxuczp3ZWI9Imh0dHA6Ly93ZWJzZXJ2aWNlcy5kYWVob3N0aW5nLmNvbS90ZW1wZXJhdHVyZSI+CiAgICAgICAgICAgIDx3ZWI6bkZhaHJlbmhlaXQ+e3sucmVxX2JvZHkuRmFocmVuaGVpdFRvQ2Vsc2l1cy5uRmFocmVuaGVpdH19PC93ZWI6bkZhaHJlbmhlaXQ+CiAgICAgICAgPC93ZWI6RmFocmVuaGVpdFRvQ2Vsc2l1cz4KICAgIDwvc29hcGVudjpCb2R5Pgo8L3NvYXBlbnY6RW52ZWxvcGU+Cg==",
+                     "content_type" : "text/xml"
+                   }
+                 },
+                 "sd" : "static"
+               } ],
+               "endpoint" : "/soaptorest/fahrenheitToCelsius",
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes_key" : "scope"
+                 },
+                 "modifier/response-body-generator" : {
+                   "template" : "e3t0b0pzb24gLnJlc3BfYm9keS5FbnZlbG9wZS5Cb2R5fX0="
+                 }
+               }
+             }, {
+               "method" : "POST",
+               "output_encoding" : "json",
+               "backend" : [ {
+                 "method" : "POST",
+                 "url_pattern" : "/services/TemperatureConversions.wso",
+                 "host" : [ "http://webservices.daehosting.com" ],
+                 "encoding" : "xml",
+                 "extra_config" : {
+                   "backend/soap" : {
+                     "template" : "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzb2FwZW52OkVudmVsb3BlIHhtbG5zOnNvYXBlbnY9Imh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3NvYXAvZW52ZWxvcGUvIj4KICAgIDxzb2FwZW52OkhlYWRlci8+CiAgICA8c29hcGVudjpCb2R5PgogICAgICAgIDx3ZWI6V2luZENoaWxsSW5DZWxzaXVzIHhtbG5zOndlYj0iaHR0cDovL3dlYnNlcnZpY2VzLmRhZWhvc3RpbmcuY29tL3RlbXBlcmF0dXJlIj4KICAgICAgICAgICAgPHdlYjpuQ2Vsc2l1cz57ey5yZXFfYm9keS5XaW5kQ2hpbGxJbkNlbHNpdXMubkNlbHNpdXN9fTwvd2ViOm5DZWxzaXVzPgogICAgICAgICAgICA8d2ViOm5XaW5kU3BlZWQ+e3sucmVxX2JvZHkuV2luZENoaWxsSW5DZWxzaXVzLm5XaW5kU3BlZWR9fTwvd2ViOm5XaW5kU3BlZWQ+CiAgICAgICAgPC93ZWI6V2luZENoaWxsSW5DZWxzaXVzPgogICAgPC9zb2FwZW52OkJvZHk+Cjwvc29hcGVudjpFbnZlbG9wZT4K",
+                     "content_type" : "text/xml"
+                   }
+                 },
+                 "sd" : "static"
+               } ],
+               "endpoint" : "/soaptorest/windChillInCelsius",
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes_key" : "scope"
+                 },
+                 "modifier/response-body-generator" : {
+                   "template" : "e3t0b0pzb24gLnJlc3BfYm9keS5FbnZlbG9wZS5Cb2R5fX0="
+                 }
+               }
+             }, {
+               "method" : "POST",
+               "output_encoding" : "json",
+               "backend" : [ {
+                 "method" : "POST",
+                 "url_pattern" : "/services/TemperatureConversions.wso",
+                 "host" : [ "http://webservices.daehosting.com" ],
+                 "encoding" : "xml",
+                 "extra_config" : {
+                   "backend/soap" : {
+                     "template" : "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzb2FwZW52OkVudmVsb3BlIHhtbG5zOnNvYXBlbnY9Imh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3NvYXAvZW52ZWxvcGUvIj4KICAgIDxzb2FwZW52OkhlYWRlci8+CiAgICA8c29hcGVudjpCb2R5PgogICAgICAgIDx3ZWI6V2luZENoaWxsSW5GYWhyZW5oZWl0IHhtbG5zOndlYj0iaHR0cDovL3dlYnNlcnZpY2VzLmRhZWhvc3RpbmcuY29tL3RlbXBlcmF0dXJlIj4KICAgICAgICAgICAgPHdlYjpuRmFocmVuaGVpdD57ey5yZXFfYm9keS5XaW5kQ2hpbGxJbkZhaHJlbmhlaXQubkZhaHJlbmhlaXR9fTwvd2ViOm5GYWhyZW5oZWl0PgogICAgICAgICAgICA8d2ViOm5XaW5kU3BlZWQ+e3sucmVxX2JvZHkuV2luZENoaWxsSW5GYWhyZW5oZWl0Lm5XaW5kU3BlZWR9fTwvd2ViOm5XaW5kU3BlZWQ+CiAgICAgICAgPC93ZWI6V2luZENoaWxsSW5GYWhyZW5oZWl0PgogICAgPC9zb2FwZW52OkJvZHk+Cjwvc29hcGVudjpFbnZlbG9wZT4K",
+                     "content_type" : "text/xml"
+                   }
+                 },
+                 "sd" : "static"
+               } ],
+               "endpoint" : "/soaptorest/windChillInFahrenheit",
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes_key" : "scope"
+                 },
+                 "modifier/response-body-generator" : {
+                   "template" : "e3t0b0pzb24gLnJlc3BfYm9keS5FbnZlbG9wZS5Cb2R5fX0="
+                 }
+               }
+             }, {
+               "method" : "POST",
+               "output_encoding" : "json",
+               "backend" : [ {
+                 "method" : "POST",
+                 "url_pattern" : "/services/TemperatureConversions.wso",
+                 "host" : [ "http://webservices.daehosting.com" ],
+                 "encoding" : "xml",
+                 "extra_config" : {
+                   "backend/soap" : {
+                     "template" : "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzb2FwZW52OkVudmVsb3BlIHhtbG5zOnNvYXBlbnY9Imh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3NvYXAvZW52ZWxvcGUvIj4KICAgIDxzb2FwZW52OkhlYWRlci8+CiAgICA8c29hcGVudjpCb2R5PgogICAgICAgIDx3ZWI6Q2Vsc2l1c1RvRmFocmVuaGVpdCB4bWxuczp3ZWI9Imh0dHA6Ly93ZWJzZXJ2aWNlcy5kYWVob3N0aW5nLmNvbS90ZW1wZXJhdHVyZSI+CiAgICAgICAgICAgIDx3ZWI6bkNlbHNpdXM+e3sucmVxX2JvZHkuQ2Vsc2l1c1RvRmFocmVuaGVpdC5uQ2Vsc2l1c319PC93ZWI6bkNlbHNpdXM+CiAgICAgICAgPC93ZWI6Q2Vsc2l1c1RvRmFocmVuaGVpdD4KICAgIDwvc29hcGVudjpCb2R5Pgo8L3NvYXBlbnY6RW52ZWxvcGU+Cg==",
+                     "content_type" : "text/xml"
+                   }
+                 },
+                 "sd" : "static"
+               } ],
+               "endpoint" : "/soaptorest/celsiusToFahrenheit",
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes_key" : "scope"
+                 },
+                 "modifier/response-body-generator" : {
+                   "template" : "e3t0b0pzb24gLnJlc3BfYm9keS5FbnZlbG9wZS5Cb2R5fX0="
+                 }
+               }
+             }, {
+               "method" : "POST",
                "output_encoding" : "no-op",
                "backend" : [ {
                  "method" : "POST",
@@ -48,13 +168,6 @@ data:
                    "CIDR" : [ "10.175.1.70" ],
                    "allow" : false
                  }
-               },
-               "auth/api-keys" : {
-                 "identifier" : "Authorization",
-                 "strategy" : "header",
-                 "keys" : [ {
-                   "key" : "819462f2-d873-4115-bfc0-891d32398365"
-                 } ]
                }
              }
            }
