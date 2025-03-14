@@ -130,8 +130,9 @@ data:
                "method" : "GET",
                "backend" : [ {
                  "method" : "GET",
-                 "url_pattern" : "/objects/7",
+                 "url_pattern" : "/objects",
                  "host" : [ "https://api.restful-api.dev" ],
+                 "is_collection" : true,
                  "extra_config" : {
                    "proxy" : {
                      "flatmap_filter" : [ {
@@ -139,7 +140,8 @@ data:
                        "args" : [ "collection.*.data", "collection.*.customdata" ]
                      } ]
                    }
-                 }
+                 },
+                 "sd" : "static"
                } ],
                "endpoint" : "/swift/flatmap",
                "extra_config" : {
