@@ -22,13 +22,16 @@ data:
                "method" : "GET",
                "backend" : [ {
                  "method" : "GET",
-                 "url_pattern" : "/posts/{id}",
-                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "url_pattern" : "/",
+                 "host" : [ "https://api.nationalize.io" ],
                  "is_collection" : false,
                  "extra_config" : { }
                } ],
-               "endpoint" : "/swift/requestpolicy/{id}",
+               "endpoint" : "/swift/jmesep",
                "extra_config" : {
+                 "modifier/jmespath" : {
+                   "expr" : "country[?probability > `0.03` ].country_id"
+                 },
                  "auth/validator" : {
                    "alg" : "RS256",
                    "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
@@ -37,18 +40,9 @@ data:
                    "scopes_matcher" : "any",
                    "scopes" : [ "newClient" ],
                    "scopes_key" : "scope"
-                 },
-                 "security/policies" : {
-                   "req" : {
-                     "policies" : [ "req_params.Id.matches('^[0-9]+$')" ],
-                     "error" : {
-                       "body" : "{\"ErrorMessage\":\"Please provide integers only\"}",
-                       "status" : 400,
-                       "content_type" : "application/json"
-                     }
-                   }
                  }
-               }
+               },
+               "input_query_strings" : [ "name" ]
              }, {
                "method" : "POST",
                "backend" : [ {
@@ -105,12 +99,12 @@ data:
                "method" : "GET",
                "backend" : [ {
                  "method" : "GET",
-                 "url_pattern" : "/",
-                 "host" : [ "https://api.nationalize.io" ],
+                 "url_pattern" : "/posts/{id}",
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
                  "is_collection" : false,
                  "extra_config" : { }
                } ],
-               "endpoint" : "/swift/jmesep",
+               "endpoint" : "/swift/requestpolicy/{id}",
                "extra_config" : {
                  "auth/validator" : {
                    "alg" : "RS256",
@@ -120,9 +114,18 @@ data:
                    "scopes_matcher" : "any",
                    "scopes" : [ "newClient" ],
                    "scopes_key" : "scope"
+                 },
+                 "security/policies" : {
+                   "req" : {
+                     "policies" : [ "req_params.Id.matches('^[0-9]+$')" ],
+                     "error" : {
+                       "body" : "{\"ErrorMessage\":\"Please provide integers only\"}",
+                       "status" : 400,
+                       "content_type" : "application/json"
+                     }
+                   }
                  }
-               },
-               "input_query_strings" : [ "name" ]
+               }
              }, {
                "method" : "GET",
                "backend" : [ {
