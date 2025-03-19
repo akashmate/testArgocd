@@ -54,7 +54,7 @@ data:
                "backend" : [ {
                  "method" : "GET",
                  "url_pattern" : "/objects/{id}",
-                 "host" : [ "https://api.restful-api.dev/" ],
+                 "host" : [ "https://api.restful-api.dev" ],
                  "is_collection" : false,
                  "extra_config" : { }
                }, {
