@@ -29,11 +29,14 @@ data:
                } ],
                "endpoint" : "/swift/requestpolicy/{id}",
                "extra_config" : {
-                 "auth/basic" : {
-                   "users" : {
-                     "massil" : "$2a$10$pz12ux0B4W0LJdUjhb5yTOrpvwr/fjcJvWVmz.WxNy9oreDdUg7Oq",
-                     "johny" : "$2a$10$kW8k5Z02NXVKS1c/CoLbuuaDG0a0pBnIAfEH63xTkmzx15CGT6OiO"
-                   }
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "newClient", "ShadowKeys" ],
+                   "scopes_key" : "scope"
                  },
                  "security/policies" : {
                    "req" : {
@@ -65,11 +68,14 @@ data:
                      "strategy" : "errored"
                    }
                  },
-                 "auth/basic" : {
-                   "users" : {
-                     "massil" : "$2a$10$pz12ux0B4W0LJdUjhb5yTOrpvwr/fjcJvWVmz.WxNy9oreDdUg7Oq",
-                     "johny" : "$2a$10$kW8k5Z02NXVKS1c/CoLbuuaDG0a0pBnIAfEH63xTkmzx15CGT6OiO"
-                   }
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "newClient", "ShadowKeys" ],
+                   "scopes_key" : "scope"
                  }
                }
              }, {
@@ -86,11 +92,14 @@ data:
                  "modifier/jmespath" : {
                    "expr" : "country[?probability > `0.03` ].country_id"
                  },
-                 "auth/basic" : {
-                   "users" : {
-                     "massil" : "$2a$10$pz12ux0B4W0LJdUjhb5yTOrpvwr/fjcJvWVmz.WxNy9oreDdUg7Oq",
-                     "johny" : "$2a$10$kW8k5Z02NXVKS1c/CoLbuuaDG0a0pBnIAfEH63xTkmzx15CGT6OiO"
-                   }
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "newClient", "ShadowKeys" ],
+                   "scopes_key" : "scope"
                  }
                },
                "input_query_strings" : [ "name" ]
@@ -109,11 +118,14 @@ data:
                  "modifier/jmespath" : {
                    "expr" : "country[?probability > `0.03` ].country_id"
                  },
-                 "auth/basic" : {
-                   "users" : {
-                     "massil" : "$2a$10$pz12ux0B4W0LJdUjhb5yTOrpvwr/fjcJvWVmz.WxNy9oreDdUg7Oq",
-                     "johny" : "$2a$10$kW8k5Z02NXVKS1c/CoLbuuaDG0a0pBnIAfEH63xTkmzx15CGT6OiO"
-                   }
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "newClient", "ShadowKeys" ],
+                   "scopes_key" : "scope"
                  }
                },
                "input_query_strings" : [ "name" ]
@@ -128,11 +140,14 @@ data:
                } ],
                "endpoint" : "/swift/requestschemavalidator",
                "extra_config" : {
-                 "auth/basic" : {
-                   "users" : {
-                     "massil" : "$2a$10$pz12ux0B4W0LJdUjhb5yTOrpvwr/fjcJvWVmz.WxNy9oreDdUg7Oq",
-                     "johny" : "$2a$10$kW8k5Z02NXVKS1c/CoLbuuaDG0a0pBnIAfEH63xTkmzx15CGT6OiO"
-                   }
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "newClient", "ShadowKeys" ],
+                   "scopes_key" : "scope"
                  },
                  "validation/json-schema" : {
                    "$schema" : "http://json-schema.org/draft-07/schema#",
@@ -177,11 +192,14 @@ data:
                } ],
                "endpoint" : "/swift/responseschemavald/{id}",
                "extra_config" : {
-                 "auth/basic" : {
-                   "users" : {
-                     "massil" : "$2a$10$pz12ux0B4W0LJdUjhb5yTOrpvwr/fjcJvWVmz.WxNy9oreDdUg7Oq",
-                     "johny" : "$2a$10$kW8k5Z02NXVKS1c/CoLbuuaDG0a0pBnIAfEH63xTkmzx15CGT6OiO"
-                   }
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "newClient", "ShadowKeys" ],
+                   "scopes_key" : "scope"
                  },
                  "plugin/req-resp-modifier" : {
                    "name" : [ "response-schema-validator" ],
@@ -243,11 +261,14 @@ data:
                } ],
                "endpoint" : "/swift/flatmap",
                "extra_config" : {
-                 "auth/basic" : {
-                   "users" : {
-                     "massil" : "$2a$10$pz12ux0B4W0LJdUjhb5yTOrpvwr/fjcJvWVmz.WxNy9oreDdUg7Oq",
-                     "johny" : "$2a$10$kW8k5Z02NXVKS1c/CoLbuuaDG0a0pBnIAfEH63xTkmzx15CGT6OiO"
-                   }
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "newClient", "ShadowKeys" ],
+                   "scopes_key" : "scope"
                  }
                }
              }, {
