@@ -22,12 +22,114 @@ data:
                "method" : "GET",
                "backend" : [ {
                  "method" : "GET",
-                 "url_pattern" : "/Testregexcontentreplacer",
-                 "host" : [ "http://10.175.1.58:3000" ],
+                 "url_pattern" : "/__debug/objects",
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "is_collection" : true,
+                 "extra_config" : { }
+               } ],
+               "endpoint" : "/v7endpoint/debug",
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "newClient", "krakendtest" ],
+                   "scopes_key" : "scope"
+                 }
+               }
+             }, {
+               "method" : "GET",
+               "backend" : [ {
+                 "method" : "GET",
+                 "url_pattern" : "/massil",
+                 "host" : [ "http://10.175.1.58:8285" ],
+                 "extra_config" : {
+                   "qos/http-cache" : {
+                     "shared" : true
+                   }
+                 },
+                 "sd" : "static"
+               } ],
+               "endpoint" : "/v7endpoint/cacheep",
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "newClient", "krakendtest" ],
+                   "scopes_key" : "scope"
+                 }
+               }
+             }, {
+               "method" : "GET",
+               "backend" : [ {
+                 "method" : "GET",
+                 "url_pattern" : "/posts/1",
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
                  "is_collection" : false,
                  "extra_config" : { }
                } ],
-               "endpoint" : "/v7endpoint/eregexcontentreplacer",
+               "endpoint" : "/v7endpoint/validjwtpolicy",
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "newClient", "krakendtest" ],
+                   "scopes_key" : "scope"
+                 },
+                 "security/policies" : {
+                   "jwt" : {
+                     "policies" : [ "has(JWT.client_id)", "'newClient' == JWT.client_id" ]
+                   }
+                 }
+               }
+             }, {
+               "method" : "GET",
+               "backend" : [ {
+                 "method" : "GET",
+                 "url_pattern" : "/objects/7",
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "is_collection" : false,
+                 "extra_config" : { }
+               }, {
+                 "method" : "GET",
+                 "url_pattern" : "/comments?postId={resp0_id}",
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "is_collection" : true,
+                 "extra_config" : { }
+               } ],
+               "endpoint" : "/v7endpoint/sequentialproxy",
+               "extra_config" : {
+                 "proxy" : {
+                   "sequential" : true
+                 },
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "newClient", "krakendtest" ],
+                   "scopes_key" : "scope"
+                 }
+               }
+             }, {
+               "method" : "GET",
+               "backend" : [ {
+                 "method" : "GET",
+                 "url_pattern" : "/posts/1",
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "is_collection" : false,
+                 "extra_config" : { }
+               } ],
+               "endpoint" : "/v7endpoint/ipfilter",
                "extra_config" : {
                  "auth/validator" : {
                    "alg" : "RS256",
@@ -39,13 +141,10 @@ data:
                    "scopes_key" : "scope"
                  },
                  "plugin/req-resp-modifier" : {
-                   "name" : [ "content-replacer" ],
-                   "content-replacer" : {
-                     "data.creditcard" : {
-                       "find" : "(^\\d{4})(.*)",
-                       "replace" : "XXXX-${1}",
-                       "regexp" : true
-                     }
+                   "name" : [ "ip-filter" ],
+                   "ip-filter" : {
+                     "CIDR" : [ "10.233.70.0" ],
+                     "allow" : false
                    }
                  }
                }
@@ -84,12 +183,13 @@ data:
                "method" : "GET",
                "backend" : [ {
                  "method" : "GET",
-                 "url_pattern" : "/posts/1",
-                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "url_pattern" : "/Testregexcontentreplacer",
+                 "host" : [ "http://10.175.1.68:3000" ],
                  "is_collection" : false,
-                 "extra_config" : { }
+                 "extra_config" : { },
+                 "sd" : "static"
                } ],
-               "endpoint" : "/v7endpoint/ipfilter",
+               "endpoint" : "/v7endpoint/eregexcontentreplacer",
                "extra_config" : {
                  "auth/validator" : {
                    "alg" : "RS256",
@@ -101,41 +201,13 @@ data:
                    "scopes_key" : "scope"
                  },
                  "plugin/req-resp-modifier" : {
-                   "name" : [ "ip-filter" ],
-                   "ip-filter" : {
-                     "CIDR" : [ "10.233.70.0" ],
-                     "allow" : false
-                   }
-                 }
-               }
-             }, {
-               "method" : "GET",
-               "backend" : [ {
-                 "method" : "GET",
-                 "url_pattern" : "/objects/{id}",
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "is_collection" : false,
-                 "extra_config" : { }
-               } ],
-               "endpoint" : "/v7endpoint/resppolicy/{id}",
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "newClient", "krakendtest" ],
-                   "scopes_key" : "scope"
-                 },
-                 "security/policies" : {
-                   "resp" : {
-                     "error" : {
-                       "body" : "{\"Message\":\"Year is not present in the response body\"}",
-                       "status" : 400,
-                       "content_type" : "application/json"
-                     },
-                     "policies" : [ "!isEmpty(resp_data.data.year)" ]
+                   "name" : [ "content-replacer" ],
+                   "content-replacer" : {
+                     "data.creditcard" : {
+                       "find" : "(^\\d{4})(.*)",
+                       "replace" : "XXXX-${1}",
+                       "regexp" : true
+                     }
                    }
                  }
                }
@@ -164,6 +236,27 @@ data:
                  }
                },
                "input_query_strings" : [ "name" ]
+             }, {
+               "method" : "POST",
+               "backend" : [ {
+                 "method" : "POST",
+                 "url_pattern" : "/calculator.asmx",
+                 "host" : [ "http://www.dneonline.com" ],
+                 "is_collection" : false,
+                 "extra_config" : { }
+               } ],
+               "endpoint" : "/v7endpoint/resttosoap",
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "newClient", "krakendtest" ],
+                   "scopes_key" : "scope"
+                 }
+               }
              }, {
                "method" : "GET",
                "backend" : [ {
@@ -226,135 +319,6 @@ data:
                  }
                }
              }, {
-               "method" : "GET",
-               "backend" : [ {
-                 "method" : "GET",
-                 "url_pattern" : "/posts/1",
-                 "host" : [ "https://jsonplaceholder.typicode.com" ],
-                 "is_collection" : false,
-                 "extra_config" : { }
-               } ],
-               "endpoint" : "/v7endpoint/validjwtpolicy",
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "newClient", "krakendtest" ],
-                   "scopes_key" : "scope"
-                 },
-                 "security/policies" : {
-                   "jwt" : {
-                     "policies" : [ "has(JWT.client_id)", "'newClient' == JWT.client_id" ]
-                   }
-                 }
-               }
-             }, {
-               "method" : "GET",
-               "backend" : [ {
-                 "method" : "GET",
-                 "url_pattern" : "/massil",
-                 "host" : [ "http://10.175.1.58:8285" ],
-                 "extra_config" : {
-                   "qos/http-cache" : {
-                     "shared" : true
-                   }
-                 },
-                 "sd" : "static"
-               } ],
-               "endpoint" : "/v7endpoint/cacheep",
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "newClient", "krakendtest" ],
-                   "scopes_key" : "scope"
-                 }
-               }
-             }, {
-               "method" : "GET",
-               "backend" : [ {
-                 "method" : "GET",
-                 "url_pattern" : "/objects/7",
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "is_collection" : false,
-                 "extra_config" : { }
-               }, {
-                 "method" : "GET",
-                 "url_pattern" : "/comments?postId={resp0_id}",
-                 "host" : [ "https://jsonplaceholder.typicode.com" ],
-                 "is_collection" : true,
-                 "extra_config" : { }
-               } ],
-               "endpoint" : "/v7endpoint/sequentialproxy",
-               "extra_config" : {
-                 "proxy" : {
-                   "sequential" : true
-                 },
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "newClient", "krakendtest" ],
-                   "scopes_key" : "scope"
-                 }
-               }
-             }, {
-               "method" : "POST",
-               "backend" : [ {
-                 "method" : "POST",
-                 "url_pattern" : "/calculator.asmx",
-                 "host" : [ "http://www.dneonline.com" ],
-                 "is_collection" : false,
-                 "extra_config" : { }
-               } ],
-               "endpoint" : "/v7endpoint/resttosoap",
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "newClient", "krakendtest" ],
-                   "scopes_key" : "scope"
-                 }
-               }
-             }, {
-               "method" : "GET",
-               "backend" : [ {
-                 "method" : "GET",
-                 "url_pattern" : "/posts/1",
-                 "host" : [ "https://jsonplaceholder.typicode.com" ],
-                 "is_collection" : false,
-                 "extra_config" : { }
-               } ],
-               "endpoint" : "/v7endpoint/ethrottling",
-               "extra_config" : {
-                 "qos/ratelimit/router" : {
-                   "client_capacity" : 5,
-                   "every" : "1m",
-                   "max_rate" : 5,
-                   "strategy" : "ip"
-                 },
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "newClient", "krakendtest" ],
-                   "scopes_key" : "scope"
-                 }
-               }
-             }, {
                "method" : "POST",
                "backend" : [ {
                  "method" : "GET",
@@ -410,13 +374,50 @@ data:
                "method" : "GET",
                "backend" : [ {
                  "method" : "GET",
-                 "url_pattern" : "/__debug/objects",
+                 "url_pattern" : "/objects/{id}",
                  "host" : [ "https://api.restful-api.dev" ],
-                 "is_collection" : true,
+                 "is_collection" : false,
                  "extra_config" : { }
                } ],
-               "endpoint" : "/v7endpoint/debug",
+               "endpoint" : "/v7endpoint/resppolicy/{id}",
                "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "newClient", "krakendtest" ],
+                   "scopes_key" : "scope"
+                 },
+                 "security/policies" : {
+                   "resp" : {
+                     "error" : {
+                       "body" : "{\"Message\":\"Year is not present in the response body\"}",
+                       "status" : 400,
+                       "content_type" : "application/json"
+                     },
+                     "policies" : [ "!isEmpty(resp_data.data.year)" ]
+                   }
+                 }
+               }
+             }, {
+               "method" : "GET",
+               "backend" : [ {
+                 "method" : "GET",
+                 "url_pattern" : "/posts/1",
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "is_collection" : false,
+                 "extra_config" : { }
+               } ],
+               "endpoint" : "/v7endpoint/ethrottling",
+               "extra_config" : {
+                 "qos/ratelimit/router" : {
+                   "client_capacity" : 5,
+                   "every" : "1m",
+                   "max_rate" : 5,
+                   "strategy" : "ip"
+                 },
                  "auth/validator" : {
                    "alg" : "RS256",
                    "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
