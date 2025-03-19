@@ -110,7 +110,6 @@ data:
                  "method" : "GET",
                  "url_pattern" : "/",
                  "host" : [ "https://api.nationalize.io" ],
-                 "is_collection" : true,
                  "extra_config" : { }
                } ],
                "endpoint" : "/swift/countrydetails",
