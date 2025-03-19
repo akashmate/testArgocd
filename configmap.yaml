@@ -22,6 +22,34 @@ data:
                "method" : "GET",
                "backend" : [ {
                  "method" : "GET",
+                 "url_pattern" : "/posts/{id}",
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "is_collection" : false,
+                 "extra_config" : { }
+               } ],
+               "endpoint" : "/swift/requestpolicy/{id}",
+               "extra_config" : {
+                 "auth/basic" : {
+                   "users" : {
+                     "massil" : "$2a$10$pz12ux0B4W0LJdUjhb5yTOrpvwr/fjcJvWVmz.WxNy9oreDdUg7Oq",
+                     "johny" : "$2a$10$kW8k5Z02NXVKS1c/CoLbuuaDG0a0pBnIAfEH63xTkmzx15CGT6OiO"
+                   }
+                 },
+                 "security/policies" : {
+                   "req" : {
+                     "policies" : [ "req_params.Id.matches('^[0-9]+$')" ],
+                     "error" : {
+                       "body" : "{\"ErrorMessage\":\"Please provide integers only\"}",
+                       "status" : 400,
+                       "content_type" : "application/json"
+                     }
+                   }
+                 }
+               }
+             }, {
+               "method" : "GET",
+               "backend" : [ {
+                 "method" : "GET",
                  "url_pattern" : "/posts/a",
                  "host" : [ "https://jsonplaceholder.typicode.com" ],
                  "is_collection" : false,
@@ -37,14 +65,105 @@ data:
                      "strategy" : "errored"
                    }
                  },
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "newClient", "ShadowKeys" ],
-                   "scopes_key" : "scope"
+                 "auth/basic" : {
+                   "users" : {
+                     "massil" : "$2a$10$pz12ux0B4W0LJdUjhb5yTOrpvwr/fjcJvWVmz.WxNy9oreDdUg7Oq",
+                     "johny" : "$2a$10$kW8k5Z02NXVKS1c/CoLbuuaDG0a0pBnIAfEH63xTkmzx15CGT6OiO"
+                   }
+                 }
+               }
+             }, {
+               "method" : "GET",
+               "backend" : [ {
+                 "method" : "GET",
+                 "url_pattern" : "/",
+                 "host" : [ "https://api.nationalize.io" ],
+                 "is_collection" : false,
+                 "extra_config" : { }
+               } ],
+               "endpoint" : "/swift/jmesep",
+               "extra_config" : {
+                 "modifier/jmespath" : {
+                   "expr" : "country[?probability > `0.03` ].country_id"
+                 },
+                 "auth/basic" : {
+                   "users" : {
+                     "massil" : "$2a$10$pz12ux0B4W0LJdUjhb5yTOrpvwr/fjcJvWVmz.WxNy9oreDdUg7Oq",
+                     "johny" : "$2a$10$kW8k5Z02NXVKS1c/CoLbuuaDG0a0pBnIAfEH63xTkmzx15CGT6OiO"
+                   }
+                 }
+               },
+               "input_query_strings" : [ "name" ]
+             }, {
+               "method" : "GET",
+               "output_encoding" : "json-collection",
+               "backend" : [ {
+                 "method" : "GET",
+                 "url_pattern" : "/",
+                 "host" : [ "https://api.nationalize.io" ],
+                 "is_collection" : true,
+                 "extra_config" : { }
+               } ],
+               "endpoint" : "/swift/countrydetails",
+               "extra_config" : {
+                 "modifier/jmespath" : {
+                   "expr" : "country[?probability > `0.03` ].country_id"
+                 },
+                 "auth/basic" : {
+                   "users" : {
+                     "massil" : "$2a$10$pz12ux0B4W0LJdUjhb5yTOrpvwr/fjcJvWVmz.WxNy9oreDdUg7Oq",
+                     "johny" : "$2a$10$kW8k5Z02NXVKS1c/CoLbuuaDG0a0pBnIAfEH63xTkmzx15CGT6OiO"
+                   }
+                 }
+               },
+               "input_query_strings" : [ "name" ]
+             }, {
+               "method" : "POST",
+               "backend" : [ {
+                 "method" : "GET",
+                 "url_pattern" : "/objects/7",
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "is_collection" : false,
+                 "extra_config" : { }
+               } ],
+               "endpoint" : "/swift/requestschemavalidator",
+               "extra_config" : {
+                 "auth/basic" : {
+                   "users" : {
+                     "massil" : "$2a$10$pz12ux0B4W0LJdUjhb5yTOrpvwr/fjcJvWVmz.WxNy9oreDdUg7Oq",
+                     "johny" : "$2a$10$kW8k5Z02NXVKS1c/CoLbuuaDG0a0pBnIAfEH63xTkmzx15CGT6OiO"
+                   }
+                 },
+                 "validation/json-schema" : {
+                   "$schema" : "http://json-schema.org/draft-07/schema#",
+                   "type" : "object",
+                   "properties" : {
+                     "id" : {
+                       "type" : "string"
+                     },
+                     "name" : {
+                       "type" : "string"
+                     },
+                     "data" : {
+                       "type" : "object",
+                       "properties" : {
+                         "year" : {
+                           "type" : "integer"
+                         },
+                         "price" : {
+                           "type" : "number"
+                         },
+                         "CPU model" : {
+                           "type" : "string"
+                         },
+                         "Hard disk size" : {
+                           "type" : "string"
+                         }
+                       },
+                       "required" : [ "year", "price", "CPU model", "Hard disk size" ]
+                     }
+                   },
+                   "required" : [ "id", "name", "data" ]
                  }
                }
              }, {
@@ -58,14 +177,11 @@ data:
                } ],
                "endpoint" : "/swift/responseschemavald/{id}",
                "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "newClient", "ShadowKeys" ],
-                   "scopes_key" : "scope"
+                 "auth/basic" : {
+                   "users" : {
+                     "massil" : "$2a$10$pz12ux0B4W0LJdUjhb5yTOrpvwr/fjcJvWVmz.WxNy9oreDdUg7Oq",
+                     "johny" : "$2a$10$kW8k5Z02NXVKS1c/CoLbuuaDG0a0pBnIAfEH63xTkmzx15CGT6OiO"
+                   }
                  },
                  "plugin/req-resp-modifier" : {
                    "name" : [ "response-schema-validator" ],
@@ -127,121 +243,10 @@ data:
                } ],
                "endpoint" : "/swift/flatmap",
                "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "newClient", "ShadowKeys" ],
-                   "scopes_key" : "scope"
-                 }
-               }
-             }, {
-               "method" : "GET",
-               "backend" : [ {
-                 "method" : "GET",
-                 "url_pattern" : "/",
-                 "host" : [ "https://api.nationalize.io" ],
-                 "is_collection" : false,
-                 "extra_config" : { }
-               } ],
-               "endpoint" : "/swift/jmesep",
-               "extra_config" : {
-                 "modifier/jmespath" : {
-                   "expr" : "country[?probability > `0.03` ].country_id"
-                 },
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "newClient", "ShadowKeys" ],
-                   "scopes_key" : "scope"
-                 }
-               },
-               "input_query_strings" : [ "name" ]
-             }, {
-               "method" : "POST",
-               "backend" : [ {
-                 "method" : "GET",
-                 "url_pattern" : "/objects/7",
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "is_collection" : false,
-                 "extra_config" : { }
-               } ],
-               "endpoint" : "/swift/requestschemavalidator",
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "newClient", "ShadowKeys" ],
-                   "scopes_key" : "scope"
-                 },
-                 "validation/json-schema" : {
-                   "$schema" : "http://json-schema.org/draft-07/schema#",
-                   "type" : "object",
-                   "properties" : {
-                     "id" : {
-                       "type" : "string"
-                     },
-                     "name" : {
-                       "type" : "string"
-                     },
-                     "data" : {
-                       "type" : "object",
-                       "properties" : {
-                         "year" : {
-                           "type" : "integer"
-                         },
-                         "price" : {
-                           "type" : "number"
-                         },
-                         "CPU model" : {
-                           "type" : "string"
-                         },
-                         "Hard disk size" : {
-                           "type" : "string"
-                         }
-                       },
-                       "required" : [ "year", "price", "CPU model", "Hard disk size" ]
-                     }
-                   },
-                   "required" : [ "id", "name", "data" ]
-                 }
-               }
-             }, {
-               "method" : "GET",
-               "backend" : [ {
-                 "method" : "GET",
-                 "url_pattern" : "/posts/{id}",
-                 "host" : [ "https://jsonplaceholder.typicode.com" ],
-                 "is_collection" : false,
-                 "extra_config" : { }
-               } ],
-               "endpoint" : "/swift/requestpolicy/{id}",
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "newClient", "ShadowKeys" ],
-                   "scopes_key" : "scope"
-                 },
-                 "security/policies" : {
-                   "req" : {
-                     "policies" : [ "req_params.Id.matches('^[0-9]+$')" ],
-                     "error" : {
-                       "body" : "{\"ErrorMessage\":\"Please provide integers only\"}",
-                       "status" : 400,
-                       "content_type" : "application/json"
-                     }
+                 "auth/basic" : {
+                   "users" : {
+                     "massil" : "$2a$10$pz12ux0B4W0LJdUjhb5yTOrpvwr/fjcJvWVmz.WxNy9oreDdUg7Oq",
+                     "johny" : "$2a$10$kW8k5Z02NXVKS1c/CoLbuuaDG0a0pBnIAfEH63xTkmzx15CGT6OiO"
                    }
                  }
                }
