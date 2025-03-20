@@ -67,6 +67,12 @@ data:
                } ],
                "endpoint" : "/swift/sequentailproxy/{id}",
                "extra_config" : {
+                 "qos/ratelimit/router" : {
+                   "client_max_rate" : 2,
+                   "every" : "1m",
+                   "max_rate" : 5,
+                   "strategy" : "ip"
+                 },
                  "proxy" : {
                    "sequential" : true
                  },
@@ -1441,13 +1447,6 @@ data:
                    "CIDR" : [ "10.175.1.70" ],
                    "allow" : false
                  }
-               },
-               "qos/ratelimit/service" : {
-                 "capacity" : 0,
-                 "client_capacity" : 1,
-                 "client_max_rate" : 1,
-                 "every" : "20s",
-                 "max_rate" : 2
                }
              }
            }
