@@ -6,8 +6,8 @@ metadata:
   labels:
     app: krakenddemo
 spec:
-  replicas: 2
-  revisionHistoryLimit: 3
+  replicas: 1
+  revisionHistoryLimit: 1
   selector:
     matchLabels:
       app: krakenddemo
