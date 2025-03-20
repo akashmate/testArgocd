@@ -6,9 +6,9 @@ metadata:
 data:
   krakend.json: |
            {
-             "$schema" : "https://www.krakend.io/schema/krakend.json",
+             "$schema" : "https://www.krakend.io/schema/v2.7/krakend.json",
              "version" : 3,
-             "name" : "apigateway",
+             "name" : "gateway2",
              "port" : 8082,
              "timeout" : "3000ms",
              "cache_ttl" : "300s",
