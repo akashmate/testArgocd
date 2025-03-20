@@ -341,6 +341,7 @@ data:
                  "url_pattern" : "/posts/1",
                  "host" : [ "https://jsonplaceholder.typicode.com" ],
                  "is_collection" : false,
+                 "encoding" : "no-op",
                  "extra_config" : {
                    "modifier/martian" : {
                      "header.Modifier" : {
