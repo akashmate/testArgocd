@@ -68,7 +68,7 @@ data:
                "endpoint" : "/swift/sequentailproxy/{id}",
                "extra_config" : {
                  "qos/ratelimit/router" : {
-                   "every" : "30s",
+                   "every" : "40s",
                    "max_rate" : 5,
                    "strategy" : "ip"
                  },
