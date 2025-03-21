@@ -19,6 +19,40 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
+               "method" : "POST",
+               "output_encoding" : "json",
+               "endpoint" : "/tempconvert/celsiusToFahrenheit",
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://localhost:8080/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://localhost:8080/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes_key" : "scope"
+                 },
+                 "modifier/response-body-generator" : {
+                   "template" : "e3t0b0pzb24gLnJlc3BfYm9keS5FbnZlbG9wZS5Cb2R5fX0="
+                 }
+               }
+             }, {
+               "method" : "POST",
+               "output_encoding" : "json",
+               "endpoint" : "/tempconvert/fahrenheitToCelsius",
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://localhost:8080/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://localhost:8080/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes_key" : "scope"
+                 },
+                 "modifier/response-body-generator" : {
+                   "template" : "e3t0b0pzb24gLnJlc3BfYm9keS5FbnZlbG9wZS5Cb2R5fX0="
+                 }
+               }
+             }, {
                "method" : "GET",
                "backend" : [ {
                  "method" : "GET",
