@@ -19,6 +19,66 @@ data:
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
+               "method" : "POST",
+               "output_encoding" : "json",
+               "backend" : [ {
+                 "method" : "POST",
+                 "url_pattern" : "/xml/tempconvert.asmx",
+                 "host" : [ "https://www.w3schools.com" ],
+                 "encoding" : "xml",
+                 "extra_config" : {
+                   "backend/soap" : {
+                     "template" : "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+DQo8c29hcGVudjpFbnZlbG9wZSB4bWxuczpzb2FwZW52PSJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy9zb2FwL2VudmVsb3BlLyI+DQogICAgPHNvYXBlbnY6SGVhZGVyLz4NCiAgICA8c29hcGVudjpCb2R5Pg0KICAgICAgICA8d2ViOkNlbHNpdXNUb0ZhaHJlbmhlaXQgeG1sbnM6d2ViPSJodHRwczovL3d3dy53M3NjaG9vbHMuY29tL3htbC8iPg0KICAgICAgICAgICAgPHdlYjpDZWxzaXVzPnt7LnJlcV9ib2R5LkNlbHNpdXNUb0ZhaHJlbmhlaXQuQ2Vsc2l1c319PC93ZWI6Q2Vsc2l1cz4NCiAgICAgICAgPC93ZWI6Q2Vsc2l1c1RvRmFocmVuaGVpdD4NCiAgICA8L3NvYXBlbnY6Qm9keT4NCjwvc29hcGVudjpFbnZlbG9wZT4NCg==",
+                     "content_type" : "text/xml"
+                   }
+                 },
+                 "sd" : "static"
+               } ],
+               "endpoint" : "/tempconvert/celsiusToFahrenheit",
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://localhost:8080/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://localhost:8080/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes_key" : "scope"
+                 },
+                 "modifier/response-body-generator" : {
+                   "template" : "e3t0b0pzb24gLnJlc3BfYm9keS5FbnZlbG9wZS5Cb2R5fX0="
+                 }
+               }
+             }, {
+               "method" : "POST",
+               "output_encoding" : "json",
+               "backend" : [ {
+                 "method" : "POST",
+                 "url_pattern" : "/xml/tempconvert.asmx",
+                 "host" : [ "https://www.w3schools.com" ],
+                 "encoding" : "xml",
+                 "extra_config" : {
+                   "backend/soap" : {
+                     "template" : "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+DQo8c29hcGVudjpFbnZlbG9wZSB4bWxuczpzb2FwZW52PSJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy9zb2FwL2VudmVsb3BlLyI+DQogICAgPHNvYXBlbnY6SGVhZGVyLz4NCiAgICA8c29hcGVudjpCb2R5Pg0KICAgICAgICA8d2ViOkZhaHJlbmhlaXRUb0NlbHNpdXMgeG1sbnM6d2ViPSJodHRwczovL3d3dy53M3NjaG9vbHMuY29tL3htbC8iPg0KICAgICAgICAgICAgPHdlYjpGYWhyZW5oZWl0Pnt7LnJlcV9ib2R5LkZhaHJlbmhlaXRUb0NlbHNpdXMuRmFocmVuaGVpdH19PC93ZWI6RmFocmVuaGVpdD4NCiAgICAgICAgPC93ZWI6RmFocmVuaGVpdFRvQ2Vsc2l1cz4NCiAgICA8L3NvYXBlbnY6Qm9keT4NCjwvc29hcGVudjpFbnZlbG9wZT4NCg==",
+                     "content_type" : "text/xml"
+                   }
+                 },
+                 "sd" : "static"
+               } ],
+               "endpoint" : "/tempconvert/fahrenheitToCelsius",
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://localhost:8080/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://localhost:8080/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes_key" : "scope"
+                 },
+                 "modifier/response-body-generator" : {
+                   "template" : "e3t0b0pzb24gLnJlc3BfYm9keS5FbnZlbG9wZS5Cb2R5fX0="
+                 }
+               }
+             }, {
                "method" : "GET",
                "backend" : [ {
                  "method" : "GET",
