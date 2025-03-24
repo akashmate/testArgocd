@@ -27,7 +27,7 @@ data:
                  "is_collection" : false,
                  "extra_config" : { }
                } ],
-               "endpoint" : "/mytest/myep",
+               "endpoint" : "/tempconvert/myep",
                "extra_config" : {
                  "auth/validator" : {
                    "alg" : "RS256",
@@ -36,6 +36,36 @@ data:
                    "disable_jwk_security" : true,
                    "scopes_matcher" : "any",
                    "scopes_key" : "scope"
+                 }
+               }
+             }, {
+               "method" : "POST",
+               "output_encoding" : "json",
+               "backend" : [ {
+                 "method" : "POST",
+                 "url_pattern" : "/xml/tempconvert.asmx",
+                 "host" : [ "https://www.w3schools.com" ],
+                 "encoding" : "xml",
+                 "extra_config" : {
+                   "backend/soap" : {
+                     "template" : "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzb2FwZW52OkVudmVsb3BlIHhtbG5zOnNvYXBlbnY9Imh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3NvYXAvZW52ZWxvcGUvIj4KICAgIDxzb2FwZW52OkhlYWRlci8+CiAgICA8c29hcGVudjpCb2R5PgogICAgICAgIDx3ZWI6RmFocmVuaGVpdFRvQ2Vsc2l1cyB4bWxuczp3ZWI9Imh0dHBzOi8vd3d3Lnczc2Nob29scy5jb20veG1sLyI+CiAgICAgICAgICAgIDx3ZWI6RmFocmVuaGVpdD57ey5yZXFfYm9keS5GYWhyZW5oZWl0VG9DZWxzaXVzLkZhaHJlbmhlaXR9fTwvd2ViOkZhaHJlbmhlaXQ+CiAgICAgICAgPC93ZWI6RmFocmVuaGVpdFRvQ2Vsc2l1cz4KICAgIDwvc29hcGVudjpCb2R5Pgo8L3NvYXBlbnY6RW52ZWxvcGU+Cg==",
+                     "content_type" : "text/xml"
+                   }
+                 },
+                 "sd" : "static"
+               } ],
+               "endpoint" : "/tempconvert/fahrenheitToCelsius",
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes_key" : "scope"
+                 },
+                 "modifier/response-body-generator" : {
+                   "template" : "e3t0b0pzb24gLnJlc3BfYm9keS5FbnZlbG9wZS5Cb2R5fX0="
                  }
                }
              }, {
@@ -69,22 +99,15 @@ data:
                  }
                }
              }, {
-               "method" : "POST",
-               "output_encoding" : "json",
+               "method" : "GET",
                "backend" : [ {
-                 "method" : "POST",
-                 "url_pattern" : "/xml/tempconvert.asmx",
-                 "host" : [ "https://www.w3schools.com" ],
-                 "encoding" : "xml",
-                 "extra_config" : {
-                   "backend/soap" : {
-                     "template" : "PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzb2FwZW52OkVudmVsb3BlIHhtbG5zOnNvYXBlbnY9Imh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3NvYXAvZW52ZWxvcGUvIj4KICAgIDxzb2FwZW52OkhlYWRlci8+CiAgICA8c29hcGVudjpCb2R5PgogICAgICAgIDx3ZWI6RmFocmVuaGVpdFRvQ2Vsc2l1cyB4bWxuczp3ZWI9Imh0dHBzOi8vd3d3Lnczc2Nob29scy5jb20veG1sLyI+CiAgICAgICAgICAgIDx3ZWI6RmFocmVuaGVpdD57ey5yZXFfYm9keS5GYWhyZW5oZWl0VG9DZWxzaXVzLkZhaHJlbmhlaXR9fTwvd2ViOkZhaHJlbmhlaXQ+CiAgICAgICAgPC93ZWI6RmFocmVuaGVpdFRvQ2Vsc2l1cz4KICAgIDwvc29hcGVudjpCb2R5Pgo8L3NvYXBlbnY6RW52ZWxvcGU+Cg==",
-                     "content_type" : "text/xml"
-                   }
-                 },
-                 "sd" : "static"
+                 "method" : "GET",
+                 "url_pattern" : "/posts/1",
+                 "host" : [ "https://jsonplaceholder.typicode.com/" ],
+                 "is_collection" : false,
+                 "extra_config" : { }
                } ],
-               "endpoint" : "/tempconvert/fahrenheitToCelsius",
+               "endpoint" : "/mytest/myep",
                "extra_config" : {
                  "auth/validator" : {
                    "alg" : "RS256",
@@ -93,9 +116,6 @@ data:
                    "disable_jwk_security" : true,
                    "scopes_matcher" : "any",
                    "scopes_key" : "scope"
-                 },
-                 "modifier/response-body-generator" : {
-                   "template" : "e3t0b0pzb24gLnJlc3BfYm9keS5FbnZlbG9wZS5Cb2R5fX0="
                  }
                }
              }, {
