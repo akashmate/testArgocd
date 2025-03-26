@@ -23,9 +23,10 @@ data:
                "backend" : [ {
                  "method" : "GET",
                  "url_pattern" : "/posts/1",
-                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "host" : [ "https://jsonplaceholder.typicode.com", "https://api.restful-api.dev" ],
                  "is_collection" : false,
-                 "extra_config" : { }
+                 "extra_config" : { },
+                 "sd" : "static"
                } ],
                "endpoint" : "/myapi/myep1",
                "extra_config" : {
