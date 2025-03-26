@@ -24,8 +24,11 @@ data:
                  "method" : "GET",
                  "url_pattern" : "/objects/7",
                  "host" : [ "https://api.restful-api.dev/" ],
-                 "allow" : [ "id" ],
-                 "extra_config" : { }
+                 "extra_config" : {
+                   "modifier/jmespath" : {
+                     "expr" : "country[?probability > `0.03` ].country_id"
+                   }
+                 }
                } ],
                "endpoint" : "/cypresallo1/myep2",
                "extra_config" : {
