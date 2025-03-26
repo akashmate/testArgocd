@@ -22,12 +22,12 @@ data:
                "method" : "GET",
                "backend" : [ {
                  "method" : "GET",
-                 "url_pattern" : "/posts/1",
-                 "host" : [ "https://jsonplaceholder.typicode.com/" ],
-                 "is_collection" : false,
-                 "extra_config" : { }
+                 "url_pattern" : "/objects/7",
+                 "host" : [ "https://api.restful-api.dev/" ],
+                 "extra_config" : { },
+                 "deny" : [ "id" ]
                } ],
-               "endpoint" : "/mytestapi1/myep2",
+               "endpoint" : "/cypryden/myep2",
                "extra_config" : {
                  "auth/validator" : {
                    "alg" : "RS256",
@@ -43,12 +43,12 @@ data:
                "method" : "GET",
                "backend" : [ {
                  "method" : "GET",
-                 "url_pattern" : "/objects/7",
-                 "host" : [ "https://api.restful-api.dev/" ],
-                 "extra_config" : { },
-                 "deny" : [ "id" ]
+                 "url_pattern" : "/posts/1",
+                 "host" : [ "https://jsonplaceholder.typicode.com/" ],
+                 "is_collection" : false,
+                 "extra_config" : { }
                } ],
-               "endpoint" : "/cypryden/myep2",
+               "endpoint" : "/mytestapi1/myep2",
                "extra_config" : {
                  "auth/validator" : {
                    "alg" : "RS256",
