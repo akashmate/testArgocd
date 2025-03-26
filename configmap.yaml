@@ -20,14 +20,25 @@ data:
              },
              "endpoints" : [ {
                "method" : "GET",
+               "output_encoding" : "no-op",
                "backend" : [ {
                  "method" : "GET",
-                 "url_pattern" : "/posts/{id}",
+                 "url_pattern" : "/posts/1",
                  "host" : [ "https://jsonplaceholder.typicode.com" ],
                  "is_collection" : false,
-                 "extra_config" : { }
+                 "encoding" : "json",
+                 "extra_config" : {
+                   "modifier/martian" : {
+                     "header.Modifier" : {
+                       "scope" : [ "response", "request" ],
+                       "name" : "CustomHeader",
+                       "value" : "true"
+                     }
+                   }
+                 },
+                 "sd" : "static"
                } ],
-               "endpoint" : "/swift/requestpolicy/{id}",
+               "endpoint" : "/swift/martianheader",
                "extra_config" : {
                  "auth/validator" : {
                    "alg" : "RS256",
@@ -37,16 +48,35 @@ data:
                    "scopes_matcher" : "any",
                    "scopes" : [ "newClient", "ShadowKeys" ],
                    "scopes_key" : "scope"
-                 },
-                 "security/policies" : {
-                   "req" : {
-                     "policies" : [ "req_params.Id.matches('^[0-9]+$')" ],
-                     "error" : {
-                       "body" : "{\"ErrorMessage\":\"Please provide integers only\"}",
-                       "status" : 400,
-                       "content_type" : "application/json"
-                     }
+                 }
+               },
+               "input_headers" : [ "CustomHeader" ]
+             }, {
+               "method" : "POST",
+               "backend" : [ {
+                 "method" : "POST",
+                 "url_pattern" : "api/users",
+                 "host" : [ "https://reqres.in" ],
+                 "is_collection" : false,
+                 "extra_config" : {
+                   "modifier/body-generator" : {
+                     "content_type" : "application/json",
+                     "debug" : true,
+                     "template" : "ewogICAgIm5hbWUiOiAie3sgLnJlcV9ib2R5LnVwZGF0ZS5kYXRhLm5hbWUgfX0iLAogICAgImVtYWlsIjogInt7IC5yZXFfYm9keS51cGRhdGUuZGF0YS5lbWFpbCB9fSIKfQ=="
                    }
+                 },
+                 "sd" : "static"
+               } ],
+               "endpoint" : "/swift/createaccount",
+               "extra_config" : {
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "newClient", "ShadowKeys" ],
+                   "scopes_key" : "scope"
                  }
                }
              }, {
@@ -87,6 +117,31 @@ data:
                }
              }, {
                "method" : "GET",
+               "output_encoding" : "json-collection",
+               "backend" : [ {
+                 "method" : "GET",
+                 "url_pattern" : "/",
+                 "host" : [ "https://api.nationalize.io" ],
+                 "extra_config" : { }
+               } ],
+               "endpoint" : "/swift/countrydetails",
+               "extra_config" : {
+                 "modifier/jmespath" : {
+                   "expr" : "country[?probability > `0.03` ].country_id"
+                 },
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "newClient", "ShadowKeys" ],
+                   "scopes_key" : "scope"
+                 }
+               },
+               "input_query_strings" : [ "name" ]
+             }, {
+               "method" : "GET",
                "backend" : [ {
                  "method" : "GET",
                  "url_pattern" : "/posts/a",
@@ -118,16 +173,82 @@ data:
                "method" : "GET",
                "backend" : [ {
                  "method" : "GET",
-                 "url_pattern" : "/",
-                 "host" : [ "https://api.nationalize.io" ],
+                 "url_pattern" : "/objects/{id}",
+                 "host" : [ "https://api.restful-api.dev" ],
                  "is_collection" : false,
                  "extra_config" : { }
                } ],
-               "endpoint" : "/swift/jmesep",
+               "endpoint" : "/swift/responseschemavald/{id}",
                "extra_config" : {
-                 "modifier/jmespath" : {
-                   "expr" : "country[?probability > `0.03` ].country_id"
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes" : [ "newClient", "ShadowKeys" ],
+                   "scopes_key" : "scope"
                  },
+                 "plugin/req-resp-modifier" : {
+                   "name" : [ "response-schema-validator" ],
+                   "response-schema-validator" : {
+                     "error" : {
+                       "body" : "response from the backend is not valid as per the schema",
+                       "status" : 400
+                     },
+                     "schema" : {
+                       "$schema" : "http://json-schema.org/draft-07/schema#",
+                       "type" : "object",
+                       "properties" : {
+                         "id" : {
+                           "type" : "string"
+                         },
+                         "name" : {
+                           "type" : "string"
+                         },
+                         "data" : {
+                           "type" : "object",
+                           "properties" : {
+                             "year" : {
+                               "type" : "integer"
+                             },
+                             "price" : {
+                               "type" : "number"
+                             },
+                             "CPU model" : {
+                               "type" : "string"
+                             },
+                             "Hard disk size" : {
+                               "type" : "string"
+                             }
+                           },
+                           "required" : [ "year", "price", "CPU model", "Hard disk size" ]
+                         }
+                       },
+                       "required" : [ "id", "name", "data" ]
+                     }
+                   }
+                 }
+               }
+             }, {
+               "method" : "GET",
+               "backend" : [ {
+                 "method" : "GET",
+                 "url_pattern" : "/objects",
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "is_collection" : true,
+                 "extra_config" : {
+                   "proxy" : {
+                     "flatmap_filter" : [ {
+                       "type" : "move",
+                       "args" : [ "collection.*.data", "collection.*.customdata" ]
+                     } ]
+                   }
+                 },
+                 "sd" : "static"
+               } ],
+               "endpoint" : "/swift/flatmap",
+               "extra_config" : {
                  "auth/validator" : {
                    "alg" : "RS256",
                    "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
@@ -137,18 +258,17 @@ data:
                    "scopes" : [ "newClient", "ShadowKeys" ],
                    "scopes_key" : "scope"
                  }
-               },
-               "input_query_strings" : [ "name" ]
+               }
              }, {
                "method" : "GET",
-               "output_encoding" : "json-collection",
                "backend" : [ {
                  "method" : "GET",
                  "url_pattern" : "/",
                  "host" : [ "https://api.nationalize.io" ],
+                 "is_collection" : false,
                  "extra_config" : { }
                } ],
-               "endpoint" : "/swift/countrydetails",
+               "endpoint" : "/swift/jmesep",
                "extra_config" : {
                  "modifier/jmespath" : {
                    "expr" : "country[?probability > `0.03` ].country_id"
@@ -220,12 +340,12 @@ data:
                "method" : "GET",
                "backend" : [ {
                  "method" : "GET",
-                 "url_pattern" : "/objects/{id}",
-                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/posts/{id}",
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
                  "is_collection" : false,
                  "extra_config" : { }
                } ],
-               "endpoint" : "/swift/responseschemavald/{id}",
+               "endpoint" : "/swift/requestpolicy/{id}",
                "extra_config" : {
                  "auth/validator" : {
                    "alg" : "RS256",
@@ -236,137 +356,17 @@ data:
                    "scopes" : [ "newClient", "ShadowKeys" ],
                    "scopes_key" : "scope"
                  },
-                 "plugin/req-resp-modifier" : {
-                   "name" : [ "response-schema-validator" ],
-                   "response-schema-validator" : {
+                 "security/policies" : {
+                   "req" : {
+                     "policies" : [ "req_params.Id.matches('^[0-9]+$')" ],
                      "error" : {
-                       "body" : "response from the backend is not valid as per the schema",
-                       "status" : 400
-                     },
-                     "schema" : {
-                       "$schema" : "http://json-schema.org/draft-07/schema#",
-                       "type" : "object",
-                       "properties" : {
-                         "id" : {
-                           "type" : "string"
-                         },
-                         "name" : {
-                           "type" : "string"
-                         },
-                         "data" : {
-                           "type" : "object",
-                           "properties" : {
-                             "year" : {
-                               "type" : "integer"
-                             },
-                             "price" : {
-                               "type" : "number"
-                             },
-                             "CPU model" : {
-                               "type" : "string"
-                             },
-                             "Hard disk size" : {
-                               "type" : "string"
-                             }
-                           },
-                           "required" : [ "year", "price", "CPU model", "Hard disk size" ]
-                         }
-                       },
-                       "required" : [ "id", "name", "data" ]
+                       "body" : "{\"ErrorMessage\":\"Please provide integers only\"}",
+                       "status" : 400,
+                       "content_type" : "application/json"
                      }
                    }
                  }
                }
-             }, {
-               "method" : "POST",
-               "backend" : [ {
-                 "method" : "POST",
-                 "url_pattern" : "api/users",
-                 "host" : [ "https://reqres.in" ],
-                 "is_collection" : false,
-                 "extra_config" : {
-                   "modifier/body-generator" : {
-                     "content_type" : "application/json",
-                     "debug" : true,
-                     "template" : "ewogICAgIm5hbWUiOiAie3sgLnJlcV9ib2R5LnVwZGF0ZS5kYXRhLm5hbWUgfX0iLAogICAgImVtYWlsIjogInt7IC5yZXFfYm9keS51cGRhdGUuZGF0YS5lbWFpbCB9fSIKfQ=="
-                   }
-                 },
-                 "sd" : "static"
-               } ],
-               "endpoint" : "/swift/createaccount",
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "newClient", "ShadowKeys" ],
-                   "scopes_key" : "scope"
-                 }
-               }
-             }, {
-               "method" : "GET",
-               "backend" : [ {
-                 "method" : "GET",
-                 "url_pattern" : "/objects",
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "is_collection" : true,
-                 "extra_config" : {
-                   "proxy" : {
-                     "flatmap_filter" : [ {
-                       "type" : "move",
-                       "args" : [ "collection.*.data", "collection.*.customdata" ]
-                     } ]
-                   }
-                 },
-                 "sd" : "static"
-               } ],
-               "endpoint" : "/swift/flatmap",
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "newClient", "ShadowKeys" ],
-                   "scopes_key" : "scope"
-                 }
-               }
-             }, {
-               "method" : "GET",
-               "output_encoding" : "no-op",
-               "backend" : [ {
-                 "method" : "GET",
-                 "url_pattern" : "/posts/1",
-                 "host" : [ "https://jsonplaceholder.typicode.com" ],
-                 "is_collection" : false,
-                 "encoding" : "json",
-                 "extra_config" : {
-                   "modifier/martian" : {
-                     "header.Modifier" : {
-                       "scope" : [ "response", "request" ],
-                       "name" : "CustomHeader",
-                       "value" : "true"
-                     }
-                   }
-                 },
-                 "sd" : "static"
-               } ],
-               "endpoint" : "/swift/martianheader",
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "newClient", "ShadowKeys" ],
-                   "scopes_key" : "scope"
-                 }
-               },
-               "input_headers" : [ "CustomHeader" ]
              } ],
              "extra_config" : {
                "router" : {
