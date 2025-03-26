@@ -24,7 +24,7 @@ data:
                  "method" : "GET",
                  "url_pattern" : "/objects",
                  "host" : [ "https://api.restful-api.dev" ],
-                 "is_collection" : false,
+                 "is_collection" : true,
                  "extra_config" : { }
                } ],
                "endpoint" : "/testnew/restapi",
