@@ -5,80 +5,164 @@ metadata:
   namespace: krakenddemo-namespace
 data:
   krakend.json: |
-           {
-             "$schema" : "https://www.krakend.io/schema/v2.7/krakend.json",
-             "version" : 3,
-             "name" : "gateway",
-             "port" : 8082,
-             "timeout" : "6000ms",
-             "cache_ttl" : "1h",
-             "debug_endpoint" : true,
-             "echo_endpoint" : false,
-             "plugin" : {
-               "pattern" : ".so",
-               "folder" : "/opt/krakend/plugins/"
-             },
-             "endpoints" : [ {
-               "method" : "GET",
-               "backend" : [ {
-                 "method" : "GET",
-                 "url_pattern" : "/objects/7",
-                 "host" : [ "https://api.restful-api.dev/" ],
-                 "allow" : [ "id" ],
-                 "extra_config" : { }
-               } ],
-               "endpoint" : "/cypresallow5/myep2",
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes_key" : "scope"
-                 }
-               }
-             }, {
-               "method" : "GET",
-               "output_encoding" : "json",
-               "backend" : [ {
-                 "method" : "POST",
-                 "url_pattern" : "hn",
-                 "host" : [ "local" ],
-                 "is_collection" : false,
-                 "encoding" : "json",
-                 "extra_config" : { }
-               } ],
-               "endpoint" : "/testingtime/efc",
-               "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes_key" : "scope"
-                 }
-               }
-             } ],
-             "extra_config" : {
-               "router" : {
-                 "return_error_msg" : true
-               },
-               "security/cors" : {
-                 "allow_origins" : [ "*" ],
-                 "allow_methods" : [ "GET", "POST", "PUT", "DELETE", "PATCH" ],
-                 "allow_headers" : [ "*" ],
-                 "expose_headers" : [ "*" ],
-                 "allow_credentials" : true
-               },
-               "plugin/http-server" : {
-                 "name" : [ "url-rewrite" ],
-                 "ip-filter" : {
-                   "id" : 1,
-                   "CIDR" : [ "10.175.1.70" ],
-                   "allow" : false
-                 }
-               }
-             }
+           {
+             "$schema" : "string",
+             "version" : 0,
+             "name" : "string",
+             "port" : 8082,
+             "host" : [ "string" ],
+             "timeout" : "3000ms",
+             "cache_ttl" : "300s",
+             "debug_endpoint" : false,
+             "echo_endpoint" : false,
+             "plugin" : {
+               "pattern" : ".so",
+               "folder" : "/opt/krakend/plugins/"
+             },
+             "endpoints" : [ {
+               "method" : "GET",
+               "output_encoding" : "json",
+               "backend" : [ {
+                 "method" : "GET",
+                 "url_pattern" : "http://localhost:8080",
+                 "host" : [ "localhost" ],
+                 "is_collection" : false,
+                 "encoding" : "json",
+                 "extra_config" : {
+                   "plugin/req-resp-modifier" : {
+                     "name" : [ "response-schema-validator" ],
+                     "response-schema-validator" : {
+                       "error" : {
+                         "body" : "400",
+                         "status" : 500
+                       },
+                       "schema" : { }
+                     }
+                   },
+                   "auth/client-credentials" : {
+                     "client_id" : "335",
+                     "client_secret" : "343",
+                     "endpoint_params" : {
+                       "343434" : "4"
+                     },
+                     "scopes" : "3434",
+                     "token_url" : "343"
+                   },
+                   "auth/ntlm" : {
+                     "password" : "anita",
+                     "user" : "anitha"
+                   },
+                   "security/policies" : {
+                     "req" : {
+                       "policies" : [ "jhjh" ],
+                       "error" : {
+                         "body" : "{}",
+                         "status" : 800,
+                         "content_type" : "text/plain"
+                       }
+                     },
+                     "auto_join_policies" : true,
+                     "debug" : true,
+                     "disable_macros" : true,
+                     "resp" : {
+                       "error" : {
+                         "body" : "{}",
+                         "status" : 400,
+                         "content_type" : "text/plain"
+                       },
+                       "policies" : [ "dsfds" ]
+                     }
+                   }
+                 }
+               } ],
+               "endpoint" : "/testp/6/test",
+               "extra_config" : {
+                 "modifier/jmespath" : {
+                   "expr" : "age> 20"
+                 },
+                 "qos/ratelimit/router" : {
+                   "capacity" : 23,
+                   "client_capacity" : 23,
+                   "client_max_rate" : 23,
+                   "every" : "23s",
+                   "max_rate" : 2323,
+                   "strategy" : "ip"
+                 },
+                 "proxy" : {
+                   "static" : {
+                     "data" : { },
+                     "strategy" : "always"
+                   },
+                   "sequential" : true
+                 },
+                 "auth/validator" : {
+                   "alg" : "RS256",
+                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
+                   "issuer" : "http://10.175.1.110:31438/realms/master",
+                   "disable_jwk_security" : true,
+                   "scopes_matcher" : "any",
+                   "scopes_key" : "scope"
+                 },
+                 "plugin/req-resp-modifier" : {
+                   "name" : [ "content-replacer", "response-schema-validator", "ip-filter" ],
+                   "response-schema-validator" : {
+                     "error" : {
+                       "body" : "uyhh",
+                       "status" : 388
+                     },
+                     "schema" : { }
+                   },
+                   "content-replacer" : {
+                     "hem" : {
+                       "find" : "hem",
+                       "replace" : "hem",
+                       "regexp" : true
+                     }
+                   },
+                   "ip-filter" : {
+                     "CIDR" : [ "192.1.168.9" ],
+                     "allow" : false,
+                     "client_ip_headers" : [ "https://example.com" ],
+                     "trusted_proxies" : [ "10.0.06/16" ]
+                   }
+                 },
+                 "websocket" : {
+                   "input_headers" : [ "we" ],
+                   "connect_event" : true,
+                   "disconnect_event" : true,
+                   "read_buffer_size" : 23,
+                   "write_buffer_size" : 23,
+                   "message_buffer_size" : 22,
+                   "max_message_size" : 23,
+                   "write_wait" : "23s",
+                   "pong_wait" : "23s",
+                   "max_retries" : 23,
+                   "backoff_strategy" : "select backoff strategy",
+                   "return_error_details" : true
+                 },
+                 "security/policies" : {
+                   "jwt" : {
+                     "policies" : [ "ijij" ]
+                   },
+                   "resp" : {
+                     "error" : {
+                       "status" : 400
+                     },
+                     "policies" : [ "jiji" ]
+                   }
+                 },
+                 "modifier/response-body-generator" : {
+                   "content_type" : "application/json",
+                   "debug" : true,
+                   "template" : "e30="
+                 },
+                 "validation/json-schema" : { }
+               },
+               "input_headers" : [ "name" ],
+               "concurrent_calls" : 5,
+               "input_query_strings" : [ "name" ],
+               "cache_ttl" : "34s",
+               "timeout" : "343s"
+             } ],
+             "extra_config" : { }
            }
