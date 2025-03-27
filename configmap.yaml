@@ -208,8 +208,8 @@ data:
                  "name" : [ "ip-filter" ],
                  "ip-filter" : {
                    "id" : 2,
-                   "CIDR" : [ "10.175.1.70" ],
-                   "allow" : true
+                   "CIDR" : [ "10.12.1" ],
+                   "allow" : false
                  }
                }
              }
