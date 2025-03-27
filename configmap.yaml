@@ -8,35 +8,18 @@ data:
            {
              "$schema" : "https://www.krakend.io/schema/v2.7/krakend.json",
              "version" : 3,
-             "name" : "gateway",
+             "name" : "MassilGW",
              "port" : 8082,
-             "timeout" : "6000ms",
-             "cache_ttl" : "1h",
-             "debug_endpoint" : true,
+             "host" : [ "localhost" ],
+             "timeout" : "3000ms",
+             "cache_ttl" : "300s",
+             "debug_endpoint" : false,
              "echo_endpoint" : false,
              "plugin" : {
                "pattern" : ".so",
                "folder" : "/opt/krakend/plugins/"
              },
              "endpoints" : [ {
-               "method" : "GET",
-               "backend" : [ {
-                 "method" : "GET",
-                 "url_pattern" : "/posts/1",
-                 "host" : [ "https://jsonplaceholder.typicode.com" ],
-                 "is_collection" : false,
-                 "extra_config" : { },
-                 "sd" : "static"
-               } ],
-               "endpoint" : "/myapi/myep1",
-               "extra_config" : {
-                 "auth/basic" : {
-                   "users" : {
-                     "massil" : "$2a$10$pz12ux0B4W0LJdUjhb5yTOrpvwr/fjcJvWVmz.WxNy9oreDdUg7Oq"
-                   }
-                 }
-               }
-             }, {
                "method" : "GET",
                "output_encoding" : "json",
                "backend" : [ {
@@ -57,6 +40,24 @@ data:
                    "scopes_matcher" : "any",
                    "scopes" : [ "newClient" ],
                    "scopes_key" : "scope"
+                 }
+               }
+             }, {
+               "method" : "GET",
+               "backend" : [ {
+                 "method" : "GET",
+                 "url_pattern" : "/posts/1",
+                 "host" : [ "https://jsonplaceholder.typicode.com" ],
+                 "is_collection" : false,
+                 "extra_config" : { },
+                 "sd" : "static"
+               } ],
+               "endpoint" : "/myapi/myep1",
+               "extra_config" : {
+                 "auth/basic" : {
+                   "users" : {
+                     "massil" : "$2a$10$pz12ux0B4W0LJdUjhb5yTOrpvwr/fjcJvWVmz.WxNy9oreDdUg7Oq"
+                   }
                  }
                }
              }, {
@@ -176,17 +177,16 @@ data:
                },
                "security/cors" : {
                  "allow_origins" : [ "*" ],
-                 "allow_methods" : [ "GET" ],
+                 "allow_methods" : [ "GET", "POST", "PUT", "DELETE", "PATCH" ],
                  "allow_headers" : [ "*" ],
-                 "expose_headers" : [ "*" ],
                  "allow_credentials" : true
                },
                "plugin/http-server" : {
-                 "name" : [ "url-rewrite" ],
+                 "name" : [ "ip-filter" ],
                  "ip-filter" : {
-                   "id" : 1,
+                   "id" : 2,
                    "CIDR" : [ "10.175.1.70" ],
-                   "allow" : false
+                   "allow" : true
                  }
                }
              }
