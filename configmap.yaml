@@ -20,15 +20,16 @@ data:
              },
              "endpoints" : [ {
                "method" : "GET",
+               "output_encoding" : "json",
                "backend" : [ {
                  "method" : "GET",
-                 "url_pattern" : "/posts/1",
-                 "host" : [ "https://jsonplaceholder.typicode.com", "https://api.restful-api.dev" ],
+                 "url_pattern" : "/objects/6",
+                 "host" : [ "https://api.restful-api.dev" ],
                  "is_collection" : false,
-                 "extra_config" : { },
-                 "sd" : "static"
+                 "encoding" : "json",
+                 "extra_config" : { }
                } ],
-               "endpoint" : "/myapi/myep1",
+               "endpoint" : "/rewrite/tst",
                "extra_config" : {
                  "auth/validator" : {
                    "alg" : "RS256",
@@ -42,16 +43,15 @@ data:
                }
              }, {
                "method" : "GET",
-               "output_encoding" : "json",
                "backend" : [ {
                  "method" : "GET",
-                 "url_pattern" : "/objects/6",
-                 "host" : [ "https://api.restful-api.dev" ],
+                 "url_pattern" : "/posts/1",
+                 "host" : [ "https://jsonplaceholder.typicode.com", "https://api.restful-api.dev" ],
                  "is_collection" : false,
-                 "encoding" : "json",
-                 "extra_config" : { }
+                 "extra_config" : { },
+                 "sd" : "static"
                } ],
-               "endpoint" : "/rewrite/tst",
+               "endpoint" : "/myapi/myep1",
                "extra_config" : {
                  "auth/validator" : {
                    "alg" : "RS256",
