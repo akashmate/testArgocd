@@ -163,7 +163,7 @@ data:
                },
                "security/cors" : {
                  "allow_origins" : [ "*" ],
-                 "allow_methods" : [ "POST", "PUT", "DELETE", "PATCH" ],
+                 "allow_methods" : [ "GET", "HEAD", "POST", "PUT", "DELETE", "CONNECT", "OPTIONS", "TRACE", "PATCH" ],
                  "allow_headers" : [ "*" ],
                  "expose_headers" : [ "*" ],
                  "allow_credentials" : true
