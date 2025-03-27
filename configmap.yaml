@@ -8,11 +8,12 @@ data:
            {
              "$schema" : "https://www.krakend.io/schema/v2.7/krakend.json",
              "version" : 3,
-             "name" : "gateway",
+             "name" : "MassilGW",
              "port" : 8082,
-             "timeout" : "6000ms",
-             "cache_ttl" : "1h",
-             "debug_endpoint" : true,
+             "host" : [ "localhost" ],
+             "timeout" : "3000ms",
+             "cache_ttl" : "300s",
+             "debug_endpoint" : false,
              "echo_endpoint" : false,
              "plugin" : {
                "pattern" : ".so",
@@ -180,26 +181,16 @@ data:
                },
                "security/cors" : {
                  "allow_origins" : [ "*" ],
-                 "allow_methods" : [ "GET" ],
+                 "allow_methods" : [ "GET", "POST", "PUT", "DELETE", "PATCH" ],
                  "allow_headers" : [ "*" ],
-                 "expose_headers" : [ "*" ],
                  "allow_credentials" : true
                },
                "plugin/http-server" : {
-                 "name" : [ "url-rewrite" ],
-                 "geoip" : {
-                   "citydb_path" : "./Geo"
-                 },
-                 "url-rewrite" : {
-                   "literal" : {
-                     "uhugu" : "ghgjg"
-                   },
-                   "regexp" : [ [ "gujgug", "jgujguj" ] ]
-                 },
+                 "name" : [ "ip-filter" ],
                  "ip-filter" : {
-                   "id" : 1,
+                   "id" : 2,
                    "CIDR" : [ "10.175.1.70" ],
-                   "allow" : false
+                   "allow" : true
                  }
                }
              }
