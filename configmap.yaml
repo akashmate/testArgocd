@@ -18,6 +18,11 @@ data:
                "pattern" : ".so",
                "folder" : "/opt/krakend/plugins/"
              },
+             "tls" : {
+               "disable_system_ca_pool" : false,
+               "disabled" : false,
+               "enable_mtls" : false
+             },
              "endpoints" : [ {
                "method" : "GET",
                "output_encoding" : "json",
