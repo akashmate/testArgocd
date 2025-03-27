@@ -190,6 +190,12 @@ data:
                  "geoip" : {
                    "citydb_path" : "./Geo"
                  },
+                 "url-rewrite" : {
+                   "literal" : {
+                     "uhugu" : "ghgjg"
+                   },
+                   "regexp" : [ [ "gujgug", "jgujguj" ] ]
+                 },
                  "ip-filter" : {
                    "id" : 1,
                    "CIDR" : [ "10.175.1.70" ],
