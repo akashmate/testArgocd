@@ -31,14 +31,10 @@ data:
                } ],
                "endpoint" : "/myapi/myep1",
                "extra_config" : {
-                 "auth/validator" : {
-                   "alg" : "RS256",
-                   "jwk_url" : "http://10.175.1.110:31438/realms/master/protocol/openid-connect/certs",
-                   "issuer" : "http://10.175.1.110:31438/realms/master",
-                   "disable_jwk_security" : true,
-                   "scopes_matcher" : "any",
-                   "scopes" : [ "newClient" ],
-                   "scopes_key" : "scope"
+                 "auth/basic" : {
+                   "users" : {
+                     "massil" : "$2a$10$pz12ux0B4W0LJdUjhb5yTOrpvwr/fjcJvWVmz.WxNy9oreDdUg7Oq"
+                   }
                  }
                }
              }, {
