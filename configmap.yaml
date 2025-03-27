@@ -20,16 +20,14 @@ data:
              },
              "endpoints" : [ {
                "method" : "GET",
-               "output_encoding" : "json",
                "backend" : [ {
                  "method" : "GET",
-                 "url_pattern" : "/objects/6",
-                 "host" : [ "https://api.restful-api.dev" ],
-                 "is_collection" : false,
-                 "encoding" : "json",
+                 "url_pattern" : "/objects/7",
+                 "host" : [ "https://api.restful-api.dev/" ],
+                 "allow" : [ "id" ],
                  "extra_config" : { }
                } ],
-               "endpoint" : "/rewrite/tst",
+               "endpoint" : "/cypresal1/myep2",
                "extra_config" : {
                  "auth/validator" : {
                    "alg" : "RS256",
@@ -43,14 +41,16 @@ data:
                }
              }, {
                "method" : "GET",
+               "output_encoding" : "json",
                "backend" : [ {
                  "method" : "GET",
-                 "url_pattern" : "/objects/7",
-                 "host" : [ "https://api.restful-api.dev/" ],
-                 "allow" : [ "id" ],
+                 "url_pattern" : "/objects/6",
+                 "host" : [ "https://api.restful-api.dev" ],
+                 "is_collection" : false,
+                 "encoding" : "json",
                  "extra_config" : { }
                } ],
-               "endpoint" : "/cypresal1/myep2",
+               "endpoint" : "/rewrite/tst",
                "extra_config" : {
                  "auth/validator" : {
                    "alg" : "RS256",
